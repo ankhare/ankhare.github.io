@@ -251,17 +251,30 @@
             var myConfetti = confetti.create(myCanvas, { resize: true });
 
             //generate random color
-            let targetcolor = [];
-            do {
-	            targetcolor = Math.floor(Math.random()*16777215).toString(16);
-            } while (targetcolor.length != 6); // prevent 5 digit outputs
+            // https://stackoverflow.com/questions/47616381/how-to-exclude-all-shades-of-gray-while-generating-random-hex-color-code
+            function randomColor() {
+                const rangeSize = 100; // adapt as needed
+                const parts = [
+                    Math.floor(Math.random()*256),
+                    Math.floor(Math.random()*rangeSize),
+                    Math.floor(Math.random()*rangeSize) + 256-rangeSize 
+                ].sort( (a, b) => Math.random() < 0.5 );
+
+                return parts.map( p => ('0' + p.toString(16)).substr(-2) ).join('');
+            }
+
+            const targetcolor = randomColor();
 
             $('#color').css('background-color', '#' + targetcolor);
             $("head").append(`<meta name="theme-color" content="#${targetcolor}"/>`);
 
-            document.documentElement.style.setProperty('--lg', `#${targetcolor}40`);
-            document.documentElement.style.setProperty('--border', `#${targetcolor}ee`);
-            document.documentElement.style.setProperty('--green', `#${targetcolor}`);
+            $(':root').css('--lg', `#${targetcolor}40`);
+            $(':root').css('--border', `#${targetcolor}ee`);
+            $(':root').css('--green', `#${targetcolor}`);
+            
+            // // document.documentElement.style.setProperty('--lg', `#${targetcolor}40`);
+            // document.documentElement.style.setProperty();
+            // document.documentElement.style.setProperty();
             // console.log(targetcolor)
 
             //if the title is clicked on 3 times show the answer
