@@ -101,7 +101,12 @@
         }
 
         .popover {
-            white-space: pre-wrap;    
+            border: 2px solid rgb(226, 216, 216);
+        }
+
+        .popover-body {
+            overflow-y: auto;
+            white-space:pre-wrap;
         }
 
         .btn{
@@ -160,12 +165,16 @@
 </head>
 <body>
     <div id="bg" class="container-fluid">
-        <button type="button" class="btn btn-secondary p-0 ml-auto text-justified" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" 
-        title="Unfamiliar with Hex?" data-bs-content="The first two letters/numbers refer to red, the next two refer to green, and the last two refer to blue.
+        <button type="button" class="btn btn-secondary p-0 ml-auto" data-toggle="popover" title="How to Hexdle">?</button>
+        
+        <!-- <button type="button" class="btn btn-secondary p-0 ml-auto" data-bs-container="body" data-bs-toggle="popover"
+        data-bs-placement="left" 
+        data-bs-title="Match the color of the header. The background will change to the value of your guess."
+        data-bs-content="Unfamiliar with Hex? The first two letters/numbers refer to red, the next two refer to green, and the last two refer to blue.
 
 The color values are defined in values between 00 and FF (instead of from 0 to 255 in RGB) Numbers are used when the value is 1-9. Letters are used when the value is higher than 9. For example: A=10, B=11, C=12...F=15">
-                            ?
-        </button>
+        ?
+        </button> -->
         <section>
             <div class="row">
                 <div id=color class="col d-flex align-items-center">
@@ -217,6 +226,14 @@ The color values are defined in values between 00 and FF (instead of from 0 to 2
             var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
                 return new bootstrap.Popover(popoverTriggerEl)
             })
+
+            var image = '<img src="https://developer.chrome.com/extensions/examples/api/idle/idle_simple/sample-128.png">';
+            $('[data-toggle="popover"]').popover({
+                placement : 'top',
+                trigger : 'hover',
+                html : true,
+                content : '<div><h6 class="media-heading">Match the color of the header. The background will change to the value of your guess.</h6></div><div class="media-body"><p>Unfamiliar with Hex? The first two letters/numbers refer to red, the next two refer to green, and the last two refer to blue.</p><p>The color values are defined in values between 00 and FF (instead of from 0 to 255 in RGB) Numbers are used when the value is 1-9. Letters are used when the value is higher than 9. For example: A=10, B=11, C=12...F=15"</p><p>Use this chart to start guessing!</p></div><div class="media"><img src="media/rbg-hex.png"class="mw-100" alt="Sample Image"></div>'
+            });
 
             //initialize canvas conffetti 
             var myConfetti = confetti.create(myCanvas, { resize: true });
