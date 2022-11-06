@@ -18,6 +18,10 @@
 
         }
 
+        body{
+            text-align: center;
+        }
+
         .green{
             background-color: var(--green);
         }
@@ -32,16 +36,22 @@
 
         h1{
             font-family: 'Fredoka One', sans-serif;
-            font-size: calc(2rem + 4vh);
+            font-size: 300%;
             -webkit-text-stroke-width: 2px;
             -webkit-text-stroke-color: black;
         }
+        #bg{
+            margin: 0%;;
+        }
         #color{
-           background: black;
-           color: white;
-           min-height: 80px;
-           height: 18vh;
-           max-height: 100px;
+            display: flex;
+            align-items: center;
+            width: 100vw;
+            background: black;
+            color: white;
+            min-height: 80px;
+            height: 18vh;
+            max-height: 100px;
         }
 
         .gbox{
@@ -147,9 +157,9 @@
         }
 
         @media (max-width: 450px){
-            h1{
+            /* h1{
                 font-size: 2rem;
-            }
+            } */
 
             #kb{
                 position:absolute;
@@ -167,14 +177,12 @@
     </style>
 </head>
 <body>
-    <div id="bg" class="container-fluid">
+    <div id="bg" class="container-fluid p-0">
         <!-- <button type="button" class="btn btn-secondary p-0 ml-auto" data-toggle="popover">?</button> -->
 
         <section>
-            <div class="row">
-                <div id=color class="col d-flex align-items-center">
-                    <h1 class="m-auto">H E X D L E</h1>
-                </div>
+             <div id="color">
+                <h1 class="mx-auto">H E X D L E</h1>
             </div>
         </section>
 
