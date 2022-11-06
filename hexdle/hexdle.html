@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hexdle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <!-- Bootstrap link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .green{
+            background-color: green;
+        }
+
+        .yellow{
+            background-color: yellow;
+        }
+
+        .gray{
+            background-color: gray;
+        }
+        
+        .bg{
+           text-align: center; 
+        }
+        h1{
+            font-family: 'Fredoka One', sans-serif;
+            font-size: 350%;
+            -webkit-text-stroke-width: 2px;
+            -webkit-text-stroke-color: black;
+        }
+        #color{
+           background: black;
+           color: white;
+           min-height: 30px;
+           height: 18vw;
+           max-height: 100px;
+        }
+
+        .gbox{
+            display: flex;
+            align-items: center;
+            border: 2px solid rgb(226, 216, 216);
+            border-radius: 10px;
+
+            min-height: 30px;
+            height: 10vw;
+            max-height: 70px;
+
+            min-width: 30px;
+            width: 10vw;
+            max-width: 70px;
+
+            transition: color 400ms;
+        }
+
+        .kbkey{
+            height: 10vw;
+            max-height: 60px;
+            min-width: 25px;
+            width: 10vw;
+            max-width: 60px;
+        } 
+
+        .okey{
+            height: 8vw;
+            max-height: 50px;
+        }
+
+        .kbkey, .okey{
+            background-color: white;
+            display: flex;
+            border: 2px solid rgb(226, 216, 216);
+            border-radius: 10px;
+            min-height: 25px;
+        }
+
+        button:hover:not([disabled]){
+            border-color: black;
+        }
+
+        .gboxcontainer{
+            display: flex;
+            align-items: center;
+            max-width: 800px;
+        }
+
+        .kbcontainer{
+            display: flex;
+            align-items: center;
+            max-width: 900px;
+        }
+
+        .popover {
+            white-space: pre-wrap;    
+        }
+
+        .btn{
+            position:fixed;
+	        bottom:40px;
+	        right:40px;
+            
+            min-height: 25px;
+            height: 5vw;
+            max-height: 40px;
+            
+            min-width: 25px;
+            width: 5vw;
+            max-width: 40px;
+
+            border: 2px solid black;
+            color:black;
+            background-color: yellow;
+        }
+
+        .shake{
+            border-color: black;
+            animation: shake-animation 200ms ease;
+            transform-origin: 50% 50%;
+        }
+
+        .flip {
+        animation: flip 500ms ease forwards;
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            @keyframes shake-animation {
+                0% { transform:translate(0,0) }
+                1.78571% { transform:translate(5px,0) }
+                3.57143% { transform:translate(0,5px) }
+                5.35714% { transform:translate(0,0) }
+                7.14286% { transform:translate(0,5px) }
+                8.92857% { transform:translate(5px,0) }
+                10.71429% { transform:translate(0,5px) }
+                100% { transform:translate(0,0) }
+            }
+
+            @keyframes flip {
+                0% {
+                    transform: scaleY(1);
+                }
+
+                50% {
+                    transform: scaleY(0);
+                }
+
+                100% {
+                    transform: scaleY(1);
+                }
+            }
+        }
+
+        @media (max-width < 320) {
+            body {
+                flex-direction: row;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="bg" class="container-fluid">
+        <button type="button" class="btn btn-secondary p-0 ml-auto text-justified" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" 
+        title="Unfamiliar with Hex?" data-bs-content="The first two letters/numbers refer to red, the next two refer to green, and the last two refer to blue.
+
+The color values are defined in values between 00 and FF (instead of from 0 to 255 in RGB) Numbers are used when the value is 1-9. Letters are used when the value is higher than 9. For example: A=10, B=11, C=12...F=15">
+                            ?
+        </button>
+        <section>
+            <div class="row">
+                <div id=color class="col d-flex align-items-center">
+                    <h1 class="m-auto">H E X D L E</h1>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-12 text-center">
+                    <h6 id="alert"></h6>
+                </div>
+            </div>
+        </section>
+
+        <section id="guesses" class="my-sm-2">
+        </section>
+        <section>
+            <div class="mx-auto gboxcontainer">
+                <div class="mx-auto">
+                    <div id="kb1" class="row m-auto my-1"></div>
+                    <div id="kb2" class="row m-auto my-1"></div>
+                    
+                    <div class="row m-auto my-2">
+                        <button type="button" id="del" disabled="true" class="col-3 p-0 okey"><h6 class="m-auto">⌫</h6></button>
+                        <div class="col-6 p-0"></div>
+                        <button type="button" id="enter" disabled="true" class="col-3 p-0 okey"><h6 class="m-auto">Enter</h6></button>
+                    </div>
+                </div>     
+            </div>  
+        </section>
+        <canvas id="myCanvas"></canvas>
+
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    
+    <!-- canvas confetti API -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    
+    <!-- jQuery link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        'use strict';
+        $(document).ready(function () {
+            document.addEventListener("touchstart", function(){}, true);
+            
+            //enable bootstrap popover
+            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl)
+            })
+
+            //initialize canvas conffetti 
+            var myConfetti = confetti.create(myCanvas, { resize: true });
+
+            //generate random color
+            let targetcolor = [];
+            do {
+	            targetcolor = Math.floor(Math.random()*16777215).toString(16);
+            } while (targetcolor.length != 6); // prevent 5 digit outputs
+
+            $('#color').css('background-color', '#' + targetcolor);
+            console.log(targetcolor)
+
+            const allowedtries = 6
+            
+            //generate grid
+            for (let i=0; i < allowedtries; i++ ){//number of rows determined by number of tries allowed
+                $('#guesses').append(`<div id="gcont${i}"class="mx-auto gboxcontainer"><div id="g${i}" class="row m-auto my-1">#</div></div>`);  
+            }
+            for (let r=0; r<6; r++){
+                for (let c=0; c<6; c++){ 
+                $('#g' + r).append(`<div id="gbox${r}${c}" class="col-2 mx-1 p-0 gbox"><h2 id="gtext${r}${c}" class="m-auto p-0"></h2></div>`);
+                }
+            }
+
+            //generate keyboard
+            const kb1 = ['A','B','C','D','E','F','0','1'];
+            const kb2 = ['2','3','4','5','6','7','8','9'];
+            for (const i in kb1){
+                $('#kb1').append(`<button type="button" id="b${kb1[i]}" class="col mx-1 p-0 kbkey"><h6 class="m-auto">${kb1[i]}</h6></button>`)
+            }
+            for (const i in kb2){
+                $('#kb2').append(`<button type="button" id="b${kb2[i]}" class="col mx-1 p-0 kbkey"><h6 class="m-auto">${kb2[i]}</h6></button>`)
+            }
+
+            //initialize game variables
+            let guess = [];
+            let result = ['','','','','',''];
+
+            let green = [];
+            let yellow = [];
+            let gray = [];
+
+            let currow = 0; // attempt number
+            let currcol = 0; // letter input
+
+            $('.kbkey').click(function() {
+                $('#del').prop('disabled', false);
+
+                if (guess.length < 6){
+                    const l = $(this).text().trim();
+                    guess.push(l);
+                    $('#gbox' + currow + '' + currcol).addClass('shake');
+                    $('#gtext' + currow + '' + currcol).text(l);
+                    currcol++;
+                }
+                
+                if (guess.length === 6){
+                    $('#enter').prop('disabled', false)
+                } 
+            })
+
+            $('#del').click(function(){
+                $('#enter').prop('disabled', true);
+                if (guess.length > 0){
+                    guess.pop();
+                    currcol--;
+                    $('#gtext' + currow + '' + currcol).text("");
+                    $('#gbox' + currow + '' + currcol).removeClass('shake');  
+                }
+
+                if (guess.length === 0){
+                    $(this).prop('disabled', true);
+                }
+
+                if (guess.length < 6){
+                    $('.kbkey').prop('disabled', false);
+                }
+            })
+
+            $('#enter').click(function(){
+                $(this).prop('disabled', true);
+                $('#color').css('background-color', "#" + guess.join(''));
+                $('#color').css('color', "#" + targetcolor);
+                // show results
+                    // find exact matches
+                    const targetArr = targetcolor.toUpperCase().split('');
+                    for (let i = 0; i < 6; i++){
+                        if (guess[i] == targetArr[i]){
+                            result[i] = 'green';
+                            // $('#gbox' + currow + '' + i).css('background', 'green') 
+                            green.push(targetArr[i])
+                            // $('#b' + targetArr[i]).css('background', 'green');
+                            targetArr[i] = "g"; //block green guess from being recounted
+                            guess[i] = "y";
+                        }
+                    }
+                    //find matches within target but in in correct location
+                    // for letter in target
+                    for (let i = 0; i < 6; i++){
+                        if (targetArr[i] != "x"){
+                            let tl = targetArr[i];
+                            // for letter in guess
+                            for (let j = 0; j < 6; j++){
+                                if (guess[j] == tl){
+                                    result[j] = 'yellow';
+                                    // $('#gbox' + currow + '' + j).css('background', 'yellow'); 
+                                    yellow.push(targetArr[i]);
+                                    targetArr[i] = "x"; // prevent recounts
+                                    guess[j] = "y";
+                                    break;
+                                }
+                                else if (guess[j] != 'y'){
+                                    result[j] = 'gray';
+                                    gray.push(guess[j]);
+                                }
+                            }  
+                        }
+                    }  
+
+                    if (targetArr.join('')=='gggggg'){
+                        $('#color').css('color', 'white');
+                        confetti();
+                        $('#alert').html(`You solved the Hexdle in ${currow + 1} tries!`);
+                        $('body').css('background-color', '#' + targetcolor);
+                        $('.kbkey').prop('disabled', true);
+                        $('#enter').prop('disabled', true);
+                        $('#del').prop('disabled', true);
+                    }
+
+                    var tilesArray = [$('#gbox' + currow + '' + 0), $('#gbox' + currow + '' + 1), $('#gbox' + currow + '' + 2), $('#gbox' + currow + '' + 3), $('#gbox' + currow + '' + 4), $('#gbox' + currow + '' + 5)]
+                    tilesArray.map(function (tile, i) {
+                        tile.addClass('flip');
+                        tile.css('animation-delay', `${i * 300}ms`);
+                        setTimeout(() => {
+                            tile.addClass(result[i]);
+                        }, i * 300)
+
+                    });
+
+                    // setTimeout(() => {
+                        //change to better method, this one overwrites itself 
+                        gray.forEach((word, i) => {
+                            $('#b' + gray[i]).css('background', 'gray');
+                        })
+                        yellow.forEach((word, i) => {
+                            $('#b' + yellow[i]).css('background', 'yellow');
+                        })
+                        green.forEach((word, i) => {
+                            $('#b' + green[i]).css('background', 'green');
+                        })
+                    // },1000)
+
+                    //get ready for next guess
+                    currow ++;
+                    currcol = 0;
+
+                    //disable when game is over
+                    if (currow === allowedtries){
+                        $('#alert').append(`The color was #${targetcolor}. Better luck next time!`)
+                        $('#del').prop('disabled', true);
+                        $('#enter').prop('disabled', true);
+                        $('.kbkey').prop('disabled', true);
+                    } 
+                    guess = [];
+            })
+        })
+  
+    </script>
+</body>
+
+</html>
