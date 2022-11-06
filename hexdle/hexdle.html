@@ -11,24 +11,28 @@
     <!-- Bootstrap link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
+        :root{
+        --green: rgb(95, 171, 95);
+        --yellow: rgb(251, 238, 143);
+        --gray: rgb(180, 180, 180);
+
+        }
+
         .green{
-            background-color: green;
+            background-color: var(--green);
         }
 
         .yellow{
-            background-color: yellow;
+           background-color: var(--yellow);
         }
 
         .gray{
-            background-color: gray;
+            background-color: var(--gray);
         }
-        
-        .bg{
-           text-align: center; 
-        }
+
         h1{
             font-family: 'Fredoka One', sans-serif;
-            font-size: 350%;
+            font-size: calc(2rem + 4vh);
             -webkit-text-stroke-width: 2px;
             -webkit-text-stroke-color: black;
         }
@@ -36,7 +40,7 @@
            background: black;
            color: white;
            min-height: 80px;
-           height: 18vw;
+           height: 18vh;
            max-height: 100px;
         }
 
@@ -67,7 +71,7 @@
             max-width: 60px;
         } 
 
-        .okey{
+        .btn, .okey{
             height: 10vw;
             max-height: 50px;
         }
@@ -84,45 +88,31 @@
             color:black;
         }
 
-        button:hover:not([disabled]){
+        .btn:hover, button:hover:not([disabled]){
             border-color: black;
         }
 
-        .gboxcontainer{
+        .kbcontainer, .gboxcontainer{
             display: flex;
             align-items: center;
             max-width: 800px;
         }
 
-        .kbcontainer{
-            display: flex;
-            align-items: center;
-            max-width: 900px;
-        }
-
         .popover {
             border: 2px solid rgb(226, 216, 216);
+            border-radius: 10px;
         }
 
         .popover-body {
+            height: 50vh;
             overflow-y: auto;
             white-space:pre-wrap;
         }
 
         .btn{
-            position:fixed;
-	        bottom:20px;
-	        right:20px;
-            
-            min-height: 25px;
-            height: 5vw;
-            max-height: 40px;
-            
             min-width: 25px;
-            width: 5vw;
-            max-width: 40px;
-
-            border: 2px solid black;
+            width: 12vw;
+            max-width: 60px;
             color:black;
             background-color: yellow;
         }
@@ -156,25 +146,30 @@
             }
         }
 
-        @media (max-width < 320) {
-            .gboxcontainer, .kbcontainer{
-                min-width: 100vw;
+        @media (max-width: 450px){
+            h1{
+                font-size: 2rem;
+            }
+
+            #kb{
+                position:absolute;
+                bottom:4vh;
+                left:0px;
+                padding: 1rem;
+            }
+        }
+
+        @media (min-height: 1000px){
+            #kb{
+                margin-top: 5vh;
             }
         }
     </style>
 </head>
 <body>
     <div id="bg" class="container-fluid">
-        <button type="button" class="btn btn-secondary p-0 ml-auto" data-toggle="popover" title="How to Hexdle">?</button>
-        
-        <!-- <button type="button" class="btn btn-secondary p-0 ml-auto" data-bs-container="body" data-bs-toggle="popover"
-        data-bs-placement="left" 
-        data-bs-title="Match the color of the header. The background will change to the value of your guess."
-        data-bs-content="Unfamiliar with Hex? The first two letters/numbers refer to red, the next two refer to green, and the last two refer to blue.
+        <!-- <button type="button" class="btn btn-secondary p-0 ml-auto" data-toggle="popover">?</button> -->
 
-The color values are defined in values between 00 and FF (instead of from 0 to 255 in RGB) Numbers are used when the value is 1-9. Letters are used when the value is higher than 9. For example: A=10, B=11, C=12...F=15">
-        ?
-        </button> -->
         <section>
             <div class="row">
                 <div id=color class="col d-flex align-items-center">
@@ -185,16 +180,17 @@ The color values are defined in values between 00 and FF (instead of from 0 to 2
 
         <section id="guesses" class="my-2">
         </section>
-        <section>
-            <div class="mx-auto gboxcontainer">
+        <section id="kb">
+            <div class="mx-auto kbcontainer">
                 <div class="mx-auto">
                     <div id="kb1" class="row m-auto my-1"></div>
                     <div id="kb2" class="row m-auto my-1"></div>
                     
                     <div class="row m-auto my-2">
-                        <button type="button" id="del" disabled="true" class="col-3 p-0 okey"><h6 class="m-auto">⌫</h6></button>
-                        <div class="col-6 p-0"></div>
-                        <button type="button" id="enter" disabled="true" class="col-3 p-0 okey"><h6 class="m-auto">Enter</h6></button>
+                        <button type="button" class="btn btn-secondary col-1 okey mx-2" data-toggle="popover"><h6 class="m-auto">?</h6></button>
+                        <button type="button" id="del" disabled="true" class="col-2 p-0 okey"><h6 class="m-auto">⌫</h6></button>
+                        <div class="col-4"></div>
+                        <button type="button" id="enter" disabled="true" class="col-3 p-0 okey"><h6 class="m-auto">Enter</h6></button> 
                     </div>
                 </div>     
             </div> 
@@ -230,9 +226,9 @@ The color values are defined in values between 00 and FF (instead of from 0 to 2
             var image = '<img src="https://developer.chrome.com/extensions/examples/api/idle/idle_simple/sample-128.png">';
             $('[data-toggle="popover"]').popover({
                 placement : 'top',
-                trigger : 'hover',
+                trigger : 'click',
                 html : true,
-                content : '<div><h6 class="media-heading">Match the color of the header. The background will change to the value of your guess.</h6></div><div class="media-body"><p>Unfamiliar with Hex? The first two letters/numbers refer to red, the next two refer to green, and the last two refer to blue.</p><p>The color values are defined in values between 00 and FF (instead of from 0 to 255 in RGB) Numbers are used when the value is 1-9. Letters are used when the value is higher than 9. For example: A=10, B=11, C=12...F=15"</p><p>Use this chart to start guessing!</p></div><div class="media"><img src="media/rbg-hex.png"class="mw-100" alt="Sample Image"></div>'
+                content : '<div><h6 class="media-heading">Match the color of the header. The background will change to the value of your guess.</h6></div><div class="media-body"><p>Unfamiliar with Hex? The first two letters/numbers refer to red, the next two refer to green, and the last two refer to blue.</p><p>The color values are defined in values between 00 and FF (instead of from 0 to 255 in RGB) Numbers are used when the value is 1-9. Letters are used when the value is higher than 9. For example: A=10, B=11, C=12...F=15"</p><p>Use this chart to start guessing:</p></div><div class="media"><img src="rgb-hex.png"class="mw-100" alt="Sample Image"></div>'
             });
 
             //initialize canvas conffetti 
@@ -354,7 +350,8 @@ The color values are defined in values between 00 and FF (instead of from 0 to 2
                         }
                     }  
 
-                    if (targetArr.join('')=='gggggg'){
+                    // display results
+                    if (targetArr.join('')=='gggggg'){ // if answer is completely right
                         $('#color').css('color', 'white');
                         confetti();
                         $('#alert').html(`You solved the Hexdle in ${currow + 1} tries!`);
@@ -371,25 +368,26 @@ The color values are defined in values between 00 and FF (instead of from 0 to 2
                         setTimeout(() => {
                             tile.addClass(result[i]);
                         }, i * 300)
-
                     });
 
-                    // setTimeout(() => {
+                    setTimeout(() => {
                         //change to better method, this one overwrites itself 
                         gray.forEach((word, i) => {
-                            $('#b' + gray[i]).css('background', 'gray');
+                            $('#b' + gray[i]).css('background', 'var(--gray)');
                         })
                         yellow.forEach((word, i) => {
-                            $('#b' + yellow[i]).css('background', 'yellow');
+                            $('#b' + yellow[i]).css('background', 'var(--yellow)');
                         })
                         green.forEach((word, i) => {
-                            $('#b' + green[i]).css('background', 'green');
+                            $('#b' + green[i]).css('background', 'var(--green)');
                         })
-                    // },1000)
+                    },2100)
 
                     //get ready for next guess
                     currow ++;
                     currcol = 0;
+                    guess = [];
+                    
 
                     //disable when game is over
                     if (currow === allowedtries){
@@ -397,8 +395,8 @@ The color values are defined in values between 00 and FF (instead of from 0 to 2
                         $('#del').prop('disabled', true);
                         $('#enter').prop('disabled', true);
                         $('.kbkey').prop('disabled', true);
+
                     } 
-                    guess = [];
             })
         })
   
