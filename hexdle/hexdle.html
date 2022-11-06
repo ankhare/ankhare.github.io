@@ -13,7 +13,7 @@
     <style>
         :root{
         --green: rgb(95, 171, 95);
-        --yellow: rgb(251, 238, 143);
+        --yellow: rgb(201, 170, 102);
         --gray: rgb(157, 156, 156);
         --lg: rgb(222, 222, 222);
 
@@ -23,24 +23,17 @@
             text-align: center;
         }
 
-        .green{
-            background-color: var(--green);
-        }
-
-        .yellow{
-           background-color: var(--yellow);
-        }
-
-        .gray{
-            background-color: var(--gray);
-        }
-
         h1{
             font-family: 'Fredoka One', sans-serif;
-            font-size: 300%;
+            font-size: 400%;
             -webkit-text-stroke-width: 2px;
             -webkit-text-stroke-color: black;
         }
+
+        button{
+            color:black;
+        }
+
         #bg{
             margin: 0%;;
         }
@@ -62,44 +55,37 @@
             border: 2px solid var(--lg);
             border-radius: 10px;
 
-            min-height: 35px;
+            /* min-height: 35px; */
             height: 12vw;
 
-            min-width: 35px;
+            /* min-width: 35px; */
             width: 12vw;
 
             transition: color 400ms;
         }
 
+        .kbkey, .okey{
+            background-color: var(--lg);
+            border: 2px solid var(--lg);
+            display: flex;
+            border-radius: 10px;
+            /* min-height: 25px; */
+        }
+
         .kbkey{
-            min-height: 25px;
+
             height: 10vw;
-            
-            
-            min-width: 25px;
+            /* min-width: 25px; */
             width: 10vw;
-            
         } 
 
-        .btn, .okey{
+        .okey{
             height: 10vw;
             max-height: 50px;
         }
 
-        .kbkey, .okey{
-            background-color: var(--lg);
-            border: 2px outset var(--lg);
-            display: flex;
-            border-radius: 10px;
-            min-height: 25px;
-        }
-
-        button{
-            color:black;
-        }
-
-        .btn:hover, button:hover:not([disabled]){
-            border-color: black;
+        button:hover:not([disabled]){
+            border: 2px solid black;
         }
 
         .kbcontainer, .gboxcontainer{
@@ -123,8 +109,21 @@
             min-width: 25px;
             width: 12vw;
             max-width: 60px;
-            color:black;
-            background-color: yellow;
+        }
+
+        .gray{
+            background-color: var(--gray);
+            color:white;
+        }
+
+        .yellow{
+           background-color: var(--yellow);
+           color:white;
+        }
+
+        .green{
+            background-color: var(--green);
+            color:white;
         }
 
         .shake{
@@ -167,13 +166,18 @@
                 max-width: 60px;
             }
         }
-        @media (max-width: 480px){
-
+        @media (max-width: 450px){
             #kb{
                 position:absolute;
                 bottom:30px;
                 left:0px;
                 padding: 1rem;
+            }
+        }
+
+        @media (max-width: 350px){
+            h1{
+                font-size: 250%;
             }
         }
 
@@ -389,13 +393,13 @@
                     setTimeout(() => {
                         //change to better method, this one overwrites itself 
                         gray.forEach((word, i) => {
-                            $('#b' + gray[i]).css('background', 'var(--gray)');
+                            $('#b' + gray[i]).addClass('gray')
                         })
                         yellow.forEach((word, i) => {
-                            $('#b' + yellow[i]).css('background', 'var(--yellow)');
+                            $('#b' + yellow[i]).addClass('yellow')
                         })
                         green.forEach((word, i) => {
-                            $('#b' + green[i]).css('background', 'var(--green)');
+                            $('#b' + green[i]).addClass('green')
                         })
                     },2100)
 
