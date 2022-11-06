@@ -48,7 +48,7 @@
             max-height: 100px;
         }
 
-        .exkey, .gbox{
+        .gbox{
             display: flex;
             align-items: center;
             border: 2px solid var(--lg);
@@ -59,9 +59,19 @@
 
             /* min-width: 35px; */
             width: 12vw;
-
-            transition: color 400ms;
         }
+
+        .exkey{
+            display: flex;
+            align-items: center;
+            border: 2px solid var(--lg);
+            border-radius: 10px;
+
+            height: 8vw;
+
+            width: 8vw;
+        }
+
 
         .kbkey, .okey{
             background-color: var(--lg);
@@ -100,7 +110,6 @@
         .popover-body {
             height: 50vh;
             overflow-y: auto;
-            white-space:pre-wrap;
         }
 
         #qb{
@@ -122,6 +131,33 @@
         .green{
             background-color: var(--green);
             color:white;
+        }
+
+        .tg-c{background-color:#00ffff;}
+        .tg-bl{background-color:#333333;}
+        .tg-b{background-color:#0000ff;}
+        .tg-y{background-color:#ffff00;}
+        .tg-q{background-color:#ffffff;}
+        .tg-r{background-color:#ff0000;}
+        .tg-l{background-color:#00ff00;}
+        .tg-m{background-color:#ff00ff;}
+        .tg-mr{background-color:#800000;}
+        .tg-o{background-color:#808000;}
+        .tg-g{background-color:#008000;}
+        .tg-p{background-color:#800080;}
+        .tg-t{background-color:#008080;}
+        .tg-n{background-color:#000080;}
+
+        .ctable{
+            margin: auto;
+            -webkit-transform: translateX(10px); 
+            -moz-transform: translateX(10px);
+            -ms-transform: translateX(10px);
+            transform: translateX(10px);
+        }
+
+        .rounded{
+            border: 2px solid var(--lg);
         }
 
         .shake{
@@ -171,6 +207,11 @@
                 left:0px;
                 padding: 1rem;
             }
+
+            .exkey{
+                height: 15vw;
+                width: 15vw;
+            }
         }
 
         @media (max-width: 350px){
@@ -203,7 +244,7 @@
                     <div id="kb2" class="row m-auto my-1"></div>
                     
                     <div class="row m-auto my-2">
-                        <button type="button" id="qb" class="col-1 okey mx-2" data-toggle="popover"><h6 class="m-auto">?</h6></button>
+                        <button type="button" id="qb" class="col-1 okey mx-2" data-toggle="popover" data-popover-content="#p1"><h6 class="m-auto">?</h6></button>
                         <button type="button" id="del" disabled="true" class="col-2 p-0 okey"><h6 class="m-auto">⌫</h6></button>
                         <div class="col-4"></div>
                         <button type="button" id="enter" disabled="true" class="col-3 p-0 okey"><h6 class="m-auto">Enter</h6></button> 
@@ -217,6 +258,120 @@
             </div> 
         </section>
         <canvas id="myCanvas"></canvas>
+
+        <div id="p1" style="display: none;">
+            <div class="popover-body">
+                <h6>How to Hexdle</h6>
+            <p>Match the color of the header. The background will change to the value of your guess. </p>
+            <div class="d-flex">
+                <div class="d-flex align-items-center text-center mx-auto">
+                    <div class="exkey green mx-1">
+                        <p class="m-auto">right</p>
+                    </div>
+                    <div class="exkey yellow mx-1">
+                        <p class="m-auto">wrong place</p>
+                    </div>
+                    <div class="exkey gray mx-1">
+                        <p class="m-auto">wrong</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div>
+                <h6>Unfamiliar with Hex?</h6> 
+                <p>The first two letters/numbers refer to red, the next two refer to green, and the last two refer to blue.</p>
+                <p>The color values are defined in values between 00 and FF, instead of from 0 to 255 in RGB. Numbers are used when the value is 1-9. Letters are used when the value is higher than 9 (eg: A=10, B=11, C=12...F=15)</p>
+                <div>
+                <div class="ctable">               
+                    <div class="row">Black</div>                 
+                    <div class="row">
+                        <div class="col rounded tg-bl"></div>
+                        <div class="col-4">#000000</div>
+                        <div class="col-6">(0, 0, 0)</div>
+                    </div>
+                    <div class="row">White</div> 
+                    <div class="row">
+                        <div class="col rounded tg-w"></div>
+                        <div class="col-4">#FFFFFF</div>
+                        <div class="col-6">(255, 255, 255)</div>
+                    </div>
+                    <div class="row">Red</div> 
+                    <div class="row">
+                        <div class="col rounded tg-r"></div>
+                        <div class="col-4">#FF0000</div>
+                        <div class="col-6">(255, 0, 0)</div>
+                    </div>
+                    <div class="row">Lime</div> 
+                    <div class="row">
+                        <div class="col rounded tg-l"></div>
+                        <div class="col-4">#00FF00	</div>
+                        <div class="col-6">(0, 255, 0)</div>
+                    </div>
+                    <div class="row">Blue</div> 
+                    <div class="row">
+                        <div class="col rounded tg-b"></div>
+                        <div class="col-4">#0000FF	</div>
+                        <div class="col-6">(0, 0, 255)</div>
+                    </div>
+                    <div class="row">Yellow</div> 
+                    <div class="row">
+                        <div class="col rounded tg-y"></div>
+                        <div class="col-4">#FFFF00	</div>
+                        <div class="col-6">(255, 255, 0)</div>
+                    </div>
+                    <div class="row">Cyan</div> 
+                    <div class="row">
+                        <div class="col rounded tg-c"></div>
+                        <div class="col-4">#00FFFF</div>
+                        <div class="col-6">(0, 255, 255)</div>
+                    </div>
+                    <div class="row">Magenta</div> 
+                    <div class="row">
+                        <div class="col rounded tg-m"></div>
+                        <div class="col-4">#FF00FF</div>
+                        <div class="col-6">(250, 0, 255)</div>
+                    </div>
+                    <div class="row">Maroon</div>
+                    <div class="row">
+                        <div class="col rounded tg-mr"></div>
+                        <div class="col-4">#800000</div>
+                        <div class="col-6">(128, 0, 0)</div>
+                    </div>
+                    <div class="row">Olive</div> 
+                    <div class="row">
+                        <div class="col rounded tg-o"></div>
+                        <div class="col-4">#808000</div>
+                        <div class="col-6">(128, 128, 0)</div>
+                    </div>
+                    <div class="row">Green</div> 
+                    <div class="row">
+                        <div class="col rounded tg-g"></div>
+                        <div class="col-4">#008000</div>
+                        <div class="col-6">(0, 128, 0)</div>
+                    </div>
+                    <div class="row">Purple</div> 
+                    <div class="row">
+                        <div class="col rounded tg-p"></div>
+                        <div class="col-4">#800080</div>
+                        <div class="col-6">(128, 0, 128)</div>
+                    </div>
+                    <div class="row">Teal</div> 
+                    <div class="row">
+                        <div class="col rounded tg-t"></div>
+                        <div class="col-4">#008080</div>
+                        <div class="col-6">(0, 128, 128)</div>
+                    </div>
+                    <div class="row">Navy</div> 
+                    <div class="row">
+                        <div class="col rounded tg-n"></div>
+                        <div class="col-4">#000080</div>
+                        <div class="col-6">(0, 0, 128)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     </div>
     <!-- Bootstrap JS -->
@@ -239,13 +394,16 @@
                 return new bootstrap.Popover(popoverTriggerEl)
             })
 
-            var image = '<img src="https://developer.chrome.com/extensions/examples/api/idle/idle_simple/sample-128.png">';
-            $('[data-toggle="popover"]').popover({
-                placement : 'top',
-                trigger : 'click',
-                html : true,
-                content : '<div class="media-heading"><h6>How to Hexdle</h6>Match the color of the header. The background will change to the value of your guess. <br> <div class="d-flex align-items-center text-center"><div class="exkey green mx-1"><p class="m-auto">right</p></div><div class="exkey yellow mx-1"><p class="m-auto">wrong place</p></div><div class="exkey gray mx-1"><p class="m-auto">wrong</p></div></div><hr><div class="media-body"><p><h6>Unfamiliar with Hex?</h6> The first two letters/numbers refer to red, the next two refer to green, and the last two refer to blue.</p><p>The color values are defined in values between 00 and FF (instead of from 0 to 255 in RGB) Numbers are used when the value is 1-9. Letters are used when the value is higher than 9. For example: A=10, B=11, C=12...F=15"</p><p>Use this chart to start guessing:</p></div><div class="media"><img src="rgb-hex.png"class="mw-100" alt="Sample Image"></div>'
-            });
+
+                $(function() {
+                    $("[data-toggle=popover]").popover({
+                        html: true,
+                        content: function() {
+                        var content = $(this).attr("data-popover-content");
+                        return $(content).children(".popover-body").html();
+                        }
+                    });
+                });
 
             //initialize canvas conffetti 
             var myConfetti = confetti.create(myCanvas, { resize: true });
