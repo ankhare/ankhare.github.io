@@ -240,7 +240,7 @@
                 placement : 'top',
                 trigger : 'click',
                 html : true,
-                content : '<div><h6 class="media-heading">Match the color of the header. The background will change to the value of your guess.</h6></div><div class="media-body"><p>Unfamiliar with Hex? The first two letters/numbers refer to red, the next two refer to green, and the last two refer to blue.</p><p>The color values are defined in values between 00 and FF (instead of from 0 to 255 in RGB) Numbers are used when the value is 1-9. Letters are used when the value is higher than 9. For example: A=10, B=11, C=12...F=15"</p><p>Use this chart to start guessing:</p></div><div class="media"><img src="rgb-hex.png"class="mw-100" alt="Sample Image"></div>'
+                content : '<div><h6 class="media-heading">Match the color of the header. The background will change to the value of your guess.</h6> <div class="d-flex align-items-center text-center"><div class="kbkey green mx-1"><p class="m-auto">right</p></div><div class="kbkey yellow mx-1"><p class="m-auto">wrong place</p></div><div class="kbkey gray mx-1"><p class="m-auto">wrong</p></div></div> <div class="media-body"><p>Unfamiliar with Hex? The first two letters/numbers refer to red, the next two refer to green, and the last two refer to blue.</p><p>The color values are defined in values between 00 and FF (instead of from 0 to 255 in RGB) Numbers are used when the value is 1-9. Letters are used when the value is higher than 9. For example: A=10, B=11, C=12...F=15"</p><p>Use this chart to start guessing:</p></div><div class="media"><img src="rgb-hex.png"class="mw-100" alt="Sample Image"></div>'
             });
 
             //initialize canvas conffetti 
@@ -268,12 +268,9 @@
                     $('#alert').append(`low key the answer is ${targetcolor}`);
                 }
             }   
-
             $('#color').click(()=>{
                 cheat();
             })
-
-            
 
             const allowedtries = 6
             
