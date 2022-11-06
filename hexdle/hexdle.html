@@ -35,7 +35,7 @@
         #color{
            background: black;
            color: white;
-           min-height: 30px;
+           min-height: 80px;
            height: 18vw;
            max-height: 100px;
         }
@@ -46,27 +46,29 @@
             border: 2px solid rgb(226, 216, 216);
             border-radius: 10px;
 
-            min-height: 30px;
-            height: 10vw;
+            min-height: 35px;
+            height: 12vw;
             max-height: 70px;
 
-            min-width: 30px;
-            width: 10vw;
+            min-width: 35px;
+            width: 12vw;
             max-width: 70px;
 
             transition: color 400ms;
         }
 
         .kbkey{
-            height: 10vw;
+            min-height: 25px;
+            height: 12vw;
             max-height: 60px;
+            
             min-width: 25px;
-            width: 10vw;
+            width: 12vw;
             max-width: 60px;
         } 
 
         .okey{
-            height: 8vw;
+            height: 10vw;
             max-height: 50px;
         }
 
@@ -104,8 +106,8 @@
 
         .btn{
             position:fixed;
-	        bottom:40px;
-	        right:40px;
+	        bottom:20px;
+	        right:20px;
             
             min-height: 25px;
             height: 5vw;
@@ -150,8 +152,8 @@
         }
 
         @media (max-width < 320) {
-            body {
-                flex-direction: row;
+            .gboxcontainer, .kbcontainer{
+                min-width: 100vw;
             }
         }
     </style>
@@ -177,7 +179,7 @@ The color values are defined in values between 00 and FF (instead of from 0 to 2
             </div>
         </section>
 
-        <section id="guesses" class="my-sm-2">
+        <section id="guesses" class="my-sm-2 mb-2">
         </section>
         <section>
             <div class="mx-auto gboxcontainer">
