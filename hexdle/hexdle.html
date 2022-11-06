@@ -12,9 +12,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
         :root{
-        --green: rgb(95, 171, 95);
-        --yellow: rgb(201, 170, 102);
-        --gray: rgb(157, 156, 156);
+        --green: rgb(159, 217, 130);
+        --yellow: rgb(189, 186, 186);
+        --gray: rgb(109, 108, 108);
         --border: #808080;
         --lg: rgb(223, 223, 223);
         }
@@ -153,7 +153,7 @@
             }
         }
 
-        @media (min-width: 992px){
+        @media (min-width: 992px), (max-height: 800px) {
             .gbox{
                 max-height: 70px;
                 max-width: 70px;
@@ -176,12 +176,6 @@
         @media (max-width: 350px){
             h1{
                 font-size: 250%;
-            }
-        }
-
-        @media (min-height: 1000px){
-            #kb{
-                margin-top: 5vh;
             }
         }
     </style>
@@ -263,6 +257,7 @@
 
             document.documentElement.style.setProperty('--lg', `#${targetcolor}40`);
             document.documentElement.style.setProperty('--border', `#${targetcolor}ee`);
+            document.documentElement.style.setProperty('--green', `#${targetcolor}`);
             console.log(targetcolor)
 
             const allowedtries = 6
@@ -278,8 +273,8 @@
             }
 
             //generate keyboard
-            const kb1 = ['A','B','C','D','E','F','0','1'];
-            const kb2 = ['2','3','4','5','6','7','8','9'];
+            const kb1 = ['0','1','2','3','4','5','6','7'];
+            const kb2 = ['8','9','A','B','C','D','E','F'];
             for (const i in kb1){
                 $('#kb1').append(`<button type="button" id="b${kb1[i]}" class="col mx-1 p-0 kbkey"><h6 class="m-auto">${kb1[i]}</h6></button>`)
             }
@@ -372,7 +367,7 @@
                         }
                     }  
 
-                    //show result
+                    //show result of guess
                     var tilesArray = [$('#gbox' + currow + '' + 0), $('#gbox' + currow + '' + 1), $('#gbox' + currow + '' + 2), $('#gbox' + currow + '' + 3), $('#gbox' + currow + '' + 4), $('#gbox' + currow + '' + 5)]
                     tilesArray.map(function (tile, i) {
                         tile.addClass('flip');
@@ -382,7 +377,9 @@
                         }, i * 300)
                     });
 
+                    //after results are displayed
                     setTimeout(() => {
+                        //change the color of keyboard
                         //change to better method, this one overwrites itself 
                         gray.forEach((word, i) => {
                             $('#b' + gray[i]).addClass('gray')
@@ -393,10 +390,8 @@
                         green.forEach((word, i) => {
                             $('#b' + green[i]).addClass('green')
                         })
-                    },2400)
 
-                    // display win if won
-                    setTimeout(() => {
+                        //if won
                         if (targetArr.join('')=='gggggg'){ // if answer is completely right
                             $('#color').css('color', 'white');
                             confetti();
@@ -406,22 +401,21 @@
                             $('#enter').prop('disabled', true);
                             $('#del').prop('disabled', true);
                         }
-                    },2100);
 
-                    //get ready for next guess
-                    currow ++;
-                    currcol = 0;
-                    guess = [];
-                    
+                        //get ready for next guess
+                        currow ++;
+                        currcol = 0;
+                        guess = [];
 
-                    //display loss if game over
-                    if (currow === allowedtries){
-                        $('#alert').append(`The color was #${targetcolor}. Better luck next time!`)
-                        $('#del').prop('disabled', true);
-                        $('#enter').prop('disabled', true);
-                        $('.kbkey').prop('disabled', true);
+                        //if lost
+                        if (currow === allowedtries){
+                            $('#alert').append(`The color was #${targetcolor}. Better luck next time!`)
+                            $('#del').prop('disabled', true);
+                            $('#enter').prop('disabled', true);
+                            $('.kbkey').prop('disabled', true);
+                        }
+                    }, 2400);
 
-                    } 
             })
         })
   
