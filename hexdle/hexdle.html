@@ -15,8 +15,8 @@
         --green: rgb(95, 171, 95);
         --yellow: rgb(201, 170, 102);
         --gray: rgb(157, 156, 156);
-        --lg: rgb(222, 222, 222);
-
+        --border: #808080;
+        --lg: rgb(223, 223, 223);
         }
 
         body{
@@ -42,7 +42,6 @@
             display: flex;
             align-items: center;
             width: 100vw;
-            background: black;
             color: white;
             min-height: 80px;
             height: 18vh;
@@ -66,14 +65,13 @@
 
         .kbkey, .okey{
             background-color: var(--lg);
-            border: 2px outset var(--lg);
+            border: 3px outset var(--lg);
             display: flex;
             border-radius: 10px;
             /* min-height: 25px; */
         }
 
         .kbkey{
-
             height: 10vw;
             /* min-width: 25px; */
             width: 10vw;
@@ -85,7 +83,7 @@
         }
 
         button:hover:not([disabled]){
-            border: 2px solid black;
+            border: 3px outset var(--border);
         }
 
         .kbcontainer, .gboxcontainer{
@@ -127,7 +125,7 @@
         }
 
         .shake{
-            border-color: black;
+            border-color: var(--border);
             animation: shake-animation 200ms ease;
             transform-origin: 50% 50%;
         }
@@ -262,6 +260,9 @@
 
             $('#color').css('background-color', '#' + targetcolor);
             $("head").append(`<meta name="theme-color" content="#${targetcolor}"/>`);
+
+            document.documentElement.style.setProperty('--lg', `#${targetcolor}40`);
+            document.documentElement.style.setProperty('--border', `#${targetcolor}ee`);
             console.log(targetcolor)
 
             const allowedtries = 6
@@ -371,17 +372,7 @@
                         }
                     }  
 
-                    // display results
-                    if (targetArr.join('')=='gggggg'){ // if answer is completely right
-                        $('#color').css('color', 'white');
-                        confetti();
-                        $('#alert').html(`You solved the Hexdle in ${currow + 1} tries!`);
-                        $('body').css('background-color', '#' + targetcolor);
-                        $('.kbkey').prop('disabled', true);
-                        $('#enter').prop('disabled', true);
-                        $('#del').prop('disabled', true);
-                    }
-
+                    //show result
                     var tilesArray = [$('#gbox' + currow + '' + 0), $('#gbox' + currow + '' + 1), $('#gbox' + currow + '' + 2), $('#gbox' + currow + '' + 3), $('#gbox' + currow + '' + 4), $('#gbox' + currow + '' + 5)]
                     tilesArray.map(function (tile, i) {
                         tile.addClass('flip');
@@ -402,7 +393,20 @@
                         green.forEach((word, i) => {
                             $('#b' + green[i]).addClass('green')
                         })
-                    },2100)
+                    },2400)
+
+                    // display win if won
+                    setTimeout(() => {
+                        if (targetArr.join('')=='gggggg'){ // if answer is completely right
+                            $('#color').css('color', 'white');
+                            confetti();
+                            $('#alert').html(`You solved the Hexdle in ${currow + 1} tries!`);
+                            // $('body').css('background-color', '#' + targetcolor);
+                            $('.kbkey').prop('disabled', true);
+                            $('#enter').prop('disabled', true);
+                            $('#del').prop('disabled', true);
+                        }
+                    },2100);
 
                     //get ready for next guess
                     currow ++;
@@ -410,7 +414,7 @@
                     guess = [];
                     
 
-                    //disable when game is over
+                    //display loss if game over
                     if (currow === allowedtries){
                         $('#alert').append(`The color was #${targetcolor}. Better luck next time!`)
                         $('#del').prop('disabled', true);
