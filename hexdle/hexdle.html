@@ -261,6 +261,7 @@
             } while (targetcolor.length != 6); // prevent 5 digit outputs
 
             $('#color').css('background-color', '#' + targetcolor);
+            $("head").append(`<meta name="theme-color" content="#${targetcolor}"/>`);
             console.log(targetcolor)
 
             const allowedtries = 6
