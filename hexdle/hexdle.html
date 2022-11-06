@@ -258,7 +258,22 @@
             document.documentElement.style.setProperty('--lg', `#${targetcolor}40`);
             document.documentElement.style.setProperty('--border', `#${targetcolor}ee`);
             document.documentElement.style.setProperty('--green', `#${targetcolor}`);
-            console.log(targetcolor)
+            // console.log(targetcolor)
+
+            //if the title is clicked on 3 times show the answer
+            let counter = 0;
+            function cheat() {
+                counter++;
+                if(counter == 3){
+                    $('#alert').append(`low key the answer is ${targetcolor}`);
+                }
+            }   
+
+            $('#color').click(()=>{
+                cheat();
+            })
+
+            
 
             const allowedtries = 6
             
