@@ -407,8 +407,12 @@
                         if (targetArr.join('')=='gggggg'){ // if answer is completely right
                             $('#color').css('color', 'white');
                             confetti();
-                            $('#alert').html(`You solved the Hexdle in ${currow + 1} tries!`);
-                            // $('body').css('background-color', '#' + targetcolor);
+                            if (currow == 0){
+                                $('#alert').html(`You solved the Hexdle on your first try!`);
+                            } else{
+                                $('#alert').html(`You solved the Hexdle in ${currow + 1} tries!`);
+                            }
+                            
                             $('.kbkey').prop('disabled', true);
                             $('#enter').prop('disabled', true);
                             $('#del').prop('disabled', true);
