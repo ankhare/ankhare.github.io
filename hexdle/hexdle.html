@@ -265,7 +265,7 @@
         <div id="p1" style="display: none;">
             <div class="popover-body">
                 <h6>How to Hexdle</h6>
-            <p>Guess the hex code the color of the title. The background will change to the value of your guess. </p>
+            <p>Guess the hex code of the color of the title. The background will change to the value of your guess. </p>
             <div class="d-flex">
                 <div class="d-flex align-items-center text-center mx-auto">
                     <div class="exkey green mx-1">
@@ -416,14 +416,31 @@
             //generate random color
             // https://stackoverflow.com/questions/47616381/how-to-exclude-all-shades-of-gray-while-generating-random-hex-color-code
             function randomColor() {
-                const rangeSize = 100; // adapt as needed
-                const parts = [
-                    Math.floor(Math.random()*256),
-                    Math.floor(Math.random()*rangeSize),
-                    Math.floor(Math.random()*rangeSize) + 256-rangeSize 
-                ].sort( (a, b) => Math.random() < 0.5 );
+                // Threshold can be between 0 and 127: the higher it is, the more colors are considered to be too grey-like.
+                const threshold = 50;
 
-                return parts.map( p => ('0' + p.toString(16)).substr(-2) ).join('');
+                // Generate three color parts randomly
+                const parts = Array.from(Array(3), _ => 
+                        Math.floor(Math.random()*256)
+                    ).sort( (a, b) => a-b );
+                
+                // Check whether they are too close to the same value:
+                if (parts[2] - parts[0] < threshold) { // color is too greyish
+
+                    // Replace the middle one with a random value outside of the "too close" range
+                    const exclude = Math.min(255, parts[0] + threshold) 
+                                - Math.max(0, parts[2] - threshold);
+
+                    parts[1] = Math.floor(Math.random()*(256-exclude));
+
+                    if (parts[1] >= parts[2] - threshold) parts[1] += exclude;
+                }
+                
+                // Shuffle and format the color parts and return the resulting string
+                return parts
+                    .sort( (a, b) => Math.random() < 0.5 )
+                    .map( p => ('0' + p.toString(16)).substr(-2) )
+                    .join('');
             }
 
             const targetcolor = randomColor();
@@ -434,11 +451,6 @@
             $(':root').css('--lg', `#${targetcolor}40`);
             $(':root').css('--border', `#${targetcolor}ee`);
             $(':root').css('--green', `#${targetcolor}`);
-            
-            // // document.documentElement.style.setProperty('--lg', `#${targetcolor}40`);
-            // document.documentElement.style.setProperty();
-            // document.documentElement.style.setProperty();
-            // console.log(targetcolor)
 
             //if the title is clicked on 3 times show the answer
             let counter = 0;
@@ -469,12 +481,11 @@
             const kb2 = ['8','9','A','B','C','D','E','F'];
             for (const i in kb1){
                 $('#kb1').append(`<button type="button" id="b${kb1[i]}" class="col mx-1 p-0 kbkey"><h6 class="m-auto">${kb1[i]}</h6></button>`)
-            }
-            for (const i in kb2){
                 $('#kb2').append(`<button type="button" id="b${kb2[i]}" class="col mx-1 p-0 kbkey"><h6 class="m-auto">${kb2[i]}</h6></button>`)
             }
 
             //initialize game variables
+            let game = true;
             let guess = [];
             let result = ['','','','','',''];
 
@@ -592,21 +603,29 @@
                             } else{
                                 $('#alert').html(`You solved the Hexdle in ${currow + 1} tries!`);
                             }
-                            $('.kbkey').prop('disabled', true);
-                            $('#enter').prop('disabled', true);
-                            $('#del').prop('disabled', true);
+                            game = false;
+
+                        //if lost
                         } else if ((currow + 1) === allowedtries){
                             $('#alert').append(`The color was #${targetcolor}. Better luck next time!`)
-                            $('#del').prop('disabled', true);
-                            $('#enter').prop('disabled', true);
-                            $('.kbkey').prop('disabled', true);
+                            game = false;
+                        
                         } else{
-                            //get ready for next guess
                             currow ++;
-                            currcol = 0;
-                            guess = [];
                         } 
+                        currcol = 0;
+                        guess = [];
 
+                        if (game == false){
+                            $('.kbkey').prop('disabled', true);
+                            $('#enter').prop('disabled', true);
+                            $('#del').prop('disabled', true);
+                            green = [];
+                            yellow = [];
+                            gray = [];
+                            currow = 0;
+                            currcol = 0;
+                        }
                     }, 2400);
 
             })
