@@ -462,7 +462,7 @@
                     .join('');
             }
 
-            const targetcolor = randomColor();
+            const targetcolor = randomColor().toLocaleUpperCase();
 
             $('#color').css('background-color', '#' + targetcolor);
             // $("head").append(`<meta name="theme-color" content="#${targetcolor}"/>`);
@@ -555,7 +555,7 @@
                 $('#color').css('color', "#" + targetcolor);
                 // show results
                     // find exact matches
-                    const targetArr = targetcolor.toUpperCase().split('');
+                    const targetArr = targetcolor.split('');
                     for (let i = 0; i < 6; i++){
                         if (guess[i] == targetArr[i]){
                             result[i] = 'green';
@@ -626,7 +626,7 @@
 
                         //if lost
                         } else if ((currow + 1) === allowedtries){
-                            $('#alert').append(`The color was #${targetcolor}. Better luck next time!`)
+                            $('#alert').append(`The color was #${color}. Better luck next time!`)
                             game = false;
                         
                         } else{
