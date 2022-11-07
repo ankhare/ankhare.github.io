@@ -126,6 +126,48 @@
             max-width: 60px;
         }
 
+        .venn {
+            position: relative;
+            height: 25vw;
+            width: 25vw;
+            max-height: 120px;
+            max-width: 120px;
+            margin: 0 auto;
+            z-index:0;
+        }
+
+        i[class^='circle-'] {
+            position: absolute;
+            width: 15vw;
+            height: 15vw;
+            max-height: 72px;
+            max-width: 72px;
+            border-radius: 50%;
+            mix-blend-mode: screen;
+            border: 2px solid var(--lg);
+        }
+
+        .circle-red {
+            z-index: 1;
+            top: 5%;
+            left: 20%;
+            background-color: rgb(255, 0, 0);
+        }
+
+        .circle-green {
+            z-index: 3;
+            right: 4%;
+            bottom: 5%;
+            background-color: rgb(0, 255, 0);
+        }
+
+        .circle-blue {
+            z-index: 2;
+            left: 4%;
+            bottom: 5%;
+            background-color: rgb(0, 0, 255);
+        }
+
         .gray{
             background-color: var(--gray);
             color:white;
@@ -293,9 +335,14 @@
             <hr>
             <div>
                 <h6>Unfamiliar with Hex?</h6> 
-                <p>Hex colors represent an additive color model through hexadecimal values. Colors result from transmitted light. An absence of all light is black and the combination of all is white, as seen below.</p>
-                <img class="mw-100"src="light-diagram.png" alt="color-diagram">
-                <p>The first two letters/numbers refer to the percentage of red light, the next two refer to green light, and the last two refer to blue light.</p>
+                <p>Hex colors represent an additive color model through hexadecimal values. Colors result from transmitted light. An absence of all light is black and the combination of all is white.</p>
+                <!-- <img class="mw-100"src="light-diagram.png" alt="color-diagram"> -->
+                <div class="venn">
+                    <i class="circle-red"></i>
+                    <i class="circle-green"></i>
+                    <i class="circle-blue"></i>
+                </div>
+                <p class="mt-3">The first two letters/numbers refer to the percentage of red light, the next two refer to green light, and the last two refer to blue light.</p>
                 <p>The color values are defined in values between 00 and FF, instead of from 0 to 255 in RGB. Numbers are used when the value is 1-9. Letters are used when the value is higher than 9 (eg: A=10, B=11, C=12...F=15)</p>
                 <p>Use this chart to get started</p>
                 
