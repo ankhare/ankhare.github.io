@@ -265,7 +265,7 @@
         <div id="p1" style="display: none;">
             <div class="popover-body">
                 <h6>How to Hexdle</h6>
-            <p>Match the color of the header. The background will change to the value of your guess. </p>
+            <p>Guess the hex code the color of the title. The background will change to the value of your guess. </p>
             <div class="d-flex">
                 <div class="d-flex align-items-center text-center mx-auto">
                     <div class="exkey green mx-1">
@@ -429,7 +429,7 @@
             const targetcolor = randomColor();
 
             $('#color').css('background-color', '#' + targetcolor);
-            $("head").append(`<meta name="theme-color" content="#${targetcolor}"/>`);
+            // $("head").append(`<meta name="theme-color" content="#${targetcolor}"/>`);
 
             $(':root').css('--lg', `#${targetcolor}40`);
             $(':root').css('--border', `#${targetcolor}ee`);
@@ -606,7 +606,7 @@
                             currcol = 0;
                             guess = [];
                         } 
-                         
+
                     }, 2400);
 
             })
