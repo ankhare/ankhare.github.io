@@ -136,7 +136,7 @@
             z-index:0;
         }
 
-        i[class^='circle-'] {
+        [class^='circle-'] {
             position: absolute;
             width: 15vw;
             height: 15vw;
@@ -284,8 +284,6 @@
 </head>
 <body>
     <div id="bg" class="container-fluid p-0">
-        <!-- <button type="button" class="btn btn-secondary p-0 ml-auto" data-toggle="popover">?</button> -->
-
         <section id="color" class="mb-2">
                 <h1 class="m-auto">H E X D L E</h1>
         </section>
@@ -338,9 +336,9 @@
                 <p>HEX color is are used to represent an additive color model with hexadecimal values. Colors result from transmitted light. An absence of all light is black and the combination of all is white.</p>
                 <!-- <img class="mw-100"src="light-diagram.png" alt="color-diagram"> -->
                 <div class="venn">
-                    <i class="circle-red"></i>
-                    <i class="circle-green"></i>
-                    <i class="circle-blue"></i>
+                    <div class="circle-red"></div>
+                    <div class="circle-green"></div>
+                    <div class="circle-blue"></div>
                 </div>
                 <p class="mt-3">The first two letters/numbers refer to the percentage of red light, the next two refer to green light, and the last two refer to blue light.</p>
                 <p>The color values are defined in values between 00 and FF, instead of from 0 to 255 in RGB. Numbers are used when the value is 1-9. Letters are used when the value is higher than 9 (eg: A=10, B=11, C=12...F=15)</p>
@@ -469,6 +467,7 @@
                 $(function() {
                     $("[data-toggle=popover]").popover({
                         html: true,
+                        trigger:"focus",
                         content: function() {
                         var content = $(this).attr("data-popover-content");
                         return $(content).children(".popover-body").html();
