@@ -43,8 +43,8 @@
             align-items: center;
             width: 100vw;
             color: white;
-            min-height: 80px;
-            height: 18vh;
+            min-height: 60px;
+            height: 20vw;
             max-height: 100px;
         }
 
@@ -68,8 +68,10 @@
             border-radius: 10px;
 
             height: 8vw;
+            min-height: 50px;
 
             width: 8vw;
+            min-width: 50px;
         }
 
 
@@ -110,6 +112,7 @@
         .popover-body {
             height: 50vh;
             overflow-y: auto;
+            overflow-x: hidden;
         }
 
         #qb{
@@ -229,14 +232,13 @@
     <div id="bg" class="container-fluid p-0">
         <!-- <button type="button" class="btn btn-secondary p-0 ml-auto" data-toggle="popover">?</button> -->
 
-        <section>
-             <div id="color">
-                <h1 class="mx-auto">H E X D L E</h1>
-            </div>
+        <section id="color" class="mb-3">
+                <h1 class="m-auto">H E X D L E</h1>
         </section>
 
         <section id="guesses" class="my-2">
         </section>
+
         <section id="kb">
             <div class="mx-auto kbcontainer">
                 <div class="mx-auto">
@@ -244,19 +246,19 @@
                     <div id="kb2" class="row m-auto my-1"></div>
                     
                     <div class="row m-auto my-2">
-                        <button type="button" id="qb" class="col-1 okey mx-2" data-toggle="popover" data-popover-content="#p1"><h6 class="m-auto">?</h6></button>
+                        <button type="button" id="qb" class="col-1 okey mx-2" data-toggle="popover" data-placement="top" data-popover-content="#p1"><h6 class="m-auto">?</h6></button>
                         <button type="button" id="del" disabled="true" class="col-2 p-0 okey"><h6 class="m-auto">⌫</h6></button>
                         <div class="col-4"></div>
                         <button type="button" id="enter" disabled="true" class="col-3 p-0 okey"><h6 class="m-auto">Enter</h6></button> 
                     </div>
                 </div>     
             </div> 
-            <div class="row mt-2">
-                <div class="col-12 text-center">
-                    <h6 id="alert"></h6>
-                </div>
-            </div> 
         </section>
+        <div class="row mt-2">
+            <div class="col-12 text-center">
+                <h6 id="alert"></h6>
+            </div>
+        </div> 
         <canvas id="myCanvas"></canvas>
 
         <div id="p1" style="display: none;">
