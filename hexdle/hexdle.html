@@ -583,14 +583,19 @@
                             $('#b' + green[i]).addClass('green')
                         })
 
+                        //get ready for next guess
+                        currow ++;
+                        currcol = 0;
+                        guess = [];
+
                         //if won
                         if (targetArr.join('')=='gggggg'){ // if answer is completely right
                             $('#color').css('color', 'white');
                             confetti();
-                            if (currow == 0){
+                            if (currow == 1){
                                 $('#alert').html(`You solved the Hexdle on your first try!`);
                             } else{
-                                $('#alert').html(`You solved the Hexdle in ${currow + 1} tries!`);
+                                $('#alert').html(`You solved the Hexdle in ${currow} tries!`);
                             }
                             
                             $('.kbkey').prop('disabled', true);
@@ -598,13 +603,8 @@
                             $('#del').prop('disabled', true);
                         }
 
-                        //get ready for next guess
-                        currow ++;
-                        currcol = 0;
-                        guess = [];
-
                         //if lost
-                        if (currow === allowedtries){
+                        else if (currow === allowedtries){
                             $('#alert').append(`The color was #${targetcolor}. Better luck next time!`)
                             $('#del').prop('disabled', true);
                             $('#enter').prop('disabled', true);
