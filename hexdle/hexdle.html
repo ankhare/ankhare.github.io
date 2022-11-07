@@ -111,7 +111,7 @@
         }
 
         .popover-body {
-            height: 50vh;
+            height: 65vh;
             overflow-y: auto;
             overflow-x: hidden;
         }
@@ -158,6 +158,7 @@
             -moz-transform: translateX(10px);
             -ms-transform: translateX(10px);
             transform: translateX(10px);
+            font-size: 80%;
         }
 
         .rounded{
@@ -218,6 +219,12 @@
             }
         }
 
+        @media(max-height: 650px){
+            #kb{
+                position: inherit;
+            }
+        }
+
         @media (max-width: 350px){
             h1{
                 font-size: 250%;
@@ -255,7 +262,7 @@
                 </div>     
             </div> 
         </section>
-        <div class="row mt-2">
+        <div class="row m-0 mt-2">
             <div class="col-12 text-center">
                 <h6 id="alert"></h6>
             </div>
@@ -282,12 +289,20 @@
             <hr>
             <div>
                 <h6>Unfamiliar with Hex?</h6> 
-                <p>Hex colors are a way of representing colors from various color models through hexadecimal values.</p>
-                <p>The first two letters/numbers refer to red, the next two refer to green, and the last two refer to blue.</p>
+                <p>Hex colors represent an additive color model through hexadecimal values. Colors result from transmitted light. An absence of all light is black and the combination of all is white, as seen below.</p>
+                <img class="mw-100"src="light-diagram.png" alt="color-diagram">
+                <p>The first two letters/numbers refer to the percentage of red light, the next two refer to green light, and the last two refer to blue light.</p>
                 <p>The color values are defined in values between 00 and FF, instead of from 0 to 255 in RGB. Numbers are used when the value is 1-9. Letters are used when the value is higher than 9 (eg: A=10, B=11, C=12...F=15)</p>
                 <p>Use this chart to get started</p>
-                <div>
-                <div class="ctable">               
+                
+                <b>
+                    <div class="row border-bottom">
+                        <div class="col-3"> Color</div>
+                        <div class="col-4">Hex</div>
+                        <div class="col-5">RBG</div>
+                     </div> 
+                </b>
+                <div class="ctable">              
                     <div class="row">Black</div>                 
                     <div class="row">
                         <div class="col rounded tg-bl"></div>
