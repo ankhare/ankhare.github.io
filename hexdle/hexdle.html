@@ -507,33 +507,33 @@
                     .join('');
             }
 
+            //format display based on random color
             const targetcolor = randomColor().toLocaleUpperCase();
 
             $('#color').css('background-color', '#' + targetcolor);
-            // $("head").append(`<meta name="theme-color" content="#${targetcolor}"/>`);
-
             $(':root').css('--lg', `#${targetcolor}40`);
             $(':root').css('--border', `#${targetcolor}ee`);
             $(':root').css('--green', `#${targetcolor}`);
 
-            //if the title is clicked on 3 times show the answer
-            let counter = 0;
-            function cheat() {
-                counter++;
-                if(counter == 3){
-                    $('#alert').append(`low key the answer is ${targetcolor}`);
-                }
-            }   
+            //cheat function easter egg, reveals answer when title is clicked on 3 times
+            let counter = 0;  
             $('#color').click(()=>{
-                cheat();
+                function cheat() {
+                    counter++;
+                    if(counter == 3){
+                        $('#alert').append(`low key the answer is ${targetcolor}`);
+                    }
+                } 
             })
 
-            const allowedtries = 6
-            
             //generate grid
+            //create rows
+            const allowedtries = 6;
             for (let i=0; i < allowedtries; i++ ){//number of rows determined by number of tries allowed
                 $('#guesses').append(`<div id="gcont${i}"class="mx-auto gboxcontainer"><div id="g${i}" class="row m-auto my-1">#</div></div>`);  
             }
+
+            //create columns
             for (let r=0; r<6; r++){
                 for (let c=0; c<6; c++){ 
                 $('#g' + r).append(`<div id="gbox${r}${c}" class="col-2 mx-1 p-0 gbox"><h2 id="gtext${r}${c}" class="m-auto p-0"></h2></div>`);
@@ -560,6 +560,7 @@
             let currow = 0; // attempt number
             let currcol = 0; // letter input
 
+            //when a keyboard key is clicked
             $('.kbkey').click(function() {
                 $('#del').prop('disabled', false);
 
@@ -576,6 +577,7 @@
                 } 
             })
 
+            //when delete is clicked
             $('#del').click(function(){
                 $('#enter').prop('disabled', true);
                 if (guess.length > 0){
@@ -594,6 +596,7 @@
                 }
             })
 
+            //when enter is clicked, evaluate results
             $('#enter').click(function(){
                 $(this).prop('disabled', true);
                 $('#color').css('background-color', "#" + guess.join(''));
@@ -647,7 +650,7 @@
                     //after results are displayed
                     setTimeout(() => {
                         //change the color of keyboard
-                        //change to better method, this one overwrites itself 
+                        //change to more effecient method, this one overwrites itself 
                         gray.forEach((word, i) => {
                             $('#b' + gray[i]).addClass('gray')
                         })
@@ -658,8 +661,8 @@
                             $('#b' + green[i]).addClass('green')
                         })
 
-                        //if won
-                        if (targetArr.join('')=='gggggg'){ // if answer is completely right
+                        //if answer is completely right
+                        if (targetArr.join('')=='gggggg'){ 
                             $('#color').css('color', 'white');
                             confetti();
                             if (currow == 0){
@@ -671,15 +674,18 @@
 
                         //if lost
                         } else if ((currow + 1) === allowedtries){
-                            $('#alert').append(`The color was #${color}. Better luck next time!`)
+                            $('#alert').append(`The color was #${targetcolor}. Better luck next time!`)
                             game = false;
                         
                         } else{
                             currow ++;
                         } 
+
+                        //at the end of every round
                         currcol = 0;
                         guess = [];
 
+                        //at the end of game, disable buttons and free memory
                         if (game == false){
                             $('.kbkey').prop('disabled', true);
                             $('#enter').prop('disabled', true);
@@ -697,5 +703,4 @@
   
     </script>
 </body>
-
 </html>
