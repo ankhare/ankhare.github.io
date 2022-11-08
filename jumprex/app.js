@@ -1,5 +1,6 @@
 'use strict';
 $(document).ready(function () {
+    document.addEventListener("touchstart", function(){}, true);
     const grid = $('.grid');
     const rex = $(document.createElement('div'));
     let rexLeftSpace;
@@ -27,8 +28,8 @@ $(document).ready(function () {
         grid.append(rex);
         startPlat = platforms[0];
         rexLeftSpace = platforms[0].left;
-        rex.css('left', platforms[0].left + 'vh');
-        rex.css('bottom', rexBottomSpace + 'vh');
+        rex.css('left', platforms[0].left + 'vw');
+        rex.css('bottom', rexBottomSpace + 'vw');
     }
 
     class Platform{
@@ -39,8 +40,8 @@ $(document).ready(function () {
             const visual = this.visual;
 
             visual.addClass('platform');
-            visual.css('left', this.left + 'vh');
-            visual.css('bottom', this.bottom + 'vh');
+            visual.css('left', this.left + 'vw');
+            visual.css('bottom', this.bottom + 'vw');
             grid.append(visual);
         }
     }
@@ -60,7 +61,7 @@ $(document).ready(function () {
             platforms.forEach(platform => {
                 platform.bottom -= .2;
                 let visual = platform.visual;
-                visual.css('bottom', platform.bottom + 'vh');
+                visual.css('bottom', platform.bottom + 'vw');
 
                 if (platform.bottom < 0){
                     let firstPlatform = platforms[0].visual;
@@ -97,7 +98,7 @@ $(document).ready(function () {
         clearInterval(upTimerId);
         downTimerId = setInterval(function(){
             rexBottomSpace -= .8;
-            rex.css('bottom', rexBottomSpace + 'vh');
+            rex.css('bottom', rexBottomSpace + 'vw');
             if (rexBottomSpace <= 0){
                 gameOver();
             }
@@ -135,7 +136,7 @@ $(document).ready(function () {
         clearInterval(downTimerId);
         upTimerId = setInterval(function(){
             rexBottomSpace += 1;
-            rex.css('bottom', rexBottomSpace + 'vh');
+            rex.css('bottom', rexBottomSpace + 'vw');
             if (rexBottomSpace > startPoint + jumpHeight){
                 fall();
             }
@@ -155,7 +156,7 @@ $(document).ready(function () {
         leftTimerId = setInterval(function(){
             if (rexLeftSpace >= 0){
                 rexLeftSpace -= .4;
-                rex.css('left', rexLeftSpace + 'vh');
+                rex.css('left', rexLeftSpace + 'vw');
             } else {
                 clearInterval(leftTimerId);
                 isGoingLeft = false;
@@ -176,7 +177,7 @@ $(document).ready(function () {
         rightTimerId = setInterval(function(){
             if (rexLeftSpace <= 60 - 8){ //acount for width of rex
                 rexLeftSpace += .4;
-                rex.css('left', rexLeftSpace + 'vh');
+                rex.css('left', rexLeftSpace + 'vw');
             } else{
                 clearInterval(rightTimerId)
                 isGoingRight = false;
