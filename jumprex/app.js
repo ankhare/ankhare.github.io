@@ -121,13 +121,13 @@ $(document).ready(function () {
                         if (!isMoving){
                             // console.log('scrolling')
                             movePlatformId = setInterval(movePlatforms, 30)
-                            isMoving = true;
-                            startPlat = currentPlat;
+                            isMoving = true; 
                         }  
                     } else{
                         clearInterval(movePlatformId);
                         isMoving = false;
                     }
+                    startPlat = currentPlat;
                 }
             })
         }, 30)
