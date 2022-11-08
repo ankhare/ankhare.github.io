@@ -89,6 +89,9 @@ $(document).ready(function () {
         clearInterval(downTimerId);
         clearInterval(leftTimerId);
         clearInterval(rightTimerId); 
+        $('#l').prop('disabled', true);
+        $('#u').prop('disabled', true);
+        $('#r').prop('disabled', true);
     }
 
 
