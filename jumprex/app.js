@@ -227,9 +227,6 @@ $(document).ready(function () {
 
 
     }
-
-
-
     //attach to button
     start();
     

@@ -66,8 +66,9 @@ body{
 .key{
     font-family: 'Bungee', sans-serif;
     font-size: 3vw;
-    background-color: #dcab43;
+    background-color: white;
     border: 3px outset rgb(75, 87, 75);
+    color: black;
     border-radius: 20px;
     height: 8vw;
     width: 32vw;
@@ -75,7 +76,7 @@ body{
 
 button:hover:not([disabled]){
     border-style: inset;
-    background-color: white;
+    background-color: #dcab43;
 
 }
 .blink {
