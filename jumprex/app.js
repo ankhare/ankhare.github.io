@@ -9,7 +9,7 @@ $(document).ready(function () {
     let isGameOver = false;
     let platCount = 8;
     let platforms = [];
-    let jumpHeight = 20;
+    let jumpHeight = 30;
     let upTimerId;
     let downTimerId;
     let leftTimerId;
@@ -123,86 +123,103 @@ $(document).ready(function () {
                             movePlatformId = setInterval(movePlatforms, 30)
                             isMoving = true; 
                         }  
-                    } else{
+                    } else if(rexBottomSpace > 60){// at top of screen{
+                        if (!isMoving){ // put in function
+                            console.log('scrolling bc top');
+                            movePlatformId = setInterval(movePlatforms, 30)
+                            isMoving = true; 
+                        }
+                    }else{
                         clearInterval(movePlatformId);
                         isMoving = false;
                     }
                     startPlat = currentPlat;
                 }
             })
-        }, 30)
+        }, 20)
     }
     function jump(){
         // console.log('jumping')
         isJumping = true;
         clearInterval(downTimerId);
         upTimerId = setInterval(function(){
-            rexBottomSpace += 1;
+            rexBottomSpace += .8;
             rex.css('bottom', rexBottomSpace + 'vw');
             if (rexBottomSpace > jumpStart + jumpHeight){
                 fall();
             }
-        },30 )
+        },20 )
         
     }
 
     function moveLeft(){
         if (isGoingRight){
-            clearInterval(rightTimerId);
+            // clearInterval(rightTimerId);
             isGoingRight = false;
         }
-        if (isGoingLeft){
-            return;
-        }
+        // if (isGoingLeft){
+        //     return;
+        // }
         isGoingLeft = true;
-        leftTimerId = setInterval(function(){
-            if (rexLeftSpace >= 0){
-                rexLeftSpace -= .4;
+        if (rexLeftSpace >= 0){
+                rexLeftSpace -= .8;
                 rex.css('left', rexLeftSpace + 'vw');
-            } else {
-                clearInterval(leftTimerId);
-                isGoingLeft = false;
-            }
-        },20)
+        }
+
+        // leftTimerId = setInterval(function(){
+        //     if (rexLeftSpace >= 0){
+        //         rexLeftSpace -= .4;
+        //         rex.css('left', rexLeftSpace + 'vw');
+        //     } else {
+        //         clearInterval(leftTimerId);
+        //         isGoingLeft = false;
+        //     }
+        // },20)
     }
 
     function moveRight(){
         if (isGoingLeft){
-            clearInterval(leftTimerId);
+            // clearInterval(leftTimerId);
             isGoingLeft = false;
         }
 
-        if (isGoingRight){
-            return;
-        }
+        // if (isGoingRight){
+        //     return;
+        // }
+
         isGoingRight = true;
-        rightTimerId = setInterval(function(){
-            if (rexLeftSpace <= 60 - 8){ //acount for width of rex
-                rexLeftSpace += .4;
+        if (rexLeftSpace <= 60 - 8){ //acount for width of rex
+                rexLeftSpace += .8;
                 rex.css('left', rexLeftSpace + 'vw');
-            } else{
-                clearInterval(rightTimerId)
-                isGoingRight = false;
-            }
-        },20)
+        }
+        // rightTimerId = setInterval(function(){
+        //     if (rexLeftSpace <= 60 - 8){ //acount for width of rex
+        //         rexLeftSpace += .4;
+        //         rex.css('left', rexLeftSpace + 'vw');
+        //     } else{
+        //         clearInterval(rightTimerId)
+        //         isGoingRight = false;
+        //     }
+        // },20)
     }
 
-    function moveStraight(){
-        isGoingLeft = false;
-        isGoingRight = false;
-        clearInterval(leftTimerId)
-        clearInterval(rightTimerId);
-    }
+    // function moveStraight(){
+    //     isGoingLeft = false;
+    //     isGoingRight = false;
+    //     // clearInterval(leftTimerId)
+    //     // clearInterval(rightTimerId);
+    // }
 
 
     function control(e){
         if (e.key === "ArrowLeft"){
             moveLeft();
-        } else if (e.key === "ArrowRight"){
+        } else if(e.key === "ArrowRight"){
             moveRight();
-        }else if (e.key === "ArrowUp"){
-            moveStraight();
         }
+        //else if (e.key === "ArrowUp"){
+        //     moveStraight();
+        // }
     }
 
     function start(){
@@ -213,19 +230,38 @@ $(document).ready(function () {
             jump(); 
         }
 
-        document.addEventListener('keyup', control);
+        document.addEventListener('keydown', control);
 
-        $('#l').click(function(){
-            moveLeft();
+        $('#l').on('touchstart mousedown', function(e) {
+            e.preventDefault();
+            clearInterval(rightTimerId);
+            leftTimerId = setInterval(function () {
+                moveLeft();
+            }, 20);
         });
 
-        $('#u').click(function(){
-            moveStraight();
+        $('#l').on('touchend mouseup', function(e) {
+            e.preventDefault();
+            clearInterval(leftTimerId);
+         });
+
+        // $('#u').click(function(){
+        //     moveStraight();
+        // });
+
+        $('#r').on('touchstart mousedown', function(e) {
+            e.preventDefault();
+            clearInterval(leftTimerId);
+            rightTimerId = setInterval(function () {
+                moveRight();
+            }, 20);
         });
 
-        $('#r').click(function(){
-            moveRight();
-        });
+        $('#r').on('touchend mouseup', function(e) {
+            e.preventDefault();
+            clearInterval(rightTimerId);
+         });
+
 
 
     }
