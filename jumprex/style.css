@@ -86,8 +86,8 @@ body{
 }
 
 .key:focus, .key:active:not([disabled]){
-    background-color: #d69c1e;
-    border: 5px inset black;
+    background-color: #c58b0f;
+    border: 5px inset #dcab43;
 }
 
 .blink {
