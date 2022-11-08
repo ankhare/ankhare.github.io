@@ -120,11 +120,13 @@ $(document).ready(function () {
                         // console.log('scrolling 10ms');
                         clearInterval(movePlatformId);
                         movePlatformId = setInterval(movePlatforms, 10)
+                        jumpHeight = 15;
                         isMoving = true; //not rllt in use rn can remove if utility not found
                     } else if (startPlat != currentPlat){ // can also do if below screen on certain part and current greater than start
                         // console.log('scrolling')
                         clearInterval(movePlatformId);
                         movePlatformId = setInterval(movePlatforms, 20)
+                        jumpHeight = 20;
                         // console.log('scrolling 30ms');
                         isMoving = true;  
                     } else{
