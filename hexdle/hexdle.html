@@ -577,8 +577,6 @@
                     $('#enter').prop('disabled', false);
                     $('.kbkey').prop('disabled', true);
                 } 
-
-                console.log(guess);
             })
 
             //when delete is clicked
@@ -687,6 +685,7 @@
                     
                     } else{
                         currow ++;
+                        $('.kbkey').prop('disabled', false);
                     } 
 
                     //at the end of game, disable buttons and free memory
@@ -700,7 +699,6 @@
                         currow = 0;
                         currcol = 0;
                     }
-                    $('.kbkey').prop('disabled', false);
                 }, 2400);
             })
         })
