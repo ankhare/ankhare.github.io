@@ -81,9 +81,9 @@ body{
     width: 32vw;
 }
 
-.key:hover:not([disabled]){
+/* .key:hover:not([disabled]){
     border: 5px inset black;
-}
+} */
 
 .key:active:not([disabled]){
     background-color: #c58b0f;

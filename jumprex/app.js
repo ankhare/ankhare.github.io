@@ -8,7 +8,7 @@ $(document).ready(function () {
     let isGameOver = false;
     let platCount = 8;
     let platforms = [];
-    let jumpHeight = 30;
+    let jumpHeight = 20;
     let upTimerId;
     let downTimerId;
     let leftTimerId;
@@ -25,7 +25,7 @@ $(document).ready(function () {
     function createRex(){
         rex.addClass('rex');
         grid.append(rex);
-        startPlat = 0;
+        startPlat = platforms[0];
         rexLeftSpace = platforms[0].left;
         rex.css('left', platforms[0].left + 'vw');
         rex.css('bottom', rexBottomSpace + 'vw');
@@ -113,21 +113,20 @@ $(document).ready(function () {
                     // console.log('jump');
                     jump();
                     jumpStart = rexBottomSpace;
-                    currentPlat = i
+                    currentPlat = platforms[i];
 
                     
                     if(rexBottomSpace >= 60){// at top of screen{
                         // console.log('scrolling 10ms');
                         clearInterval(movePlatformId);
                         movePlatformId = setInterval(movePlatforms, 10)
-                        isMoving = true; 
-                    } else if (startPlat < currentPlat){
-                        if (!isMoving){
-                            // console.log('scrolling')
-                            movePlatformId = setInterval(movePlatforms, 20)
-                            // console.log('scrolling 30ms');
-                            isMoving = true; 
-                        }  
+                        isMoving = true; //not rllt in use rn can remove if utility not found
+                    } else if (startPlat != currentPlat){ // can also do if below screen on certain part and current greater than start
+                        // console.log('scrolling')
+                        clearInterval(movePlatformId);
+                        movePlatformId = setInterval(movePlatforms, 20)
+                        // console.log('scrolling 30ms');
+                        isMoving = true;  
                     } else{
                         clearInterval(movePlatformId);
                         isMoving = false;
