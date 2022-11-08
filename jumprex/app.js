@@ -4,8 +4,8 @@ $(document).ready(function () {
     const grid = $('.grid');
     const rex = $(document.createElement('div'));
     let rexLeftSpace;
-    let startPoint = 5;
-    let rexBottomSpace = startPoint;
+    let jumpPoint = 5;
+    let rexBottomSpace = jumpPoint;
     let isGameOver = false;
     let platCount = 8;
     let platforms = [];
@@ -26,7 +26,7 @@ $(document).ready(function () {
     function createRex(){
         rex.addClass('rex');
         grid.append(rex);
-        startPlat = platforms[0];
+        startPlat = 0;
         rexLeftSpace = platforms[0].left;
         rex.css('left', platforms[0].left + 'vw');
         rex.css('bottom', rexBottomSpace + 'vw');
@@ -114,10 +114,10 @@ $(document).ready(function () {
                 {
                     // console.log('jump');
                     jump();
-                    startPoint = rexBottomSpace;
-                    currentPlat = platforms[i]
+                    jumpPoint = rexBottomSpace;
+                    currentPlat = i
 
-                    if (startPlat != currentPlat){
+                    if (startPlat < currentPlat){
                         if (!isMoving){
                             // console.log('scrolling')
                             jumpTimerId = setInterval(movePlatforms, 30)
@@ -140,7 +140,7 @@ $(document).ready(function () {
         upTimerId = setInterval(function(){
             rexBottomSpace += 1;
             rex.css('bottom', rexBottomSpace + 'vw');
-            if (rexBottomSpace > startPoint + jumpHeight){
+            if (rexBottomSpace > jumpPoint + jumpHeight){
                 fall();
             }
         },30 )
