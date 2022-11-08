@@ -1,6 +1,5 @@
 'use strict';
 $(document).ready(function () {
-    document.addEventListener("touchstart", function(){}, true);
     const grid = $('.grid');
     const rex = $(document.createElement('div'));
     let rexLeftSpace;
