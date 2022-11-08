@@ -53,6 +53,7 @@ body{
     /* min-width: 40px;
     min-height: 10px; */
     background-color: rgb(75, 87, 75);
+    border: 3px outset rgb(75, 87, 75);
     position: absolute;
     border-radius: 15px;
 }
