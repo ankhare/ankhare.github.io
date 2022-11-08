@@ -115,19 +115,20 @@ $(document).ready(function () {
                     jumpStart = rexBottomSpace;
                     currentPlat = i
 
-                    if (startPlat < currentPlat){
+                    
+                    if(rexBottomSpace >= 60){// at top of screen{
+                        // console.log('scrolling 10ms');
+                        clearInterval(movePlatformId);
+                        movePlatformId = setInterval(movePlatforms, 10)
+                        isMoving = true; 
+                    } else if (startPlat < currentPlat){
                         if (!isMoving){
                             // console.log('scrolling')
-                            movePlatformId = setInterval(movePlatforms, 30)
+                            movePlatformId = setInterval(movePlatforms, 20)
+                            // console.log('scrolling 30ms');
                             isMoving = true; 
                         }  
-                    } else if(rexBottomSpace > 60){// at top of screen{
-                        if (!isMoving){ // put in function
-                            console.log('scrolling bc top');
-                            movePlatformId = setInterval(movePlatforms, 30)
-                            isMoving = true; 
-                        }
-                    }else{
+                    } else{
                         clearInterval(movePlatformId);
                         isMoving = false;
                     }
