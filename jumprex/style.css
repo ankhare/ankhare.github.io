@@ -1,5 +1,6 @@
 body{
     font-family: 'Bungee', sans-serif;
+    touch-action:none;
 }
 .container-fluid{
     display: flex;
