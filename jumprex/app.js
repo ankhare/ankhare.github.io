@@ -76,7 +76,7 @@ $(document).ready(function () {
     }
 
     function gameOver(){
-        console.log('gameOver')
+        // console.log('gameOver')
         isGameOver = true;
         rex.addClass('blink')
         setTimeout(()=>{
@@ -92,13 +92,13 @@ $(document).ready(function () {
 
 
     function fall(){
-        console.log('falling')
+        // console.log('falling')
         isJumping = false;
         clearInterval(upTimerId);
         downTimerId = setInterval(function(){
             rexBottomSpace -= .8;
             rex.css('bottom', rexBottomSpace + 'vh');
-            if (rexBottomSpace < 0){
+            if (rexBottomSpace <= 0){
                 gameOver();
             }
 
@@ -108,14 +108,14 @@ $(document).ready(function () {
                 && (rexLeftSpace + 8 >= platform.left) // 8 rex width
                 && (rexLeftSpace <= platform.left + 10)) //10 represents height of each platform
                 {
-                    console.log('jump');
+                    // console.log('jump');
                     jump();
                     startPoint = rexBottomSpace;
                     currentPlat = platforms[i]
 
                     if (startPlat != currentPlat){
                         if (!isMoving){
-                            console.log('scrolling')
+                            // console.log('scrolling')
                             jumpTimerId = setInterval(movePlatforms, 30)
                             isMoving = true;
                         }  
@@ -130,7 +130,7 @@ $(document).ready(function () {
         }, 30)
     }
     function jump(){
-        console.log('jumping')
+        // console.log('jumping')
         isJumping = true;
         clearInterval(downTimerId);
         upTimerId = setInterval(function(){

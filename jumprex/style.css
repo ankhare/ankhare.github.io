@@ -66,14 +66,17 @@ body{
 .key{
     font-family: 'Bungee', sans-serif;
     font-size: 3vh;
-    border: 2px outset rgb(75, 87, 75);
+    background-color: #dcab43;
+    border: 3px outset rgb(75, 87, 75);
     border-radius: 20px;
     height: 8vh;
     width: 25vh;
 }
 
 button:hover:not([disabled]){
-    border: 3px outset black;
+    border-style: inset;
+    background-color: white;
+
 }
 .blink {
     animation: blinker .4s linear infinite;
