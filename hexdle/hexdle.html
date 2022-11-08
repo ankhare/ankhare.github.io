@@ -456,14 +456,12 @@
         'use strict';
         $(document).ready(function () {
             document.addEventListener("touchstart", function(){}, true);
-            
+
             //enable bootstrap popover
             var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
             var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
                 return new bootstrap.Popover(popoverTriggerEl)
             })
-
-
                 $(function() {
                     $("[data-toggle=popover]").popover({
                         html: true,
@@ -517,13 +515,16 @@
 
             //cheat function easter egg, reveals answer when title is clicked on 3 times
             let counter = 0;  
+            function cheat() {
+                counter++;
+                if(counter == 3){
+                    $('#alert').append(`low key the answer is ${targetcolor}`);
+                } if (counter > 3 | !game){
+                    $('#color').unbind("click");
+                }
+            } 
             $('#color').click(()=>{
-                function cheat() {
-                    counter++;
-                    if(counter == 3){
-                        $('#alert').append(`low key the answer is ${targetcolor}`);
-                    }
-                } 
+                cheat();
             })
 
             //generate grid
@@ -573,8 +574,11 @@
                 }
                 
                 if (guess.length === 6){
-                    $('#enter').prop('disabled', false)
+                    $('#enter').prop('disabled', false);
+                    $('.kbkey').prop('disabled', true);
                 } 
+
+                console.log(guess);
             })
 
             //when delete is clicked
@@ -598,109 +602,108 @@
 
             //when enter is clicked, evaluate results
             $('#enter').click(function(){
-                $(this).prop('disabled', true);
+                $('#enter').prop('disabled', true);
                 $('#color').css('background-color', "#" + guess.join(''));
                 $('#color').css('color', "#" + targetcolor);
                 // show results
-                    // find exact matches
-                    const targetArr = targetcolor.split('');
-                    for (let i = 0; i < 6; i++){
-                        if (guess[i] == targetArr[i]){
-                            result[i] = 'green';
-                            // $('#gbox' + currow + '' + i).css('background', 'green') 
-                            green.push(targetArr[i])
-                            // $('#b' + targetArr[i]).css('background', 'green');
-                            targetArr[i] = "g"; //block green guess from being recounted
-                            guess[i] = "y";
-                        }
+                // find exact matches
+                const targetArr = targetcolor.split('');
+                for (let i = 0; i < 6; i++){
+                    if (guess[i] == targetArr[i]){
+                        result[i] = 'green';
+                        // $('#gbox' + currow + '' + i).css('background', 'green') 
+                        green.push(targetArr[i])
+                        // $('#b' + targetArr[i]).css('background', 'green');
+                        targetArr[i] = "g"; //block green guess from being recounted
+                        guess[i] = "y";
                     }
-                    //find matches within target but in in correct location
-                    // for letter in target
-                    for (let i = 0; i < 6; i++){
-                        if (targetArr[i] != "x"){
-                            let tl = targetArr[i];
-                            // for letter in guess
-                            for (let j = 0; j < 6; j++){
-                                if (guess[j] == tl){
-                                    result[j] = 'yellow';
-                                    // $('#gbox' + currow + '' + j).css('background', 'yellow'); 
-                                    yellow.push(targetArr[i]);
-                                    targetArr[i] = "x"; // prevent recounts
-                                    guess[j] = "y";
-                                    break;
-                                }
-                                else if (guess[j] != 'y'){
-                                    result[j] = 'gray';
-                                    gray.push(guess[j]);
-                                }
-                            }  
-                        }
-                    }  
-
-                    //show result of guess
-                    var tilesArray = [$('#gbox' + currow + '' + 0), $('#gbox' + currow + '' + 1), $('#gbox' + currow + '' + 2), $('#gbox' + currow + '' + 3), $('#gbox' + currow + '' + 4), $('#gbox' + currow + '' + 5)]
-                    tilesArray.map(function (tile, i) {
-                        tile.addClass('flip');
-                        tile.css('animation-delay', `${i * 300}ms`);
-                        setTimeout(() => {
-                            tile.addClass(result[i]);
-                        }, i * 300)
-                    });
-
-                    //after results are displayed
-                    setTimeout(() => {
-                        //change the color of keyboard
-                        //change to more effecient method, this one overwrites itself 
-                        gray.forEach((word, i) => {
-                            $('#b' + gray[i]).addClass('gray')
-                        })
-                        yellow.forEach((word, i) => {
-                            $('#b' + yellow[i]).addClass('yellow')
-                        })
-                        green.forEach((word, i) => {
-                            $('#b' + green[i]).addClass('green')
-                        })
-
-                        //if answer is completely right
-                        if (targetArr.join('')=='gggggg'){ 
-                            $('#color').css('color', 'white');
-                            confetti();
-                            if (currow == 0){
-                                $('#alert').html(`You solved the Hexdle on your first try!`);
-                            } else{
-                                $('#alert').html(`You solved the Hexdle in ${currow + 1} tries!`);
+                }
+                //find matches within target but in in correct location
+                // for letter in target
+                for (let i = 0; i < 6; i++){
+                    if (targetArr[i] != "x"){
+                        let tl = targetArr[i];
+                        // for letter in guess
+                        for (let j = 0; j < 6; j++){
+                            if (guess[j] == tl){
+                                result[j] = 'yellow';
+                                // $('#gbox' + currow + '' + j).css('background', 'yellow'); 
+                                yellow.push(targetArr[i]);
+                                targetArr[i] = "x"; // prevent recounts
+                                guess[j] = "y";
+                                break;
                             }
-                            game = false;
+                            else if (guess[j] != 'y'){
+                                result[j] = 'gray';
+                                gray.push(guess[j]);
+                            }
+                        }  
+                    }
+                }
+                    
+                //at the end of every round
+                currcol = 0;
+                guess = [];
 
-                        //if lost
-                        } else if ((currow + 1) === allowedtries){
-                            $('#alert').append(`The color was #${targetcolor}. Better luck next time!`)
-                            game = false;
-                        
+                //show result of guess
+                var tilesArray = [$('#gbox' + currow + '' + 0), $('#gbox' + currow + '' + 1), $('#gbox' + currow + '' + 2), $('#gbox' + currow + '' + 3), $('#gbox' + currow + '' + 4), $('#gbox' + currow + '' + 5)]
+                tilesArray.map(function (tile, i) {
+                    tile.addClass('flip');
+                    tile.css('animation-delay', `${i * 300}ms`);
+                    setTimeout(() => {
+                        tile.addClass(result[i]);
+                    }, i * 300)
+                });
+
+                //after results are displayed
+                setTimeout(() => {
+                    //change the color of keyboard
+                    //change to more effecient method, this one overwrites itself 
+                    gray.forEach((word, i) => {
+                        $('#b' + gray[i]).addClass('gray')
+                    })
+                    yellow.forEach((word, i) => {
+                        $('#b' + yellow[i]).addClass('yellow')
+                    })
+                    green.forEach((word, i) => {
+                        $('#b' + green[i]).addClass('green')
+                    })
+
+                    //if answer is completely right
+                    if (targetArr.join('')=='gggggg'){ 
+                        $('#color').css('color', 'white');
+                        confetti();
+                        if (currow == 0){
+                            $('#alert').html(`You solved the Hexdle on your first try!`);
                         } else{
-                            currow ++;
-                        } 
-
-                        //at the end of every round
-                        currcol = 0;
-                        guess = [];
-
-                        //at the end of game, disable buttons and free memory
-                        if (game == false){
-                            $('.kbkey').prop('disabled', true);
-                            $('#enter').prop('disabled', true);
-                            $('#del').prop('disabled', true);
-                            green = [];
-                            yellow = [];
-                            gray = [];
-                            currow = 0;
-                            currcol = 0;
+                            $('#alert').html(`You solved the Hexdle in ${currow + 1} tries!`);
                         }
-                    }, 2400);
+                        game = false;
 
+                    //if lost
+                    } else if ((currow + 1) === allowedtries){
+                        $('#alert').append(`The color was #${targetcolor}. Better luck next time!`)
+                        game = false;
+                    
+                    } else{
+                        currow ++;
+                    } 
+
+                    //at the end of game, disable buttons and free memory
+                    if (game == false){
+                        $('.kbkey').prop('disabled', true);
+                        $('#enter').prop('disabled', true);
+                        $('#del').prop('disabled', true);
+                        green = [];
+                        yellow = [];
+                        gray = [];
+                        currow = 0;
+                        currcol = 0;
+                    }
+                    $('.kbkey').prop('disabled', false);
+                }, 2400);
             })
         })
-  
     </script>
 </body>
 </html>
