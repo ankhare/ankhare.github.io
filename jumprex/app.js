@@ -4,8 +4,8 @@ $(document).ready(function () {
     const grid = $('.grid');
     const rex = $(document.createElement('div'));
     let rexLeftSpace;
-    let jumpPoint = 5;
-    let rexBottomSpace = jumpPoint;
+    let jumpStart = 5;
+    let rexBottomSpace = jumpStart;
     let isGameOver = false;
     let platCount = 8;
     let platforms = [];
@@ -14,7 +14,7 @@ $(document).ready(function () {
     let downTimerId;
     let leftTimerId;
     let rightTimerId;
-    let jumpTimerId;
+    let movePlatformId;
     let isJumping = true;
     let isGoingLeft = false;
     let isGoingRight = false;
@@ -114,21 +114,20 @@ $(document).ready(function () {
                 {
                     // console.log('jump');
                     jump();
-                    jumpPoint = rexBottomSpace;
+                    jumpStart = rexBottomSpace;
                     currentPlat = i
 
                     if (startPlat < currentPlat){
                         if (!isMoving){
                             // console.log('scrolling')
-                            jumpTimerId = setInterval(movePlatforms, 30)
+                            movePlatformId = setInterval(movePlatforms, 30)
                             isMoving = true;
+                            startPlat = currentPlat;
                         }  
                     } else{
-                        clearInterval(jumpTimerId);
+                        clearInterval(movePlatformId);
                         isMoving = false;
                     }
-                    startPlat = currentPlat;
-                    
                 }
             })
         }, 30)
@@ -140,7 +139,7 @@ $(document).ready(function () {
         upTimerId = setInterval(function(){
             rexBottomSpace += 1;
             rex.css('bottom', rexBottomSpace + 'vw');
-            if (rexBottomSpace > jumpPoint + jumpHeight){
+            if (rexBottomSpace > jumpStart + jumpHeight){
                 fall();
             }
         },30 )
