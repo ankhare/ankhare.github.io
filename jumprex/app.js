@@ -62,7 +62,7 @@ $(document).ready(function () {
                 let visual = platform.visual;
                 visual.css('bottom', platform.bottom + 'vw');
 
-                if (platform.bottom < 0){
+                if (platform.bottom < 0 - 2){ //platform height
                     let firstPlatform = platforms[0].visual;
                     firstPlatform.removeClass('platform');
                     platforms.shift();
@@ -120,13 +120,13 @@ $(document).ready(function () {
                         // console.log('scrolling 10ms');
                         clearInterval(movePlatformId);
                         movePlatformId = setInterval(movePlatforms, 10)
-                        jumpHeight = 15;
+                        // jumpHeight = 10; // change based on proximity to top (?)
                         isMoving = true; //not rllt in use rn can remove if utility not found
                     } else if (startPlat != currentPlat){ // can also do if below screen on certain part and current greater than start
                         // console.log('scrolling')
                         clearInterval(movePlatformId);
                         movePlatformId = setInterval(movePlatforms, 20)
-                        jumpHeight = 20;
+                        // jumpHeight = 20;
                         // console.log('scrolling 30ms');
                         isMoving = true;  
                     } else{
