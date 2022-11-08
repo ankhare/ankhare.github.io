@@ -93,7 +93,6 @@ $(document).ready(function () {
         $('#r').prop('disabled', true);
     }
 
-
     function fall(){
         // console.log('falling')
         isJumping = false;

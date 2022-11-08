@@ -74,7 +74,7 @@ body{
     font-family: 'Bungee', sans-serif;
     font-size: 3vw;
     background-color: #dcab43;
-    border: 5px outset #dcab43;
+    border: 5px outset #c58b0f;
     color: black;
     border-radius: 20px;
     height: 8vw;
@@ -85,7 +85,7 @@ body{
     border: 5px inset black;
 }
 
-.key:focus, .key:active:not([disabled]){
+.key:active:not([disabled]){
     background-color: #c58b0f;
     border: 5px inset #dcab43;
 }
