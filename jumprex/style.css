@@ -6,6 +6,9 @@
 body{
     font-family: 'Bungee', sans-serif;
     touch-action:manipulation;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .container-fluid{
     display: flex;
@@ -79,9 +82,6 @@ body{
     border-radius: 20px;
     height: 8vw;
     width: 32vw;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
 /* .key:hover:not([disabled]){
