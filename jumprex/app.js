@@ -8,7 +8,7 @@ $(document).ready(function () {
     let isGameOver = false;
     let platCount = 10;
     let platforms = [];
-    let jumpHeight = 15;
+    let jumpHeight = 25;
     let upTimerId;
     let downTimerId;
     let leftTimerId;
@@ -87,7 +87,7 @@ $(document).ready(function () {
         rex.addClass('blink')
         setTimeout(()=>{
             grid.empty();
-            grid.html(`<div class="result">Score: ${score}</div>`)
+            grid.html(`<div class="result">Score: ${score/10}</div>`)
         }, 1000)
         
         clearInterval(upTimerId);
@@ -104,7 +104,7 @@ $(document).ready(function () {
         isJumping = false;
         clearInterval(upTimerId);
         downTimerId = setInterval(function(){
-            rexBottomSpace -= 1.2;
+            rexBottomSpace -= 1;
             rex.css('bottom', rexBottomSpace + 'vw');
             if (rexBottomSpace <= 0){
                 gameOver();
@@ -114,7 +114,7 @@ $(document).ready(function () {
             if ( !isJumping && (rexBottomSpace >= platform.bottom) //if above platform
             && (rexBottomSpace <= platform.bottom + 2) //2 represents height of each platform
             && (rexLeftSpace + 8 >= platform.left) // 8 rex width
-            && (rexLeftSpace <= platform.left + 12)) //12 represents width of each platform
+            && (rexLeftSpace <= platform.left + 11)) //12 represents width of each platform
             {
                 // console.log('jump');
                 // jumpStart = rexBottomSpace;
@@ -122,14 +122,14 @@ $(document).ready(function () {
                 jump(startPlat, currentPlat);
                 if(startPlat != currentPlat ){
                     // clearInterval(movePlatformId);
-                    if (!platformsMoving && rexBottomSpace >= 35){
+                    if (!platformsMoving && rexBottomSpace >= 25){
                         platformsMoving = true;
                         const target = startPlat.latest;
                         // console.log(target + "target")
                         movePlatformId = setInterval(() => {
                             movePlatforms();
                             if (currentPlat.bottom <= target){
-                                console.log(currentPlat.bottom + "stopped")
+                                // console.log(currentPlat.bottom + "stopped")
                                 clearInterval(movePlatformId);
                                 platformsMoving = false;
                             }
@@ -160,11 +160,13 @@ $(document).ready(function () {
         // console.log('jumping')
         isJumping = true;
         clearInterval(downTimerId);
-        const jumpStart = currentPlat.latest;
+        const jumpStart =  startPlat.latest;
+        // const jumpStop = startPlat.latest;
         upTimerId = setInterval(function(){
-            rexBottomSpace += .8;
+            rexBottomSpace += .6;
             rex.css('bottom', rexBottomSpace + 'vw');
-            if (rexBottomSpace > jumpHeight + jumpStart){
+
+            if (rexBottomSpace  + 8 > jumpHeight + jumpStart){
                 fall();
             }
         }, 30 ) 
@@ -193,7 +195,7 @@ $(document).ready(function () {
         isGoingLeft = true;
         if (rexLeftSpace >= 0){
                 rex.css('background-image','url("left-rex.png")');
-                rexLeftSpace -= 1;
+                rexLeftSpace -= .6;
                 rex.css('left', rexLeftSpace + 'vw');
         } else{
             rex.css('left', 60 - 8 + 'vw'); // 8 is width of rex
@@ -224,7 +226,7 @@ $(document).ready(function () {
         isGoingRight = true;
         if (rexLeftSpace <= 60 - 8){ //acount for width of rex
                 rex.css('background-image','url("right-rex.png")');
-                rexLeftSpace += 1;
+                rexLeftSpace += .6;
                 rex.css('left', rexLeftSpace + 'vw');
         } else{
                 rex.css('left', 0 + 'vw');
