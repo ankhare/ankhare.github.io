@@ -20,6 +20,8 @@ $(document).ready(function () {
     let startPlat;
     let currentPlat;
     let platformsMoving = false
+    let lmousedown = false;
+    let rmousedown = false;
 
     function createRex(){
         rex.addClass('rex');
@@ -149,7 +151,7 @@ $(document).ready(function () {
                 startPlat = currentPlat;
             }
         })
-        }, 30)
+        }, 20)
     }
     function jump(startPlat, currentPlat){
         // console.log('jumping')
@@ -171,19 +173,7 @@ $(document).ready(function () {
             if (rexBottomSpace  + 8 > jumpHeight + jumpStart){
                 fall();
             }
-        }, 30 ) 
-
-        // const target = startPlat.latest;
-        // if (startPlat != currentPlat){
-        //     movePlatformId = setInterval(() => {
-        //         movePlatforms();
-        //         if (stop.bottom >= target){
-        //         clearInterval(movePlatformId);
-        //         }
-        //     }, 30);
-        // }else{
-        //     clearInterval(movePlatformId) 
-        // }
+        }, 20 ) 
     }
 
     function moveLeft(){
@@ -245,13 +235,6 @@ $(document).ready(function () {
         // },30)
     }
 
-    // function moveStraight(){
-    //     isGoingLeft = false;
-    //     isGoingRight = false;
-    //     // clearInterval(leftTimerId)
-    //     // clearInterval(rightTimerId);
-    // }
-
 
     function control(e){
         if (e.key === "ArrowLeft"){
@@ -259,9 +242,6 @@ $(document).ready(function () {
         } else if(e.key === "ArrowRight"){
             moveRight();
         }
-        //else if (e.key === "ArrowUp"){
-        //     moveStraight();
-        // }
     }
 
     function start(){
@@ -272,10 +252,28 @@ $(document).ready(function () {
             jump(platforms[0], platforms[0]); 
         }
 
-        document.addEventListener('keydown', control);
+        document.addEventListener('keydown', (e)  => {
+            if (e.key === 'ArrowLeft'){
+                if (!lmousedown){
+                    $('#l').mousedown();
+                }
+            } else if(e.key === 'ArrowRight'){
+                if(!rmousedown){
+                    $('#r').mousedown();
+                }
+            } 
+        })
 
+        document.addEventListener('keyup', (e)  => {
+            if (e.key=== 'ArrowLeft'){
+                $('#l').mouseup();
+            } else if(e.key === 'ArrowRight'){
+                $('#r').mouseup();
+            } 
+        })
         $('#l').on('touchstart mousedown', function leftStart(e) {
             e.preventDefault();
+            lmousedown = true;
             clearInterval(rightTimerId);
             leftTimerId = setInterval(function () {
                 moveLeft();
@@ -284,6 +282,7 @@ $(document).ready(function () {
 
         $('#l').on('touchend mouseup', function leftEnd(e) {
             e.preventDefault();
+            lmousedown = false;
             clearInterval(leftTimerId);
          });
 
@@ -293,6 +292,7 @@ $(document).ready(function () {
 
         $('#r').on('touchstart mousedown', function rightStart(e) {
             e.preventDefault();
+            rmousedown = true;
             clearInterval(leftTimerId);
             rightTimerId = setInterval(function () {
                 moveRight();
@@ -301,6 +301,7 @@ $(document).ready(function () {
 
         $('#r').on('touchend mouseup', function rightEnd(e) {
             e.preventDefault();
+            rmousedown = false;
             clearInterval(rightTimerId);
          });
     }
