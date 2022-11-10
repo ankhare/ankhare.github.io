@@ -7,8 +7,8 @@ $(document).ready(function () {
     let isGameOver = false;
     let platCount = 10;
     let platforms = [];
-    // let jumpHeight = (85 / platCount) * 3;
-    let jumpHeight = 25;
+    let jumpHeight = (85 / platCount) * 3;
+    // let jumpHeight = 25;
     let upTimerId;
     let downTimerId;
     let leftTimerId;
@@ -156,22 +156,22 @@ $(document).ready(function () {
         }, 20)
     }
     function jump(startPlat, currentPlat){
-        // console.log('jumping')
         isJumping = true;
         clearInterval(downTimerId);
-        let jumpStart;
-        if (startPlat.latest < currentPlat.latest){
-            jumpStart =  startPlat.latest;
-        }
-        else{
-            jumpStart =  currentPlat.latest;
-        }
+        let jumpStart = startPlat.bottom;
+        // if (startPlat.bottom > currentPlat.bottom){
+        //     jumpStart =  currentPlat.bottom;
+        // } else {
+        //     jumpStart =  startPlat.bottom;
+        // }
+        // else{
+        //     jumpStart =  currentPlat.bottom;
+        //     console.log('falling at stop plat\'s height');
+        // }
         
-        // const jumpStop = startPlat.latest;
         upTimerId = setInterval(function(){
             rexBottomSpace += .6;
             rex.css('bottom', rexBottomSpace + 'vw');
-
             if (rexBottomSpace  + 8 > jumpHeight + jumpStart){
                 fall();
             }
