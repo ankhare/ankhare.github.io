@@ -2,6 +2,7 @@
 $(document).ready(function () {
     const grid = $('.grid');
     const rex = $(document.createElement('div'));
+
     let rexLeftSpace;
     let rexBottomSpace;
     let isGameOver = false;
@@ -14,8 +15,6 @@ $(document).ready(function () {
     let rightTimerId;
     let movePlatformId;
     let isJumping = true;
-    let isGoingLeft = false;
-    let isGoingRight = false;
     let score = 0;
     let startPlat;
     let currentPlat;
@@ -36,7 +35,7 @@ $(document).ready(function () {
     class Platform{
         constructor(newPlatBottom){
             this.bottom = newPlatBottom;
-            this.left = Math.random() * 48; // screen width - plat width
+            this.left = Math.random() * 68; // screen width - plat width
             this.visual = $(document.createElement('div'));
             const visual = this.visual;
 
@@ -114,10 +113,9 @@ $(document).ready(function () {
             if ( !isJumping && (rexBottomSpace >= platform.bottom) //if above platform
             && (rexBottomSpace <= platform.bottom + 2) //2 represents height of each platform
             && (rexLeftSpace + 7 >= platform.left) // 8 rex width
-            && (rexLeftSpace <= platform.left + 10)) //12 represents width of each platform
+            && (rexLeftSpace <= platform.left + 16)) //12 represents width of each platform
             {
                 // console.log('jump');
-                // jumpStart = rexBottomSpace;
                 currentPlat = platforms[i];
                 jump(startPlat, currentPlat);
                 if(startPlat != currentPlat ){
@@ -176,62 +174,23 @@ $(document).ready(function () {
     }
 
     function moveLeft(){
-        if (isGoingRight){
-            // clearInterval(rightTimerId);
-            isGoingRight = false;
-        }
-        // if (isGoingLeft){
-        //     return;
-        // }
-        isGoingLeft = true;
         if (rexLeftSpace >= 0){
-                rex.css('background-image','url("left-rex.png")');
                 rexLeftSpace -= .6;
                 rex.css('left', rexLeftSpace + 'vw');
         } else{
-            rex.css('left', 60 - 8 + 'vw'); // 8 is width of rex
-            rexLeftSpace = 60 - 8;
+            rex.css('left', 80 - 8 + 'vw'); // 8 is width of rex
+            rexLeftSpace = 80 - 8;
         }
-
-        // leftTimerId = setInterval(function(){
-        //     if (rexLeftSpace >= 0){
-        //         rexLeftSpace -= .4;
-        //         rex.css('left', rexLeftSpace + 'vw');
-        //     } else {
-        //         clearInterval(leftTimerId);
-        //         isGoingLeft = false;
-        //     }
-        // },30)
     }
 
     function moveRight(){
-        if (isGoingLeft){
-            // clearInterval(leftTimerId);
-            isGoingLeft = false;
-        }
-
-        // if (isGoingRight){
-        //     return;
-        // }
-
-        isGoingRight = true;
-        if (rexLeftSpace <= 60 - 8){ //acount for width of rex
-                rex.css('background-image','url("right-rex.png")');
+        if (rexLeftSpace <= 80 - 8){ //acount for width of rex
                 rexLeftSpace += .6;
                 rex.css('left', rexLeftSpace + 'vw');
         } else{
                 rex.css('left', 0 + 'vw');
                 rexLeftSpace = 0;
         }
-        // rightTimerId = setInterval(function(){
-        //     if (rexLeftSpace <= 60 - 8){ //acount for width of rex
-        //         rexLeftSpace += .4;
-        //         rex.css('left', rexLeftSpace + 'vw');
-        //     } else{
-        //         clearInterval(rightTimerId)
-        //         isGoingRight = false;
-        //     }
-        // },30)
     }
 
     function start(){
@@ -265,6 +224,7 @@ $(document).ready(function () {
         $('#l').on('touchstart mousedown', function leftStart(e) {
             e.preventDefault();
             lmousedown = true;
+            rex.css('background-image','url("left-rex.png")');
             clearInterval(rightTimerId);
             leftTimerId = setInterval(function () {
                 moveLeft();
@@ -280,6 +240,7 @@ $(document).ready(function () {
         $('#r').on('touchstart mousedown', function rightStart(e) {
             e.preventDefault();
             rmousedown = true;
+            rex.css('background-image','url("right-rex.png")');
             clearInterval(leftTimerId);
             rightTimerId = setInterval(function () {
                 moveRight();
