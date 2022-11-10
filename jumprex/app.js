@@ -3,12 +3,12 @@ $(document).ready(function () {
     const grid = $('.grid');
     const rex = $(document.createElement('div'));
     let rexLeftSpace;
-    let jumpStart = 5;
-    let rexBottomSpace = jumpStart;
+    let jumpStart = 10;
+    let rexBottomSpace;
     let isGameOver = false;
-    let platCount = 8;
+    let platCount = 10;
     let platforms = [];
-    let jumpHeight = 20;
+    let jumpHeight = 15;
     let upTimerId;
     let downTimerId;
     let leftTimerId;
@@ -17,24 +17,25 @@ $(document).ready(function () {
     let isJumping = true;
     let isGoingLeft = false;
     let isGoingRight = false;
-    let isMoving = false;
     let score = 0;
     let startPlat;
     let currentPlat;
+    let platformsMoving = false
 
     function createRex(){
         rex.addClass('rex');
         grid.append(rex);
         startPlat = platforms[0];
+        rexBottomSpace = platforms[0].bottom + 2
         rexLeftSpace = platforms[0].left;
         rex.css('left', platforms[0].left + 'vw');
-        rex.css('bottom', rexBottomSpace + 'vw');
+        rex.css('bottom', platforms[0].bottom + 2 + 'vw'); // account for platform height
     }
 
     class Platform{
         constructor(newPlatBottom){
             this.bottom = newPlatBottom;
-            this.left = Math.random() * 40;
+            this.left = Math.random() * 48; // screen width - plat width
             this.visual = $(document.createElement('div'));
             const visual = this.visual;
 
@@ -43,12 +44,16 @@ $(document).ready(function () {
             visual.css('bottom', this.bottom + 'vw');
             grid.append(visual);
         }
+
+        get latest() {
+            return this.bottom;
+        }
     }
 
     function createPlatforms(){
         for(let i=0; i < platCount; i++){
             let gridHeight = grid.height();
-            let platGap = 90 / platCount;
+            let platGap = 85 / platCount; // grid height
             let newPlatBottom = 10 + i * platGap;
             let newPlaform = new Platform(newPlatBottom);
             platforms.push(newPlaform);
@@ -58,9 +63,11 @@ $(document).ready(function () {
     function movePlatforms(){
         if(rexBottomSpace > 2){
             platforms.forEach(platform => {
-                platform.bottom -= .2;
+                platform.bottom -= 1.4;
                 let visual = platform.visual;
                 visual.css('bottom', platform.bottom + 'vw');
+                score++;
+                $('#score').html(`${score/10}`);
 
                 if (platform.bottom < 0 - 2){ //platform height
                     let firstPlatform = platforms[0].visual;
@@ -69,7 +76,6 @@ $(document).ready(function () {
                     // console.log(platforms);
                     let newPlaform = new Platform(90); // at top of grid
                     platforms.push(newPlaform);
-                    score++;
                 }
             })
         }
@@ -98,58 +104,82 @@ $(document).ready(function () {
         isJumping = false;
         clearInterval(upTimerId);
         downTimerId = setInterval(function(){
-            rexBottomSpace -= .8;
+            rexBottomSpace -= 1.2;
             rex.css('bottom', rexBottomSpace + 'vw');
             if (rexBottomSpace <= 0){
                 gameOver();
             }
 
-            platforms.forEach((platform, i)  => {
-                if ( !isJumping && (rexBottomSpace >= platform.bottom) //if above platform
-                && (rexBottomSpace <= platform.bottom + 2) //2 represents height of each platform
-                && (rexLeftSpace + 8 >= platform.left) // 8 rex width
-                && (rexLeftSpace <= platform.left + 10)) //10 represents height of each platform
-                {
-                    // console.log('jump');
-                    jump();
-                    jumpStart = rexBottomSpace;
-                    currentPlat = platforms[i];
-
-                    
-                    if(rexBottomSpace >= 60){// at top of screen{
-                        // console.log('scrolling 10ms');
-                        clearInterval(movePlatformId);
-                        movePlatformId = setInterval(movePlatforms, 10)
-                        // jumpHeight = 10; // change based on proximity to top (?)
-                        isMoving = true; //not rllt in use rn can remove if utility not found
-                    } else if (startPlat != currentPlat){ // can also do if below screen on certain part and current greater than start
-                        // console.log('scrolling')
-                        clearInterval(movePlatformId);
-                        movePlatformId = setInterval(movePlatforms, 20)
-                        // jumpHeight = 20;
-                        // console.log('scrolling 30ms');
-                        isMoving = true;  
-                    } else{
-                        clearInterval(movePlatformId);
-                        isMoving = false;
+        platforms.forEach((platform, i)  => {
+            if ( !isJumping && (rexBottomSpace >= platform.bottom) //if above platform
+            && (rexBottomSpace <= platform.bottom + 2) //2 represents height of each platform
+            && (rexLeftSpace + 8 >= platform.left) // 8 rex width
+            && (rexLeftSpace <= platform.left + 12)) //12 represents width of each platform
+            {
+                // console.log('jump');
+                // jumpStart = rexBottomSpace;
+                currentPlat = platforms[i];
+                jump(startPlat, currentPlat);
+                if(startPlat != currentPlat ){
+                    // clearInterval(movePlatformId);
+                    if (!platformsMoving && rexBottomSpace >= 35){
+                        platformsMoving = true;
+                        const target = startPlat.latest;
+                        // console.log(target + "target")
+                        movePlatformId = setInterval(() => {
+                            movePlatforms();
+                            if (currentPlat.bottom <= target){
+                                console.log(currentPlat.bottom + "stopped")
+                                clearInterval(movePlatformId);
+                                platformsMoving = false;
+                            }
+                        }, 30);
                     }
-                    startPlat = currentPlat;
+                    else if(!platformsMoving){
+                       let counter = 4;
+                        movePlatformId = setInterval(() => {
+                            movePlatforms();
+                            if (counter == 0){
+                                clearInterval(movePlatformId);
+                                platformsMoving = false;
+                            }
+                            counter --
+                        }, 30);
+                    }
                 }
-            })
-        }, 20)
+                // } else{
+                //     clearInterval(movePlatformId)
+                //     platformsMoving = false
+                // }
+                startPlat = currentPlat;
+            }
+        })
+        }, 30)
     }
-    function jump(){
+    function jump(startPlat, currentPlat){
         // console.log('jumping')
         isJumping = true;
         clearInterval(downTimerId);
+        const jumpStart = currentPlat.latest;
         upTimerId = setInterval(function(){
             rexBottomSpace += .8;
             rex.css('bottom', rexBottomSpace + 'vw');
-            if (rexBottomSpace > jumpStart + jumpHeight){
+            if (rexBottomSpace > jumpHeight + jumpStart){
                 fall();
             }
-        },20 )
-        
+        }, 30 ) 
+
+        // const target = startPlat.latest;
+        // if (startPlat != currentPlat){
+        //     movePlatformId = setInterval(() => {
+        //         movePlatforms();
+        //         if (stop.bottom >= target){
+        //         clearInterval(movePlatformId);
+        //         }
+        //     }, 30);
+        // }else{
+        //     clearInterval(movePlatformId) 
+        // }
     }
 
     function moveLeft(){
@@ -162,8 +192,12 @@ $(document).ready(function () {
         // }
         isGoingLeft = true;
         if (rexLeftSpace >= 0){
-                rexLeftSpace -= .8;
+                rex.css('background-image','url("left-rex.png")');
+                rexLeftSpace -= 1;
                 rex.css('left', rexLeftSpace + 'vw');
+        } else{
+            rex.css('left', 60 - 8 + 'vw'); // 8 is width of rex
+            rexLeftSpace = 60 - 8;
         }
 
         // leftTimerId = setInterval(function(){
@@ -174,7 +208,7 @@ $(document).ready(function () {
         //         clearInterval(leftTimerId);
         //         isGoingLeft = false;
         //     }
-        // },20)
+        // },30)
     }
 
     function moveRight(){
@@ -189,8 +223,12 @@ $(document).ready(function () {
 
         isGoingRight = true;
         if (rexLeftSpace <= 60 - 8){ //acount for width of rex
-                rexLeftSpace += .8;
+                rex.css('background-image','url("right-rex.png")');
+                rexLeftSpace += 1;
                 rex.css('left', rexLeftSpace + 'vw');
+        } else{
+                rex.css('left', 0 + 'vw');
+                rexLeftSpace = 0;
         }
         // rightTimerId = setInterval(function(){
         //     if (rexLeftSpace <= 60 - 8){ //acount for width of rex
@@ -200,7 +238,7 @@ $(document).ready(function () {
         //         clearInterval(rightTimerId)
         //         isGoingRight = false;
         //     }
-        // },20)
+        // },30)
     }
 
     // function moveStraight(){
@@ -227,7 +265,7 @@ $(document).ready(function () {
             createPlatforms();
             createRex();
             // setInterval(movePlatforms, 30);
-            jump(); 
+            jump(platforms[0], platforms[0]); 
         }
 
         document.addEventListener('keydown', control);
@@ -237,7 +275,7 @@ $(document).ready(function () {
             clearInterval(rightTimerId);
             leftTimerId = setInterval(function () {
                 moveLeft();
-            }, 20);
+            }, 30);
         });
 
         $('#l').on('touchend mouseup', function(e) {
@@ -254,16 +292,13 @@ $(document).ready(function () {
             clearInterval(leftTimerId);
             rightTimerId = setInterval(function () {
                 moveRight();
-            }, 20);
+            }, 30);
         });
 
         $('#r').on('touchend mouseup', function(e) {
             e.preventDefault();
             clearInterval(rightTimerId);
          });
-
-
-
     }
     //attach to button
     start();
