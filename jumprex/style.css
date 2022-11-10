@@ -1,6 +1,8 @@
 :root{
     --lg: rgb(72, 83, 87);
-    --lb: rgb(202, 221, 238);
+    --lb: rgb(191, 215, 238);
+    --lt:  rgb(215, 171, 89);
+    --dt: rgb(199, 143, 59);
 }
 
 body{
@@ -75,7 +77,7 @@ body{
     z-index: 2;
     display: flex;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.615);
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 #score{
@@ -84,10 +86,10 @@ body{
 .key{
     font-family: 'Bungee', sans-serif;
     font-size: 3vw;
-    background-color: #dcab43;
-    border: 5px outset #c58b0f;
+    background-color: var(--lt);
+    border: 5px outset var(--dt);
     color: black;
-    border-radius: 20px;
+    border-radius: 5vw;
     height: 8vw;
     width: 32vw;
 }
@@ -97,8 +99,8 @@ body{
 } */
 
 .key:active:not([disabled]){
-    background-color: #c58b0f;
-    border: 5px inset #dcab43;
+    background-color: var(--dt);
+    border: 5px inset var(--lt);
 }
 
 .result{

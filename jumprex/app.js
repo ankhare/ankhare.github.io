@@ -3,7 +3,6 @@ $(document).ready(function () {
     const grid = $('.grid');
     const rex = $(document.createElement('div'));
     let rexLeftSpace;
-    let jumpStart = 10;
     let rexBottomSpace;
     let isGameOver = false;
     let platCount = 10;
@@ -114,7 +113,7 @@ $(document).ready(function () {
             if ( !isJumping && (rexBottomSpace >= platform.bottom) //if above platform
             && (rexBottomSpace <= platform.bottom + 2) //2 represents height of each platform
             && (rexLeftSpace + 8 >= platform.left) // 8 rex width
-            && (rexLeftSpace <= platform.left + 11)) //12 represents width of each platform
+            && (rexLeftSpace <= platform.left + 10)) //12 represents width of each platform
             {
                 // console.log('jump');
                 // jumpStart = rexBottomSpace;
@@ -156,7 +155,14 @@ $(document).ready(function () {
         // console.log('jumping')
         isJumping = true;
         clearInterval(downTimerId);
-        const jumpStart =  startPlat.latest;
+        let jumpStart;
+        if (startPlat.latest < currentPlat.latest){
+            jumpStart =  startPlat.latest;
+        }
+        else{
+            jumpStart =  currentPlat.latest;
+        }
+        
         // const jumpStop = startPlat.latest;
         upTimerId = setInterval(function(){
             rexBottomSpace += .6;
@@ -268,7 +274,7 @@ $(document).ready(function () {
 
         document.addEventListener('keydown', control);
 
-        $('#l').on('touchstart mousedown', function(e) {
+        $('#l').on('touchstart mousedown', function leftStart(e) {
             e.preventDefault();
             clearInterval(rightTimerId);
             leftTimerId = setInterval(function () {
@@ -276,7 +282,7 @@ $(document).ready(function () {
             }, 20);
         });
 
-        $('#l').on('touchend mouseup', function(e) {
+        $('#l').on('touchend mouseup', function leftEnd(e) {
             e.preventDefault();
             clearInterval(leftTimerId);
          });
@@ -285,7 +291,7 @@ $(document).ready(function () {
         //     moveStraight();
         // });
 
-        $('#r').on('touchstart mousedown', function(e) {
+        $('#r').on('touchstart mousedown', function rightStart(e) {
             e.preventDefault();
             clearInterval(leftTimerId);
             rightTimerId = setInterval(function () {
@@ -293,7 +299,7 @@ $(document).ready(function () {
             }, 20);
         });
 
-        $('#r').on('touchend mouseup', function(e) {
+        $('#r').on('touchend mouseup', function rightEnd(e) {
             e.preventDefault();
             clearInterval(rightTimerId);
          });
