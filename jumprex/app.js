@@ -122,7 +122,7 @@ $(document).ready(function () {
                 jump(startPlat, currentPlat);
                 if(startPlat != currentPlat ){
                     // clearInterval(movePlatformId);
-                    if (!platformsMoving && rexBottomSpace >= 25){
+                    if (!platformsMoving && rexBottomSpace >= 45){
                         platformsMoving = true;
                         const target = startPlat.latest;
                         // console.log(target + "target")
@@ -147,10 +147,6 @@ $(document).ready(function () {
                         }, 30);
                     }
                 }
-                // } else{
-                //     clearInterval(movePlatformId)
-                //     platformsMoving = false
-                // }
                 startPlat = currentPlat;
             }
         })
@@ -277,7 +273,7 @@ $(document).ready(function () {
             clearInterval(rightTimerId);
             leftTimerId = setInterval(function () {
                 moveLeft();
-            }, 30);
+            }, 20);
         });
 
         $('#l').on('touchend mouseup', function(e) {
@@ -294,7 +290,7 @@ $(document).ready(function () {
             clearInterval(leftTimerId);
             rightTimerId = setInterval(function () {
                 moveRight();
-            }, 30);
+            }, 20);
         });
 
         $('#r').on('touchend mouseup', function(e) {
