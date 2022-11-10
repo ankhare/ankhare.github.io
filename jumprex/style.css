@@ -110,10 +110,8 @@ body{
 }
 
 .key:active:not([disabled]){
-    /* background-color: var(--dt);*/
-    border: 5px inset var(--dt);
-    background-color: black;
-    color: white;
+    background-color: var(--dt);
+    border: 5px inset var(--lt);
 }
 
 .result{
