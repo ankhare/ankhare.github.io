@@ -89,8 +89,7 @@ $(document).ready(function () {
             grid.empty();
             grid.html(`<div class="result">Score: ${score/10} </div>
             <div class="container-fluid">
-                <button type="button" id="restart" class="key">restart</button>
-            </div>`);
+             <button type="button" id="restart" class="key">restart</button>`);
             $('#restart').click(()=>{
                 location.reload()
             })
