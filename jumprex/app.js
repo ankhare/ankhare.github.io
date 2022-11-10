@@ -2,12 +2,12 @@
 $(document).ready(function () {
     const grid = $('.grid');
     const rex = $(document.createElement('div'));
-
     let rexLeftSpace;
     let rexBottomSpace;
     let isGameOver = false;
     let platCount = 10;
     let platforms = [];
+    // let jumpHeight = (85 / platCount) * 3;
     let jumpHeight = 25;
     let upTimerId;
     let downTimerId;
@@ -87,7 +87,13 @@ $(document).ready(function () {
         rex.addClass('blink')
         setTimeout(()=>{
             grid.empty();
-            grid.html(`<div class="result">Score: ${score/10}</div>`)
+            grid.html(`<div class="result">Score: ${score/10} </div>
+            <div class="container-fluid">
+                <button type="button" id="restart" class="key">restart</button>
+            </div>`);
+            $('#restart').click(()=>{
+                location.reload()
+            })
         }, 1000)
         
         clearInterval(upTimerId);

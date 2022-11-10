@@ -22,8 +22,6 @@ body{
 
 .grid{
     margin: auto;
-    /* min-width: 300px; */
-    /* min-height: 600px; */
     width: 80vw;
     height: 85vw;
     background-color: var(--lb);
@@ -36,8 +34,6 @@ body{
 .rex{
     width: 8vw;
     height: 8vw;
-    /* min-width: 30px;
-    min-height: 40px; */
     /* background-color: aliceblue; */
     background-image: url("left-rex.png");
     background-size: contain;
@@ -86,10 +82,16 @@ body{
 }
 
 #start{
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 25%;
     z-index: 4;
+    color:black;
+    font-size: 3vw;
+}
+
+#restart{
+    margin-top: 10vw;
 }
 
 #start:hover{
@@ -99,14 +101,14 @@ body{
 
 .key{
     font-family: 'Bungee', sans-serif;
-    font-size: 3vw;
     background-color: var(--lt);
     border: 5px outset var(--dt);
-    color: black;
+    color: white;
     border-radius: 5vw;
     height: 8vw;
     width: 40vw;
     margin: auto;
+    font-size: 3.5vw;
 }
 
 .key:active:not([disabled]){
