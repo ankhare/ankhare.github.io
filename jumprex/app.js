@@ -96,7 +96,6 @@ $(document).ready(function () {
         clearInterval(leftTimerId);
         clearInterval(rightTimerId); 
         $('#l').prop('disabled', true);
-        $('#u').prop('disabled', true);
         $('#r').prop('disabled', true);
     }
 
@@ -114,7 +113,7 @@ $(document).ready(function () {
         platforms.forEach((platform, i)  => {
             if ( !isJumping && (rexBottomSpace >= platform.bottom) //if above platform
             && (rexBottomSpace <= platform.bottom + 2) //2 represents height of each platform
-            && (rexLeftSpace + 8 >= platform.left) // 8 rex width
+            && (rexLeftSpace + 7 >= platform.left) // 8 rex width
             && (rexLeftSpace <= platform.left + 10)) //12 represents width of each platform
             {
                 // console.log('jump');
@@ -123,7 +122,7 @@ $(document).ready(function () {
                 jump(startPlat, currentPlat);
                 if(startPlat != currentPlat ){
                     // clearInterval(movePlatformId);
-                    if (!platformsMoving && rexBottomSpace >= 45){
+                    if (!platformsMoving && rexBottomSpace >= 35){
                         platformsMoving = true;
                         const target = startPlat.latest;
                         // console.log(target + "target")
@@ -145,7 +144,7 @@ $(document).ready(function () {
                                 platformsMoving = false;
                             }
                             counter --
-                        }, 30);
+                        }, 20);
                     }
                 }
                 startPlat = currentPlat;
@@ -235,21 +234,13 @@ $(document).ready(function () {
         // },30)
     }
 
-
-    function control(e){
-        if (e.key === "ArrowLeft"){
-            moveLeft();
-        } else if(e.key === "ArrowRight"){
-            moveRight();
-        }
-    }
-
     function start(){
         if (!isGameOver){
             createPlatforms();
             createRex();
-            // setInterval(movePlatforms, 30);
             jump(platforms[0], platforms[0]); 
+            $('#l').prop('disabled', false);
+        $('#r').prop('disabled', false);
         }
 
         document.addEventListener('keydown', (e)  => {
@@ -284,11 +275,7 @@ $(document).ready(function () {
             e.preventDefault();
             lmousedown = false;
             clearInterval(leftTimerId);
-         });
-
-        // $('#u').click(function(){
-        //     moveStraight();
-        // });
+        });
 
         $('#r').on('touchstart mousedown', function rightStart(e) {
             e.preventDefault();
@@ -305,9 +292,12 @@ $(document).ready(function () {
             clearInterval(rightTimerId);
          });
     }
-    //attach to button
-    start();
-    
+
+    $('#start').click(()=>{
+        $('#start').remove();
+        start(); 
+    })
 })
+
     
 

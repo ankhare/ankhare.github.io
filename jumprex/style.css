@@ -38,8 +38,9 @@ body{
     height: 8vw;
     /* min-width: 30px;
     min-height: 40px; */
+    /* background-color: aliceblue; */
     background-image: url("left-rex.png");
-    background-size: contain;
+    background-size: cover;
     position: absolute;
     z-index: 1;
 }
@@ -83,6 +84,19 @@ body{
 #score{
     margin-left: 2vw;
 }
+
+#start{
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    z-index: 4;
+}
+
+#start:hover{
+    background-color: var(--dt);
+    border: 5px inset var(--lt);
+}
+
 .key{
     font-family: 'Bungee', sans-serif;
     font-size: 3vw;
