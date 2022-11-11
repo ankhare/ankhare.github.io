@@ -81,28 +81,6 @@ $(document).ready(function () {
         }
     }
 
-    function gameOver(){
-        // console.log('gameOver')
-        isGameOver = true;
-        rex.addClass('blink')
-        setTimeout(()=>{
-            grid.empty();
-            grid.html(`<div class="result">Score: ${score/10} </div>
-            <div class="container-fluid">
-             <button type="button" id="restart" class="key">restart</button>`);
-            $('#restart').click(()=>{
-                location.reload()
-            })
-        }, 1000)
-        
-        clearInterval(upTimerId);
-        clearInterval(downTimerId);
-        clearInterval(leftTimerId);
-        clearInterval(rightTimerId); 
-        $('#l').prop('disabled', true);
-        $('#r').prop('disabled', true);
-    }
-
     function fall(){
         // console.log('falling')
         isJumping = false;
@@ -155,6 +133,7 @@ $(document).ready(function () {
         })
         }, 20)
     }
+
     function jump(startPlat, currentPlat){
         isJumping = true;
         clearInterval(downTimerId);
@@ -198,65 +177,93 @@ $(document).ready(function () {
         }
     }
 
+    function gameOver(){
+        // console.log('gameOver')
+        isGameOver = true;
+        rex.addClass('blink')
+        clearInterval(upTimerId);
+        clearInterval(downTimerId);
+        clearInterval(leftTimerId);
+        clearInterval(rightTimerId); 
+        clearInterval(movePlatformId);
+        platformsMoving = false
+        lmousedown = false;
+        rmousedown = false;
+
+        $('#l').prop('disabled', true);
+        $('#r').prop('disabled', true);
+
+        platforms = [];
+        setTimeout(()=>{
+            grid.empty();
+            grid.html(`<div class="result">Score: ${score/10} </div>
+            <div class="container-fluid">
+            <button type="button" id="restart" class="key">restart</button>`);
+            $('#restart').click(()=>{
+                location.reload()
+            })
+        }, 1000)
+    }
+
     function start(){
         if (!isGameOver){
             createPlatforms();
             createRex();
             jump(platforms[0], platforms[0]); 
             $('#l').prop('disabled', false);
-        $('#r').prop('disabled', false);
+            $('#r').prop('disabled', false);
+
+            document.addEventListener('keydown', (e)  => {
+                if (e.key === 'ArrowLeft'){
+                    if (!lmousedown){
+                        $('#l').mousedown();
+                    }
+                } else if(e.key === 'ArrowRight'){
+                    if(!rmousedown){
+                        $('#r').mousedown();
+                    }
+                } 
+            })
+    
+            document.addEventListener('keyup', (e)  => {
+                if (e.key=== 'ArrowLeft'){
+                    $('#l').mouseup();
+                } else if(e.key === 'ArrowRight'){
+                    $('#r').mouseup();
+                } 
+            })
+            $('#l').on('touchstart mousedown', function leftStart(e) {
+                e.preventDefault();
+                lmousedown = true;
+                rex.css('background-image','url("left-rex.png")');
+                clearInterval(rightTimerId);
+                leftTimerId = setInterval(function () {
+                    moveLeft();
+                }, 20);
+            });
+    
+            $('#l').on('touchend mouseup', function leftEnd(e) {
+                e.preventDefault();
+                lmousedown = false;
+                clearInterval(leftTimerId);
+            });
+    
+            $('#r').on('touchstart mousedown', function rightStart(e) {
+                e.preventDefault();
+                rmousedown = true;
+                rex.css('background-image','url("right-rex.png")');
+                clearInterval(leftTimerId);
+                rightTimerId = setInterval(function () {
+                    moveRight();
+                }, 20);
+            });
+    
+            $('#r').on('touchend mouseup', function rightEnd(e) {
+                e.preventDefault();
+                rmousedown = false;
+                clearInterval(rightTimerId);
+             });
         }
-
-        document.addEventListener('keydown', (e)  => {
-            if (e.key === 'ArrowLeft'){
-                if (!lmousedown){
-                    $('#l').mousedown();
-                }
-            } else if(e.key === 'ArrowRight'){
-                if(!rmousedown){
-                    $('#r').mousedown();
-                }
-            } 
-        })
-
-        document.addEventListener('keyup', (e)  => {
-            if (e.key=== 'ArrowLeft'){
-                $('#l').mouseup();
-            } else if(e.key === 'ArrowRight'){
-                $('#r').mouseup();
-            } 
-        })
-        $('#l').on('touchstart mousedown', function leftStart(e) {
-            e.preventDefault();
-            lmousedown = true;
-            rex.css('background-image','url("left-rex.png")');
-            clearInterval(rightTimerId);
-            leftTimerId = setInterval(function () {
-                moveLeft();
-            }, 20);
-        });
-
-        $('#l').on('touchend mouseup', function leftEnd(e) {
-            e.preventDefault();
-            lmousedown = false;
-            clearInterval(leftTimerId);
-        });
-
-        $('#r').on('touchstart mousedown', function rightStart(e) {
-            e.preventDefault();
-            rmousedown = true;
-            rex.css('background-image','url("right-rex.png")');
-            clearInterval(leftTimerId);
-            rightTimerId = setInterval(function () {
-                moveRight();
-            }, 20);
-        });
-
-        $('#r').on('touchend mouseup', function rightEnd(e) {
-            e.preventDefault();
-            rmousedown = false;
-            clearInterval(rightTimerId);
-         });
     }
 
     $('#start').click(()=>{
