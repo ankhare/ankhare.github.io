@@ -84,12 +84,30 @@ body{
 #qb{
     background-color: rgba(255, 255, 255, 0.7);
     color:var(--lb);
+    border: 5px solid var(--lb);
     position: absolute;
     top: 76vw;
     left: 2vw;
     padding: 1vw;
     font-family: 'Bungee', sans-serif;
     border-style: none;
+    border-radius: 15px;
+}
+
+.popover{
+    border: 2px solid var(--lg);
+    border-radius: 15px;     
+}
+
+.popover-body{
+    font-family: 'Bungee', sans-serif;
+}
+
+p{
+    font-family: Courier, monospace
+}
+
+#p1{
     border-radius: 15px;
 }
 
