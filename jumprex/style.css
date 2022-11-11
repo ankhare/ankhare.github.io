@@ -152,6 +152,11 @@ p{
     text-align: center;
 }
 
+#l{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
 .blink {
     animation: blinker .4s linear infinite;
   }
