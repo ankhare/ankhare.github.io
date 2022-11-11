@@ -1,5 +1,21 @@
 'use strict';
 $(document).ready(function () {
+    //enable bootstrap popover
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+    })
+    
+    $(function() {
+        $("[data-toggle=popover]").popover({
+            html: true,
+            content: function() {
+            var content = $(this).attr("data-popover-content");
+            return $(content).children(".popover-body").html();
+            }
+        });
+    });
+
     const grid = $('.grid');
     const rex = $(document.createElement('div'));
     let rexLeftSpace;
@@ -88,7 +104,7 @@ $(document).ready(function () {
         downTimerId = setInterval(function(){
             rexBottomSpace -= 1;
             rex.css('bottom', rexBottomSpace + 'vw');
-            if (rexBottomSpace <= 0){
+            if (rexBottomSpace < 0){
                 gameOver();
             }
 
