@@ -23,7 +23,7 @@ $(document).ready(function () {
     let isGameOver = false;
     let platCount = 10;
     let platforms = [];
-    let jumpHeight = (85 / platCount) * 3;
+    let jumpHeight = (85 / platCount) * 3.5;
     // let jumpHeight = 25;
     let upTimerId;
     let downTimerId;
@@ -119,7 +119,7 @@ $(document).ready(function () {
                 jump(startPlat, currentPlat);
                 if(startPlat != currentPlat ){
                     // clearInterval(movePlatformId);
-                    if (!platformsMoving && rexBottomSpace >= 35){
+                    if (!platformsMoving && rexBottomSpace >= 25){ // ~1/4th of grid height
                         platformsMoving = true;
                         const target = startPlat.latest;
                         // console.log(target + "target")
@@ -153,16 +153,14 @@ $(document).ready(function () {
     function jump(startPlat, currentPlat){
         isJumping = true;
         clearInterval(downTimerId);
-        let jumpStart = startPlat.bottom;
-        // if (startPlat.bottom > currentPlat.bottom){
-        //     jumpStart =  currentPlat.bottom;
-        // } else {
-        //     jumpStart =  startPlat.bottom;
-        // }
-        // else{
-        //     jumpStart =  currentPlat.bottom;
-        //     console.log('falling at stop plat\'s height');
-        // }
+        let jumpStart;
+        if (startPlat.latest === currentPlat.latest){
+            jumpStart =  startPlat.latest;
+        } else if(startPlat.latest >= currentPlat.latest){
+            jumpStart =  currentPlat.latest;
+        } else{
+            jumpStart =  currentPlat.latest - startPlat.latest;
+        }
         
         upTimerId = setInterval(function(){
             rexBottomSpace += .6;
