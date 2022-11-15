@@ -44,8 +44,8 @@ $(document).ready(function () {
         startPlat = platforms[0];
         rexBottomSpace = platforms[0].bottom + 2
         rexLeftSpace = platforms[0].left;
-        rex.css('left', platforms[0].left + 'vw');
-        rex.css('bottom', platforms[0].bottom + 2 + 'vw'); // account for platform height
+        rex.css('left', platforms[0].left + 'vmin');
+        rex.css('bottom', platforms[0].bottom + 2 + 'vmin'); // account for platform height
     }
 
     class Platform{
@@ -56,8 +56,8 @@ $(document).ready(function () {
             const visual = this.visual;
 
             visual.addClass('platform');
-            visual.css('left', this.left + 'vw');
-            visual.css('bottom', this.bottom + 'vw');
+            visual.css('left', this.left + 'vmin');
+            visual.css('bottom', this.bottom + 'vmin');
             grid.append(visual);
         }
 
@@ -81,7 +81,7 @@ $(document).ready(function () {
             platforms.forEach(platform => {
                 platform.bottom -= 1.4;
                 let visual = platform.visual;
-                visual.css('bottom', platform.bottom + 'vw');
+                visual.css('bottom', platform.bottom + 'vmin');
                 score++;
                 $('#score').html(`${score/10}`);
 
@@ -103,7 +103,7 @@ $(document).ready(function () {
         clearInterval(upTimerId);
         downTimerId = setInterval(function(){
             rexBottomSpace -= 1;
-            rex.css('bottom', rexBottomSpace + 'vw');
+            rex.css('bottom', rexBottomSpace + 'vmin');
             if (rexBottomSpace < 0){
                 gameOver();
             }
@@ -164,7 +164,7 @@ $(document).ready(function () {
         
         upTimerId = setInterval(function(){
             rexBottomSpace += .6;
-            rex.css('bottom', rexBottomSpace + 'vw');
+            rex.css('bottom', rexBottomSpace + 'vmin');
             if (rexBottomSpace  + 8 > jumpHeight + jumpStart){
                 fall();
             }
@@ -174,9 +174,9 @@ $(document).ready(function () {
     function moveLeft(){
         if (rexLeftSpace >= 0){
                 rexLeftSpace -= .6;
-                rex.css('left', rexLeftSpace + 'vw');
+                rex.css('left', rexLeftSpace + 'vmin');
         } else{
-            rex.css('left', 80 - 8 + 'vw'); // 8 is width of rex
+            rex.css('left', 80 - 8 + 'vmin'); // 8 is width of rex
             rexLeftSpace = 80 - 8;
         }
     }
@@ -184,9 +184,9 @@ $(document).ready(function () {
     function moveRight(){
         if (rexLeftSpace <= 80 - 8){ //acount for width of rex
                 rexLeftSpace += .6;
-                rex.css('left', rexLeftSpace + 'vw');
+                rex.css('left', rexLeftSpace + 'vmin');
         } else{
-                rex.css('left', 0 + 'vw');
+                rex.css('left', 0 + 'vmin');
                 rexLeftSpace = 0;
         }
     }

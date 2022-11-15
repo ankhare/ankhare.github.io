@@ -22,8 +22,8 @@ body{
 
 .grid{
     margin: auto;
-    width: 80vw;
-    height: 85vw;
+    width: 80vmin;
+    height: 85vmin;
     background-color: var(--lb);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.67'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     position: relative;
@@ -32,8 +32,8 @@ body{
 }
 
 .rex{
-    width: 8vw;
-    height: 8vw;
+    width: 8vmin;
+    height: 8vmin;
     /* background-color: aliceblue; */
     background-image: url("left-rex.png");
     background-size: contain;
@@ -42,8 +42,8 @@ body{
 }
 
 .platform{
-    width: 16vw;
-    height: 2vw;
+    width: 16vmin;
+    height: 2vmin;
     /* min-width: 40px;
     min-height: 10px; */
     background-color: var(--lg);
@@ -55,15 +55,15 @@ body{
 .controls{
     display: flex;
     align-items: center;
-    width: 80vw;
+    width: 80vmin;
     margin: auto;
 }
 
 #header{
-    font-size: 3vw;
+    font-size: 3vmin;
     position: absolute;
     width: 100%;
-    height: 8vw;
+    height: 8vmin;
     z-index: 2;
     display: flex;
     align-items: center;
@@ -73,12 +73,12 @@ body{
 #title{
     position: absolute;
     left: 40%;
-    font-size: 6vw;
-    margin-left: 10vw;
+    font-size: 6vmin;
+    margin-left: 10vmin;
 }
 
 #score{
-    margin-left: 2vw;
+    margin-left: 2vmin;
 }
 
 #qb{
@@ -86,9 +86,9 @@ body{
     color:var(--lb);
     border: 5px solid var(--lb);
     position: absolute;
-    top: 76vw;
-    left: 2vw;
-    padding: 1vw;
+    top: 76vmin;
+    left: 2vmin;
+    padding: 1vmin;
     font-family: 'Bungee', sans-serif;
     border-style: none;
     border-radius: 15px;
@@ -117,11 +117,11 @@ p{
     left: 25%;
     z-index: 4;
     color:black;
-    font-size: 3vw;
+    font-size: 3vmin;
 }
 
 #restart{
-    margin-top: 10vw;
+    margin-top: 10vmin;
 }
 
 #start:hover, #restart:hover{
@@ -134,11 +134,11 @@ p{
     background-color: var(--lt);
     border: 5px outset var(--dt);
     color: white;
-    border-radius: 5vw;
-    height: 8vw;
-    width: 40vw;
+    border-radius: 5vmin;
+    height: 8vmin;
+    width: 40vmin;
     margin: auto;
-    font-size: 3.5vw;
+    font-size: 3.5vmin;
 }
 
 .key:active:not([disabled]){
@@ -147,8 +147,8 @@ p{
 }
 
 .result{
-    padding-top: 4vw;
-    font-size: 8vw;
+    padding-top: 4vmin;
+    font-size: 8vmin;
     text-align: center;
 }
 
