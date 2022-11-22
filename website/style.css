@@ -1,0 +1,206 @@
+@import url(https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@700&family=Source+Sans+3:wght@200;300;400;500;600;700;800;900&display=swap);
+:root {
+    --color-white: #fff;
+    --color-gray: #c4c4c4;
+    --color-black: rgb(9, 5, 5);
+    --periwinkle: #6485cb;
+    --darkperiwinkle: #304470;
+    --ochre: #a6643b;
+    --darkochre: #985f39;
+}
+
+body{
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+.caps{
+    text-transform: uppercase;
+}
+
+.landing{
+    min-height: 100vh;
+    display: flex;
+}
+
+.display-2{
+    font-family: 'PT Sans Narrow', sans-serif;
+    text-transform: uppercase;
+}
+.display-7{
+    font-size: calc(1rem + 1vw);
+    font-weight: 300;
+    line-height: 1.2;
+}
+.gradient {
+    background: -webkit-linear-gradient(135deg,var(--ochre),var(--periwinkle),var(--ochre),var(--periwinkle));
+    background: linear-gradient(-45deg,var(--ochre),var(--periwinkle),var(--ochre),var(--periwinkle));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400% 400%;
+    -webkit-animation: gradient 3s ease infinite;
+    animation: gradient 3s ease infinite;
+}
+
+.landingbox, .language, .skill, .library{
+    color: white;
+    border-radius: 15px;
+    padding: 10px;
+    margin: .2rem;
+}
+
+.language{
+    background-color: var(--color-purple);
+}
+
+.skill{
+    background-color: var(--ochre);
+}
+
+.library{
+    background-color: var(--periwinkle);
+}
+
+.landingbox{
+    background-color: var(--ochre);
+}
+
+.flexbox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.black{
+    background-color: var(--color-black);
+    color:white;
+}
+
+@-webkit-keyframes gradient{
+    0%{background-position:0 50%}
+    50%{background-position:100% 50%}to{background-position:0 50%}
+}
+@keyframes gradient{
+    0%{background-position:0 50%}
+    50%{background-position:100% 50%}
+    to{background-position:0 50%}
+}
+
+a, a.nav-link{
+    font-size: calc(1rem + .5vw);
+    font-family: 'PT Sans Narrow';
+    color: var(--darkochre);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+i.nav-link{
+    color: var(--darkochre);
+    text-decoration: none;
+}
+
+.nav-link:focus, .nav-link:hover {
+    color: var(--darkperiwinkle);
+}
+.navbar-toggler {
+    border: none;
+} 
+  
+.custom-toggler{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 25px;
+}
+  
+.bar {
+    height: 2.5px;
+    width: 25px;
+    background-color: var(--darkochre);
+    transition: all 100ms ease-in-out;
+    border-radius: 20px;
+}
+  
+.x:nth-of-type(1) {
+    transition: all 100ms ease-in-out;
+    margin-left: .7rem;
+    scale: .9;
+    transform: rotate(45deg);
+    transform-origin: top left;
+    width: 25px;
+}
+  
+.x:nth-of-type(2) {
+    transition: all 100ms ease-in-out;
+    transform-origin: center;
+    width: 0;
+}
+  
+.x:nth-of-type(3) {
+    transition: all 100ms ease-in-out;
+    margin-left: .7rem;
+    scale: .9;
+    transform: rotate(-45deg);
+    transform-origin: bottom left;
+    width: 25px;
+}
+
+#logo{
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: calc(1rem + 1vw);
+    text-transform: uppercase;
+
+}
+.cards {
+  width: 100%;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+.cards__container {
+  width: 100%;
+  position: relative;
+  padding-bottom: 71.5%;
+  transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+.cards__front, .cards__back {
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 5px;
+  background-size: cover;
+  box-shadow: 25px 25px 50px rgba(0, 0, 0, 0.2);
+}
+.cards__front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+.cards__back {
+  transform: rotateY(180deg);
+}
+.cards.is-flipped .cards__container {
+  transform: rotateY(180deg);
+}
+
+.card-1 {
+  background-image: url(media/cc.jpg);
+}
+
+.card-2 {
+  background-image: url(media/jumprex.jpg);
+}
+
+.card-3 {
+  background-image: url(media/hexdle.jpg);
+}
+
+.card-4 {
+  background-image: url(media/pyker.jpg);
+}
