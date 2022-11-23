@@ -1,7 +1,7 @@
 'use strict';
     $(document).ready(function () {
         document.addEventListener("touchstart", function(){}, true);
-        
+        $('.featured').addClass('show');
         $("button.navbar-toggler").click(function(){
             $(".bar").toggleClass("x");
         });
@@ -72,4 +72,17 @@
         cycle();
         setInterval(cycle, speed * elements);
         })(cardAmount, flipSpeed);
-    })
+    
+        $('.btn').click(function(){
+            const type = $(this).attr('id');
+            if (type === "viewall"){
+                $('.filter').addClass('show');
+            }else{
+                $('.filter').removeClass('show');
+            $('.' + type).addClass('show');
+            }            
+            $('.btn').removeClass('active');
+            $(this).addClass('active')
+        });
+    
+ })

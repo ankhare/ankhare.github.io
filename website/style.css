@@ -4,7 +4,7 @@
     --color-gray: #c4c4c4;
     --color-black: rgb(9, 5, 5);
     --periwinkle: #6485cb;
-    --darkperiwinkle: #304470;
+    --darkperiwinkle: #304a70;
     --ochre: #a6643b;
     --darkochre: #955b56;
 }
@@ -13,11 +13,22 @@ body{
     font-family: 'Source Sans 3', sans-serif;
 }
 
-.caps{
+p{
+    margin: auto;
+}
+
+h6{
+    text-align: center;
+    font-family: 'PT Sans Narrow', sans-serif;
     text-transform: uppercase;
 }
 
-.landing{
+.caps{
+    font-family: 'PT Sans Narrow';
+    text-transform: uppercase;
+}
+
+.fullscreen{
     min-height: 100vh;
     display: flex;
 }
@@ -90,7 +101,7 @@ body{
 
 a, a.nav-link{
     font-size: calc(1rem + .5vw);
-    font-family: 'PT Sans Narrow';
+    font-family: 'PT Sans Narrow', sans-serif;
     color: var(--darkochre);
     text-decoration: none;
     text-transform: uppercase;
@@ -203,4 +214,70 @@ i.nav-link{
 
 .card-4 {
   background-image: url(media/pyker.jpg);
+}
+
+.filter {
+    margin: 5px;
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.hide{
+    display: none;
+}
+
+#projectContainer{
+    box-sizing: border-box;
+}
+  
+  /* Style the buttons */
+.btn {
+    border-radius: 0%;
+    margin: auto;
+    border: none;
+    transition: background-color 0.5s ease;
+    font-family: 'PT Sans Narrow', sans-serif;
+    text-transform: uppercase;
+}
+
+  
+.btn:hover {
+    background-color: #ddd;
+}
+  
+.btn.active {
+    background-color: var(--periwinkle);
+    color: white;
+    
+}
+
+.flex-container2{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1vh 0vh;
+}
+
+.item{
+    padding: 1.5vh;
+    margin: 0.5%;
+    flex-shrink: 0;
+}
+
+.max-three-col {
+    flex-basis: calc(97%/3);
+}
+
+@media screen and (max-width: 991px) {
+    .max-three-col {
+        flex-basis: 49%;
+    }
+}
+
+@media screen and (max-width: 575px){
+    .flex-container2 {
+        flex-direction: column;
+    }
 }
