@@ -16,9 +16,9 @@
             $(imageArray).each(function(){
                 $('<img/>')[0].src = this;
             });
-        })(['media/cc.jpg',
-        'media/jumprex.jpg',
-        'media/hexdle.jpg',
+        })(['media/cc.gif',
+        'media/jumprex.gif',
+        'media/hexdle.gif',
         'media/pyker.jpg']);
 
         // 3D flip slideshow
