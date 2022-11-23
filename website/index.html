@@ -35,7 +35,7 @@
             <a class="nav-link" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Projects</a>
+            <a class="nav-link" href="#projects">Projects</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Gallery</a>
@@ -78,7 +78,7 @@
     </div>
   </div>
 
-  <div class="fullscreen d-block">
+  <div id="projects" class="fullscreen d-block">
     <div class="d-flex">
       <div class="mx-auto">
         <p class="text-center mt-5 display-2">Projects</p>
@@ -95,9 +95,10 @@
     </div>
     <div class="d-flex">
       <div id="language" class="option mx-auto px-4">
-        <div class="btn active" id="JavaScript"><p>JavaScript</p></div>
-        <div class="btn" id="Python"><p>Python</p></div>
-        <div class="btn" id="Java"><p>Java</p></div>
+        <div class="btn active" id="javascript"><p>JavaScript</p></div>
+        <div class="btn" id="python"><p>Python</p></div>
+        <div class="btn" id="java"><p>Java</p></div>
+        <div class="btn" id="viewall1"><p>View All</p></div>
       </div>
       <div id="category" class="option mx-auto px-4 show">
         <div class="btn active" id="featured"><p>Featured</p></div>
@@ -105,14 +106,14 @@
         <div class="btn" id="games"><p>Games</p></div>
         <div class="btn" id="machinelearning"><p>Machine Learning</p></div>
         <div class="btn" id="generativeart"><p>Generative Art</p></div>
-        <div class="btn" id="viewall"><p>View All</p></div>
+        <div class="btn" id="viewall2"><p>View All</p></div>
       </div>
     </div>
    
     
     <div id="projectContainer" class="p-4">
       <div class="flex-container2 mx-auto">
-        <div class="item max-three-col filter featured webdevelopment">
+        <div class="item max-three-col filter featured webdevelopment javascript">
           <div class="card shadow" >
             <img class="card-img-top" src="media/cc.gif" alt="Card image cap">
             <div class="card-body">
@@ -123,7 +124,7 @@
           </div>
         </div>
 
-        <div class="item max-three-col filter featured webdevelopment games">
+        <div class="item max-three-col filter featured webdevelopment games javascript">
           <div class="card shadow" >
             <img class="card-img-top" src="media/hexdle.gif" alt="Card image cap">
             <div class="card-body">
@@ -134,7 +135,7 @@
           </div>
         </div>
 
-        <div class="item max-three-col filter featured webdevelopment games">
+        <div class="item max-three-col filter featured webdevelopment games javascript">
           <div class="card shadow" >
             <img class="card-img-top" src="media/jumprex.gif" alt="Card image cap">
             <div class="card-body">
@@ -145,7 +146,7 @@
           </div>
         </div>
 
-        <div class="item max-three-col filter webdevelopment">
+        <div class="item max-three-col filter webdevelopment javascript">
           <div class="card shadow" >
             <img class="card-img-top" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
@@ -156,7 +157,7 @@
           </div>
         </div>
 
-        <div class="item max-three-col filter webdevelopment">
+        <div class="item max-three-col filter webdevelopment javascript">
           <div class="card shadow" >
             <img class="card-img-top" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
@@ -167,7 +168,7 @@
           </div>
         </div>
 
-        <div class="item max-three-col filter games">
+        <div class="item max-three-col filter games python">
           <div class="card shadow" >
             <img class="card-img-top" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
@@ -178,7 +179,7 @@
           </div>
         </div>
 
-        <div class="item max-three-col filter games">
+        <div class="item max-three-col filter games python">
            <div class="card shadow" >
             <img class="card-img-top" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
@@ -189,7 +190,7 @@
           </div>
         </div>
 
-        <div class="item max-three-col filter">
+        <div class="item max-three-col filter python">
            <div class="card shadow" >
             <img class="card-img-top" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
@@ -199,7 +200,7 @@
             </div>
           </div>
         </div>
-        <div class="item max-three-col filter">
+        <div class="item max-three-col filter python">
           <div class="card shadow" >
             <img class="card-img-top" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
@@ -209,7 +210,7 @@
             </div>
           </div>
         </div>
-        <div class="item max-three-col filter featured machinelearning">
+        <div class="item max-three-col filter featured machinelearning javascript python">
           <div class="card shadow" >
             <img class="card-img-top" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
@@ -219,7 +220,7 @@
             </div>
           </div>
         </div>
-        <div class="item max-three-col filter machinelearning">
+        <div class="item max-three-col filter featured machinelearning javascript python">
           <div class="card shadow" >
             <img class="card-img-top" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
@@ -229,7 +230,7 @@
             </div>
           </div>
         </div>
-        <div class="item max-three-col filter generativeart">
+        <div class="item max-three-col filter featured generativeart python">
           <div class="card shadow" >
             <img class="card-img-top" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
@@ -241,11 +242,17 @@
         </div>
       </div>
     </div>
+    <div class="d-flex">
+      <div class="mx-auto">
+        <p class="text-center m-2">Back To Top Of Projects</p>
+      </div>
+    </div>
   </div>
+  
   <div class="fullscreen d-block black">
     <div class="d-flex">
       <div class="mx-auto">
-        <p class="text-center mt-5 display-2">About</p>
+        <p class="text-center mt-5 display-2">About Me</p>
       </div>
     </div>
     <div class="d-flex">
