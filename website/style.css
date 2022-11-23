@@ -23,6 +23,16 @@ h6{
     text-transform: uppercase;
 }
 
+select{
+    border: none;
+}
+
+.infobtn{
+    background-color: var(--darkochre);
+    color: white;
+    width: 100%;
+}
+
 .caps{
     font-family: 'PT Sans Narrow';
     text-transform: uppercase;
@@ -39,6 +49,12 @@ h6{
 }
 .display-7{
     font-size: calc(1rem + 1vw);
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+.display-8{
+    font-size: calc(1rem + .5vw);
     font-weight: 300;
     line-height: 1.2;
 }
@@ -163,7 +179,6 @@ i.nav-link{
     font-family: 'PT Sans Narrow', sans-serif;
     font-size: calc(1rem + 1vw);
     text-transform: uppercase;
-
 }
 .cards {
   width: 100%;
@@ -221,6 +236,10 @@ i.nav-link{
     display: none;
 }
 
+.option{
+    display: none;
+}
+
 .show {
     display: block;
 }
@@ -243,15 +262,13 @@ i.nav-link{
     text-transform: uppercase;
 }
 
-  
 .btn:hover {
     background-color: #ddd;
 }
   
 .btn.active {
     background-color: var(--periwinkle);
-    color: white;
-    
+    color: white; 
 }
 
 .flex-container2{
@@ -266,8 +283,23 @@ i.nav-link{
     flex-shrink: 0;
 }
 
+.card{
+    width: 100%;
+}
+
 .max-three-col {
     flex-basis: calc(97%/3);
+}
+
+.filterholder{
+    align-self: flex-end;
+}
+
+.extramargin{
+    margin-top: 1rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-bottom: 1rem;
 }
 
 @media screen and (max-width: 991px) {

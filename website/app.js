@@ -2,6 +2,8 @@
     $(document).ready(function () {
         document.addEventListener("touchstart", function(){}, true);
         $('.featured').addClass('show');
+        $('#category').addClass('show');
+        
         $("button.navbar-toggler").click(function(){
             $(".bar").toggleClass("x");
         });
@@ -72,7 +74,13 @@
         cycle();
         setInterval(cycle, speed * elements);
         })(cardAmount, flipSpeed);
-    
+
+        $("#filterby").change(function(event){
+            const resp = event.target.value;
+            $('.option').removeClass('show');
+            $('#' + resp).addClass('show')
+        });
+
         $('.btn').click(function(){
             const type = $(this).attr('id');
             if (type === "viewall"){
