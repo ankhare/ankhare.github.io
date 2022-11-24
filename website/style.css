@@ -27,12 +27,6 @@ select{
     border: none;
 }
 
-.infobtn{
-    background-color: var(--darkochre);
-    color: white;
-    width: 100%;
-}
-
 .caps{
     font-family: 'PT Sans Narrow';
     text-transform: uppercase;
@@ -251,7 +245,7 @@ i.nav-link{
 #projectContainer{
     box-sizing: border-box;
 }
-  
+
   /* Style the buttons */
 .btn {
     border-radius: 0%;
@@ -269,6 +263,12 @@ i.nav-link{
 .btn.active {
     background-color: var(--periwinkle);
     color: white; 
+}
+
+.infobtn{
+    background-color: var(--darkochre);
+    color: white;
+    width: 100%;
 }
 
 .flex-container2{
