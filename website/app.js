@@ -79,17 +79,31 @@ $(document).ready(function () {
     $("#filterby").change(function(event){
         const resp = event.target.value;
         $('.option').removeClass('show');
-        $('#' + resp).addClass('show')
+        $('#' + resp).addClass('show');
+
+        //add active class only to first item in each category 
+        $('.btn').removeClass('active');
+        $('.filter').removeClass('show');
+
+        if(resp === 'language'){
+            $('#javascript').addClass('active');
+            $('.javascript').addClass('show'); 
+        } else if(resp == 'category'){
+            $('#featured').addClass('active');
+            $('.featured').addClass('show'); 
+        }
     });
 
     $('.btn').bind('keydown click', function(){
         const type = $(this).attr('id');
+        
         if (type.includes('viewall')){
             $('.filter').addClass('show');
         }else{
             $('.filter').removeClass('show');
-        $('.' + type).addClass('show');
-        }            
+            $('.' + type).addClass('show');
+        }   
+
         $('.btn').removeClass('active');
         $(this).addClass('active')
     });
