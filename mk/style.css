@@ -13,13 +13,20 @@
 body{
     font-family: 'DM Sans', sans-serif;
 }
-
 a{
     text-decoration: none;
-    color: var(--highlight);
+    color: inherit;
 }
 
 a:focus, a:hover, a:active{
+    color: inherit;
+}
+
+a.accent{
+    color: var(--highlight);
+}
+
+a.accent:focus, a.accent:hover, a.accent:active{
     color: var(--lightaccent);
 }
 
@@ -37,6 +44,10 @@ footer{
 
 footer a{
     color: white;
+}
+
+footer a:hover{
+    color: var(--lightaccent);
 }
 
 .fullscreen{
@@ -168,9 +179,13 @@ i.nav-link{
     font-weight: 700;
     color: var(--darkhighlight);
 }
+#logotext{
+    line-height: 80%;
+}
 
 /* style landing page buttons */
 /* Style the buttons */
+/* spacer to ensure that text is never above navbar */
 .dbtn, .lbtn {
     background-color: var(--darkhighlight);
     color: white;
@@ -203,7 +218,7 @@ i.nav-link{
     height: auto;
     margin-left: auto;
     margin-right: auto;
-    max-width: 500px;
+    max-width: 400px;
     object-fit: cover;
 }
 
@@ -231,7 +246,9 @@ i.nav-link{
 .accordion{
     --bs-accordion-bg: rgba(255, 255, 255, 0);
     --bs-accordion-border-color: var(--darkhighlight);
+    --bs-accordion-btn-icon-width: 1.5rem;
     --bs-accordion-btn-focus-border-color: black;
+    --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23325e48'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
     --bs-accordion-active-color: white;
     --bs-accordion-active-bg: var(--darkhighlight);
     --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FFFFFF'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
@@ -245,6 +262,14 @@ i.nav-link{
     /* font-family: 'Lato', sans-serif; */
     font-weight: 700;
     color: black;
+}
+
+.border-bottom{
+    border-color: var(--darkhighlight);
+}
+
+.accordion > p{
+    margin-right: 3rem;
 }
 
 /* .accordion-body{
@@ -262,14 +287,17 @@ i.nav-link{
     }
 
     .navbar-collapse {
-        text-align: center;
-        background: var(--darkhighlight);
-        padding: 1rem;
-        border-radius: 5px;
+        text-align: right;
     }
 
     a.nav-link, i.nav-link{
-        color: white;
+       font-weight: 700;
+    }
+}
+
+@media screen and (max-width: 769px){
+    .navbar-collapse {
+        background-color: white;
     }
 }
 
