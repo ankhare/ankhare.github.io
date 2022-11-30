@@ -32,17 +32,22 @@ h6{
     text-transform: uppercase;
 }
 
-.caps{
-    font-family: 'DM Serif Display';
-    text-transform: uppercase;
-}
-
 .fullscreen{
     min-height: 100vh;
     display: flex;
 }
 
-.display-2{
+/* custom class text styling */
+.caps{
+    font-family: 'DM Serif Display';
+    text-transform: uppercase;
+}
+
+.lightbg{
+    background-color: var(--light);
+}
+
+.display-2, .display-5{
     font-family: 'DM Serif Display', sans-serif;
     line-height: 80%;
 }
@@ -58,11 +63,6 @@ h6{
     line-height: 1.2;
 }
 
-.lightbg{
-    background-color: var(--light);
-}
-
-/* text styling */
 .colored-text{
     color: var(--darkhighlight);
 }
@@ -154,8 +154,50 @@ i.nav-link{
    background-color: var(--light)
 }
 
+/* style about elements */
+#helpwith{
+    text-align: center;
+}
+
+#profilepic{
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;
+}
+
+.flex-container2{
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.max-four-col {
+    flex-basis: 24%;
+    min-height: 150px;
+}
+
+.item{
+    color:black;
+    margin: 0.5%;
+    flex-shrink: 0;
+    background-color: var(--light);
+    border-radius: 15px;
+    display: flex;
+}
+
+/* style review section */
+.reviewer-name{
+
+
+}
+
 /* media queries */
 @media screen and (max-width: 991px) { 
+    .max-four-col {
+        flex-basis: 49%;
+    }
     #contactLinks > * {
         margin-left: 3vw;
         margin-right: 3vw;
@@ -169,5 +211,15 @@ i.nav-link{
 
     a.nav-link, i.nav-link{
         color: white;
+    }
+}
+
+
+@media screen and (max-width: 575px){
+    .flex-container2 {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        border-radius: 5px;
     }
 }
