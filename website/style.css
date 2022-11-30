@@ -271,6 +271,10 @@ i.nav-link{
     width: 100%;
 }
 
+.w-45{
+    width: 45%;
+}
+
 .flex-container2{
     display: flex;
     flex-wrap: wrap;
@@ -303,6 +307,10 @@ i.nav-link{
     margin-bottom: 1rem;
 }
 
+.tags{
+    font-weight: 300;
+}
+
 @media screen and (max-width: 991px) {
     .max-three-col {
         flex-basis: 49%;
@@ -326,6 +334,17 @@ i.nav-link{
 
 @media screen and (max-width: 575px){
     .flex-container2 {
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow: scroll;
+        background-color: var(--periwinkle);
+        border-radius: 5px;
+    }
+    .max-three-col {
+        flex-basis: 80%;
+    }
+
+    #backtotopofprojects{
+        display: none;
     }
 }

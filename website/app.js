@@ -76,6 +76,13 @@ $(document).ready(function () {
     setInterval(cycle, speed * elements);
     })(cardAmount, flipSpeed);
 
+    const tags = ['featured', 'games', 'web development', 'machine learning', 'generative art', 'javascript','python','java'];
+
+    tags.forEach((tag) => {
+        const filter = tag.replace(/\s+/g, '');
+        const elements = $('.' + filter);
+    });
+
     $("#filterby").change(function(event){
         const resp = event.target.value;
         $('.option').removeClass('show');
