@@ -285,6 +285,3 @@ $(document).ready(function () {
         start(); 
     })
 })
-
-    
-

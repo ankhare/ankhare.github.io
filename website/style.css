@@ -246,7 +246,7 @@ i.nav-link{
     box-sizing: border-box;
 }
 
-  /* Style the buttons */
+/* Style the buttons */
 .btn {
     border-radius: 0%;
     margin: auto;
@@ -259,7 +259,6 @@ i.nav-link{
 
 .btn:hover {
    color: var(--periwinkle);
-
 }
   
 .btn.active {
