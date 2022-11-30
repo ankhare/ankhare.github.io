@@ -16,7 +16,12 @@ $(document).ready(function () {
         }
     }, 2000);
 
-    
+
+    $(document).scroll(function () {
+        var $nav = $("nav");
+        $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+      });
+
     $("button.navbar-toggler").click(function(){
         $(".bar").toggleClass("x");
     });

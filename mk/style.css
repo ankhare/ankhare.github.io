@@ -3,9 +3,10 @@
 /* document wide formatting */
 :root {
     --periwinkle: #6485cb;
-    --darkhighlight: #3e603f;
+    --darkhighlight: #325e48;
     --highlight:#569563;
     --light: #ebf3e2;
+    --lightaccent: #e3eca6;
     /* --bs-navbar-color: none; */
 }
 
@@ -15,11 +16,11 @@ body{
 
 a{
     text-decoration: none;
-    color: var(--highlight)
+    color: var(--highlight);
 }
 
 a:focus, a:hover, a:active{
-    color: var(--darkhighlight);
+    color: var(--lightaccent);
 }
 
 p{
@@ -28,8 +29,14 @@ p{
 
 h6{
     text-align: center;
-    font-family: 'DM Serif Display', sans-serif;
-    text-transform: uppercase;
+}
+
+footer{
+    color: rgb(255, 255, 255);
+}
+
+footer a{
+    color: white;
 }
 
 .fullscreen{
@@ -49,19 +56,30 @@ h6{
     background-color: var(--light);
 }
 
+.accentbg{
+    background-color: var(--lightaccent);
+}
+
+.darkbg{
+    background-color: var(--darkhighlight);
+    color: white;
+}
+
 .display-2, .display-5{
     font-family: 'DM Serif Display', sans-serif;
     line-height: 80%;
 }
 .display-7{
+    font-family: 'Lato', sans-serif;
     font-size: calc(1rem + 1vw);
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1.2;
 }
 
 .display-8{
+    font-family: 'Lato', sans-serif; 
     font-size: calc(1rem + .5vw);
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1.2;
 }
 
@@ -69,11 +87,20 @@ h6{
     color: var(--darkhighlight);
 }
 
+.colored-text2{
+    color: var(--lightaccent);
+}
+
 .small-text{
     font-size: calc(.8rem + .25vw);
 }
 
 /* nav bar styling */
+.scrolled {
+    background-color: #fff !important;
+    transition: background-color 200ms linear;
+  }
+
 a.nav-link{
     /* font-size: calc(1rem + .5vw); */
     font-family: 'Lato', sans-serif;
@@ -81,7 +108,7 @@ a.nav-link{
     text-transform: uppercase;
 }
 
-a.nav-link:focus, a.nav-link:hover, a.navlink:active{
+.nav-link:focus, .nav-link:hover, .navlink:active{
     color: var(--highlight);
 }
 
@@ -144,7 +171,7 @@ i.nav-link{
 
 /* style landing page buttons */
 /* Style the buttons */
-.lbtn {
+.dbtn, .lbtn {
     background-color: var(--darkhighlight);
     color: white;
     font-family: 'lato', sans-serif;
@@ -152,8 +179,18 @@ i.nav-link{
     transition: background-color 0.5s ease;
 }
 
+.dbtn{
+    background-color: var(--lightaccent);
+    color: black;
+}
+
 .lbtn:hover {
-   background-color: var(--light)
+    background-color: var(--lightaccent);
+ }
+
+.dbtn:hover{
+   background-color: var(--light);
+   color: black;
 }
 
 /* style about elements */
@@ -182,17 +219,36 @@ i.nav-link{
 }
 
 .item{
-    color:black;
+    color:white;
     margin: 1%;
     flex-shrink: 0;
-    background-color: var(--light);
+    background-color: var(--darkhighlight);
     border-radius: 15px;
     display: flex;
 }
 
-/* #values{
-    border: 1px solid rgb(223, 221, 221);
-    border-radius: 5px;
+/* FAQ Acordion  */
+.accordion{
+    --bs-accordion-bg: rgba(255, 255, 255, 0);
+    --bs-accordion-border-color: var(--darkhighlight);
+    --bs-accordion-btn-focus-border-color: black;
+    --bs-accordion-active-color: white;
+    --bs-accordion-active-bg: var(--darkhighlight);
+    --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FFFFFF'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
+    
+}
+.accordion-button:not(.collapsed){
+    box-shadow: none;
+}
+
+.accordion-button{
+    /* font-family: 'Lato', sans-serif; */
+    font-weight: 700;
+    color: black;
+}
+
+/* .accordion-body{
+    background-color: white;
 } */
 
 /* media queries */
@@ -207,7 +263,8 @@ i.nav-link{
 
     .navbar-collapse {
         text-align: center;
-        background: var(--highlight);
+        background: var(--darkhighlight);
+        padding: 1rem;
         border-radius: 5px;
     }
 
