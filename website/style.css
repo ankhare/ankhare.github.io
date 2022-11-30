@@ -340,9 +340,6 @@ i.nav-link{
         flex-direction: row;
         flex-wrap: nowrap;
         overflow-x: scroll;
-        background: rgb(0,0,0);
-        background: linear-gradient(0deg, rgba(0,0,0,0) 0%, var(--duskypink) 45%, var(--duskypink) 55%, rgba(0,0,0,0) 100%);
-        border-radius: 5px;
     }
 
     .flex-container2::-webkit-scrollbar-track{
