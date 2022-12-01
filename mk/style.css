@@ -13,6 +13,7 @@
 }
 
 body{
+    background-color: white;
     font-family: 'DM Sans', sans-serif;
 }
 a{
@@ -44,11 +45,11 @@ footer{
     color: rgb(255, 255, 255);
 }
 
-footer a{
+footer a, #contact a{
     color: white;
 }
 
-footer a:hover{
+footer a:hover, #contact a:hover{
     color: var(--lightaccent);
 }
 
@@ -60,6 +61,12 @@ footer a:hover{
     min-height: 100vh;
     width: 100%;
     display: flex;
+}
+
+.rounded-bottom-el{
+    background-color: var(--light);
+    border-bottom-left-radius: 4vw;
+    border-bottom-right-radius: 4vw;
 }
 
 /* custom class text styling */
@@ -92,6 +99,11 @@ footer a:hover{
     font-family: 'DM Serif Display', sans-serif;
     line-height: 80%;
 }
+
+.display-4{
+    font-family: 'Lato', sans-serif;
+}
+
 .display-7{
     font-family: 'Lato', sans-serif;
     font-size: calc(1rem + 1vw);
@@ -203,6 +215,15 @@ i.nav-link{
     min-height: 65px;
     display: none;
 }
+
+.nbtn{
+    border-radius: 10px;
+    background-color: var(--lightaccent);
+    transition: background-color 0.5s ease;
+    text-align: center;
+    max-width: fit-content;
+}
+
 .dbtn, .lbtn {
     background-color: var(--darkhighlight);
     color: white;
@@ -218,11 +239,18 @@ i.nav-link{
 
 .lbtn:hover {
     background-color: var(--lightaccent);
+    color: black;
  }
 
 .dbtn:hover{
    background-color: var(--light);
    color: black;
+}
+
+.cbtn{
+    background-color: var(--highlight);
+    padding: .75vw;
+    border-radius: 5px;
 }
 
 /* style about elements */
@@ -452,6 +480,10 @@ input, textarea, select, button{
 
     .navbar-collapse {
         text-align: right;
+    }
+
+    .nbtn{
+        margin-left: auto;
     }
 
     a.nav-link, i.nav-link{
