@@ -2,7 +2,7 @@
 
 /* document wide formatting */
 :root {
-    --gray: #e8e9e7;
+    --gray: #f3f6ec;
     --darkhighlight: #325e48;
     --highlight:#569563;
     --light: #ebf3e2;
@@ -38,10 +38,6 @@ h6{
     text-align: center;
 }
 
-.hidden{
-    display: none;
-}
-
 footer{
     color: rgb(255, 255, 255);
 }
@@ -50,8 +46,12 @@ footer a{
     color: white;
 }
 
-footer a:hover{
+footer a:hover, .afilliate.active a:hover{
     color: var(--lightaccent);
+}
+
+.afilliate a:hover{
+    color: var(--highlight);   
 }
 
 .fullscreen{
@@ -70,6 +70,9 @@ footer a:hover{
     font-size: calc(.8rem + .2vw);
 }
 
+.graybg{
+    background-color: var(--gray);
+}
 .lightbg{
     background-color: var(--light);
 }
@@ -350,6 +353,22 @@ i.nav-link{
     height: auto;
     max-width: 390px;
 }
+
+/* classes that toggle visibility of map */
+.w-100{
+    transition: width 1s linear;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 1s, opacity 1s linear;
+}
+
+.none {
+    display:none;
+}
+
 /* FAQ Acordion  */
 .accordion{
     --bs-accordion-bg: rgba(255, 255, 255, 0);

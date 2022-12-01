@@ -29,7 +29,18 @@ $(document).ready(function () {
     $('#toggleMap').bind('keydown click', function(){
         console.log('click');
         $('#map').toggleClass('hidden');
-        $('.affiliates').toggleClass('w-100')
+
+        if($('#map').hasClass('hidden')){
+            setTimeout(function(){
+                $('#map').toggleClass('none');
+                $('.affiliates').toggleClass('w-100');
+            }, 1000);
+        }else{
+            $('#map').toggleClass('none');
+            $('.affiliates').toggleClass('w-100');
+        }
+        
+        
     });
 
     $('.afilliate').bind('keydown click', function(){
