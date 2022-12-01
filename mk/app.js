@@ -22,11 +22,11 @@ $(document).ready(function () {
         $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
       });
 
-    $("button.navbar-toggler").click(function(){
+    $("button.navbar-toggler").bind('keydown click', function(){
         $(".bar").toggleClass("x");
     });
 
-    $('#toggleMap').click(function (){
+    $('#toggleMap').bind('keydown click', function(){
         console.log('click');
         $('#map').toggleClass('hidden');
         $('.affiliates').toggleClass('w-100')

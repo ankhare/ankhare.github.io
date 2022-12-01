@@ -2,7 +2,7 @@
 
 /* document wide formatting */
 :root {
-    --periwinkle: #6485cb;
+    --gray: #e8e9e7;
     --darkhighlight: #325e48;
     --highlight:#569563;
     --light: #ebf3e2;
@@ -323,10 +323,11 @@ i.nav-link{
 }
 
 .afilliate{
+    cursor: pointer;
     height: 100px;
     width: 100%;
-    background-color: white;
-    border: 1px solid #ffffff00;
+    background-color: var(--gray);
+    border: 3px solid var(--gray);
     border-radius: 5px;
 }
 
@@ -339,11 +340,15 @@ i.nav-link{
     color: white;
 }
 
+.map-img-container{
+    height: 60vh;
+    max-height: 400px;
+}
 .map-img{
     border-radius: 5px;
     width: 100%;
     height: auto;
-    max-width: 420px;
+    max-width: 390px;
 }
 /* FAQ Acordion  */
 .accordion{
