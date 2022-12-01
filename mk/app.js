@@ -79,7 +79,6 @@ $(document).ready(function () {
        
 
     $('#toggleMap').bind('keydown click', function(){
-        console.log('click');
         $('#map').toggleClass('hidden');
 
         if($('#map').hasClass('hidden')){
