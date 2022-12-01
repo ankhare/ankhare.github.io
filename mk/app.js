@@ -3,7 +3,7 @@ $(document).ready(function () {
     let conditionTimerID;
     let currCondition;
     
-    const conditions = ['laproscopic surgery', 'hernia surgery', 'appendectomy', 'gallbladder surgery']
+    const conditions = ['laproscopic surgery', 'hernia surgery', 'appendix surgery', 'gallbladder surgery', 'dad jokes']
     $('#condition').text(conditions[0]);
     let nextIndex = 1;
 
@@ -26,5 +26,14 @@ $(document).ready(function () {
         $(".bar").toggleClass("x");
     });
 
+    $('#toggleMap').click(function (){
+        console.log('click');
+        $('#map').toggleClass('hidden');
+        $('.affiliates').toggleClass('w-100')
+    });
 
+    $('.afilliate').bind('keydown click', function(){
+        $('.afilliate').removeClass('active');
+        $(this).addClass('active')
+    })
 })
