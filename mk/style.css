@@ -198,6 +198,11 @@ i.nav-link{
 /* style landing page buttons */
 /* Style the buttons */
 /* spacer to ensure that text is never above navbar */
+
+.spacer{
+    min-height: 65px;
+    display: none;
+}
 .dbtn, .lbtn {
     background-color: var(--darkhighlight);
     color: white;
@@ -260,7 +265,7 @@ i.nav-link{
 }
 
 
-input, textarea, select{
+input, textarea, select, button{
     border-radius: 10px;
     border: 2px solid var(--darkhighlight);
     min-height: 3rem;
@@ -270,8 +275,13 @@ input, textarea, select{
 #message{
     min-height: 100px;
 }
+
 #button{
     width: 100%;
+    transition: background-color 200ms linear;
+}
+#button:hover, #button:active{
+    background-color: var(--highlight);
 }
 
 /* style afilliates elements */
@@ -358,6 +368,7 @@ input, textarea, select{
 }
 
 .afilliate{
+    border-radius: 5px;
     padding: 1rem;
     width: 100%;
     background-color: var(--lightgray);
@@ -365,7 +376,12 @@ input, textarea, select{
 }
 
 .afilliate.active{
-    background-color: var(--lightaccent);
+    background-color: var(--darkhighlight);
+    color: white;
+}
+
+.afilliate.active a:hover{
+    color: var(--lightaccent);
 }
 
 .map-img{
@@ -449,7 +465,6 @@ input, textarea, select{
     }
 }
 
-
 @media screen and (max-width: 575px){
     .flex-container2 {
         flex-direction: row;
@@ -463,5 +478,14 @@ input, textarea, select{
     }
 }
 
-@media screen and (max-width: 320){
+@media screen and (max-height: 500px) {
+    .spacer{
+        display: block; 
+    }
+}
+
+@media screen and (max-width: 320px){
+    .spacer{
+        display: block; 
+    }
 }
