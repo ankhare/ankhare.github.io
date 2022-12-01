@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    document.querySelectorAll(".afilliate a").forEach(function(a){
+        a.setAttribute('target', '_blank');
+    })
+
     document.addEventListener("touchstart", function(){}, true);
     let conditionTimerID;
     let currCondition;

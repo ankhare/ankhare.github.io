@@ -2,7 +2,9 @@
 
 /* document wide formatting */
 :root {
-    --gray: #f3f6ec;
+    --gray: #939393;
+    --scroller: #ccc;
+    --lightgray: #f3f6ec;
     --darkhighlight: #325e48;
     --highlight:#569563;
     --light: #ebf3e2;
@@ -71,7 +73,7 @@ footer a:hover, .afilliate.active a:hover{
 }
 
 .graybg{
-    background-color: var(--gray);
+    background-color: var(--lightgray);
 }
 .lightbg{
     background-color: var(--light);
@@ -321,18 +323,29 @@ i.nav-link{
 }
 
 .affiliates{
+    border-radius: 5px;
     height: 60vh;
     max-height: 400px;
     overflow-y: scroll;
+}
+.affiliates::-webkit-scrollbar,  .flex-container2::-webkit-scrollbar{
+    background-color: var(--scroller);
+    border-radius: 5px;
+    width: 10px;
+    height: 10px;
+}
+  
+.affiliates::-webkit-scrollbar-thumb, .flex-container2::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background-color: var(--lightaccent);
 }
 
 .afilliate{
     cursor: pointer;
     padding: 1rem;
     width: 100%;
-    background-color: var(--gray);
-    border: 2px solid var(--gray);
-    border-radius: 5px;
+    background-color: var(--lightgray);
+    border: 2px solid var(--lightgray);
     transition: background-color 200ms linear;
 }
 
@@ -344,8 +357,6 @@ i.nav-link{
     background-color: var(--darkhighlight);
     color: white;
 }
-
-
 
 .map-img-container{
     height: 60vh;
@@ -366,7 +377,7 @@ i.nav-link{
 .hidden {
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s 1s, opacity 1s linear;
+    transition: visibility 0s 1s, opacity 1s ease-out;
 }
 
 .none {
