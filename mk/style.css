@@ -264,6 +264,7 @@ input, textarea, select{
     border-radius: 10px;
     border: 2px solid var(--darkhighlight);
     min-height: 3rem;
+    color: black;
 }
 
 #message{
@@ -315,9 +316,6 @@ input, textarea, select{
     background-color: var(--darkhighlight)
   }
   
-  input:focus + .slider {
-    box-shadow: 0 0 1px var(--highlight)
-  }
   
   input:checked + .slider:before {
     -webkit-transform: translateX(26px);
