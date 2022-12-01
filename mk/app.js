@@ -1,3 +1,13 @@
+function validateEmail(email){
+    let regex = /^\S+@\S+\.\S+$/; // allows string@string.string
+    return regex.test(email); 
+}
+
+function validatePhone(number){
+    let regex = /^[0-9()-]+$/
+    if (regex.test(number));
+}
+
 $(document).ready(function () {
     document.querySelectorAll(".afilliate a").forEach(function(a){
         a.setAttribute('target', '_blank');
@@ -29,6 +39,44 @@ $(document).ready(function () {
     $("button.navbar-toggler").bind('keydown click', function(){
         $(".bar").toggleClass("x");
     });
+
+    $('#button').bind('keydown click', function validate(event){
+        let result = "";
+        event.preventDefault();
+
+        let email = document.getElementById("email").value; 
+        email = email.trim();
+
+        let phone = document.getElementById("phone").value; 
+        phone = phone.trim();
+
+        let name = document.getElementById("name").value; 
+        let subject = document.getElementById("subject").value; 
+        let message = document.getElementById("message").value; 
+
+
+        if (name && subject && message && validatePhone(phone) && validateEmail(email)){
+            return document.getElementById("theform").submit();
+            
+        }else{
+            if (!name){
+                result += "Invalid name <br>";    
+            }
+            if (!validateEmail(email)){
+                result += "Invalid email <br>";                   
+            }                
+            if (!subject){
+                result += "Invalid subject <br>";   
+            }
+            if (!message){      
+                result += "Enter a message <br>";                                  
+            }
+
+            document.getElementById("alert").innerHTML = result;
+        }
+        return result;
+    });
+       
 
     $('#toggleMap').bind('keydown click', function(){
         console.log('click');

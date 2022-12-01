@@ -4,17 +4,16 @@
 :root {
     --gray: #939393;
     --scroller: #ccc;
-    --lightgray: #f3f6ec;
+    --lightgray: #f4f4f4;
     --darkhighlight: #325e48;
     --highlight:#569563;
-    --light: #ebf3e2;
+    --light: #f3f6ec;
     --lightaccent: #e3eca6;
     /* --bs-navbar-color: none; */
 }
 
 body{
     font-family: 'DM Sans', sans-serif;
-    position: absolute;
 }
 a{
     text-decoration: none;
@@ -49,7 +48,7 @@ footer a{
     color: white;
 }
 
-footer a:hover, .afilliate.active a:hover{
+footer a:hover{
     color: var(--lightaccent);
 }
 
@@ -255,6 +254,25 @@ i.nav-link{
     display: flex;
 }
 
+/* style contact form elements */
+#alert{
+    font-style: italic;
+}
+
+
+input, textarea, select{
+    border-radius: 10px;
+    border: 2px solid var(--darkhighlight);
+    min-height: 3rem;
+}
+
+#message{
+    min-height: 100px;
+}
+#button{
+    width: 100%;
+}
+
 /* style afilliates elements */
     .switch {
     position: relative;
@@ -338,24 +356,18 @@ i.nav-link{
   
 .affiliates::-webkit-scrollbar-thumb, .flex-container2::-webkit-scrollbar-thumb{
     border-radius: 5px;
-    background-color: var(--lightaccent);
+    background-color: var(--gray);
 }
 
 .afilliate{
     padding: 1rem;
     width: 100%;
     background-color: var(--lightgray);
-    border: 2px solid var(--lightgray);
     transition: background-color 200ms linear;
 }
 
-.afilliate:hover{
-   border-color: var(--darkhighlight);
-}
 .afilliate.active{
-    border-color: var(--darkhighlight);
-    background-color: var(--darkhighlight);
-    color: white;
+    background-color: var(--lightaccent);
 }
 
 .map-img{
