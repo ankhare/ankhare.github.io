@@ -170,7 +170,6 @@ i.nav-link{
 }
 
 #logo{
-    font-family: 'PT Sans Narrow', sans-serif;
     font-size: calc(1rem + 1vw);
     text-transform: uppercase;
 }
