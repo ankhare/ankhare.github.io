@@ -341,7 +341,6 @@ i.nav-link{
 }
 
 .afilliate{
-    cursor: pointer;
     padding: 1rem;
     width: 100%;
     background-color: var(--lightgray);
@@ -358,15 +357,11 @@ i.nav-link{
     color: white;
 }
 
-.map-img-container{
-    height: 60vh;
-    max-height: 400px;
-}
 .map-img{
     border-radius: 5px;
     width: 100%;
     height: auto;
-    max-width: 390px;
+    max-width: 400px;
 }
 
 /* classes that toggle visibility of map */
@@ -451,8 +446,11 @@ i.nav-link{
         overflow-x: scroll;
         border-radius: 5px;
     }
+
+    .map-img{
+        max-width: none
+    }
 }
 
 @media screen and (max-width: 320){
-
 }
