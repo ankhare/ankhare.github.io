@@ -2,10 +2,9 @@
 :root {
     --white: rgb(252, 251, 253);
     --light-1: rgb(230, 228, 242);
-    --gray: #c5c5c5;
-    --darkgray: #88828c;
+    --gray: #d8d8d8;
     --black: #182023;
-    --darkgray: #6b6b7c;
+    --darkgray: #9d9db3;
     --bg: rgb(14, 24, 28);
     --dark: #308679;
     --highlight:  #fffabb;
@@ -403,12 +402,12 @@ i.nav-link{
 
 .card:hover{
     border-color: var(--light-1);
-    box-shadow: 0 0 20px rgba(72, 136, 115, 0.909); 
+    box-shadow: 0 0 20px var(--dark);
 }
 
 .img-filter {
     -webkit-filter: opacity(50%); 
-    filter:brightness(0.9) sepia(100%) hue-rotate(110deg);
+    filter:brightness(0.9) sepia(100%) hue-rotate(120deg);
 }
 
 .card:hover > .img-filter, .img-filter:hover{    
