@@ -366,6 +366,7 @@ i.nav-link{
 }
 
 .infobtn{
+    font-size: calc(.75rem + .25vw);
     font-family: 'Oxygen Mono', monospace;
     border: 1px solid var(--black);
     color: var(--black);
@@ -409,7 +410,7 @@ i.nav-link{
 
 .card:hover{
     border-color: var(--light-1);
-    box-shadow: 0 0 20px var(--darktrans);
+    box-shadow: 0 0 3vmin var(--darktrans);
 }
 
 .img-filter {
