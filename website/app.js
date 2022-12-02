@@ -1,6 +1,7 @@
 'use strict';
 $(document).ready(function () {
-    document.addEventListener("touchstart", function(){}, true);
+    $('body').on('touchstart', function() {});
+    
     $('.featured').addClass('show');
     
     $('#category').addClass('show');
@@ -76,7 +77,7 @@ $(document).ready(function () {
     setInterval(cycle, speed * elements);
     })(cardAmount, flipSpeed);
 
-    const tags = ['featured', 'games', 'web development', 'machine learning', 'generative art', 'javascript','python','java'];
+    const tags = ['featured', 'games', 'web development', 'machine learning', 'generative art', 'javascript', 'python','java'];
 
     tags.forEach((tag) => {
         const filter = tag.replace(/\s+/g, '');
