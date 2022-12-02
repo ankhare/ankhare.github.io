@@ -440,6 +440,10 @@ i.nav-link{
     margin: 0.5%;
 }
 
+.card-img-top{
+    max-height: 200px;
+    object-fit: cover;
+}
 .card{
     margin-top: 20px;
     margin-bottom: 20px;
@@ -455,7 +459,7 @@ i.nav-link{
 
 .img-filter {
     -webkit-filter: opacity(50%); 
-    filter: sepia(100%) hue-rotate(110deg);
+    filter:  sepia(75%) hue-rotate(110deg);
 }
 
 .card:hover > .img-filter, .img-filter:hover, .card:active > .img-filter{    
