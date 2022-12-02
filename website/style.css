@@ -353,10 +353,12 @@ i.nav-link{
 }
 
 .cbtn{
+    cursor:pointer;
     color: var(--darkgray);
 }
 
 .dbtn{
+    cursor:pointer;
     height: 100%;
     display: flex;
     color: var(--dark-1);
@@ -366,6 +368,7 @@ i.nav-link{
 }
 
 .infobtn{
+    cursor:pointer;
     font-size: calc(.75rem + .25vw);
     font-family: 'Oxygen Mono', monospace;
     border: 1px solid var(--black);
