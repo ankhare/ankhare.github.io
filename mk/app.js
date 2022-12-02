@@ -34,7 +34,7 @@ $(document).ready(function () {
     $(document).scroll(function () {
         var $nav = $("nav");
         $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
-      });
+    });
 
     $("button.navbar-toggler").bind('keydown click', function(){
         $(".bar").toggleClass("x");

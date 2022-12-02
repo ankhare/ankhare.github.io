@@ -19,9 +19,9 @@
     <title>Anshita!</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg fixed-top">
+  <nav class="navbar navbar-expand-lg fixed-top p-0">
     <div class="container-fluid">
-      <a id="logo" class="navbar-brand mx-4" href="#"><span class="gradient">Anshita Khare</span></a>
+      <a id="logo" class="navbar-brand mx-4" href="#"><span class="gradient">AK</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navText" aria-controls="navText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler custom-toggler">
           <span class="bar"></span>
@@ -32,95 +32,77 @@
       <div class="collapse navbar-collapse justify-content-end" id="navText">
         <ul class="navbar-nav mx-4">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Home</a>
+            <a class="nav-link" aria-current="page" href="#about"><span class="accent">01.</span> About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#projects">Projects</a>
+            <a class="nav-link" href="#projects"><span class="accent">02.</span> Projects</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Gallery</a>
+            <a class="nav-link" href="#contact"><span class="accent">03.</span> Contact</a>
           </li>
           <li>
-            <div id="contactLinks" class="dflex mt-md-1">
-              <a href="mailto:ankhare8@gmail.com?subject=👋%20Hey%20Anshita,%20I%20Saw%20Your%20Website%20and%20Wanted%20to%20Reach%20Out!">
-                <i class="fa-solid fa-envelope nav-link mx-sm-1" aria-hidden="true"></i>
-              </a>
-              <a href="https://github.com/ankhare8/">  
-                <i class="fa-brands fa-github nav-link"></i>
-              </a> 
-              <a href="https://www.linkedin.com/">  
-                <i class=" fab fa-linkedin nav-link mx-sm-1" aria-hidden="true"></i>
-               </a> 
-            </div>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 <main>
-  <div>
-    <div class="fullscreen p-4 black">
-      <div class="row m-auto p-4">
-        <div class="col-md-5">
-          <p class="display-2 m-0">Hello,</p>
-          <p class="display-2">I'm <span class="gradient">Anshita</span></p>
-          <p class="display-7">I'm an artist and CS student. I love to create things and solve problems.</p>
+  <div class="spacer"></div>
+  <section id="landing" class="fullscreen d-flex p-md-3">
+    <div class="row m-auto p-0 p-md-3">
+      <div class="col-md-6 my-auto px-5 px-md-0">
+        <div class="m-auto">
+          <p class="mb-2 display-7 styled colored">Hi, my name is</p>
+          <p class="display-3 mb-2">Anshita Khare.</p>
+          <p class="display-3 squished"><span class="gradient">I'm an artist, student, and&nbsp;developer.</span></p>
+          <p class="display-7 my-4 mb-md-0 text-gray">I'm a computer science student at Boston University who loves to create things and solve problems. Get to know me and my work below.</p>
         </div>
-        <div class="col-md-7 my-4">
-          <div class="cards">
-            <div class="cards__container">
-              <div class="cards__front card-1"></div>
-              <div class="cards__back card-2"></div>
-            </div>
+      </div>
+      <div class="col-md-6 px-5 my-md-4">
+        <div class="cards">
+          <div class="cards__container">
+            <div class="cards__front card-1 gborder"></div>
+            <div class="cards__back card-2 gborder"></div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  
-  <div class="fullscreen d-block">
+  </section>
+  <section id="about" class="py-5">
     <div class="d-flex">
       <div class="mx-auto">
-        <p class="text-center mt-5 display-2">About Me</p>
+        <span class="styled colored display-7">01.</span><span class="display-5"> About Me</span>
       </div>
     </div>
     <div class="d-flex">
       <div class="extramargin">
-        <p class="display-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p class="display-8 text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </div>
     </div>
     <div class="extramargin display-8">
-
-      <p class="display-7 mb-2 caps">Languages</p>
+      <p class="display-7 mb-2">Here are a few technologies that I've been working with recently</p>
       <div class="row g-2 mx-auto">
         <div class="col-6 col-md-3">> Java</div>
         <div class="col-6 col-md-3">> Python</div>
-        <div class="col-6 col-md-3">> Javascript</div>
-        <div class="col-6 col-md-3">> CSS3</div>
-        <div class="col-6 col-md-3">> HTML5</div>
-      </div>
-    
-      <p class="display-7 mt-4 mb-2 caps">Skills and Libraries</p>
-      <div class="row gy-2 mx-auto">
-        <div class="col-6 col-lg-3">> jQuery</div>
-        <div class="col-6 col-lg-3">> Git</div>
-        <div class="col-6 col-lg-3">> Fetch API</div>
-        <div class="col-6 col-lg-3">> Axios</div>
-        <div class="col-6 col-lg-3">> Responsive Design</div>
+        <div class="col-6 col-md-3">> Javascript(ES6)</div>
+        <div class="col-6 col-md-3">> CSS & HTML</div>
+        <div class="col-6 col-md-3">> React</div>
+        <div class="col-6 col-md-3">> jQuery</div>
+        <div class="col-6 col-md-3">> Git</div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div id="projects" class="fullscreen d-block black">
+  <div id="projects" class="fullscreen d-block   pt-5">
     <div class="d-flex">
       <div class="mx-auto">
-        <p class="text-center mt-5 display-2">Projects</p>
+        <span class="styled colored display-7">02.</span><span class="display-5"> Projects</span>
       </div>
     </div>
     <div class="d-flex">
       <div class="mx-auto">
         <label for="filterby">Filter By:</label>    
-      <select id="filterby" name="filterby" class="black">
+      <select id="filterby" name="filterby">
         <option value="category">Category</option>
         <option value="language">Language</option>
       </select>
@@ -128,32 +110,33 @@
     </div>
     <div class="d-flex">
       <div id="language" class="option mx-auto px-4">
-        <div class="btn active" id="javascript"><p>JavaScript</p></div>
-        <div class="btn" id="python"><p>Python</p></div>
-        <div class="btn" id="java"><p>Java</p></div>
-        <div class="btn" id="viewall1"><p>View All</p></div>
+        <div class="btn cbtn active" id="javascript"><p>JavaScript</p></div>
+        <div class="btn cbtn" id="python"><p>Python</p></div>
+        <div class="btn cbtn" id="java"><p>Java</p></div>
+        <div class="btn cbtn" id="viewall1"><p>View All</p></div>
       </div>
       <div id="category" class="option mx-auto px-4 show">
-        <div class="btn active" id="featured"><p>Featured</p></div>
-        <div class="btn" id="games"><p>Games</p></div>
-        <div class="btn" id="webdevelopment"><p>Web Development</p></div>
-        <div class="btn" id="machinelearning"><p>Machine Learning</p></div>
-        <div class="btn" id="generativeart"><p>Generative Art</p></div>
-        <div class="btn" id="viewall2"><p>View All</p></div>
+        <div class="btn cbtn active" id="featured"><p>Featured</p></div>
+        <div class="btn cbtn" id="games"><p>Games</p></div>
+        <div class="btn cbtn" id="webdevelopment"><p>Web Development</p></div>
+        <div class="btn cbtn" id="machinelearning"><p>Machine Learning</p></div>
+        <div class="btn cbtn" id="generativeart"><p>Generative Art</p></div>
+        <div class="btn cbtn" id="viewall2"><p>View All</p></div>
       </div>
     </div>
-    
+    <div class="mx-4">
+      <hr>
+      <p class="text-center styled">Viewing <span id="results">3</span> Projects</p>
+    </div>
     <div id="projectContainer" class="p-4">
       <div class="flex-container2">
         <div class="item max-three-col filter featured webdevelopment javascript">
-          <div class="card shadow" >
-            <img class="card-img-top" src="media/cc.gif" alt="Card image cap">
+          <div class="card" >
+            <img class="card-img-top img-filter" src="media/cc.gif" alt="Card image cap">
             <div class="card-body">
               <h6>Camel Club</h6>
               <p class="pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              <div class="d-flex mx-1">
-                <p class="mx-0 my-2 tags">hey</p>
-              </div>
+              <div class="mb-1 tags"></div>
               <div class="d-flex">
                 <a href="https://camelclubcnft.com/" class="btn infobtn w-45">Visit Site</a>
                 <a href="#" class="btn infobtn w-45">See More</a>
@@ -163,11 +146,12 @@
         </div>
 
         <div class="item max-three-col filter featured webdevelopment games javascript">
-          <div class="card shadow" >
-            <img class="card-img-top" src="media/hexdle.gif" alt="Card image cap">
+          <div class="card" >
+            <img class="card-img-top img-filter" src="media/hexdle.gif" alt="Card image cap">
             <div class="card-body">
               <h6>Hexdle</h6>
               <p class="pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <div class="mb-1 tags"></div>
               <div class="d-flex">
                 <a href="https://ankhare8.github.io/hexdle/" class="btn infobtn mx-auto w-45">Visit Site</a>
                 <a href="#" class="btn infobtn mx-auto w-45">See More</a>
@@ -177,11 +161,12 @@
         </div>
 
         <div class="item max-three-col filter featured webdevelopment games javascript">
-          <div class="card shadow" >
-            <img class="card-img-top" src="media/jumprex.gif" alt="Card image cap">
+          <div class="card" >
+            <img class="card-img-top img-filter" src="media/jumprex.gif" alt="Card image cap">
             <div class="card-body">
               <h6>JumpRex!</h6>
               <p class="pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <div class="mb-1 tags"></div>
               <div class="d-flex">
                 <a href="https://ankhare8.github.io/jumprex/" class="btn infobtn mx-auto w-45">Visit Site</a>
                 <a href="#" class="btn infobtn mx-auto w-45">See More</a>
@@ -191,110 +176,148 @@
         </div>
 
         <div class="item max-three-col filter webdevelopment javascript">
-          <div class="card shadow" >
-            <img class="card-img-top" src="media/placeholder.png" alt="Card image cap">
+          <div class="card" >
+            <img class="card-img-top img-filter" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
               <h6>Responsive Design</h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <div class="mb-1 tags"></div>
               <a href="#" class="btn infobtn">See More</a>
             </div>
           </div>
         </div>
 
         <div class="item max-three-col filter webdevelopment javascript">
-          <div class="card shadow" >
-            <img class="card-img-top" src="media/placeholder.png" alt="Card image cap">
+          <div class="card" >
+            <img class="card-img-top img-filter" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
               <h6>anshitakhare.com</h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <div class="mb-1 tags"></div>
               <a href="#" class="btn infobtn">See More</a>
             </div>
           </div>
         </div>
 
         <div class="item max-three-col filter games python">
-          <div class="card shadow" >
-            <img class="card-img-top" src="media/placeholder.png" alt="Card image cap">
+          <div class="card" >
+            <img class="card-img-top img-filter" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
               <h6>Pyrdle</h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <div class="mb-1 tags"></div>
               <a href="#" class="btn infobtn">See More</a>
             </div>
           </div>
         </div>
 
         <div class="item max-three-col filter games python">
-           <div class="card shadow" >
-            <img class="card-img-top" src="media/placeholder.png" alt="Card image cap">
+           <div class="card" >
+            <img class="card-img-top img-filter" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
               <h6>Pyker</h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <div class="mb-1 tags"></div>
               <a href="#" class="btn infobtn">See More</a>
             </div>
           </div>
         </div>
 
         <div class="item max-three-col filter python">
-           <div class="card shadow" >
-            <img class="card-img-top" src="media/placeholder.png" alt="Card image cap">
+           <div class="card" >
+            <img class="card-img-top img-filter" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
               <h6>Sudoku Solver</h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <div class="mb-1 tags"></div>
               <a href="#" class="btn infobtn">See More</a>
             </div>
           </div>
         </div>
         <div class="item max-three-col filter python">
-          <div class="card shadow" >
-            <img class="card-img-top" src="media/placeholder.png" alt="Card image cap">
+          <div class="card" >
+            <img class="card-img-top img-filter" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
               <h6>Subway Solver</h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <div class="mb-1 tags"></div>
               <a href="#" class="btn infobtn">See More</a>
             </div>
           </div>
         </div>
-        <div class="item max-three-col filter featured machinelearning javascript python">
-          <div class="card shadow" >
-            <img class="card-img-top" src="media/placeholder.png" alt="Card image cap">
+        <div class="item max-three-col filter machinelearning javascript python">
+          <div class="card" >
+            <img class="card-img-top img-filter" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
               <h6>Praim Joytsh</h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <div class="mb-1 tags"></div>
               <a href="#" class="btn infobtn">See More</a>
             </div>
           </div>
         </div>
-        <div class="item max-three-col filter featured machinelearning javascript python">
-          <div class="card shadow" >
-            <img class="card-img-top" src="media/placeholder.png" alt="Card image cap">
+        <div class="item max-three-col filter machinelearning javascript python">
+          <div class="card" >
+            <img class="card-img-top img-filter" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
               <h6>Anchat Bot</h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <div class="mb-1 tags"></div>
               <a href="#" class="btn infobtn">See More</a>
             </div>
           </div>
         </div>
-        <div class="item max-three-col filter featured generativeart python">
-          <div class="card shadow" >
-            <img class="card-img-top" src="media/placeholder.png" alt="Card image cap">
+        <div class="item max-three-col filter generativeart python">
+          <div class="card" >
+            <img class="card-img-top img-filter" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
               <h6>Tree Generator</h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <div class="mb-1 tags"></div>
               <a href="#" class="btn infobtn">See More</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div id="backtotopofprojects">
-      <div class="mx-auto">
-        <p class="text-center m-2">
-          <a href="#projects">Back To Top Of Projects</a>
-        </p>
-      </div>
+    <div id="backtotopofprojects" class="styled mx-auto">
+      <p class="text-center py-2">
+        <a href="#projects">Back To Top Of Projects&nbsp;↑</a>
+      </p>
     </div>
   </div>
+  <section id="contact" class="fullscreen d-flex text-center py-5">
+    <div class="my-auto">
+      <p class="colored styled">03. What's Next?</p>
+      <p class="display-5 my-3"> Get In Touch</p>
+      <div class="extramargin px-md-5">
+          <p class="display-8">Thank you for taking the time to look at my website.  Please feel free to reach out to me via email or connect with me on LinkedIn.  I'm always looking for new opportunities to grow and new projects to apply my skills to!</p>
+          <div class="row my-4 mx-sm-5">
+            <div class="col-12 col-md-4 my-2 my-md-0">
+                <div class="dbtn">
+                  <a class="m-auto" href="#!"><i class="fa-brands fa-linkedin-in"></i>&nbsp;&nbsp;LinkedIn</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 my-2 my-md-0">
+                <div class="dbtn">
+                  <a class="m-auto" href="mailto: ankhare8@gmail.com ?subject=👋%20Hey%20Anshita,%20I%20Saw%20Your%20Website%20and%20Wanted%20to%20Reach%20Out!">
+                    <i class="fas fa-envelope mr-3"></i>&nbsp;&nbsp;Send Me A Message
+                  </a>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 my-2 my-md-0">
+                <div class="dbtn">
+                  <a class="m-auto" href="#!"><i class="fa-brands fa-github"></i>&nbsp;&nbsp;Github</a>
+                </div>
+            </div>
+        </div>
+      </div>
+  </div>
+  </section>
 </main>
+<footer class="mb-2">
+  <div class="text-center styled">Designed & Built by Anshita Khare</div>
+</footer>
   
 
     <!-- Bootstrap JS -->

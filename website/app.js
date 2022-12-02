@@ -80,11 +80,14 @@ $(document).ready(function () {
 
     tags.forEach((tag) => {
         const filter = tag.replace(/\s+/g, '');
-        const elements = $('.' + filter);
+        const elements = $('.' + filter).find('.tags');
+        elements.append(`<div class="tag highlight">${tag + " "}`);
     });
+
 
     $("#filterby").change(function(event){
         const resp = event.target.value;
+        let number;
         $('.option').removeClass('show');
         $('#' + resp).addClass('show');
 
@@ -95,23 +98,32 @@ $(document).ready(function () {
         if(resp === 'language'){
             $('#javascript').addClass('active');
             $('.javascript').addClass('show'); 
+            number = $('.javascript').length;
         } else if(resp == 'category'){
             $('#featured').addClass('active');
             $('.featured').addClass('show'); 
+            number = $('.featured').length;
         }
+
+        $('#results').text(number);
     });
 
-    $('.btn').bind('keydown click', function(){
+    $('.cbtn').bind('keydown click', function(){
         const type = $(this).attr('id');
-        
+        let number;
+       
         if (type.includes('viewall')){
             $('.filter').addClass('show');
+            number = " all " + $('.filter').length;
         }else{
             $('.filter').removeClass('show');
             $('.' + type).addClass('show');
+            number = $('.' + type).length;
         }   
 
         $('.btn').removeClass('active');
         $(this).addClass('active')
+
+        $('#results').text(number)
     });
  })

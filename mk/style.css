@@ -154,7 +154,7 @@ footer a:hover, #contact a:hover{
 .scrolled {
     background-color: #fff !important;
     transition: background-color 200ms linear;
-  }
+}
 
 a.nav-link{
     /* font-size: calc(1rem + .5vw); */
