@@ -415,7 +415,7 @@ i.nav-link{
     filter:brightness(0.9) sepia(100%) hue-rotate(120deg);
 }
 
-.card:active > .img-filter, .img-filter:hover{    
+.card:hover > .img-filter, .img-filter:hover{    
     -webkit-filter: opacity(100%);
     filter:opacity(100%);
 }
