@@ -486,16 +486,4 @@ i.nav-link{
     }
 }
 
-@media screen and (max-width: 320px){
-    .spacer{
-        display: block; 
-    }
-}
-
-@media screen and (max-height: 700px) {
-    .spacer{
-        display: block; 
-    }
-}
-
 
