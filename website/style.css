@@ -471,17 +471,6 @@ i.nav-link{
     box-shadow: 0 0 20px var(--darktrans);
 }
 
-.img-filter {
-    -webkit-filter: opacity(50%); 
-    filter:  brightness(50%) sepia(100%) blur(1px) hue-rotate(110deg);
-}
-
-.card:hover > .img-filter, .img-filter:hover, .card:focus > .img-filter{ 
-    object-fit: scale-down;
-    -webkit-filter: opacity(100%);
-    filter: opacity(100%);
-}
-
 .max-three-col {
     flex-basis: calc(97%/3);
 }
@@ -530,15 +519,19 @@ i.nav-link{
         margin-right: 2rem;
     }
 }
-@media screen and (max-width: 575px){
-    .img-filter{
+
+@media screen and (min-width: 576px){
+    .img-filter {
+        -webkit-filter: opacity(50%); 
+        filter:  brightness(50%) sepia(100%) blur(1px) hue-rotate(110deg);
+    }
+    
+    .card:hover > .img-filter, .img-filter:hover, .card:focus > .img-filter{ 
+        -webkit-filter: opacity(100%);
         filter: opacity(100%);
     }
-
-    .card:hover > .img-filter, .img-filter:hover, .card:focus > .img-filter{ 
-        object-fit: cover;
-    }
-
+}
+@media screen and (max-width: 575px){
     #profilepic{
         width: 70%;
     }
