@@ -111,14 +111,14 @@
                 </div>
               </div>
               <div class="display-9 hidden1">
-                <div class="row g-2 mx-5 mx-md-auto">
+                <div class="row g-2 mx-4 mx-md-auto">
                   <div class="col-6 col-md-3"><span class="colored">&#9657;</span>&nbsp;Java</div>
                   <div class="col-6 col-md-3"><span class="colored">&#9657;</span>&nbsp;Python</div>
                   <div class="col-6 col-md-3"><span class="colored">&#9657;</span>&nbsp;Javascript</div>
                   <div class="col-6 col-md-3"><span class="colored">&#9657;</span>&nbsp;CSS & HTML</div>
                   <div class="col-6 col-md-3"><span class="colored">&#9657;</span>&nbsp;React</div>
                   <div class="col-6 col-md-3"><span class="colored">&#9657;</span>&nbsp;jQuery</div>
-                  <div class="col-6 col-md-3"><span class="colored">&#9657;</span>&nbsp;Bootstrap</div> 
+                  <div class="col-6 col-md-3"><span class="colored">&#9657;</span>&nbsp;Adobe Suite</div> 
                   <div class="col-6 col-md-3"><span class="colored">&#9657;</span>&nbsp;Git</div>
                 </div>
               </div>
@@ -133,18 +133,20 @@
     <div class="d-flex">
       <div class="mx-auto text-center">
         <p class="display-9 colored styled hidden1">02. Some Things I've Made</p>
-        <p class="display-5 mt-1 mb-3 hidden1">Projects</p>
+        <p class="display-5 my-1 mb-md-3 hidden1">Projects</p>
       </div>
     </div>
-    <div class="d-flex hidden1">
-      <div class="mx-auto">
+    <div class="d-flex justify-content-between hidden1 mx-4 pb-2 pb-md-0">
+      <div class="">
         <label for="filterby">Filter By:</label>    
         <select id="filterby" name="filterby">
         <option value="category">Category</option>
         <option value="language">Language</option>
       </select>
       </div>
+      <div id="viewing" class="styled-small">Viewing <span id="results">6</span> Projects</div>
     </div>
+    <hr class="mx-4 hidden1">
     <div class="d-flex hidden1">
       <div id="language" class="option mx-auto px-4">
         <div class="btn cbtn active" id="javascript"><p>JavaScript</p></div>
@@ -161,10 +163,7 @@
         <div class="btn cbtn" id="viewall2"><p>View All</p></div>
       </div>
     </div>
-    <div class="mx-4 hidden1">
-      <hr>
-      <p class="text-center styled">Viewing <span id="results">6</span> Projects</p>
-    </div>
+    <hr class="mx-4 hidden1">
     <div id="projectContainer">
       <div class="flex-container2 hidden2">
         <div class="item max-three-col filter featured webdevelopment javascript">
@@ -181,21 +180,6 @@
           </div>
         </div>
 
-        <div class="item max-three-col filter featured webdevelopment javascript">
-          <div class="card" >
-            <img class="card-img-top img-filter" src="media/placeholder.png" alt="Card image cap">
-            <div class="card-body">
-              <h6>manishkhare.com</h6>
-              <p class="pb-2">A website created for my client(my dad)'s business with a custom map, and forms and scheduling using Google APIs</p>
-              <div class="mb-3 tags"></div>
-              <div class="d-flex">
-                <a href="./mk" class="btn infobtn w-45">Visit Site</a>
-                <a href="https://github.com/ankhare8/ankhare8.github.io/mk" class="btn infobtn mx-auto w-45">See More</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div class="item max-three-col filter featured webdevelopment games javascript">
           <div class="card" >
             <img class="card-img-top img-filter" src="media/hexdle.gif" alt="Card image cap">
@@ -205,7 +189,22 @@
               <div class="mb-3 tags"></div>
               <div class="d-flex">
                 <a href="./hexdle" class="btn infobtn mx-auto w-45">Visit Site</a>
-                <a href="https://github.com/ankhare8/ankhare8.github.io/hexdle" class="btn infobtn mx-auto w-45">See More</a>
+                <a href="https://github.com/ankhare8/ankhare8.github.io/hexdle" class="btn infobtn mx-auto w-45">Learn More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="item max-three-col filter featured webdevelopment javascript">
+          <div class="card" >
+            <img class="card-img-top img-filter" src="media/placeholder.png" alt="Card image cap">
+            <div class="card-body">
+              <h6>manishkhare.com</h6>
+              <p class="pb-2">A website created for my client(my dad)'s business with a custom map, and forms and scheduling using Google APIs</p>
+              <div class="mb-3 tags"></div>
+              <div class="d-flex">
+                <a href="./mk" class="btn infobtn w-45">Visit Site</a>
+                <a href="https://github.com/ankhare8/ankhare8.github.io/mk" class="btn infobtn mx-auto w-45">Learn More</a>
               </div>
             </div>
           </div>
@@ -220,7 +219,7 @@
               <div class="mb-3 tags"></div>
               <div class="d-flex">
                 <a href="./jumprex" class="btn infobtn mx-auto w-45">Visit Site</a>
-                <a href="https://github.com/ankhare8/ankhare8.github.io/jumprex" class="btn infobtn mx-auto w-45">See More</a>
+                <a href="https://github.com/ankhare8/ankhare8.github.io/jumprex" class="btn infobtn mx-auto w-45">Learn More</a>
               </div>
             </div>
           </div>
@@ -247,7 +246,7 @@
               <div class="mb-3 tags"></div>
               <div class="d-flex">
                 <a href="https://github.com/ankhare8/ankhare.io" target="_blank" class="btn infobtn mx-auto w-45">GitHub Repo</a>
-                <a href="" class="btn infobtn mx-auto w-45">See More</a>
+                <a href="" class="btn infobtn mx-auto w-45">Learn More</a>
               </div>
             </div>
           </div>
@@ -262,7 +261,7 @@
               <div class="mb-3 tags"></div>
               <div class="d-flex">
                 <a href="https://github.com/ankhare8/Pyrdle" target="_blank" class="btn infobtn mx-auto w-45">GitHub Repo</a>
-                <a href="" class="btn infobtn mx-auto w-45">See More</a>
+                <a href="" class="btn infobtn mx-auto w-45">Learn More</a>
               </div>
             </div>
           </div>
@@ -278,7 +277,7 @@
               <div class="mb-3 tags"></div>
               <div class="d-flex">
                 <a href="https://github.com/ankhare8/pyker" target="_blank" class="btn infobtn mx-auto w-45">GitHub Repo</a>
-                <a href="" class="btn infobtn mx-auto w-45">See More</a>
+                <a href="" class="btn infobtn mx-auto w-45">Learn More</a>
               </div>
             </div>
           </div>
@@ -292,8 +291,8 @@
               <p>Algorithm that solves an inputted Sudoku puzzle. Code includes a recursive version and iterative version using a stack.</p>
               <div class="mb-3 tags"></div>
               <div class="d-flex">
-                <a href="https://github.com/ankhare8/sudoku-solver" target="_blank" class="btn infobtn mx-auto w-45">View GitHub</a>
-                <a href="" class="btn infobtn mx-auto w-45">GitHub Repo</a>
+                <a href="https://github.com/ankhare8/sudoku-solver" target="_blank" class="btn infobtn mx-auto w-45">GitHub Repo</a>
+                <a href="" class="btn infobtn mx-auto w-45">Learn More</a>
               </div>
             </div>
           </div>
@@ -307,7 +306,7 @@
               <div class="mb-3 tags"></div>
               <div class="d-flex">
                 <a href="https://github.com/ankhare8/subway-solver" target="_blank" class="btn infobtn mx-auto w-45">GitHub Repo</a>
-                <a href="" class="btn infobtn mx-auto w-45">See More</a>
+                <a href="" class="btn infobtn mx-auto w-45">Learn More</a>
               </div>
             </div>
           </div>
@@ -347,8 +346,8 @@
         </div>
       </div>
     </div>
-    <div id="backtotopofprojects" class="styled mx-auto">
-      <p class="text-center">
+    <div id="backtotopofprojects" class="mx-auto">
+      <p class="text-center styled-small">
         <a href="#projects">Back To Top Of Projects&nbsp;↑</a>
       </p>
     </div>
@@ -382,7 +381,7 @@
   </div>
   </section>
   <div class="py-3">
-    <div class="text-center styled">Designed & Built by Anshita Khare</div>
+    <p class="text-center styled">Designed & Developed by Anshita Khare</p>
   </div>
 </main>
     <!-- Bootstrap JS -->

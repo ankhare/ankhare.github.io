@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;300;400;500;600;700;800;900&family=Oxygen+Mono&display=swap);
 :root {
     --white: rgb(252, 251, 253);
-    --light-1: rgb(230, 228, 242);
+    --light-1: #e6e4f2;
     --gray: #d8d8d8;
     --black: #182023;
     --darkgray: #9d9db3;
@@ -21,6 +21,7 @@ body{
 
 p{
     margin: auto;
+    font-size: calc(.9rem + .1vw);
 }
 
 h6{
@@ -56,6 +57,12 @@ select{
 
 .styled{
     font-family: 'Oxygen Mono', monospace;
+}
+
+.styled-small{
+    color: var(--darkgray);
+    font-weight: 300;
+    font-size: calc(.9rem + .1vw);
 }
 
 .colored{
@@ -452,9 +459,9 @@ i.nav-link{
     flex-direction: column;
 }
 
-.card-body > p{
+/* .card-body > p{
     font-size: calc(.9rem + .1vw);
-}
+} */
 
 .card{
     cursor: default;
@@ -538,6 +545,9 @@ i.nav-link{
     }
 }
 @media screen and (max-width: 575px){
+    hr{
+        margin: .5rem;
+    }
     #profilepic{
         width: 70%;
     }
