@@ -318,21 +318,6 @@ i.nav-link{
     display: flex;
     align-content: space-between;
 }
-.hidden1{
-    transform: translate(0, 50%);
-    transform-origin: bottom;
-    transition: transform 1s;
-}
-
-.hidden2{
-    transform: translate(-25%, 0);
-    transform-origin: bottom;
-    transition: transform 1s;
-}
-
-.show1{
-    transform: translate(0);
-}
 
 .show {
     display: flex;
@@ -574,5 +559,26 @@ i.nav-link{
         display: none;
     }
 }
+
+
+/* animate elements on scroll only if the user does not have reduced motion enabled */
+@media (prefers-reduced-motion: no-preference){
+    .hidden1{
+        transform: translate(0, 50%);
+        transform-origin: bottom;
+        transition: transform 1s;
+    }
+
+    .hidden2{
+        transform: translate(-25%, 0);
+        transform-origin: bottom;
+        transition: transform 1s;
+    }
+
+    .show1{
+        transform: translate(0);
+    }
+}
+
 
 
