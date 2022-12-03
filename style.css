@@ -206,7 +206,7 @@ i.nav-link{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: left;
+    align-items: center;
     height: 25px;
 }
 
