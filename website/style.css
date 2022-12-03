@@ -376,8 +376,7 @@ i.nav-link{
 
 .btn.active {
     border: 1px solid var(--dark-1);
-    color: var(--white);
-    background-color: var(--dark);
+    color: var(--dark-1);
 }
 
 .cbtn{
