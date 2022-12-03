@@ -318,6 +318,21 @@ i.nav-link{
     display: flex;
     align-content: space-between;
 }
+.hidden1{
+    transform: translate(0, 50%);
+    transform-origin: bottom;
+    transition: transform 1s;
+}
+
+.hidden2{
+    transform: translate(-25%, 0);
+    transform-origin: bottom;
+    transition: transform 1s;
+}
+
+.show1{
+    transform: translate(0);
+}
 
 .show {
     display: flex;
@@ -439,17 +454,28 @@ i.nav-link{
     padding: 1.5vh;
     margin: 0.5%;
 }
+.card, .card > *{
+    border-radius: 0%;
+}
 
 .card-img-top{
     max-height: 200px;
     object-fit: cover;
 }
+
+.card-body{
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+}
+
 .card{
     margin-top: 20px;
     margin-bottom: 20px;
-    /* background-color: var(--white); */
+    background-color: var(--white);
     border: 1px solid var(--dark-1);
     width: 100%;
+    height: 95%;
 }
 
 .card:hover{
@@ -459,7 +485,7 @@ i.nav-link{
 
 .img-filter {
     -webkit-filter: opacity(50%); 
-    filter:  sepia(75%) hue-rotate(110deg);
+    filter:  sepia(100%) hue-rotate(110deg);
 }
 
 .card:hover > .img-filter, .img-filter:hover, .card:active > .img-filter{    
@@ -526,8 +552,7 @@ i.nav-link{
     }
 
     .flex-container2::-webkit-scrollbar-track{
-        border-radius: 10px;
-        border: 1px solid var(--gray);
+        border: 1px solid var(--darktrans);
     }
 
     .flex-container2::-webkit-scrollbar{
@@ -535,10 +560,10 @@ i.nav-link{
     }
 
     .flex-container2::-webkit-scrollbar-thumb{
-        border-radius: 10px;
-        border: 1px solid var(--gray);
-        background-color: var(--dark)
+        border: 1px solid var(--darktrans);
+        background-color: var(--darktrans);
     }
+
     .max-three-col {
         flex-basis: 80%;
     }

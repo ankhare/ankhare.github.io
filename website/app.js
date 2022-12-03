@@ -10,6 +10,24 @@ $(document).ready(function () {
         $(".bar").toggleClass("x");
     });
 
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting){
+            entry.target.classList.add("show1");
+          } 
+          // else{
+          //   entry.target.classList.remove("show1");
+          // }
+        });
+
+    });
+    
+    const hiddenElements = document.querySelectorAll(".hidden1");
+    hiddenElements.forEach((el) => observer.observe(el));
+
+    const hidden2Elements = document.querySelectorAll(".hidden2");
+    hidden2Elements.forEach((el) => observer.observe(el));
+
     const tags = ['featured', 'games', 'web development', 'machine learning', 'generative art', 'javascript', 'python','java'];
 
     tags.forEach((tag) => {
@@ -124,5 +142,5 @@ $(document).ready(function () {
     cycle();
     setInterval(cycle, speed * elements);
     })(cardAmount, flipSpeed);
-    
+
  })

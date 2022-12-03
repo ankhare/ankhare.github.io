@@ -55,10 +55,10 @@
     <div class="row m-auto p-0 p-md-3">
       <div class="col-md-6 my-auto px-5 px-md-0">
         <div class="m-auto">
-          <p class="display-8 accent">Hi, my name is</p>
-          <p class="display-3 my-2">Anshita Khare.</p>
-          <p class="display-3 squished"><span class="gradient">I'm an artist, student, and developer.</span></p>
-          <p class="display-7 mt-3 mb-5 mb-md-0 text-gray">I'm a computer science student at Boston University who loves to create things and solve problems. Get to know me and my work below.</p>
+          <p class="display-8 accent hidden1">Hi, my name is</p>
+          <p class="display-3 my-2 hidden1">Anshita Khare.</p>
+          <p class="display-3 squished hidden1"><span class="gradient">I'm an artist, student, and developer.</span></p>
+          <p class="display-7 mt-3 mb-5 mb-md-0 text-gray hidden1">I'm a computer science student at Boston University who loves to create things and solve problems. Get to know me and my work below.</p>
         </div>
       </div>
       <div class="col-md-6 px-5 my-md-4">
@@ -75,37 +75,42 @@
     <div class="m-auto">
       <div class="d-flex mb-md-5">
         <div class="mx-auto text-center">
-          <span class="accent display-7">01. </span><span class="display-5">About Me</span>
-          <p class="colored styled display-9">Who are you?</p>
+          <div class="hidden1">
+            <span class="accent display-7">01. </span><span class="display-5">About Me</span>
+          </div>
+          <p class="colored styled display-9 hidden1">Who are you?</p>
         </div>
       </div>
       <div class=" extramargin">
         <div class="row">
           <div class="col-sm-6 pr-0 pl-0 pb-3 p-sm-0 d-flex">
-            <div class="m-auto">
+            <div class="m-auto hidden2">
               <a href="https://anshitakhare.portfoliobox.net/" target="_blank">
                 <div class="d-flex">
                   <img src="media/me.jpg" id="profilepic" class="gborder" alt="painting of me by me">
                 </div>
                 </a>
-                <p class="mt-2 text-center display-10 accent">click me to view my art portfolio <span class="display-8">&#10548;</span></p>
+                <p class="mt-2 text-center display-10 accent hidden2">click me to view my art portfolio <span class="display-8">&#10548;</span></p>
             </div>
           </div>
   
-          <div class="col-sm-6 display-7 d-flex p-0">
+          <div class="col-sm-6 display-7 d-flex p-0 hidden1">
             <div class="m-auto">
               <div class="display-8">
-                <p>Glad you asked. I'm Anshita and I have a passion for creating things. I'm a freelance artist and computer science student at Boston Univeristy. I love tackling creative challenges and making things that have tangible impacts.
-                </p>
-                <br> 
-                <p>My interest in software engineering began unexpectedly with my Wordle obsession during quarantine. I had previously considered coding an arcane lifeform, but the more I learned about it, the more I was enamored by the beauty, complexity and simplicity of it.</p>  
-                <br>
-                <p>Fast forward to today and I'm in my 2nd year of undergratuate studies currently on a Cardano NFT project, Camel Club, as a developer. I always want to learn more about building optimized and scalable programs and aspire to a career that will allow me to channel my creativity through code.</p>
-                <br>
-                <p class="mb-2">Here are a few technologies that I've been working with recently:</p>
-                <br>
+                <div class="hidden1 my-3">
+                  <p>Glad you asked. I'm Anshita and I have a passion for creating things. I'm a freelance artist and computer science student at Boston Univeristy. I love tackling creative challenges and making things that have tangible impacts.</p>
+                </div>
+                <div class="hidden1 my-3">
+                  <p>My interest in software engineering began unexpectedly with my Wordle obsession during quarantine. I had previously considered coding an arcane lifeform, but the more I learned about it, the more I was enamored by the beauty, complexity and simplicity of it.</p>  
+                </div>
+                <div class="hidden1 my-3">
+                  <p>Fast forward to today and I'm in my 2nd year of undergratuate studies currently on a Cardano NFT project, Camel Club, as a developer. I always want to learn more about building optimized and scalable programs and aspire to a career that will allow me to channel my creativity through code.</p>
+                </div>
+                <div class="hidden1 my-3">
+                  <p class="mb-2">Here are a few technologies that I've been working with recently:</p>
+                </div>
               </div>
-              <div class="display-9">
+              <div class="display-9 hidden1">
                 <div class="row g-2 mx-5 mx-md-auto">
                   <div class="col-6 col-md-3"><span class="colored">&#9657;</span>&nbsp;Java</div>
                   <div class="col-6 col-md-3"><span class="colored">&#9657;</span>&nbsp;Python</div>
@@ -128,20 +133,20 @@
   <div id="projects" class="fullscreen d-block  pt-5">
     <div class="d-flex">
       <div class="mx-auto text-center">
-        <p class="display-9 colored styled">02. Some Things I've Made</p>
-        <p class="display-5 mt-1 mb-3">Projects</p>
+        <p class="display-9 colored styled hidden1">02. Some Things I've Made</p>
+        <p class="display-5 mt-1 mb-3 hidden1">Projects</p>
       </div>
     </div>
-    <div class="d-flex">
+    <div class="d-flex hidden1">
       <div class="mx-auto">
         <label for="filterby">Filter By:</label>    
-      <select id="filterby" name="filterby">
+        <select id="filterby" name="filterby">
         <option value="category">Category</option>
         <option value="language">Language</option>
       </select>
       </div>
     </div>
-    <div class="d-flex">
+    <div class="d-flex hidden1">
       <div id="language" class="option mx-auto px-4">
         <div class="btn cbtn active" id="javascript"><p>JavaScript</p></div>
         <div class="btn cbtn" id="python"><p>Python</p></div>
@@ -157,12 +162,12 @@
         <div class="btn cbtn" id="viewall2"><p>View All</p></div>
       </div>
     </div>
-    <div class="mx-4">
+    <div class="mx-4 hidden1">
       <hr>
       <p class="text-center styled">Viewing <span id="results">4</span> Projects</p>
     </div>
     <div id="projectContainer">
-      <div class="flex-container2">
+      <div class="flex-container2 hidden2">
         <div class="item max-three-col filter featured webdevelopment javascript">
           <div class="card" >
             <img class="card-img-top img-filter" src="media/cc.gif" alt="Card image cap">
@@ -254,7 +259,7 @@
               <h6>Pyrdle</h6>
               <p>Have you ever wanted to play Wordle on your computer, but without the internet? Pyrdle is your friend! Pyrdle was created using the Python GUI toolkit Tkinter.</p>
               <div class="mb-1 tags"></div>
-              <a href="#" class="btn infobtn">View Git</a>
+              <a href="https://github.com/ankhare8/Pyrdle" target="_blank" class="btn infobtn">View GitHub Repo</a>
             </div>
           </div>
         </div>
@@ -266,7 +271,7 @@
               <h6>Pyker</h6>
               <p>Play a round of poker with the computer. This program knows how to compare hands, suits and ranks, and the base logic could be used for more complex card games.</p>
               <div class="mb-1 tags"></div>
-              <a href="https://github.com/ankhare8/Pyker" class="btn infobtn">See More</a>
+              <a href="https://github.com/ankhare8/pyker" target="_blank" class="btn infobtn">View GitHub Repo</a>
             </div>
           </div>
         </div>
@@ -278,7 +283,7 @@
               <h6>Sudoku Solver</h6>
               <p>Agorithim that solves an inputted Sudoku puzzle. Code includes a recursive version and iterative version using a stack.</p>
               <div class="mb-1 tags"></div>
-              <a href="#" class="btn infobtn">See More</a>
+              <a href="https://github.com/ankhare8/sudoku-solver" target="_blank" class="btn infobtn">View GitHub Repo</a>
             </div>
           </div>
         </div>
@@ -287,9 +292,9 @@
             <img class="card-img-top img-filter" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
               <h6>Subway Solver</h6>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p>This program helps you find a train route from point A to point B on the MBTA using python dictionary objects</p>
               <div class="mb-1 tags"></div>
-              <a href="#" class="btn infobtn">See More</a>
+              <a href="https://github.com/ankhare8/subway-solver" class="btn infobtn">View GitHub Repo</a>
             </div>
           </div>
         </div>
@@ -297,10 +302,10 @@
           <div class="card" >
             <img class="card-img-top img-filter" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
-              <h6>Praim Joytsh</h6>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <h6>Magic 7 Ball</h6>
+              <p>A magic 8 Ball that generates a response using a neural network</p>
               <div class="mb-1 tags"></div>
-              <a href="#" class="btn infobtn">See More</a>
+              <a href="#" class="btn infobtn">Coming Soon</a>
             </div>
           </div>
         </div>
@@ -309,9 +314,9 @@
             <img class="card-img-top img-filter" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
               <h6>Anchat Bot</h6>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p>An intelligent chatbot using neural networks and natural language processing in Python</p>
               <div class="mb-1 tags"></div>
-              <a href="#" class="btn infobtn">See More</a>
+              <a href="#" class="btn infobtn">Coming Soon</a>
             </div>
           </div>
         </div>
@@ -320,9 +325,9 @@
             <img class="card-img-top img-filter" src="media/placeholder.png" alt="Card image cap">
             <div class="card-body">
               <h6>Tree Generator</h6>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p>A program that generates a .jpg of recursively drawn trees using trunk and twig that I drew.</p>
               <div class="mb-1 tags"></div>
-              <a href="#" class="btn infobtn">See More</a>
+              <a href="#" class="btn infobtn">Coming Soon</a>
             </div>
           </div>
         </div>
@@ -335,25 +340,25 @@
     </div>
   </div>
   <section id="contact" class="fullscreen d-flex text-center py-5">
-    <div class="my-auto">
+    <div class="my-auto hidden1">
       <p class="colored styled">03. What's Next?</p>
       <p class="display-5 my-3"> Get In Touch</p>
-      <div class="extramargin px-md-5">
+      <div class="extramargin px-md-5 hidden1">
           <p class="display-8">Thanks for stopping by, I'm looking for new opportunities to grow and for new projects to apply my skills to. If you feel like we would be a good fit for one another, please reach out to me via email or connect with me on LinkedIn.</p>
           <div class="row my-4 mx-sm-5">
-            <div class="col-12 col-md-4 my-2 my-md-0">
+            <div class="col-12 col-md-4 my-2 my-md-0 hidden1">
                 <div class="dbtn">
                   <a class="m-auto" href="#!"><i class="fa-brands fa-linkedin-in"></i>&nbsp;&nbsp;LinkedIn</a>
                 </div>
             </div>
-            <div class="col-12 col-md-4 my-2 my-md-0">
+            <div class="col-12 col-md-4 my-2 my-md-0 hidden1">
                 <div class="dbtn">
                   <a class="m-auto" href="mailto: ankhare8@gmail.com ?subject=👋%20Hey%20Anshita,%20I%20Saw%20Your%20Website%20and%20Wanted%20to%20Reach%20Out!">
                     <i class="fa fa-envelope mr-3"></i>&nbsp;&nbsp;Send Me A Message
                   </a>
                 </div>
             </div>
-            <div class="col-12 col-md-4 my-2 my-md-0">
+            <div class="col-12 col-md-4 my-2 my-md-0 hidden1">
                 <div class="dbtn">
                   <a class="m-auto" href="#!"><i class="fa-brands fa-github"></i>&nbsp;&nbsp;Github</a>
                 </div>
