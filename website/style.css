@@ -440,7 +440,7 @@ i.nav-link{
 }
 
 .card-img-top{
-    object-fit: scale-down;
+    object-fit:contain;
     max-height: 300px;
 }
 
