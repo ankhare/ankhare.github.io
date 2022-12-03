@@ -470,7 +470,7 @@ i.nav-link{
     filter:  brightness(50%) sepia(80%) hue-rotate(110deg);
 }
 
-.card:hover > .img-filter, .img-filter:hover, .card:active > .img-filter{    
+.card:hover > .img-filter, .img-filter:hover, .card:focus > .img-filter{    
     -webkit-filter: opacity(100%);
     filter: opacity(100%);
 }
