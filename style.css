@@ -543,6 +543,11 @@ i.nav-link{
         -webkit-filter: opacity(100%);
         filter: opacity(100%);
     }
+
+    .scrolled{
+        background-color: var(--bg) !important;
+        transition: background-color 200ms linear;
+    }
 }
 @media screen and (max-width: 575px){
     hr{

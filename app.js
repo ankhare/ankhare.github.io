@@ -38,6 +38,10 @@ $(document).ready(function () {
         elements.append(`<div class="tag highlight">${tag + " "}`);
     });
 
+    $(document).scroll(function () {
+        var $nav = $("nav");
+        $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+    });
 
     $("#filterby").change(function(event){
         const resp = event.target.value;
