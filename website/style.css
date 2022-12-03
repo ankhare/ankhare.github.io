@@ -531,6 +531,14 @@ i.nav-link{
     }
 }
 @media screen and (max-width: 575px){
+    .img-filter{
+        filter: opacity(100%);
+    }
+
+    .card:hover > .img-filter, .img-filter:hover, .card:focus > .img-filter{ 
+        object-fit: cover;
+    }
+
     #profilepic{
         width: 70%;
     }
