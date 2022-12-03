@@ -507,6 +507,11 @@ i.nav-link{
     object-fit: cover;
 }
 
+/* #profilepic:hover, #profilepic:focus{
+    -webkit-filter: opacity(50%); 
+    filter:  brightness(50%);
+} */
+
 @media screen and (max-width: 991px) {
     .max-three-col {
         flex-basis: 49%;
