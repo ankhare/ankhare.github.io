@@ -66,6 +66,7 @@ select{
 }
 
 .gborder{
+    width: inherit;
     border-radius: 5px;
     border: 1px solid var(--dark-1);
 }
@@ -104,13 +105,13 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 }
 
 .display-8{
-    font-size: calc(1rem + .3vw);
+    font-size: calc(1rem + .2vw);
     font-weight: 300;
     line-height: 1.2;
 }
 
 .display-9{
-    font-size: 1rem;
+    font-size: calc(.9rem + .1vw);
     font-weight: 300;
 }
 
@@ -189,6 +190,7 @@ i.nav-link{
 .nav-link:focus, .nav-link:hover {
     color: var(--dark-1);
 }
+
 .navbar-toggler {
     border: none;
 }
@@ -465,7 +467,7 @@ i.nav-link{
 
 .img-filter {
     -webkit-filter: opacity(50%); 
-    filter:  brightness(50%) sepia(100%) hue-rotate(110deg);
+    filter:  brightness(50%) sepia(80%) hue-rotate(110deg);
 }
 
 .card:hover > .img-filter, .img-filter:hover, .card:active > .img-filter{    
