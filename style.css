@@ -337,6 +337,8 @@ i.nav-link{
 }
 
 .highlight {
+    font-family: 'Oxygen Mono', monospace;
+    font-size: calc(.8rem + .1vw);
     position: relative;
 }
   
@@ -451,8 +453,7 @@ i.nav-link{
 }
 
 .card-body > p{
-    font-family: 'Oxygen Mono', monospace;
-    font-size: calc(.8rem + .1vw);
+    font-size: calc(.9rem + .1vw);
 }
 
 .card{
@@ -461,13 +462,13 @@ i.nav-link{
     margin-bottom: 20px;
     background-color: var(--bg);
     color: white;
-    border: 1px solid var(--dark-1);
+    border: 1px solid var(--darktrans);
     width: 100%;
     height: 95%;
 }
 
 .card:hover{
-    /* border-color: var(--light-1); */
+    border-color: var(--dark-1);
     box-shadow: 0 0 20px var(--darktrans);
 }
 
