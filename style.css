@@ -206,11 +206,11 @@ i.nav-link{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
     height: 25px;
 }
 
 .bar {
+    align-self:flex-end;
     height: 2.5px;
     background-color: var(--dark-1);
     transition: all 100ms ease-in-out;
@@ -506,6 +506,11 @@ i.nav-link{
     display: none;
 }
 
+.scrolled{
+    background-color: var(--bg) !important;
+    transition: background-color 200ms linear;
+}
+
 #profilepic{
     border-radius: 5px;
     width: 90%;
@@ -519,6 +524,14 @@ i.nav-link{
     -webkit-filter: opacity(50%); 
     filter:  brightness(50%);
 } */
+
+@media screen and (max-width: 1199px) {
+    .navbar-collapse {
+        text-align: right;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+}
 
 @media screen and (max-width: 991px) {
     .max-three-col {
@@ -542,11 +555,6 @@ i.nav-link{
     .card:hover > .img-filter, .img-filter:hover, .card:focus > .img-filter{ 
         -webkit-filter: opacity(100%);
         filter: opacity(100%);
-    }
-
-    .scrolled{
-        background-color: var(--bg) !important;
-        transition: background-color 200ms linear;
     }
 }
 @media screen and (max-width: 575px){
