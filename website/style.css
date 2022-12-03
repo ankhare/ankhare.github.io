@@ -7,8 +7,8 @@
     --darkgray: #9d9db3;
     --bg: #0e181c;
     --dark: #308679;
-    --darktrans: #30867996;
-    --highlight:  #fffabb;
+    --darktrans: #308679ea;
+    --highlight:  #30867993;
     --dark-1: #7af0d7;
     --light: #a99fd5;
 }
@@ -104,13 +104,13 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 }
 
 .display-8{
-    font-size: calc(.8rem + .4vw);
+    font-size: calc(1rem + .3vw);
     font-weight: 300;
     line-height: 1.2;
 }
 
 .display-9{
-    font-size: calc(.6rem + .6vw);
+    font-size: 1rem;
     font-weight: 300;
 }
 
@@ -349,7 +349,7 @@ i.nav-link{
 }
 
 .highlight:before {
-    background: var(--darktrans);
+    background: var(--highlight);
     z-index:-100;
 }
 
@@ -501,7 +501,7 @@ i.nav-link{
 
 #profilepic{
     border-radius: 5px;
-    width: 80%;
+    width: 90%;
     height: auto;
     margin: auto;
     max-width: 400px;
@@ -522,7 +522,7 @@ i.nav-link{
 }
 @media screen and (max-width: 575px){
     #profilepic{
-        width: 50%;
+        width: 70%;
     }
 
     .flex-container2 {
@@ -532,7 +532,7 @@ i.nav-link{
     }
 
     .flex-container2::-webkit-scrollbar-track{
-        border: 1px solid var(--darktrans);
+        border: 1px solid var(--highlight);
     }
 
     .flex-container2::-webkit-scrollbar{
@@ -540,8 +540,8 @@ i.nav-link{
     }
 
     .flex-container2::-webkit-scrollbar-thumb{
-        border: 1px solid var(--darktrans);
-        background-color: var(--darktrans);
+        border: 1px solid var(--highlight);
+        background-color: var(--highlight);
     }
 
     .max-three-col {
