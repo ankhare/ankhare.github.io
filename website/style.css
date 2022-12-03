@@ -364,7 +364,7 @@ i.nav-link{
 }
 
 .highlight:before {
-    background: var(--highlight);
+    background: var(--darktrans);
     z-index:-100;
 }
 
@@ -421,8 +421,9 @@ i.nav-link{
 .infobtn{
     font-size: calc(.75rem + .25vw);
     font-family: 'Oxygen Mono', monospace;
+    background-color: var(--dark);
     border: 1px solid var(--black);
-    color: var(--black);
+    color: var(--white);
     width: 100%;
 }
 .dbtn:hover{
@@ -435,8 +436,8 @@ i.nav-link{
  
 .infobtn:hover {
     border: 1px solid var(--black);
-    background-color: var(--dark);
-    color: var(--white);
+    background-color: var(--white);
+    color: var(--black);
 }
 
 .w-45{
@@ -472,7 +473,8 @@ i.nav-link{
 .card{
     margin-top: 20px;
     margin-bottom: 20px;
-    background-color: var(--white);
+    background-color: var(--bg);
+    color: white;
     border: 1px solid var(--dark-1);
     width: 100%;
     height: 95%;
@@ -485,7 +487,7 @@ i.nav-link{
 
 .img-filter {
     -webkit-filter: opacity(50%); 
-    filter:  sepia(100%) hue-rotate(110deg);
+    filter:  brightness(50%) sepia(100%) hue-rotate(110deg);
 }
 
 .card:hover > .img-filter, .img-filter:hover, .card:active > .img-filter{    
