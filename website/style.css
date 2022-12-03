@@ -575,7 +575,7 @@ i.nav-link{
     .hidden1{
         transform: translate(0, 50%);
         transform-origin: bottom;
-        transition: transform 1s;
+        transition: transform .5s;
     }
 
     .hidden2{
