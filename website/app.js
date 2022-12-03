@@ -28,6 +28,8 @@ $(document).ready(function () {
     const hidden2Elements = document.querySelectorAll(".hidden2");
     hidden2Elements.forEach((el) => observer.observe(el));
 
+    // const mymodal = new bootstrap.Modal('#myModal', options);
+
     const tags = ['featured', 'games', 'web development', 'machine learning', 'generative art', 'javascript', 'python','java'];
 
     tags.forEach((tag) => {

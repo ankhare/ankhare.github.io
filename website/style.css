@@ -365,7 +365,6 @@ i.nav-link{
 
 /* Style the buttons */
 .btn {
-    margin: auto;
     transition: background-color 0.5s ease, border 0.5s ease;
     text-transform: uppercase;
 }
@@ -380,6 +379,7 @@ i.nav-link{
 }
 
 .cbtn{
+    margin: auto;
     font-size: calc(.9rem + .3vw);
     font-weight: 300;
     letter-spacing: .5px;
@@ -440,14 +440,19 @@ i.nav-link{
 }
 
 .card-img-top{
-    object-fit:contain;
-    max-height: 300px;
+    object-fit: cover;
+    max-height: 200px;
 }
 
 .card-body{
     display: flex;
     align-items: stretch;
     flex-direction: column;
+}
+
+.card-body > p{
+    font-family: 'Oxygen Mono', monospace;
+    font-size: calc(.8rem + .1vw);
 }
 
 .card{
@@ -468,10 +473,11 @@ i.nav-link{
 
 .img-filter {
     -webkit-filter: opacity(50%); 
-    filter:  brightness(50%) sepia(100%) hue-rotate(110deg);
+    filter:  brightness(50%) sepia(100%) blur(1px) hue-rotate(110deg);
 }
 
-.card:hover > .img-filter, .img-filter:hover, .card:focus > .img-filter{    
+.card:hover > .img-filter, .img-filter:hover, .card:focus > .img-filter{ 
+    object-fit: scale-down;
     -webkit-filter: opacity(100%);
     filter: opacity(100%);
 }
@@ -493,6 +499,7 @@ i.nav-link{
 
 .tags{
     display: flex;
+    align-items: stretch;
     flex-wrap: wrap;
 }
 
