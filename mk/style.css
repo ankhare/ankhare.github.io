@@ -70,6 +70,12 @@ footer a:hover, #contact a:hover{
     border-top-right-radius: 4vw;
 }
 
+.flex-stretch{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 /* custom class text styling */
 .caps{
     font-family: 'DM Serif Display';
@@ -260,7 +266,7 @@ a.nav-link{
 .lbtn {
     font-family: 'lato', sans-serif;
     font-weight: 700;
-    transition: background-color 0.5s ease;
+    transition: background-color .25s ease;
 }
 
 .lbtn{
@@ -289,19 +295,20 @@ a.nav-link{
 }
 
 .cbtn{
+    height: 100%;
     font-family: 'lato', sans-serif;
     font-weight: 700;
     display: flex;
-    background-color: var(--darkhighlight);
+    background-color: var(--highlight);
     color: white;
     /* min-height: 50px; */
-    padding: calc(1rem + 1vmin);
+    padding: calc(.9rem + 1vmin);
     border-radius: 5px;
-    transition: background-color 0.5s ease;
+    transition: background-color .25s ease;
 }
 
 .cbtn:hover{
-    background-color: var(--highlight);
+    background-color: var(--darkhighlight);
     color: white;
 }
 
@@ -365,20 +372,20 @@ input, textarea, select, button{
 }
 
 /* style afilliates elements */
-    .switch {
+.switch {
     position: relative;
     display: inline-block;
     width: 60px;
     height: 34px;
-  }
+}
   
-  .switch input { 
+.switch input { 
     opacity: 0;
     width: 0;
     height: 0;
-  }
+}
   
-  .slider {
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -388,9 +395,9 @@ input, textarea, select, button{
     background-color: #ccc;
     -webkit-transition: .2s;
     transition: .2s;
-  }
+}
   
-  .slider:before {
+.slider:before {
     position: absolute;
     content: "";
     height: 26px;
@@ -400,49 +407,41 @@ input, textarea, select, button{
     background-color: white;
     -webkit-transition: .2s;
     transition: .2s;
-  }
+}
   
-  input:checked + .slider {
+input:checked + .slider {
     background-color: var(--darkhighlight)
-  }
+}
   
-  
-  input:checked + .slider:before {
+input:checked + .slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
-  }
+}
   
   /* Rounded sliders */
-  .slider.round {
+.slider.round {
     border-radius: 34px;
-  }
+}
   
-  .slider.round:before {
+.slider.round:before {
     border-radius: 50%;
-  }
-
-
-.affiliates-container{
-    display: block;
-    min-height: fit-content !important;
-    transition: height 0.25s ease;
 }
 
-.affiliates{
+#affiliates{
     border-radius: 5px;
     height: 60vh;
     max-height: 400px;
     overflow-y: scroll;
 }
-.affiliates::-webkit-scrollbar,  .flex-container2::-webkit-scrollbar{
+#affiliates::-webkit-scrollbar,  .flex-container2::-webkit-scrollbar{
     background-color: var(--scroller);
     width: 10px;
     height: 10px;
 }
   
-.affiliates::-webkit-scrollbar-thumb, .flex-container2::-webkit-scrollbar-thumb{
-    background-color: var(--highlight);
+#affiliates::-webkit-scrollbar-thumb, .flex-container2::-webkit-scrollbar-thumb{
+    background-color: var(--darkhighlight);
 }
 
 .afilliate{
@@ -462,11 +461,13 @@ input, textarea, select, button{
     color: var(--lightaccent);
 }
 
-.map-img{
+#map{
+    height: 400px;
     border-radius: 5px;
-    width: 100%;
-    height: auto;
-    max-width: 400px;
+}
+
+img.activecolor {
+    filter: brightness(75%) hue-rotate(180deg); 
 }
 
 /* classes that toggle visibility of map */
@@ -541,11 +542,14 @@ input, textarea, select, button{
     }
 }
 
-@media screen and (max-width: 769px){
+@media screen and (max-width: 991){
     .navbar-collapse {
         background-color: white;
         padding-bottom: 1rem;
     }
+}
+
+@media screen and (max-width: 767){
 }
 
 @media screen and (max-width: 575px){
@@ -554,10 +558,6 @@ input, textarea, select, button{
         flex-wrap: nowrap;
         overflow-x: scroll;
         border-radius: 5px;
-    }
-
-    .map-img{
-        max-width: none
     }
 
     hr{
