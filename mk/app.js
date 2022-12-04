@@ -29,13 +29,14 @@ $(document).ready(function () {
 
     const LocationIcon = L.Icon.extend({
         options: {
+            iconUrl: 'media/baseicon.png',
             iconSize: [30, 30]
         }
     });
 
     //create object to hold references to marker ids within the for loop below
     let markers = {};
-    const baseicon = new LocationIcon({iconUrl: 'media/baseicon.png'});
+    const baseicon = new LocationIcon();
     
     for (let i = 0; i < locations.length; i++) {
         let id = [locations[i][0]];
