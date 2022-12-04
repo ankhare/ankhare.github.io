@@ -152,11 +152,11 @@ $(document).ready(function () {
         if($('#map').hasClass('hidden')){
             setTimeout(function(){
                 $('#map').toggleClass('none');
-                $('.affiliates').toggleClass('w-100');
+                $('#affiliates').toggleClass('w-100');
             }, 1000);
         }else{
             $('#map').toggleClass('none');
-            $('.affiliates').toggleClass('w-100');
+            $('#affiliates').toggleClass('w-100');
         }
         
         
