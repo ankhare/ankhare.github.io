@@ -15,7 +15,7 @@ $(document).ready(function () {
 
     const map = L.map('map', {scrollWheelZoom: false}).setView([42.424993, -83.326150], 10);
     L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-    maxZoom: 20,
+    maxZoom: 13,
     attribution: '<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
 
     //create list of lists containing id, latitude, longitude
