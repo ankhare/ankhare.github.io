@@ -503,6 +503,7 @@ input:checked + .slider:before {
 #map{
     height: 400px;
     border-radius: 5px;
+    transition: visibility 0s 1s, opacity 1s ease-out;
 }
 
 img.activecolor {
@@ -514,10 +515,10 @@ img.activecolor {
 .hidden {
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s 1s, opacity 1s ease-out;
 }
 
 .none {
+    opacity: 0;
     display:none;
 }
 

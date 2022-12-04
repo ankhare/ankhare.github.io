@@ -9,7 +9,7 @@ function validatePhone(number){
 }
 
 $(document).ready(function () {
-    const map = L.map('map', {scrollWheelZoom: false}).setView([42.424993, -83.326150], 10);
+    const map = L.map('map', {scrollWheelZoom: false}).setView([42.424993, -83.326150], 9);
     L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     maxZoom: 13,
     attribution: '<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
@@ -34,15 +34,39 @@ $(document).ready(function () {
     });
 
     //create object to hold references to marker ids within the for loop below
-    let markers = {};
+    let markers = [];
     const baseicon = new LocationIcon();
+    const userlocation = new LocationIcon({iconUrl: 'media/currLoc.png', iconSize: [10, 10]});
+
+
     
     for (let i = 0; i < locations.length; i++) {
         let id = [locations[i][0]];
-        markers[id] = new L.marker([locations[i][1], locations[i][2]], {icon: baseicon})
+        markers[i] = new L.marker([locations[i][1], locations[i][2]], {icon: baseicon})
         .addTo(map);
-        markers[id]._icon.id = id;
+        markers[i].addTo(map);
+        markers[i]._icon.id = id;
     }
+
+    $('#showmylocation').bind('keydown click', function() {
+        navigator.geolocation.getCurrentPosition(position => {
+            console.log(position);
+        const { coords: { latitude, longitude }} = position;
+
+        currLoc = new L.marker([latitude, longitude], {icon: userlocation});
+        currLoc.addTo(map);
+        markers.push(currLoc);
+
+        const group =  L.featureGroup(markers);
+        map.fitBounds(group.getBounds());
+
+        // console.log(markers);
+        // var bounds = L.latLngBounds(markers);
+        // map.fitBounds(bounds);
+
+        })
+    });
+
 
     //make spectrum the active color
     $('#spectrum').addClass('activecolor');
@@ -70,7 +94,6 @@ $(document).ready(function () {
             inline: "start"
         });
     });
-
 
     $('.affiliate').bind('keydown click', function(e) {
         $('.affiliate').removeClass('active');
@@ -147,19 +170,20 @@ $(document).ready(function () {
        
 
     $('#toggleMap').bind('keydown click', function(){
+        
         $('#map').toggleClass('hidden');
 
         if($('#map').hasClass('hidden')){
             setTimeout(function(){
-                $('#affiliates').toggleClass('expand');
                 $('#map').toggleClass('none');
+                $('#affiliates').toggleClass('expand');
             }, 1000);
+
         }else{
             $('#affiliates').toggleClass('expand');
             setTimeout(function(){
                 $('#map').toggleClass('none');
-            }, 1000);
-            
+            },1100);
         }
         
         
