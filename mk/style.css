@@ -54,7 +54,7 @@ footer a:hover, #contact a:hover{
     color: var(--lightaccent);
 }
 
-.afilliate a:hover{
+.affiliate a:hover{
     color: var(--highlight);   
 }
 
@@ -401,7 +401,7 @@ input, textarea, select, button{
     color: black;
 }
 
-/* style afilliates elements */
+/* style affiliates elements */
 .switch {
     position: relative;
     display: inline-block;
@@ -462,32 +462,42 @@ input:checked + .slider:before {
     border-radius: 5px;
     max-height: 400px;
     overflow-y: scroll;
+    transition: all 1s linear;
 }
+
 #affiliates::-webkit-scrollbar,  .flex-container2::-webkit-scrollbar{
     background-color: var(--scroller);
-    width: 10px;
-    height: 10px;
+    width: 6px;
+    border-radius: 5px;
 }
   
 #affiliates::-webkit-scrollbar-thumb, .flex-container2::-webkit-scrollbar-thumb{
     background-color: var(--darkhighlight);
+    border-radius: 5px;
 }
 
-.afilliate{
+.affiliate{
+    border-radius: 5px;
     cursor: pointer;
     padding: 1rem;
     width: 100%;
     background-color: var(--lightgray);
-    transition: background-color 200ms linear;
+    transition: background-color .5s linear;
 }
 
-.afilliate.active{
+.affiliate.active{
     background-color: var(--highlight);
     color: white;
 }
 
-.afilliate.active a:hover{
+.affiliate.active a:hover{
     color: var(--lightaccent);
+}
+
+.expand{
+    width: 100%;
+    min-height: 400px;
+    transition: all 1s linear;
 }
 
 #map{
@@ -496,14 +506,11 @@ input:checked + .slider:before {
 }
 
 img.activecolor {
-    filter: brightness(90%) hue-rotate(155deg); 
+    filter: brightness(80%) hue-rotate(160deg); 
+    transition: filter 1s ease;
 }
 
 /* classes that toggle visibility of map */
-.w-100{
-    transition: width 1s linear;
-}
-
 .hidden {
     visibility: hidden;
     opacity: 0;
@@ -609,6 +616,14 @@ img.activecolor {
 
     .middle-margin{
         margin: 0%;
+    }
+
+    #affiliates{
+        max-height: 200px;
+    }
+
+    #map{
+        height: 350px;
     }
 }
 @media screen and (max-width: 320px){

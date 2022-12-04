@@ -60,7 +60,7 @@ $(document).ready(function () {
         id = $el.attr('id');
 
         //the corresponding text for that icon is "t" + id, use that to add active class to that element
-        $('.afilliate').removeClass('active');
+        $('.affiliate').removeClass('active');
         $('#t' + id).addClass('active');
 
         //scroll to the text element
@@ -72,8 +72,8 @@ $(document).ready(function () {
     });
 
 
-    $('.afilliate').bind('keydown click', function(e) {
-        $('.afilliate').removeClass('active');
+    $('.affiliate').bind('keydown click', function(e) {
+        $('.affiliate').removeClass('active');
         $(this).addClass('active')
 
         $('.leaflet-marker-icon').removeClass('activecolor')
@@ -152,11 +152,11 @@ $(document).ready(function () {
         if($('#map').hasClass('hidden')){
             setTimeout(function(){
                 $('#map').toggleClass('none');
-                $('#affiliates').toggleClass('w-100');
+                $('#affiliates').toggleClass('expand');
             }, 1000);
         }else{
             $('#map').toggleClass('none');
-            $('#affiliates').toggleClass('w-100');
+            $('#affiliates').toggleClass('expand');
         }
         
         
