@@ -9,15 +9,14 @@ function validatePhone(number){
 }
 
 $(document).ready(function () {
-    // document.querySelectorAll(".afilliate a").forEach(function(a){
-    //     a.setAttribute('target', '_blank');
-    // })
-
     const map = L.map('map', {scrollWheelZoom: false}).setView([42.424993, -83.326150], 10);
     L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     maxZoom: 13,
     attribution: '<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
 
+    if(window.ontouchstart !== undefined){
+        map.dragging.disable();
+    }
     //create list of lists containing id, latitude, longitude
     const locations = [
         ["spectrum", 42.28642, -83.38423],
@@ -82,7 +81,7 @@ $(document).ready(function () {
         $('#' + iconid).addClass('activecolor')
     });
 
-    document.addEventListener("touchstart", function(){}, true);
+    // document.addEventListener("touchstart", function(){}, true);
     let conditionTimerID;
     let currCondition;
     
