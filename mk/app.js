@@ -50,20 +50,15 @@ $(document).ready(function () {
     $('#showmylocation').bind('keydown click', function() {
         navigator.geolocation.getCurrentPosition(position => {
             console.log(position);
-        const { coords: { latitude, longitude }} = position;
+            const { coords: { latitude, longitude }} = position;
 
-        currLoc = new L.marker([latitude, longitude], {icon: userlocation});
-        currLoc.addTo(map);
-        markers.push(currLoc);
+            currLoc = new L.marker([latitude, longitude], {icon: userlocation});
+            currLoc.addTo(map);
+            markers.push(currLoc);
 
-        const group =  L.featureGroup(markers);
-        const bounds = group.getBounds();
-        map.flyToBounds(bounds, {duration: 1});
-
-        // console.log(markers);
-        // var bounds = L.latLngBounds(markers);
-        // map.fitBounds(bounds);
-
+            const group =  L.featureGroup(markers);
+            const bounds = group.getBounds();
+            map.flyToBounds(bounds, {duration: 1});
         })
     });
 
