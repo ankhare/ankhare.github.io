@@ -129,6 +129,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 }
 
 .gradient {
+    background-color: #a99fd5;
     background: -webkit-linear-gradient(135deg,var(--light),var(--dark),var(--light),var(--dark));
     background: linear-gradient(-45deg,var(--light),var(--dark),var(--light),var(--dark));
     background-clip: text;
