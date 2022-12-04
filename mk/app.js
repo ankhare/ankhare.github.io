@@ -151,12 +151,15 @@ $(document).ready(function () {
 
         if($('#map').hasClass('hidden')){
             setTimeout(function(){
-                $('#map').toggleClass('none');
                 $('#affiliates').toggleClass('expand');
+                $('#map').toggleClass('none');
             }, 1000);
         }else{
-            $('#map').toggleClass('none');
             $('#affiliates').toggleClass('expand');
+            setTimeout(function(){
+                $('#map').toggleClass('none');
+            }, 1000);
+            
         }
         
         
