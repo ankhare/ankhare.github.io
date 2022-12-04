@@ -6,9 +6,9 @@
     --scroller: #ccc;
     --lightgray: #f4f6f7;
     --darkhighlight: #2e5d74;
-    --highlight:#567c95;
-    --light: #ecf2f6;
-    --lightaccent: #c1e7f6;
+    --highlight:#568695;
+    --light: #ecf4f6;
+    --lightaccent: #d6ebe7;
     /* --bs-navbar-color: none; */
 }
 
@@ -74,6 +74,15 @@ footer a:hover, #contact a:hover{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.d-flex-collapse{
+    display: flex;
+}
+
+.middle-margin{
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
 }
 
 /* custom class text styling */
@@ -279,11 +288,29 @@ a.nav-link{
     color: black;
  }
 
-.dbtn{
+.cbtn, .dbtn{
+    height: 100%;
     font-weight: 500;
     padding-top: calc(.8rem + .1vw);
     padding-bottom: calc(.8rem + .1vw);
     text-transform: uppercase;
+    border-radius: 5px;
+    transition: background-color .25s ease;
+}
+
+.cbtn{
+    display: flex;
+    align-items: center;
+    background-color: var(--lightaccent);
+    color: var(--darkhighlight);
+}
+
+.cbtn:hover{
+    background-color: var(--highlight);
+    color: var(--lightaccent);
+}
+
+.dbtn{
     width: 80%;
     background-color: var(--highlight);
     color: var(--lightaccent);
@@ -294,23 +321,26 @@ a.nav-link{
     color: var(--darkhighlight);
 }
 
-.cbtn{
+/* .cbtn{
     height: 100%;
     font-family: 'lato', sans-serif;
     font-weight: 700;
+    font-size: calc(.8rem + .5vw);
     display: flex;
     background-color: var(--highlight);
     color: white;
-    /* min-height: 50px; */
-    padding: calc(.9rem + 1vmin);
-    border-radius: 5px;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: calc(.5rem + 1vmin);
+    padding-right: calc(.5rem + 1vmin);
+    border-radius: 10px;
     transition: background-color .25s ease;
 }
 
 .cbtn:hover{
     background-color: var(--darkhighlight);
     color: white;
-}
+} */
 
 /* style about elements */
 #helpwith{
@@ -430,7 +460,6 @@ input:checked + .slider:before {
 
 #affiliates{
     border-radius: 5px;
-    height: 60vh;
     max-height: 400px;
     overflow-y: scroll;
 }
@@ -467,7 +496,7 @@ input:checked + .slider:before {
 }
 
 img.activecolor {
-    filter: brightness(75%) hue-rotate(180deg); 
+    filter: brightness(90%) hue-rotate(155deg); 
 }
 
 /* classes that toggle visibility of map */
@@ -571,6 +600,17 @@ img.activecolor {
     }
 }
 
+@media screen and (max-width: 400px){
+    .d-flex-collapse{
+        margin-top: .23rem;
+        margin-bottom: .25rem;
+        flex-direction: column;
+    }
+
+    .middle-margin{
+        margin: 0%;
+    }
+}
 @media screen and (max-width: 320px){
     .spacer{
         display: block; 
