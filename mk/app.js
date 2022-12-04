@@ -38,7 +38,6 @@ $(document).ready(function () {
     const baseicon = new LocationIcon();
     const userlocation = new LocationIcon({iconUrl: 'media/currLoc.png', iconSize: [10, 10]});
 
-
     
     for (let i = 0; i < locations.length; i++) {
         let id = [locations[i][0]];
@@ -58,7 +57,8 @@ $(document).ready(function () {
         markers.push(currLoc);
 
         const group =  L.featureGroup(markers);
-        map.fitBounds(group.getBounds());
+        const bounds = group.getBounds();
+        map.flyToBounds(bounds, {duration: 1});
 
         // console.log(markers);
         // var bounds = L.latLngBounds(markers);
