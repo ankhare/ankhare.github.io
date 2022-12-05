@@ -47,6 +47,9 @@ $(document).ready(function () {
         markers[i]._icon.id = id;
     }
 
+    //make spectrum the active color
+    $('#spectrum').addClass('activecolor');
+
     $('#recenter').bind('keydown click', function() {
         map.setView([42.424993, -83.326150], 10);
     });
@@ -65,13 +68,10 @@ $(document).ready(function () {
                 const bounds = group.getBounds();
                 map.flyToBounds(bounds, {duration: 1});
             });
-          } else {
+        } else {
             $('#locationalert').text('This browser does not support geolocation.')
-          }
+        }
     });
-
-    //make spectrum the active color
-    $('#spectrum').addClass('activecolor');
 
     //when an icon is clicked
     $('.leaflet-marker-icon').bind('keydown click', function(e) {
@@ -121,7 +121,7 @@ $(document).ready(function () {
         if ((nextIndex) === conditions.length){
             nextIndex = 0;
         }
-    }, 2000);
+    }, 3000);
 
 
     $(document).scroll(function () {

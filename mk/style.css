@@ -344,8 +344,22 @@ a.nav-link{
 } */
 
 /* style about elements */
-#helpwith{
-    text-align: center;
+#conditioncontainer {
+    height: calc(1.425rem + 2.1vw);
+    overflow-y: hidden;
+}
+
+.marquee {
+    position: relative;
+    box-sizing: border-box;
+    animation: move 3s linear infinite;
+}
+
+@keyframes move {
+    0%   { top:   4rem }
+    10%   { top:   0rem }
+    85%   { top:   0rem }
+    100% { top: 4rem }
 }
 
 .profilepic{
@@ -621,6 +635,10 @@ img.activecolor {
 }
 
 @media screen and (max-width: 400px){
+    .display-5{
+        font-size: calc(1rem + 3vmin);
+    }
+
     .d-flex-collapse{
         margin-top: .23rem;
         margin-bottom: .25rem;
