@@ -9,7 +9,7 @@ function validatePhone(number){
 }
 
 $(document).ready(function () {
-    const map = L.map('map', {scrollWheelZoom: false}).setView([42.424993, -83.326150], 9);
+    const map = L.map('map', {scrollWheelZoom: false}).setView([42.424993, -83.326150], 10);
     L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     maxZoom: 13,
     attribution: '<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
@@ -48,7 +48,7 @@ $(document).ready(function () {
     }
 
     $('#recenter').bind('keydown click', function() {
-        map.setView([42.424993, -83.326150], 9);
+        map.setView([42.424993, -83.326150], 10);
     });
 
     $('#showmylocation').bind('keydown click', function() {
@@ -173,10 +173,12 @@ $(document).ready(function () {
     $('#toggleMap').bind('keydown click', function(){
         
         $('#map').toggleClass('hidden');
+        $('#mapcontrols').toggleClass('hidden');
 
         if($('#map').hasClass('hidden')){
             setTimeout(function(){
                 $('#map').toggleClass('none');
+                $('#mapcontrols').toggleClass('none');
                 $('#affiliates').toggleClass('expand');
             }, 1000);
 
@@ -184,6 +186,7 @@ $(document).ready(function () {
             $('#affiliates').toggleClass('expand');
             setTimeout(function(){
                 $('#map').toggleClass('none');
+                $('#mapcontrols').toggleClass('none');
             },1100);
         }
         
