@@ -1,5 +1,5 @@
 :root{
-    --lg: rgb(72, 83, 87);
+    --lg: rgb(72, 87, 86);
     --lb: rgb(185, 236, 233);
     --lt:  rgb(216, 162, 61);
     --dt: rgb(165, 116, 42);
@@ -169,7 +169,7 @@ p{
     border-radius: 30px;
 }
 
-.key:active:not([disabled]){
+.dir:active:not([disabled]){
     background-color: var(--dt);
     border: 5px inset var(--lt);
 }
@@ -178,11 +178,6 @@ p{
     padding-top: 4vmin;
     font-size: 8vmin;
     text-align: center;
-}
-
-#l{
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
 }
 
 .blink {
