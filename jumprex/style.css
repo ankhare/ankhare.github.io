@@ -166,7 +166,7 @@ p{
     height: 10vmin;
     background-color: var(--lt);
     border: 1.2vmin outset var(--dt);
-    border-radius: 15px;
+    border-radius: 30px;
 }
 
 .key:active:not([disabled]){
