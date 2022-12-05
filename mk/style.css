@@ -614,7 +614,7 @@ img.activecolor {
     }
 }
 
-@media screen and (max-width: 991){
+@media screen and (max-width: 991px){
     .navbar-collapse {
         background-color: white;
         padding-bottom: 1rem;
