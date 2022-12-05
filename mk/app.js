@@ -53,21 +53,22 @@ $(document).ready(function () {
 
     $('#showmylocation').bind('keydown click', function() {
         $(this).prop('disabled', 'disabled');
-        navigator.geolocation.getCurrentPosition(position => {
-            console.log(position);
-        const { coords: { latitude, longitude }} = position;
-
-        currLoc = new L.marker([latitude, longitude], {icon: userlocation});
-        currLoc.addTo(map);
-        markers.push(currLoc);
-
-        const group =  L.featureGroup(markers);
-        const bounds = group.getBounds();
-        map.flyToBounds(bounds, {duration: 1});
-
-        })
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                const { coords: { latitude, longitude }} = position;
+    
+                currLoc = new L.marker([latitude, longitude], {icon: userlocation});
+                currLoc.addTo(map);
+                markers.push(currLoc);
+    
+                const group =  L.featureGroup(markers);
+                const bounds = group.getBounds();
+                map.flyToBounds(bounds, {duration: 1});
+            });
+          } else {
+            $('#locationalert').text('This browser does not support geolocation.')
+          }
     });
-
 
     //make spectrum the active color
     $('#spectrum').addClass('activecolor');
@@ -146,7 +147,6 @@ $(document).ready(function () {
         let subject = document.getElementById("subject").value; 
         let message = document.getElementById("message").value; 
 
-
         if (name && subject && message && validatePhone(phone) && validateEmail(email)){
             return document.getElementById("theform").submit();
             
@@ -188,8 +188,6 @@ $(document).ready(function () {
                 $('#map').toggleClass('none');
                 $('#mapcontrols').toggleClass('none');
             },1100);
-        }
-        
-        
+        }  
     });
 })
