@@ -467,7 +467,8 @@ input:checked + .slider:before {
 
 #affiliates::-webkit-scrollbar,  .flex-container2::-webkit-scrollbar{
     background-color: var(--scroller);
-    width: 6px;
+    width: 8px;
+    height: 8px;
     border-radius: 5px;
 }
   
@@ -486,7 +487,7 @@ input:checked + .slider:before {
     padding: 1rem;
     width: 100%;
     background-color: var(--lightgray);
-    /* transition: background-color .5s linear; */
+    transition: background-color 100ms linear;
 }
 
 .affiliate.active{
