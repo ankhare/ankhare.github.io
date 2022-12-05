@@ -35,7 +35,7 @@ hr{
 }
 
 select{
-    background-color: var(--bg);
+    background-color: transparent;
     color: var(--dark-1);
     border-radius: 5px;
     border: none;
