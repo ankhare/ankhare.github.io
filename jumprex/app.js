@@ -210,9 +210,8 @@ $(document).ready(function () {
         platforms = [];
         setTimeout(()=>{
             grid.empty();
-            grid.html(`<div class="result">Score: ${score/10} </div>
-            <div class="container-fluid">
-            <button type="button" id="restart" class="key">restart</button>`);
+            grid.html(`<div class="result">Score: ${score/10}</div>
+            <div id="restart" class="key mx-auto"><p class="text-center my-auto">restart</p></div>`);
             $('#restart').click(()=>{
                 location.reload()
             })
