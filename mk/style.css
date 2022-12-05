@@ -5,8 +5,8 @@
     --gray: #878787;
     --scroller: #ccc;
     --lightgray: #f4f6f7;
-    --darkhighlight: #2e5d74;
-    --highlight:#568695;
+    --darkhighlight: #2e6a74;
+    --highlight:#429490;
     --light: #ecf4f6;
     --lightaccent: #d6ebe7;
     /* --bs-navbar-color: none; */
@@ -308,13 +308,13 @@ a.nav-link{
 .cbtn{
     display: flex;
     align-items: center;
-    background-color: var(--lightaccent);
-    color: var(--darkhighlight);
+    background-color: var(--darkhighlight);
+    color: var(--lightaccent);
 }
 
 .cbtn:hover{
-    background-color: var(--highlight);
-    color: var(--lightaccent);
+    background-color: var(--lightaccent);
+    color: var(--darkhighlight);
 }
 
 .dbtn{
@@ -536,7 +536,7 @@ input:checked + .slider:before {
 }
 
 img.activecolor {
-    filter: brightness(80%) hue-rotate(160deg); 
+    filter: brightness(80%) hue-rotate(150deg); 
     transition: filter 1s ease;
 }
 
@@ -562,7 +562,7 @@ img.activecolor {
     --bs-accordion-btn-focus-border-color: black;
     --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23325e48'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
     --bs-accordion-active-color: black;
-    --bs-accordion-active-bg: var(--light);
+    --bs-accordion-active-bg: var(--lightgray);
     --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23325e48'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
     
 }
