@@ -182,6 +182,9 @@ footer a:hover, #contact a:hover{
     background-color: #fff !important;
     transition: background-color 200ms linear;
 }
+.btn{
+    border: none;
+}
 
 a.nav-link{
     /* font-size: calc(1rem + .5vw); */
