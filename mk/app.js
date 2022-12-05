@@ -47,18 +47,24 @@ $(document).ready(function () {
         markers[i]._icon.id = id;
     }
 
+    $('#recenter').bind('keydown click', function() {
+        map.setView([42.424993, -83.326150], 9);
+    });
+
     $('#showmylocation').bind('keydown click', function() {
+        $(this).prop('disabled', 'disabled');
         navigator.geolocation.getCurrentPosition(position => {
             console.log(position);
-            const { coords: { latitude, longitude }} = position;
+        const { coords: { latitude, longitude }} = position;
 
-            currLoc = new L.marker([latitude, longitude], {icon: userlocation});
-            currLoc.addTo(map);
-            markers.push(currLoc);
+        currLoc = new L.marker([latitude, longitude], {icon: userlocation});
+        currLoc.addTo(map);
+        markers.push(currLoc);
 
-            const group =  L.featureGroup(markers);
-            const bounds = group.getBounds();
-            map.flyToBounds(bounds, {duration: 1});
+        const group =  L.featureGroup(markers);
+        const bounds = group.getBounds();
+        map.flyToBounds(bounds, {duration: 1});
+
         })
     });
 

@@ -511,6 +511,9 @@ img.activecolor {
     transition: filter 1s ease;
 }
 
+#recenter{
+    cursor: pointer;
+}
 /* classes that toggle visibility of map */
 .hidden {
     visibility: hidden;
