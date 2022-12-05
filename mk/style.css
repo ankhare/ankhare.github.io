@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&family=Lato:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500;700&family=DM+Serif+Display:ital@0;1&family=Lato:wght@300;400;500;700&display=swap");
 
 /* document wide formatting */
 :root {
@@ -43,10 +43,11 @@ h6{
 }
 
 footer{
-    color: rgb(255, 255, 255);
+    font-weight: 200;
+    color: var(--lightaccent);
 }
 
-footer a, #contact a{
+#contact a{
     color: white;
 }
 
@@ -93,7 +94,6 @@ footer a:hover, #contact a:hover{
 
 /* custom class text styling */
 .caps{
-    font-family: 'DM Serif Display';
     text-transform: uppercase;
 }
 
@@ -640,6 +640,16 @@ img.activecolor {
     }
 }
 
+@media screen and (max-width: 500px) {
+    #affiliates{
+        max-height: 200px;
+    }
+
+    #map{
+        height: 350px;
+    }
+}
+
 @media screen and (max-width: 400px){
     .display-5{
         font-size: calc(1rem + 3vmin);
@@ -653,14 +663,6 @@ img.activecolor {
 
     .middle-margin{
         margin: 0%;
-    }
-
-    #affiliates{
-        max-height: 200px;
-    }
-
-    #map{
-        height: 350px;
     }
 }
 @media screen and (max-width: 320px){
