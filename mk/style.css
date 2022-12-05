@@ -134,7 +134,7 @@ footer a:hover, #contact a:hover{
 
 .display-7{
     font-family: 'Lato', sans-serif;
-    font-size: calc(1rem + 1vw);
+    font-size: calc(1rem + .7vw);
     font-weight: 700;
     line-height: 1.2;
 }
@@ -289,6 +289,7 @@ a.nav-link{
  }
 
 .cbtn, .dbtn{
+    font-family: 'lato', sans-serif;
     height: 100%;
     font-weight: 500;
     padding-top: calc(.8rem + .1vw);
@@ -462,7 +463,6 @@ input:checked + .slider:before {
     border-radius: 5px;
     max-height: 400px;
     overflow-y: scroll;
-    transition: all 1s linear;
 }
 
 #affiliates::-webkit-scrollbar,  .flex-container2::-webkit-scrollbar{
@@ -550,7 +550,7 @@ img.activecolor {
 }
 
 .accordion-button{
-    font-family: 'Lato', sans-serif;
+    /* font-family: 'lato', sans-serif; */
     font-weight: 700;
     color: black;
 }
