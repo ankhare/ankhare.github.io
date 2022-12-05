@@ -37,6 +37,8 @@ $(document).ready(function () {
     let markers = [];
     const baseicon = new LocationIcon();
     const userlocation = new LocationIcon({iconUrl: 'media/currLoc.png', iconSize: [10, 10]});
+    let group;
+    let bounds;
 
     
     for (let i = 0; i < locations.length; i++) {
@@ -55,17 +57,23 @@ $(document).ready(function () {
     });
 
     $('#showmylocation').bind('keydown click', function() {
-        $(this).prop('disabled', 'disabled');
+        // $(this).prop('disabled', 'disabled');
+        $('#locationrelated').replaceWith("<div id='#locationrelated' class='d-flex'><p id='viewmylocation' class='mt-3'><i class='fa-solid fa-location-arrow'></i>&ensp;View My Location</p></div");
+        
+        $('#viewmylocation').bind('keydown click', function() {
+            map.flyToBounds(bounds, {duration: 1});
+        });
+
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
                 const { coords: { latitude, longitude }} = position;
     
-                currLoc = new L.marker([latitude, longitude], {icon: userlocation});
+                const currLoc = new L.marker([latitude, longitude], {icon: userlocation});
                 currLoc.addTo(map);
                 markers.push(currLoc);
     
-                const group =  L.featureGroup(markers);
-                const bounds = group.getBounds();
+                group =  L.featureGroup(markers);
+                bounds = group.getBounds();
                 map.flyToBounds(bounds, {duration: 1});
             });
         } else {

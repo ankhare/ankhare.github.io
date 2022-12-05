@@ -76,6 +76,12 @@ footer a:hover, #contact a:hover{
     justify-content: space-between;
 }
 
+.flex-stretch-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+
 .d-flex-collapse{
     display: flex;
 }
