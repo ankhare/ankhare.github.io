@@ -192,10 +192,8 @@ $(document).ready(function () {
 
         }else{
             $('#affiliates').toggleClass('expand');
-            setTimeout(function(){
-                $('#map').toggleClass('none');
-                $('#mapcontrols').toggleClass('none');
-            },1100);
+            $('#map').toggleClass('none');
+            $('#mapcontrols').toggleClass('none');
         }  
     });
 })
