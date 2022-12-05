@@ -540,7 +540,7 @@ img.activecolor {
     transition: filter 1s ease;
 }
 
-#recenter{
+#recenter, #showmylocation, #viewmylocation{
     cursor: pointer;
 }
 /* classes that toggle visibility of map */
