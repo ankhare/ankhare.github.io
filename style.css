@@ -35,7 +35,7 @@ hr{
 }
 
 select{
-    background-color: transparent;
+    background-color: var(--bg);
     color: var(--dark-1);
     border-radius: 5px;
     border: none;
@@ -415,12 +415,22 @@ i.nav-link{
 }
 
 .infobtn{
+    align-self: center;
     font-size: calc(.75rem + .25vw);
     font-family: 'Oxygen Mono', monospace;
     background-color: var(--dark);
-    border: 1px solid var(--black);
     color: var(--white);
     width: 100%;
+}
+
+.infobtn:hover {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.disabled{
+    --bs-btn-disabled-border-color:var(--darktrans);
+    --bs-btn-disabled-color: var(--darktrans);
 }
 .dbtn:hover{
    box-shadow: 0 0 20px var(--darktrans);
@@ -428,13 +438,8 @@ i.nav-link{
 
 .dbtn:hover > a{
     color: inherit;
- }
- 
-.infobtn:hover {
-    border: 1px solid var(--black);
-    background-color: var(--white);
-    color: var(--black);
 }
+ 
 
 .w-45{
     width: 45%;
