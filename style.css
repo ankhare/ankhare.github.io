@@ -72,13 +72,19 @@ select{
     line-height: 95%;
 }
 
+.nbtn{
+    float: left;
+    max-width: fit-content;
+}
+
 .gborder{
-    width: inherit;
+    display: flex;
     border-radius: 5px;
-    border: 1px solid var(--dark-1);
+    border: 1px solid var(--darktrans);
 }
 
 .gborder:hover{
+    border: 1px solid var(--dark-1);
     box-shadow: 0 0 20px var(--darktrans);
 }
 
