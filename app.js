@@ -2,9 +2,9 @@
 $(document).ready(function () {
     $('body').on('touchstart', function() {});
     
-    $('.featured').addClass('show');
+    $('.featured').addClass('showfilter');
     
-    $('#category').addClass('show');
+    $('#category').addClass('showfilter');
     
     $("button.navbar-toggler").click(function(){
         $(".bar").toggleClass("x");
@@ -28,7 +28,7 @@ $(document).ready(function () {
     const hidden2Elements = document.querySelectorAll(".hidden2");
     hidden2Elements.forEach((el) => observer.observe(el));
 
-    // const mymodal = new bootstrap.Modal('#myModal', options);
+
 
     const tags = ['featured', 'games', 'web development', 'machine learning', 'generative art', 'javascript', 'python','java'];
 
@@ -46,20 +46,20 @@ $(document).ready(function () {
     $("#filterby").change(function(event){
         const resp = event.target.value;
         let number;
-        $('.option').removeClass('show');
-        $('#' + resp).addClass('show');
+        $('.option').removeClass('showfilter');
+        $('#' + resp).addClass('showfilter');
 
         //add active class only to first item in each category 
         $('.btn').removeClass('active');
-        $('.filter').removeClass('show');
+        $('.filter').removeClass('showfilter');
 
         if(resp === 'language'){
             $('#javascript').addClass('active');
-            $('.javascript').addClass('show'); 
+            $('.javascript').addClass('showfilter'); 
             number = $('.javascript').length;
         } else if(resp == 'category'){
             $('#featured').addClass('active');
-            $('.featured').addClass('show'); 
+            $('.featured').addClass('showfilter'); 
             number = $('.featured').length;
         }
 
@@ -71,11 +71,11 @@ $(document).ready(function () {
         let number;
        
         if (type.includes('viewall')){
-            $('.filter').addClass('show');
+            $('.filter').addClass('showfilter');
             number = " all " + $('.filter').length;
         }else{
-            $('.filter').removeClass('show');
-            $('.' + type).addClass('show');
+            $('.filter').removeClass('showfilter');
+            $('.' + type).addClass('showfilter');
             number = $('.' + type).length;
         }   
 
@@ -85,7 +85,7 @@ $(document).ready(function () {
         $('#results').text(number)
     });
 
-    //credit for flip slide show to https://codepen.io/niklanus/pen/OXVwgW
+    //credit for flip slide showfilter to https://codepen.io/niklanus/pen/OXVwgW
     const cardAmount = 4;
     const flipSpeed = 2000;
     

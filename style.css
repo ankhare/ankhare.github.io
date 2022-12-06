@@ -6,6 +6,7 @@
     --black: #182023;
     --darkgray: #9d9db3;
     --bg: #0e181c;
+    --bgtrans: #0e181ce2;
     --dark: #308679;
     --darktrans: #308679ea;
     --highlight:  #167264d4;
@@ -335,7 +336,7 @@ i.nav-link{
     align-content: space-between;
 }
 
-.show {
+.showfilter {
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
@@ -546,13 +547,16 @@ i.nav-link{
         flex-basis: 49%;
     }
 
-    .collapse{
-        
+    .nav-item{
+        margin-left: auto !important;
+        margin-right: 0% !important;
     }
-
     .navbar-collapse {
+        background-color: var(--bgtrans);
+        text-align: right;
         padding-top: 1rem;
         padding-bottom: 1rem;
+        border-bottom: 1px solid var(--darktrans);
     }
 }
 
