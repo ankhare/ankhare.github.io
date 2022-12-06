@@ -533,16 +533,21 @@ i.nav-link{
 } */
 
 @media screen and (max-width: 1199px) {
-    .navbar-collapse {
-        text-align: right;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-    }
+
 }
 
 @media screen and (max-width: 991px) {
     .max-three-col {
         flex-basis: 49%;
+    }
+
+    .collapse{
+        
+    }
+
+    .navbar-collapse {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
     }
 }
 
