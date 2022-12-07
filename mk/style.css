@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500;700&family=Playfair+Display:wght@600&family=Lato:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500;700&family=Playfair+Display:wght@500&family=Lato:wght@300;400;500;700&display=swap");
 
 /* document wide formatting */
 :root {
@@ -44,6 +44,7 @@ h6{
 }
 
 footer{
+    font-family: 'Lato', sans-serif;
     font-weight: 200;
     color: var(--lightaccent);
 }
@@ -137,7 +138,7 @@ button.accentbg{
 }
 
 .display-6{
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .display-7{
@@ -692,7 +693,7 @@ img.activecolor {
 
 @media (prefers-reduced-motion: no-preference){
     .hidden1{
-        transform: translate(0, 50%);
+        transform: translate(0, 100%);
         transform-origin: center;
         transition: transform .5s;
     }
