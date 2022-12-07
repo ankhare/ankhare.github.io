@@ -1,18 +1,50 @@
-function validateEmail(email){
+function validateemail(email){
     let regex = /^\S+@\S+\.\S+$/; // allows string@string.string
     return regex.test(email); 
 }
 
-function validatePhone(number){
-    let regex = /^[0-9()-]+$/
-    if (regex.test(number));
+function validatephone(number){
+    return (number.length === 16);
+}
+
+function phoneFormat(input){
+    //remove formatting from input
+    input = input.replace(/\D/g,'');
+    
+    //ensure that the size of the actual input is less than 10/valid number
+    input = input.substring(0,10);
+
+    // switch statment depending on size of length;
+    var size = input.length;
+    
+    switch(true){
+    case (size === 0):
+        input = input;
+        break;
+    //add ( to begining when input is less than 4 numbers
+    case (size < 4):
+        input = '(' +input;
+        break;
+    //surround first 3 numbers with () and place rest after when input is greater than 4 but less than 7
+    case (size < 7):
+        input = '('+input.substring(0,3)+') '+input.substring(3,6);
+        break;
+    //format entire number when 7 numbers are inputted
+    case(size >= 7):
+        input = '('+input.substring(0,3)+') '+input.substring(3,6)+' - '+input.substring(6,10);
+        break;
+    }
+
+    return input;  
 }
 
 $(document).ready(function () {
+    // document.addEventListener("touchstart", function(){}, true);
     const map = L.map('map', {scrollWheelZoom: false}).setView([42.424993, -83.326150], 10);
     L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-    maxZoom: 13,
-    attribution: '<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
+        maxZoom: 13,
+        attribution: '<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
 
     if(window.ontouchstart !== undefined){
         map.dragging.disable();
@@ -113,68 +145,89 @@ $(document).ready(function () {
         const iconid = $(this).attr('id').slice(1);
         $('#' + iconid).addClass('activecolor')
     });
-
-    // document.addEventListener("touchstart", function(){}, true);
+    
     let conditionTimerID;
     let currCondition;
     
     const conditions = ['laproscopic surgery', 'hernia surgery', 'appendix surgery', 'gallbladder surgery', 'dad jokes']
     $('#condition').text(conditions[0]);
+    setTimeout(()=>{
+        $('#condition').addClass('exit');
+    }, 1500)
+
     let nextIndex = 1;
 
     conditionTimerID = setInterval(function(){
         currCondition = conditions[nextIndex];
+
         $('#condition').text(currCondition);
+        $('#condition').removeClass('exit');
+        $('#condition').addClass('enter');
+        setTimeout(()=>{
+            $('#condition').removeClass('enter');
+            $('#condition').addClass('exit');
+        }, 1500)
+        
         nextIndex += 1;
+
         if ((nextIndex) === conditions.length){
             nextIndex = 0;
         }
+
     }, 3000);
 
+    $('#seeallservices').bind('keydown click', ()=>{
+        setTimeout($('#procedures').click());
+        
+    })
 
     $(document).scroll(function () {
         var $nav = $("nav");
         $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
     });
 
+    $('#phone').bind('keyup',function(){
+        $phoneNumber = $('#phone');
+        $phoneNumber.val(phoneFormat($phoneNumber.val()));
+    });
+
     $("button.navbar-toggler").bind('keydown click', function(){
         $(".bar").toggleClass("x");
     });
 
-    $('#button').bind('keydown click', function validate(event){
-        let result = "";
+    $('#button').bind('keydown click', function(event) {
         event.preventDefault();
 
-        let email = document.getElementById("email").value; 
-        email = email.trim();
+        let noErrors = true;
 
-        let phone = document.getElementById("phone").value; 
-        phone = phone.trim();
+        const concerns = ['name', 'email', 'phone', 'message'];
 
-        let name = document.getElementById("name").value; 
-        let subject = document.getElementById("subject").value; 
-        let message = document.getElementById("message").value; 
+        concerns.forEach(concern => {
+            if (!$('#' + concern).val()){
+                $('#' + concern + 'alert').text('Invalid ' + concern);
+                noErrors = false;
+                return;
 
-        if (name && subject && message && validatePhone(phone) && validateEmail(email)){
-            return document.getElementById("theform").submit();
-            
-        }else{
-            if (!name){
-                result += "Invalid name <br>";    
+            } else if(concern === 'email' || concern === 'phone' ){
+                const val = $('#' + concern).val()
+                const stringFunction = 'validate' + concern;
+                const valid = window[stringFunction](val.trim());
+                if(!valid){
+                    noErrors = false;
+                    return $('#' + concern + 'alert').text('Invalid ' + concern);
+                } else{
+                    $('#' + concern + 'alert').text('');
+                }
+
+            } else{
+                $('#' + concern + 'alert').text('');
             }
-            if (!validateEmail(email)){
-                result += "Invalid email <br>";                   
-            }                
-            if (!subject){
-                result += "Invalid subject <br>";   
-            }
-            if (!message){      
-                result += "Enter a message <br>";                                  
-            }
-
-            document.getElementById("alert").innerHTML = result;
-        }
-        return result;
+        })
+        
+        if(noErrors){
+            $('#successmessage').text('From submitted successfully. We look forward to speaking with you soon!')
+            return document.getElementById("contactform").submit();
+        }     
     });
        
 

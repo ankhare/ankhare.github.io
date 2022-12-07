@@ -47,7 +47,7 @@
                 </li>
                 <li class="nav-item">
                     <div class="nbtn px-2">
-                        <a href="#!" class="nav-link" target="_blank"><p>Book Your Appointment</p></a>
+                        <a href="#contact" class="nav-link"><p>Book Your Appointment</p></a>
                     </div>
                 </li>
                 <!-- <li>
@@ -66,36 +66,37 @@
     </nav>
     <div class="spacer"></div>
     <main>
-        <section class="fullscreen">
+        <section class="fullscreen pt-4 pt-sm-0">
             <div class="row m-0">
                 <div class="col-md-8 col-lg-6 m-auto p-0">
                     <div class="mx-5 m-auto">
                         <p class="display-2"> Board-Certified General Surgeon in the Metro-Detroit Area.</p>
-                        <p class="mt-3 mr-4">With 25+ years of experience, Dr. Khare at Spectrum Surgical LLC. knows how to create the best experience possible for his patients with individualized treatment plans based on evidence backed research, the latest advancements, and the best practices in surgical technology.</p>
-                        <div class="my-2">
+                        <p class="mt-3 mt-sm-4">With 25+ years of experience, Dr. Khare at Spectrum Surgical LLC. knows how to create the best experience possible for his patients with individualized treatment plans based on evidence backed research, the latest advancements, and the best practices in surgical technology.</p>
+                        <div class="my-2 my-sm-4">
                             <div class="btn lbtn my-1">
-                                <a href="#!"><p>Meet Dr. Khare&nbsp;➞</p></a>
+                                <a href="#about"><p>Meet Dr. Khare&nbsp;➞</p></a>
                             </div>
                             <div class="btn lbtn my-1">
-                                <a href="#!"><p>Book Your Appointment&nbsp;➞</p></a>
+                                <a href="#contact"><p>Book Your Appointment&nbsp;➞</p></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg-6 lightbg p-0">
+                <div id="landingside" class="col-md-4 col-lg-6 lightbg p-0">
                     <p></p>
                 </div>
             </div>
         </section>
-        <section class="fullscreen py-5">
+        <section id="about" class="fullscreen py-5">
             <div class="m-auto">
             <div class="text-center my-3 mx-5">
                 <p class="mx-auto display-5 mb-2">Dr. Khare can help with</p>
                 <div id="conditioncontainer">
-                    <p id="condition" class="marquee display-5 colored-text3"></p>
+                    <p id="condition" class="display-5 colored-text3"></p>
                 </div>
-                <p class="mt-3 mx-auto small-text">
-                    <a class="accent" href="#flush-headingOne">See All Services></a></p>
+                <p id="seeallservices"class="mt-3 mx-auto small-text">
+                    <a class="colored-text" href="#faq">See All Services></a>
+                </p>
             </div>
             <div id="bio" class="row mx-auto mb-5 mx-md-5">
                 <div class="col-lg-6 d-flex px-5">
@@ -127,9 +128,9 @@
         <section class="fullscreen px-3">
             <div class="m-auto">
                 <div class="m-3 text-center px-md-5">
-                    <p class="display-8 colored-text mb-2">Where can I find Dr. Khare?</p>
+                    <p class="display-8 colored-text3 mb-2">Where can I find Dr. Khare?</p>
                     <p class="display-5">Affiliated Hospitals and Offices</p>
-                    <p class="pt-2 mx-lg-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pulvinar luctus tortor in viverra. Mauris finibus suscipit mi laoreet faucibus. Integer id hendrerit velit. Fusce in nisl at dolor tristique suscipit non in velit.</p>
+                    <p class="pt-2 px-lg-5 mx-lg-5">Spectrum Surgical has privilages at a variety of hospitals in South East Michigan. You can book a consultation by contacting the hospitals listed below directly or by <a class="colored-text" href="#contact">contacting us</a></p>
                     <hr>
                 </div>
                 <div class="row text-muted mx-2 mx-md-3 px-md-5 mb-3 small-1">
@@ -262,12 +263,15 @@
                 </div>
                 <div class="col-md-7 m-auto p-0">
                     <div class="container-fluid m-auto">
-                        <p id="alert" class="text-danger"></p>
-                        <div class="display-6 mb-2 mx-auto text-center"><b>Send A Message</b></div>
-                        <form action="/action_page.php" method="post" id="theform" name="theform">
-                            <input id="name" name="name" placeholder="Name" type="input" required class="w-100 my-2 px-2">
-                            <input id="email" name="email" placeholder="Email" type="input" required class="w-100 my-2 px-2">
-                            <input id="phone" name="phone number" placeholder="Phone Number" type="input" required class="w-100 my-2 px-2">
+                        <p id="successmessage"></p>
+                        <div class="display-6 mb-2 mx-auto text-center"><b>Contact Us</b></div>
+                        <form action="/" method="post" id="contact" name="contact">
+                            <p id="namealert" class="text-danger"></p>
+                            <input id="name" name="name" placeholder="Name*" type="input" required class="w-100 my-2 px-2">
+                            <p id="emailalert" class="text-danger"></p>
+                            <input id="email" name="email" placeholder="Email*" type="input" required class="w-100 my-2 px-2">
+                            <p id="phonealert" class="text-danger"></p>
+                            <input id="phone" name="phone number" placeholder="Phone Number*" type="input" required class="w-100 my-2 px-2">
                             <select id="subject" name="subject" placeholder="Subject" required class="w-100 my-2 px-2">
                                 <option value="I would like to schedule a consultation">I would like to schedule a consultation</option>
                                 <option value="I would like to refer a patient">I would like to refer a patient</option>
@@ -276,8 +280,9 @@
                                 <option value="Other">Other</option>
                             </select>
                             <!-- <input id="concern" name="concern" placeholder="Concern" type="input" required class="w-100 my-2 px-2"> -->
-                            <textarea id="message" name="message" placeholder="Message" required class="w-100 my-2 px-2"></textarea>
-                            <button id="button" class="highlightbg p-2 my-2 rounded">Submit</button>
+                            <p id="messagealert" class="text-danger"></p>
+                            <textarea id="message" name="message" placeholder="Message*" required class="w-100 my-2 px-2"></textarea>
+                            <button id="button" class="accentbg p-2 my-2 rounded">Send Message</button>
                         </form> 
                         <div class="text-center">
                             <p>Prefer to talk?</p>
@@ -290,7 +295,7 @@
         <section class="text-center my-5">
             <div class="row mx-2 mx-md-5">
                 <div class="col-12 col-lg-4 my-2">
-                    <a href="#!" class="m-auto" target="_blank">
+                    <a href="#contact" class="m-auto">
                         <div class="cbtn">
                             <p>Book Your Appointment&nbsp;➞</p>
                         </div>
@@ -315,9 +320,9 @@
         <hr>
         <section id="reviews" class="row m-3 my-5 mx-md-5">
             <div class="my-3">
-                <p class="display-5">&ldquo;A surgeon who treats you like family.&rdquo;</p>
+                <p class="display-5 text-md-center"><span class="display-2 quote">&ldquo;</span>A surgeon who treats you like family.<span class="display-2 quote">&rdquo;</span></p>
             </div>
-            <div class="m-1 display-7">What Previous Patients Have Said>></div>
+            <h1 class="m-1 display-7 text-md-center">What Previous Patients Have Said</h1>
             <div class="my-1 flex-container2">
                 <div class="item max-four-col">
                     <div class="my-auto mx-3">
@@ -345,12 +350,12 @@
                 </div>
             </div>
         </section>
-        <section class="graybg py-5">
-            <p class="display-5 mx-3 px-3 pb-2">Frequently Asked Questions</p>
+        <section id="faq" class="lightbg py-5">
+            <h1 class="display-6 mx-3 px-3 pb-2">Frequently Asked Questions</h1>
             <div class="accordion accordion-flush px-3"id="questions">
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="flush-headingOne">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    <button id="procedures" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                       What kind of procedures and conditions are your expertise?
                     </button>
                   </h2>
