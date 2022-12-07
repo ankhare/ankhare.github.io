@@ -39,6 +39,24 @@ function phoneFormat(input){
 }
 
 $(document).ready(function () {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting){
+            entry.target.classList.add("show1");
+          } 
+        //   else{
+        //     entry.target.classList.remove("show1");
+        //   }
+        });
+
+    });
+    
+    const hiddenElements = document.querySelectorAll(".hidden1");
+    hiddenElements.forEach((el) => observer.observe(el));
+
+    const hidden2Elements = document.querySelectorAll(".hidden2");
+    hidden2Elements.forEach((el) => observer.observe(el));
+
     // document.addEventListener("touchstart", function(){}, true);
     const map = L.map('map', {scrollWheelZoom: false}).setView([42.424993, -83.326150], 10);
     L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
@@ -153,7 +171,7 @@ $(document).ready(function () {
     $('#condition').text(conditions[0]);
     setTimeout(()=>{
         $('#condition').addClass('exit');
-    }, 1500)
+    }, 1000)
 
     let nextIndex = 1;
 
@@ -166,7 +184,7 @@ $(document).ready(function () {
         setTimeout(()=>{
             $('#condition').removeClass('enter');
             $('#condition').addClass('exit');
-        }, 1500)
+        }, 1000)
         
         nextIndex += 1;
 
@@ -174,7 +192,7 @@ $(document).ready(function () {
             nextIndex = 0;
         }
 
-    }, 3000);
+    }, 2000);
 
     $('#seeallservices').bind('keydown click', ()=>{
         setTimeout($('#procedures').click());

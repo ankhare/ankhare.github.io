@@ -2,11 +2,13 @@
 
 /* document wide formatting */
 :root {
+    --black: #0d2a3e;
     --gray: #878787;
     --scroller: #ccc;
+    --transgray: rgba(65, 67, 71, 0.149);
     --lightgray: #f4f6f7;
     --darkhighlight: #16496b;
-    --highlight:#5e8aa4;
+    --highlight:#4c86a8;
     --light: #ecf2f6;
     --lightaccent: #d6e4eb;
     /* --bs-navbar-color: none; */
@@ -14,6 +16,7 @@
 
 body{
     background-color: white;
+    color: var(--black);
     font-family: 'DM Sans', sans-serif;
 }
 
@@ -122,7 +125,7 @@ button.accentbg{
 
 .display-2, .display-5{
     font-family: 'DM Serif Display', sans-serif;
-    line-height: 80%;
+    line-height: 90%;
 }
 
 .display-3{
@@ -175,6 +178,9 @@ button.accentbg{
 /* nav bar styling */
 .scrolled {
     background-color: white !important;
+    -webkit-box-shadow:0px 5px 5px var(--transgray);
+    -moz-box-shadow:0px 5px 5px var(--transgray);
+    box-shadow:0px 5px 5px var(--transgray);
     transition: background-color 200ms linear;
 }
 .btn{
@@ -293,7 +299,7 @@ a.nav-link{
 
 .lbtn:hover {
     background-color: var(--lightaccent);
-    color: black;
+    color: var(--black);
  }
 
 .cbtn, .dbtn{
@@ -340,7 +346,7 @@ a.nav-link{
 
 /* style about elements */
 #conditioncontainer {
-    height: calc(1.425rem + 2.1vw);
+    height: calc(1.5rem + 2.5vw);
     overflow-y: hidden;
 }
 
@@ -350,22 +356,22 @@ a.nav-link{
 }
 
 .enter {
-    animation: moveup 1.5s linear;
+    animation: movein 1s linear;
 }
 
 .exit {
-    animation: movedown 1.5s linear;
+    animation: moveout 1s linear;
 }
 
-@keyframes moveup {
-    0%   { top:   4rem }
-    20%   { top:   0rem }
+@keyframes movein {
+    0%   { top:   -4rem }
+    50%   { top:   0rem }
     100%   { top:   0rem }
 }
 
-@keyframes movedown {
+@keyframes moveout {
     0%   { top:   0rem }
-    80%   { top:   0rem }
+    60%   { top:   0rem }
     100%   { top:   4rem }
 }
 
@@ -407,6 +413,7 @@ input, textarea, select, button{
     border-radius: 10px;
     border: 2px solid var(--darkhighlight);
     min-height: 3rem;
+    background-color: var(--light);
     color: var(--darkhighlight);
 }
 
@@ -419,8 +426,8 @@ input, textarea, select, button{
     transition: background-color 200ms linear;
 }
 #button:hover, #button:active{
-    background-color: var(--lightaccent);
-    color: black;
+    background-color: var(--light);
+    color: var(--black);
 }
 
 /* style affiliates elements */
@@ -566,7 +573,7 @@ img.activecolor {
     --bs-accordion-bg: rgba(255, 255, 255, 0);
     --bs-accordion-border-color: var(--lightaccent);
     --bs-accordion-btn-icon-width: 1.5rem;
-    --bs-accordion-btn-focus-border-color: black;
+    --bs-accordion-btn-focus-border-color: var(--black);
     --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23325e48'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
     --bs-accordion-active-color: var(--lightaccent);
     --bs-accordion-active-bg: var(--darkhighlight);
@@ -580,7 +587,7 @@ img.activecolor {
 .accordion-button{
     /* font-family: 'lato', sans-serif; */
     font-weight: 700;
-    color: black;
+    color: var(--black);
 }
 
 .border-bottom{
@@ -675,5 +682,23 @@ img.activecolor {
 @media screen and (max-width: 320px){
     .spacer{
         display: block; 
+    }
+}
+
+@media (prefers-reduced-motion: no-preference){
+    .hidden1{
+        transform: translate(0, 50%);
+        transform-origin: center;
+        transition: transform .5s;
+    }
+
+    .hidden2{
+        transform: translate(-25%, 0);
+        transform-origin: bottom;
+        transition: transform 1s;
+    }
+
+    .show1{
+        transform: translate(0);
     }
 }
