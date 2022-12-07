@@ -108,7 +108,7 @@ $(document).ready(function () {
 
     $('#showmylocation').bind('keydown click', function() {
         // $(this).prop('disabled', 'disabled');
-        $('#locationrelated').replaceWith("<div id='#locationrelated' class='d-flex'><p id='viewmylocation' class='mt-3'><i class='fa-solid fa-location-arrow'></i>&ensp;View My Location</p></div");
+        $('#locationrelated').replaceWith("<div id='#locationrelated' class='d-flex'><p id='viewmylocation'><i class='fa-solid fa-location-arrow'></i>&ensp;View My Location</p></div");
         
         $('#viewmylocation').bind('keydown click', function() {
             map.flyToBounds(bounds, {duration: 1});

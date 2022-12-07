@@ -1,16 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500;700&family=DM+Serif+Display:ital@0;1&family=Lato:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500;700&family=Playfair+Display:wght@600&family=Lato:wght@300;400;500;700&display=swap");
 
 /* document wide formatting */
 :root {
     --black: #0d2a3e;
     --gray: #878787;
     --scroller: #ccc;
-    --transgray: rgba(65, 67, 71, 0.149);
-    --lightgray: #f4f6f7;
+    --transgray: rgba(39, 50, 60, 0.149);
+    --lightgray: #f5f7f8;
     --darkhighlight: #16496b;
-    --highlight:#4c86a8;
-    --light: #ecf2f6;
-    --lightaccent: #d6e4eb;
+    /* --darkhighlight2: #2f627f; */
+    --highlight:#156390;
+    --light: #f3fafe;
+    --lightaccent: #c1eaff;
+    --darkaccent: #4194be;
     /* --bs-navbar-color: none; */
 }
 
@@ -30,7 +32,7 @@ a:focus, a:hover, a:active{
 }
 
 a.colored-text:focus, a.colored-text:hover, a.colored-text:active{
-    color: var(--lightaccent);
+    color: var(--darkaccent);
 }
 
 p{
@@ -124,7 +126,7 @@ button.accentbg{
 }
 
 .display-2, .display-5{
-    font-family: 'DM Serif Display', sans-serif;
+    font-family: 'Playfair Display', sans-serif;
     line-height: 90%;
 }
 
@@ -134,9 +136,9 @@ button.accentbg{
     line-height: 1.2;
 }
 
-/* .display-4{
-    font-family: 'Lato', sans-serif;
-} */
+.display-6{
+    font-weight: 600;
+}
 
 .display-7{
     font-size: calc(1rem + .7vw);
@@ -146,7 +148,7 @@ button.accentbg{
 
 .display-8{
     font-size: calc(1rem + .5vw);
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1.2;
 }
 
@@ -303,15 +305,14 @@ a.nav-link{
  }
 
 .cbtn, .dbtn{
-    font-family: 'lato', sans-serif;
     height: 100%;
     padding-top: calc(.8rem + .1vw);
     padding-bottom: calc(.8rem + .1vw);
     text-transform: uppercase;
     border-radius: 5px;
     transition: background-color .25s ease;
-    background-color: var(--lightaccent);
-    color: var(--darkhighlight);
+    background-color: var(--highlight);
+    color: white;
 }
 
 .dbtn{
@@ -319,8 +320,8 @@ a.nav-link{
 }
 
 .cbtn:hover, .dbtn:hover{
-    background-color: var(--highlight);
-    color: white;
+    background-color: var(--lightaccent);
+    color: var(--darkhighlight);
 }
 
 /* .cbtn{
@@ -399,7 +400,7 @@ a.nav-link{
     margin: 1%;
     flex-shrink: 0;
     background-color: var(--lightgray);
-    border-radius: 15px;
+    border-radius: 10px;
     display: flex;
 }
 
@@ -409,11 +410,12 @@ a.nav-link{
 }
 
 
-input, textarea, select, button{
-    border-radius: 10px;
+#contact > input, #contact > textarea, #contact > select, #contact > button{
+    border-radius: 5px;
+    padding: calc(.5rem + .5vw);
+    margin-top: 1rem;
     border: 2px solid var(--darkhighlight);
-    min-height: 3rem;
-    background-color: var(--light);
+    /* min-height: 3rem; */
     color: var(--darkhighlight);
 }
 
@@ -626,6 +628,9 @@ img.activecolor {
 }
 
 @media screen and (max-width: 991px){
+    #afmap{
+        flex-direction: column-reverse;
+    }
     .navbar-collapse {
         background-color: white;
         padding-bottom: 1rem;
@@ -655,11 +660,11 @@ img.activecolor {
 }
 
 @media screen and (max-width: 500px) {
-    #affiliates{
+    /* #affiliates{
         max-height: 200px;
-    }
+    } */
 
-    #map{
+    #affiliates, #map{
         height: 350px;
     }
 }
