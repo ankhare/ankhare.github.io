@@ -350,6 +350,7 @@ a.nav-link{
     margin: 1.5%;
     flex-basis: 47%;
     border-radius: 5px;
+    border: 2px solid var(--lightaccent);
     transition: background-color .25s ease;
     background-color: var(--highlight);
     color: white;
