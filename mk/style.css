@@ -605,6 +605,10 @@ img.activecolor {
     background-color: white;
 } */
 
+/* override jquery ui css */
+.ui-widget-header{
+    background-color: var(--darkhighlight);
+}
 /* media queries */
 @media screen and (max-width: 991px) { 
     .max-four-col {
