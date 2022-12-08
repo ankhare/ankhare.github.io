@@ -39,6 +39,17 @@ function phoneFormat(input){
 }
 
 $(document).ready(function () {
+    const today = new Date(Date.now()).toISOString().split('T')[0]; // today = 'YYYY-MM-DD'
+    const future = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]; // 30 days from now
+    $("#dateDiv").datepicker({
+        inline: true,
+        altField: '#dateInput',
+        minDate: today,
+        maxDate: future,
+    });
+    // $('#dateobject').attr('min', today);
+    // $('#dateobject').attr('max', future);
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting){
@@ -56,6 +67,7 @@ $(document).ready(function () {
 
     const hidden2Elements = document.querySelectorAll(".hidden2");
     hidden2Elements.forEach((el) => observer.observe(el));
+
 
     // document.addEventListener("touchstart", function(){}, true);
     const map = L.map('map', {scrollWheelZoom: false}).setView([42.424993, -83.326150], 10);

@@ -661,6 +661,9 @@ img.activecolor {
 }
 
 @media screen and (max-width: 500px) {
+    #mapcontrols{
+        display: none;
+    }
     /* #affiliates{
         max-height: 200px;
     } */
