@@ -338,7 +338,6 @@ a.nav-link{
     width: 100%;
     display: flex;
     align-items: center;
-    
     justify-content: center;
     flex-wrap: wrap;
 
@@ -352,7 +351,7 @@ a.nav-link{
     margin: 1.5%;
     flex-basis: 47%;
     border-radius: 5px;
-    border: 2px solid var(--lightaccent);
+    /* border: 2px solid var(--lightaccent); */
     transition: background-color .25s ease;
     background-color: var(--highlight);
     color: white;

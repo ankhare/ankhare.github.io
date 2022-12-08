@@ -276,7 +276,7 @@
                         <div id="consultationMessage"></div>
                         <div id="scheduleResult" class="w-100"></div>
                         <p id="selectedDate" class="display-8"></p>
-                        <p id="dateInstructions" class="py-2"></p>
+                        <p id="dateInstructions" class="py-2">Choose an appointment day to get started</p>
                         <div id="availableTimeContainer"></div>
                     </div>
                 </div>
@@ -721,9 +721,20 @@
     <!-- jQuery UI JS -->
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <!-- Google API JS -->
-    <script async defer src="https://apis.google.com/js/api.js"></script>
-    <script async defer src="https://accounts.google.com/gsi/client"></script>
+    <script async defer src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+    <script>
+        myKey = 'AIzaSyDZnV4jMQ0MVDBDCMvT3JMYEUgAKbwfIGI';
+        myClientId = '213119461904-mtirtofk9mhas4dp7fuvg44trsd5277q.apps.googleusercontent.com';
+        myScopes = 'https://www.googleapis.com/auth/calendar'
+        function handleClientLoad() {
+            gapi.client.setApiKey(myKey);
+            gapi.auth.authorize({client_id: myClientId, scope: myScopes, immediate: false}, handleAuthResult);
+        }
+        function handleAuthResult(authResult) {
+        console.log(authResult)
+        }
+    </script>
     <!-- Custom JS -->
-     <script src="app.js"></script> 
+     <script defer src="app.js"></script> 
 </body>
 </html>

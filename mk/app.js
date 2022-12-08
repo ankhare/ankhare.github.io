@@ -77,7 +77,7 @@ function formatTime(stringTime){
 function appendTime(id, startvalue, endvalue){
     const selectedDate = startvalue.split('T')[0];
     const tokens = selectedDate.split('-');
-    console.log(tokens[1]);
+    // console.log(tokens[1]);
     formattedDate = month[tokens[1]] + " " + tokens[2] + " " + tokens[0];
    
     $('#selectedDate').text('Selected Date: ' + formattedDate);
@@ -214,13 +214,10 @@ function validateConsulationForm(){
 
 function postEvent(){
     console.log(selectedID);
-    tokenClient = google.accounts.oauth2.initTokenClient({
-        client_id: '213119461904-mtirtofk9mhas4dp7fuvg44trsd5277q.apps.googleusercontent.com',
-        scope: 'https://www.googleapis.com/auth/calendar'
-    })
     $.ajax({
         type: 'PUT',
-        url: 'https://www.googleapis.com/calendar/v3/calendars/' + calendarid + '/events/'  + selectedID,
+        url: encodeURI('https://www.googleapis.com/calendar/v3/calendars/' + calendarid + '/events/'  + selectedID ),
+        // client_id: '213119461904-mtirtofk9mhas4dp7fuvg44trsd5277q.apps.googleusercontent.com',
         data: {
             'q': 'Booked',
         },
@@ -257,7 +254,6 @@ $(document).ready(function () {
     tomorrow = new Date(tomorrow.getTime() + (24 * 60 * 60 * 1000));
     let future = new Date();
     future.setDate(future.getDate() + 60);
-
     $.ajax({
         type: 'GET',
         url: encodeURI('https://www.googleapis.com/calendar/v3/calendars/' + calendarid + '/events?key=' + mykey),
@@ -285,6 +281,7 @@ $(document).ready(function () {
                 showDate(dateText);
             }
         });
+
         $('.ui-state-active').click();
     })
     .fail(function (response) {
