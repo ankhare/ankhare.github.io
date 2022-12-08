@@ -41,12 +41,32 @@ function phoneFormat(input){
 $(document).ready(function () {
     const today = new Date(Date.now()).toISOString().split('T')[0]; // today = 'YYYY-MM-DD'
     const future = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]; // 30 days from now
-    // $("#dateDiv").datepicker({
-    //     inline: true,
-    //     altField: '#dateInput',
-    //     minDate: today,
-    //     maxDate: future,
-    // });
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+    const unavailable = {
+    dates: ["2020/12/1", "2020/11/25", "2020/11/26", "2020/11/27", "2020/12/11", "2020/12/12", "2020/12/24", "2020/12/25", "2020/12/26", "2020/12/27", "2020/12/31", "2021/1/1"],
+    days: ["Saturday", "Monday", "Friday", "Sunday"],
+    };
+
+    $("#dateDiv").datepicker({
+    inline: true,
+    altField: '#dateInput',
+    minDate: '0',
+    maxDate: '+30',
+    beforeShowDay: function(date) {
+        const ymd = date.getFullYear() + "/" + ("0" + (date.getMonth() + 1)).slice(-2) + "/" + ("0" + date.getDate()).slice(-2);
+        const day = date.getDay();
+        if ($.inArray(ymd, unavailable.dates) < 0 && $.inArray(days[day], unavailable.days) < 0) {
+        return [true, "enabled", "Book Now"];
+        } else {
+        return [false, "disabled", "Booked Out"];
+        }
+    },
+    onSelect: function(dateText) {
+        $('#dateInput').val(dateText);
+    }
+    });
+
     // $('#dateobject').attr('min', today);
     // $('#dateobject').attr('max', future);
 

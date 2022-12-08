@@ -11,6 +11,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!-- fontawesome icons -->
     <script src="https://kit.fontawesome.com/22375b6341.js" crossorigin="anonymous"></script>
+    <!-- jQuery UI CSS -->
+    <link href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
     <!-- leaflet css -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="crossorigin=""/>
     <!-- custom css -->
@@ -263,9 +265,15 @@
                             <p class="display-5 colored-text2 mb-3 hidden1">Why wait?!</p>
                             <p class="hidden1">Reach out to us right now and someone from my team will get back to you within 2 business days.</p>
                         </div>
-                        <div>
-                            <label for="dateobject">Date String</label>
-                            <div id="dateobject"></div>
+                        <p>Google Calendar API Quickstart</p>
+
+                        <!--Add buttons to initiate auth sequence and sign out-->
+                        <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
+                        <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
+                        <pre id="content" style="white-space: pre-wrap;"></pre>
+                        <div class="mx-auto">
+                            <input hidden id="dateInput" type="text" name="attributes[date]" required autofocus/>
+                            <div id="dateDiv"></div>
                         </div>
                     </div>
                 </div>
@@ -544,9 +552,11 @@
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <!-- jQuery Link -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-     <!-- Custom JS -->
+    <!-- jQuery JS -->
+    <script src="https://code.jquery.com/jquery-3.6.1.js"integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <!-- jQuery UI JS -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- Custom JS -->
      <script src="app.js"></script> 
 </body>
 </html>
