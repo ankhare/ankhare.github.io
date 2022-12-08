@@ -220,7 +220,7 @@ function postEvent(){
     })
     $.ajax({
         type: 'PUT',
-        url: encodeURI('https://www.googleapis.com/calendar/v3/calendars/' + calendarid + '/events/'  + selectedID),
+        url: encodeURI('https://www.googleapis.com/calendar/v3/calendars/' + calendarid + '/events/'  + selectedID + '?key=' + mykey),
         // client_id: '213119461904-mtirtofk9mhas4dp7fuvg44trsd5277q.apps.googleusercontent.com',
         data: {
             'q': 'Booked',
@@ -253,7 +253,7 @@ $(document).ready(function () {
         }
     }
     calendarid = '4d29e68cb3c08e2da18abda34b96dee2eef449e63a97ea8e8461506f3432d25d@group.calendar.google.com';
-    // mykey = 'AIzaSyDZnV4jMQ0MVDBDCMvT3JMYEUgAKbwfIGI';
+    mykey = 'AIzaSyDZnV4jMQ0MVDBDCMvT3JMYEUgAKbwfIGI';
     let tomorrow = new Date();
     tomorrow = new Date(tomorrow.getTime() + (24 * 60 * 60 * 1000));
     let future = new Date();
