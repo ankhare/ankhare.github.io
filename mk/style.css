@@ -443,7 +443,7 @@ a.nav-link{
     color: white;
 }
 
-#contact > input, #contact > textarea, #contact > select, #contact > button{
+#contactForm > input, #contactForm > textarea, #contactForm > select, #contactForm > button{
     border-radius: 5px;
     padding: calc(.5rem + .5vw);
     margin-bottom: 1rem;

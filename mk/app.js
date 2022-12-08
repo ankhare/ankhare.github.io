@@ -80,7 +80,7 @@ function appendTime(id, startvalue, endvalue){
     // console.log(tokens[1]);
     formattedDate = month[tokens[1]] + " " + tokens[2] + " " + tokens[0];
    
-    $('#selectedDate').text('Selected Date: ' + formattedDate);
+    $('#showChosenDate').text('Selected Date: ' + formattedDate);
     startvalue = formatTime(startvalue);
     endvalue = formatTime(endvalue)
     $('#availableTimeContainer').append(`<div class="tbtn" id="${id}">${startvalue} - ${endvalue}</div>`);
@@ -90,12 +90,13 @@ function showDate(dateText){
     const targetDate = new Date(dateText);
     //24 hrs from target date
     const targetDateEnd = new Date(targetDate.getTime() + (24 * 60 * 60 * 1000));
-    availableTimes = [];
+    // availableTimes = [];
     $.ajax({
         type: 'GET',
         url: encodeURI('https://www.googleapis.com/calendar/v3/calendars/' + calendarid + '/events?key=' + mykey),
         data: {
             'singleEvents': true,
+            'orderBy': 'startTime',
             'timeMin': targetDate.toISOString(),
             'timeMax': targetDateEnd.toISOString(),
             'summary': 'Available',
@@ -113,17 +114,18 @@ function showDate(dateText){
             const endTime = item.end.dateTime;
             const id = item.id;
             appendTime(id, startTime, endTime);
-            availableTimes.push(date);                
+            // availableTimes.push(date);                
         });
 
-        console.log(availableTimes);
+        // console.log(availableTimes);
         $('#dateInstructions').text('Choose an apppintment time. Appointments are subject to change.');
-        //bind function to the click of each timing button
+        
+        //dynamicallly bind function to the click of each timing button after they have all been created
         $('.tbtn').bind('keydown click', finalizeAppointment);
     })
     .fail(function (response) {
         const message = 'Unable to get appointment dates at this time. Please try again later.';
-        $('#schedulercontent').text(message);
+        $('#consultationMessage').text(message);
         console.log(message);
         console.log(response.responseJSON);
     })
@@ -133,11 +135,10 @@ function showDate(dateText){
 }
 function finalizeAppointment(){
     selectedID = $(this).attr('id');
-    postEvent();
     formattedTime = $(this).text();
     console.log(formattedTime);
     console.log(formattedDate);
-    $('#selectedDate').text('');
+    $('#showChosenDate').text('');
     $('#dateInstructions').text('');
     $('#availableTimeContainer').empty();
     $('#scheduleResult').html(`
@@ -194,41 +195,36 @@ function validateConsulationForm(){
         postphone = $('#sphone').val();
         postname = $('#sname').val();
         postemail = $('#semail').val();
-        
-        if(postEvent()){
-            $('#consultationMessage').text('Appointment reserved. We will reach out to you by email to confirm your appointment shortly.')
-        } else{
-            $('#consultationMessage').text('Unable to reserve appointment at this time. Please try again later')
-        }
-        
+        postEvent();   
     }   
 }
-
-// "attendees": [
-//     {
-//         "name": postname,
-//         "email": postemail,
-//     }
-// ],
-// 'visibility': 'private',
 
 function postEvent(){
     console.log(selectedID);
     $.ajax({
-        type: 'PUT',
-        url: encodeURI('https://www.googleapis.com/calendar/v3/calendars/' + calendarid + '/events/'  + selectedID ),
+        type: 'GET',
+        url: encodeURI('https://www.googleapis.com/calendar/v3/calendars/' + calendarid + '/events?key=' + mykey),
         // client_id: '213119461904-mtirtofk9mhas4dp7fuvg44trsd5277q.apps.googleusercontent.com',
         data: {
             'q': 'Booked',
+            "attendees": [
+                {
+                    "name": postname,
+                    "email": postemail,
+                }
+            ],
+            'visibility': 'private',
         },
         dataType: 'json',
     })
-    .done(function (response) {
+    .done(function () {
+        $('#consultationMessage').text('Appointment request received. We will reach out to you by email to confirm your appointment shortly.')
+        $('#scheduler').empty();
         console.log('Updated calendar event to private, appended user data')
     })
     .fail(function (response) {
-        console.log('FAILURE TO POST')
-        // $('#schedulercontent').text(message);
+        console.log('FAILURE TO PATCH')
+        $('#consultationMessage').text('Unable to reserve appointment at this time. Please try again later.')
         console.log(response.responseJSON);
     })
     .always(function(){
@@ -282,11 +278,13 @@ $(document).ready(function () {
             }
         });
 
+        $('#dateInstructions').text('Pick an appointment date to get started');
         $('.ui-state-active').click();
+        
     })
     .fail(function (response) {
         const message = 'Unable to get appointment dates at this time. Please try again later.';
-        $('#schedulercontent').text(message);
+        $('#consultationMessage').text(message);
         console.log(message);
         console.log(response.responseJSON);
     })
@@ -472,7 +470,6 @@ $(document).ready(function () {
         event.preventDefault();
 
         let noErrors = true;
-
         const concerns = ['name', 'email', 'phone', 'message'];
 
         concerns.forEach(concern => {
@@ -498,8 +495,37 @@ $(document).ready(function () {
         })
         
         if(noErrors){
-            $('#successmessage').text('From submitted successfully. We look forward to speaking with you soon!')
-            return document.getElementById("contactform").submit();
+            const name = $('#name').val();
+            const email = $('#email').val();
+            const phone = $('#phone').val();
+            const subject = $('#subject').val();
+            const message = $('#message').val();
+
+            $.ajax({
+                url: "https://docs.google.com/forms/d/15TWC53msSHMOCyAPqtfW0nbZfSVd2c3IkHhzg3iQp3A/formResponse",
+                crossDomain: true,
+                data: {"entry.1776554539": name,
+                "entry.1791065834": email,
+                "entry.1605266732": phone,
+                "entry.1409983036": subject,
+                "entry.681565945": message},
+                type: "POST",
+                dataType: "xml",
+                statusCode: {
+                    0: function() {
+                        $('#contactMessage').text('Form submitted successfully. We look forward to speaking with you soon!') 
+                    },
+                    200: function() {
+                        $('#contactMessage').text('Unable to submit form at this time. Please try again later.') 
+                    }
+                }
+            })
+            .always(function(){
+                $('#contactUs').empty();
+            });
+
+            
+            
         }     
     });
        
