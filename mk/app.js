@@ -252,7 +252,7 @@ $(document).ready(function () {
         }
     }
     calendarid = '4d29e68cb3c08e2da18abda34b96dee2eef449e63a97ea8e8461506f3432d25d@group.calendar.google.com';
-    mykey = ${{ secrets.CALENDAR_API_KEY }};
+    mykey = 'AIzaSyDZnV4jMQ0MVDBDCMvT3JMYEUgAKbwfIGI';
     let tomorrow = new Date();
     tomorrow = new Date(tomorrow.getTime() + (24 * 60 * 60 * 1000));
     let future = new Date();
