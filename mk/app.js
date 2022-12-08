@@ -136,7 +136,7 @@ function finalizeAppointment(){
     postEvent();
     formattedTime = $(this).text();
     console.log(formattedTime);
-    console.log(formattedDate)
+    console.log(formattedDate);
     $('#selectedDate').text('');
     $('#dateInstructions').text('');
     $('#availableTimeContainer').empty();
@@ -214,9 +214,14 @@ function validateConsulationForm(){
 
 function postEvent(){
     console.log(selectedID);
+    tokenClient = google.accounts.oauth2.initTokenClient({
+        client_id: '213119461904-mtirtofk9mhas4dp7fuvg44trsd5277q.apps.googleusercontent.com',
+        scope: 'https://www.googleapis.com/auth/calendar'
+    })
     $.ajax({
         type: 'PUT',
         url: encodeURI('https://www.googleapis.com/calendar/v3/calendars/' + calendarid + '/events/'  + selectedID),
+        // client_id: '213119461904-mtirtofk9mhas4dp7fuvg44trsd5277q.apps.googleusercontent.com',
         data: {
             'q': 'Booked',
         },
@@ -236,7 +241,6 @@ function postEvent(){
 }
 
 
-
 $(document).ready(function () {
     let availableSet = new Set()
     function checkDate(date){
@@ -249,7 +253,7 @@ $(document).ready(function () {
         }
     }
     calendarid = '4d29e68cb3c08e2da18abda34b96dee2eef449e63a97ea8e8461506f3432d25d@group.calendar.google.com';
-    mykey = 'AIzaSyDZnV4jMQ0MVDBDCMvT3JMYEUgAKbwfIGI';
+    // mykey = 'AIzaSyDZnV4jMQ0MVDBDCMvT3JMYEUgAKbwfIGI';
     let tomorrow = new Date();
     tomorrow = new Date(tomorrow.getTime() + (24 * 60 * 60 * 1000));
     let future = new Date();
@@ -420,7 +424,6 @@ $(document).ready(function () {
         $('#' + iconid).addClass('activecolor')
     });
     
-    let conditionTimerID;
     let currCondition;
     
     const conditions = ['laproscopic surgery', 'hernia surgery', 'appendix surgery', 'gallbladder surgery', 'dad jokes']
@@ -431,7 +434,7 @@ $(document).ready(function () {
 
     let nextIndex = 1;
 
-    conditionTimerID = setInterval(function(){
+    const conditionTimerID = setInterval(function(){
         currCondition = conditions[nextIndex];
 
         $('#condition').text(currCondition);
