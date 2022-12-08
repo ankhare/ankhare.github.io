@@ -267,7 +267,7 @@
             <div id="consultationMessage" class="colored-text2 display-8"></div>
             <div id="scheduler" class="row mx-auto my-2 my-sm-4 p-0 w-100">
                 <div class="col-lg-6">
-                    <div id="content"></div>
+                    <div id="schedulercontent"></div>
                     <input hidden id="dateInput" type="text" name="attributes[date]" value="" required autofocus/>
                     <div id="dateDiv"></div>
                 </div>
@@ -728,7 +728,10 @@
         myScopes = 'https://www.googleapis.com/auth/calendar'
         function handleClientLoad() {
             gapi.client.setApiKey(myKey);
-            gapi.auth.authorize({client_id: myClientId, scope: myScopes, immediate: false}, handleAuthResult);
+            google.accounts.oauth2.initTokenClient({client_id: myClientId, 
+                scope: myScopes, 
+                response_type: 'token',
+                immediate: false}, handleAuthResult);
         }
         function handleAuthResult(authResult) {
         console.log(authResult)

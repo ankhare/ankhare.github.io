@@ -123,7 +123,7 @@ function showDate(dateText){
     })
     .fail(function (response) {
         const message = 'Unable to get appointment dates at this time. Please try again later.';
-        $('#content').text(message);
+        $('#schedulercontent').text(message);
         console.log(message);
         console.log(response.responseJSON);
     })
@@ -228,7 +228,7 @@ function postEvent(){
     })
     .fail(function (response) {
         console.log('FAILURE TO POST')
-        // $('#content').text(message);
+        // $('#schedulercontent').text(message);
         console.log(response.responseJSON);
     })
     .always(function(){
@@ -286,7 +286,7 @@ $(document).ready(function () {
     })
     .fail(function (response) {
         const message = 'Unable to get appointment dates at this time. Please try again later.';
-        $('#content').text(message);
+        $('#schedulercontent').text(message);
         console.log(message);
         console.log(response.responseJSON);
     })
