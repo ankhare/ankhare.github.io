@@ -220,8 +220,7 @@ function postEvent(){
     })
     $.ajax({
         type: 'PUT',
-        url: encodeURI('https://www.googleapis.com/calendar/v3/calendars/' + calendarid + '/events/'  + selectedID + '?key=' + mykey),
-        // client_id: '213119461904-mtirtofk9mhas4dp7fuvg44trsd5277q.apps.googleusercontent.com',
+        url: 'https://www.googleapis.com/calendar/v3/calendars/' + calendarid + '/events/'  + selectedID,
         data: {
             'q': 'Booked',
         },

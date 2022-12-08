@@ -374,7 +374,7 @@ button.ui-button::-moz-focus-inner {
 	line-height: 1.8em;
 	font-size: calc(.8rem + .5vw);
 	text-align: center;
-	color: var(--darkhighlight);
+	color: var(--black);
 	/* border-bottom: 1px solid var(--highlight); */
 }
 .ui-datepicker .ui-datepicker-title select {
@@ -917,13 +917,13 @@ body .ui-tooltip {
 	font-size: 1em;
 }
 .ui-widget.ui-widget-content {
-	padding: calc(.7rem + .5vw);
+	padding: calc(.7rem + 2.5vmin);
 	/* box-shadow: 10px 10px 10px var(--transgray); */
 }
 
 .ui-widget-content {
 	background: white;
-	color: var(--darkhighlight);
+	color: var(--black);
 }
 .ui-widget-content a {
 	color: #333333;
@@ -951,7 +951,7 @@ html .ui-button.ui-state-disabled:active {
 	border: 1px solid #f6f6f6;
 	background: var(--lightaccent);
 	font-weight: normal;
-	color: var(--darkhighlight);
+	color: var(--black);
 }
 .ui-state-default a,
 .ui-state-default a:link,
