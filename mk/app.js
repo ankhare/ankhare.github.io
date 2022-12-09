@@ -110,7 +110,7 @@ function showDate(dateText){
 
     $.ajax({
         type: 'GET',
-        url: encodeURI(`https://www.googleapis.com/calendar/v3/calendars/${calendarID}/events?key=${secrets.CALENDAR_API_KEY}`),
+        url: encodeURI(`https://www.googleapis.com/calendar/v3/calendars/${calendarID}/events?key=${env.CALENDAR_API_KEY}`),
         data: {
             'singleEvents': true,
             'orderBy': 'startTime',
@@ -227,7 +227,7 @@ It changes the visbility of the event for privacy*/
 //"Your consent screen is being shown, but your app has not been reviewed so your users may not see all of your information, and you will not be able to request certain OAuth scopes."
 function postEvent(){
     $.ajax({
-        Authorization: `{secrets.CALENDAR_ACCESS_TOKEN}`,
+        Authorization: `{env.CALENDAR_ACCESS_TOKEN}`,
         type: 'PATCH',
         url: encodeURI(`https://www.googleapis.com/calendar/v3/calendars/${calendarID}/events/${selectedID}`),
         data: {
@@ -265,7 +265,6 @@ $(document).ready(function () {
     let postemail;
     let postname;
     let postphone;
-    const calendarID = '4d29e68cb3c08e2da18abda34b96dee2eef449e63a97ea8e8461506f3432d25d@group.calendar.google.com';
     //attach intersection observer to all elements with the class hidden1
     const hiddenElements = document.querySelectorAll(".hidden1");
     hiddenElements.forEach((el) => observer.observe(el));
@@ -299,7 +298,7 @@ $(document).ready(function () {
     //get all events from now - 60 days that have the summary of available, including repeating events
     $.ajax({
         type: 'GET',
-        url: encodeURI(`https://www.googleapis.com/calendar/v3/calendars/${calendarID}/events?key=${secrets.CALENDAR_API_KEY}`),
+        url: encodeURI(`https://www.googleapis.com/calendar/v3/calendars/${calendarID}/events?key=${env.CALENDAR_API_KEY}`),
         data: {
             'singleEvents': true,
             'timeMin': tomorrow.toISOString(),

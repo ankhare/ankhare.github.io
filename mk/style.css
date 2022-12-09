@@ -328,7 +328,7 @@ a.nav-link{
 
 
 /* scheduling styling */
-.tbtn:hover, .cbtn:hover, .dbtn:hover{
+.cbtn:hover, .dbtn:hover{
     background-color: var(--lightaccent);
     color: var(--darkhighlight);
 }
@@ -354,11 +354,13 @@ a.nav-link{
     /* border: 2px solid var(--lightaccent); */
     transition: background-color .25s ease;
     background-color: var(--highlight);
+    border: 2px solid var(--highlight);
     color: white;
+    transition: border-color .25s;
 }
 
-.tbt.active{
-    border: 1px solid white;
+.tbtn:hover{
+    border: 2px solid white;
 }
 
 /* style about elements */

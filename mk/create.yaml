@@ -1,0 +1,10 @@
+name: Secrets Run
+on: push
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        env: 
+          CALENDAR_ACCESS_TOKEN: ${{ secrets.CALENDAR_ACCESS_TOKEN }}
+          CALENDAR_API_KEY: ${{ secrets.CALENDAR_API_KEY }}

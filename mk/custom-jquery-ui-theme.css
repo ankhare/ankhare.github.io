@@ -327,6 +327,7 @@ button.ui-button::-moz-focus-inner {
 .ui-checkboxradio-disabled {
 	pointer-events: none;
 }
+
 .ui-datepicker {
 	border-radius: 5px;
 	/* width: 100%; */
@@ -373,6 +374,7 @@ button.ui-button::-moz-focus-inner {
 	margin: 0 2.3em;
 	line-height: 1.8em;
 	font-size: calc(.8rem + .5vw);
+	font-weight: 400;
 	text-align: center;
 	color: var(--black);
 	/* border-bottom: 1px solid var(--highlight); */
@@ -385,17 +387,17 @@ button.ui-button::-moz-focus-inner {
 .ui-datepicker select.ui-datepicker-year {
 	width: 45%;
 }
+
 .ui-datepicker table {
-	width: calc(7rem + 30vw);
-	height: calc(3rem + 10vw);
+	width: 100%;
+	height: 100%;
 	font-size: calc(.8rem + .5vw);
 	border-collapse: collapse;
-	margin: 0 0 .4em;
 }
 .ui-datepicker th {
+	font-weight: 400;
 	padding: .7em .3em;
 	text-align: center;
-	font-weight: bold;
 	border: 0;
 }
 .ui-datepicker td {
@@ -437,7 +439,7 @@ button.ui-button::-moz-focus-inner {
 	float: left;
 }
 .ui-datepicker-multi .ui-datepicker-group table {
-	width: 95%;
+	width: max-content;
 	margin: 0 auto .4em;
 }
 .ui-datepicker-multi-2 .ui-datepicker-group {
@@ -948,7 +950,7 @@ works properly when clicked or hovered */
 html .ui-button.ui-state-disabled:hover,
 html .ui-button.ui-state-disabled:active {
 	border-radius: 5px;
-	border: 1px solid var(--lightaccent);
+	border: 2px solid var(--lightaccent);
 	background: var(--lightaccent);
 	font-weight: normal;
 	color: var(--black);
@@ -971,7 +973,7 @@ a:visited.ui-button,
 .ui-widget-header .ui-state-focus,
 .ui-button:hover,
 .ui-button:focus {
-	border: 1px solid var(--highlight);
+	border: 2px solid var(--highlight);
 	/* background: var(--darkaccent); */
 	font-weight: normal;
 	color: #2b2b2b;
@@ -999,7 +1001,7 @@ a.ui-button:focus {
 a.ui-button:active,
 .ui-button:active,
 .ui-button.ui-state-active:hover {
-	border: 1px solid var(--highlight);
+	border: 2px solid var(--highlight);
 	background: var(--highlight);
 	font-weight: normal;
 	color: #ffffff;
