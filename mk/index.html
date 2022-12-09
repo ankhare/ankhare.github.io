@@ -566,7 +566,7 @@
             myScopes = 'https://www.googleapis.com/auth/calendar'
 
             var YOUR_CLIENT_ID = '213119461904-mtirtofk9mhas4dp7fuvg44trsd5277q.apps.googleusercontent.com';
-            var YOUR_REDIRECT_URI = 'anshitakhare.com/mk';
+            // var YOUR_REDIRECT_URI = 'anshitakhare.com/mk';
             var fragmentString = location.hash.substring(1);
           
             // Parse query string to see if page request is coming from OAuth 2.0 server.
@@ -619,7 +619,6 @@
           
               // Parameters to pass to OAuth 2.0 endpoint.
               var params = {'client_id': YOUR_CLIENT_ID,
-                            'redirect_uri': YOUR_REDIRECT_URI,
                             'scope': myScopes,
                             'state': 'try_sample_request',
                             'include_granted_scopes': 'true',
