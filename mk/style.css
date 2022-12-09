@@ -8,12 +8,10 @@
     --transgray: #142c4326;
     --lightgray: #f5f7f8;
     --darkhighlight: #16496b;
-    /* --darkhighlight2: #2f627f; */
     --highlight:#156390;
     --light: #f3fafe;
     --lightaccent: #c1eaff;
     --darkaccent: #4194be;
-    /* --bs-navbar-color: none; */
 }
 
 body{
@@ -272,10 +270,8 @@ a.nav-link{
     line-height: 80%;
 }
 
-/* style landing page buttons */
-/* Style the buttons */
+/* Style landing page buttons */
 /* spacer to ensure that text is never above navbar */
-
 .spacer{
     min-height: 65px;
     display: none;
@@ -285,6 +281,8 @@ a.nav-link{
     background-color: var(--light);
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23aacfd8' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
+
+/* button styling */
 .nbtn{
     border-radius: 5px;
     border: 1px solid var(--lightaccent);
@@ -328,6 +326,8 @@ a.nav-link{
     width: 80%;
 }
 
+
+/* scheduling styling */
 .tbtn:hover, .cbtn:hover, .dbtn:hover{
     background-color: var(--lightaccent);
     color: var(--darkhighlight);
@@ -597,7 +597,7 @@ img.activecolor {
     display:none;
 }
 
-/*Patient testimonials*/
+/*Patient Testimonials*/
 .quote{
     position: relative;
     color: var(--highlight);
@@ -633,21 +633,7 @@ img.activecolor {
     margin-right: 3rem;
 }
 
-/* .accordion-body{
-    background-color: white;
-} */
 
-/* override jquery ui css */
-#dateDiv{
-    font-family: 'Lato', sans-serif;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.lato{
-    font-family: 'Lato', sans-serif;
-}
 /* media queries */
 @media screen and (max-width: 991px) { 
     .max-four-col {
@@ -679,9 +665,6 @@ img.activecolor {
         background-color: white;
         padding-bottom: 1rem;
     }
-}
-
-@media screen and (max-width: 767){
 }
 
 @media screen and (max-width: 575px){
@@ -731,12 +714,14 @@ img.activecolor {
         margin: 0%;
     }
 }
+
 @media screen and (max-width: 320px){
     .spacer{
         display: block; 
     }
 }
 
+/* only animate if reduced motion is off */
 @media (prefers-reduced-motion: no-preference){
     .hidden1{
         transform: translate(0, 100%);

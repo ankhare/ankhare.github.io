@@ -1,10 +1,13 @@
-// let selectedDateTime;
-let selectedID;
-let formattedDate; 
-let formattedTime;
-let postemail;
-let postname;
-let postphone;
+/* function that observes the intersection of each of the entries with the viewport and adds the class show1 when it enters
+input: list of elements to observe */
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting){
+        entry.target.classList.add("show1");
+      } 
+    });
+
+});
 
 /*function that validates email entries by regular expressoin
 returns: boolean valid emai*/
@@ -52,9 +55,10 @@ function phoneFormat(input){
     return input;  
 }
 
-/* Map with  key value pairs for month numbers and names*/
+/* Dictionary object with  key value pairs for month numbers and names*/
 const month = {
-    '01' : 'Jan','02' : 'Feb','03' : 'Mar','04' : 'April', '05' : 'May','06' : 'June','07' : 'July', '08' : 'Aug', '09' : 'Sept', '10' : 'Oct','11' : 'Nov','12' : 'Dec',
+    '01' : 'Jan','02' : 'Feb','03' : 'Mar','04' : 'April', '05' : 'May', '06' : 'June',
+    '07' : 'July', '08' : 'Aug', '09' : 'Sept', '10' : 'Oct','11' : 'Nov','12' : 'Dec',
 }
 
 /* Function to format dateTime string into readable date
@@ -102,10 +106,11 @@ function showDate(dateText){
     const targetDateEnd = new Date(targetDate.getTime() + (24 * 60 * 60 * 1000)); //24 hrs from target date
     
     //for debugging
-    availableTimes = [];
+    // availableTimes = [];
+
     $.ajax({
         type: 'GET',
-        url: encodeURI('https://www.googleapis.com/calendar/v3/calendars/' + calendarid + '/events?key=' + mykey),
+        url: encodeURI(`https://www.googleapis.com/calendar/v3/calendars/${calendarID}/events?key=${secrets.CALENDAR_API_KEY}`),
         data: {
             'singleEvents': true,
             'orderBy': 'startTime',
@@ -126,10 +131,10 @@ function showDate(dateText){
             const id = item.id;
             appendDate(startDateTime);
             appendTime(id, startDateTime, endDateTime);
-            availableTimes.push(item);                
+            // availableTimes.push(item);                
         });
 
-        console.log(availableTimes);
+        // console.log(availableTimes);
         $('#dateInstructions').text('Choose an apppintment time. Appointments are subject to change.');
         
         //dynamicallly bind function to the click of each timing button after they have all been created
@@ -218,14 +223,13 @@ function validateConsulationForm(){
 /* Function that patches an update to the selected date by using its ID
 It changes the summary of the event so that it will no longer be picked up by the query for "Available" and appends the attendees. 
 It changes the visbility of the event for privacy*/
-//IMPORTANT NOTE: This web app is under review  by google and not yet public. The auth token expires shortly after I 
-//Outside of that there may be a missing required credential error until google approves.
+//IMPORTANT NOTE: This requires the use of an OAuth scope, this may result in a temporary inability to use this feature
+//"Your consent screen is being shown, but your app has not been reviewed so your users may not see all of your information, and you will not be able to request certain OAuth scopes."
 function postEvent(){
-    console.log(selectedID);
-    console.log(postphone);
     $.ajax({
+        Authorization: `{secrets.CALENDAR_ACCESS_TOKEN}`,
         type: 'PATCH',
-        url: encodeURI('https://www.googleapis.com/calendar/v3/calendars/' + calendarid + '/events/' + selectedID),
+        url: encodeURI(`https://www.googleapis.com/calendar/v3/calendars/${calendarID}/events/${selectedID}`),
         data: {
             'summary': 'Reservation request by ' + postphone,
             "attendees": [{
@@ -239,22 +243,41 @@ function postEvent(){
     .done(function () {
         $('#consultationMessage').text('Appointment request received. We will reach out to you by email to confirm your appointment shortly.')
         $('#scheduler').empty();
-        console.log('Updated calendar event ' + selectedID + ' to private and patched user data')
+        console.log(`Updated calendar event ${selectedID} to private and patched user data`)
     })
     .fail(function (response) {
         $('#consultationMessage').text('Unable to reserve appointment at this time. Please try again later or try sending us a message below.')
+        console.log('IMPORTANT NOTE: This app is under review but requires the use of a protected OAuth scope, this may result in a temporary inability to use this feature');
+        console.log('"Your consent screen is being shown, but your app has not been reviewed so your users may not see all of your information, and you will not be able to request certain OAuth scopes."');
         console.log(response.responseJSON);
     })
     .always(function(){
         console.log('Request to patch calendar is complete');
         selectedID = postphone = postemail = postname = undefined; //clear variables
-        console.log(postphone);
     });
 }
 
 
 $(document).ready(function () {
-    let availableSet = new Set()
+    let selectedID;
+    let formattedDate; 
+    let formattedTime;
+    let postemail;
+    let postname;
+    let postphone;
+    const calendarID = '4d29e68cb3c08e2da18abda34b96dee2eef449e63a97ea8e8461506f3432d25d@group.calendar.google.com';
+    //attach intersection observer to all elements with the class hidden1
+    const hiddenElements = document.querySelectorAll(".hidden1");
+    hiddenElements.forEach((el) => observer.observe(el));
+
+    //attach intersection observer to all elements with the class hidden2
+    const hidden2Elements = document.querySelectorAll(".hidden2");
+    hidden2Elements.forEach((el) => observer.observe(el));
+
+    //create set to hold all available dates within the next 60 days
+    let availableSet = new Set();
+
+    //call back function for date picker BeforeShowDay, enables and disables dates according to if they are in the avaiable set or not
     function checkDate(date){
         target = date.toISOString().split('T')[0];
 
@@ -264,15 +287,19 @@ $(document).ready(function () {
             return [false, "", "Unavailable"];
         }
     }
-    calendarid = '4d29e68cb3c08e2da18abda34b96dee2eef449e63a97ea8e8461506f3432d25d@group.calendar.google.com';
-    mykey = 'AIzaSyDZnV4jMQ0MVDBDCMvT3JMYEUgAKbwfIGI';
+    
+    //only allow bookings 24 hours from now
     let tomorrow = new Date();
     tomorrow = new Date(tomorrow.getTime() + (24 * 60 * 60 * 1000));
+    
+    //only allow bookings 60 days out from now
     let future = new Date();
     future.setDate(future.getDate() + 60);
+
+    //get all events from now - 60 days that have the summary of available, including repeating events
     $.ajax({
         type: 'GET',
-        url: encodeURI('https://www.googleapis.com/calendar/v3/calendars/' + calendarid + '/events?key=' + mykey),
+        url: encodeURI(`https://www.googleapis.com/calendar/v3/calendars/${calendarID}/events?key=${secrets.CALENDAR_API_KEY}`),
         data: {
             'singleEvents': true,
             'timeMin': tomorrow.toISOString(),
@@ -282,62 +309,50 @@ $(document).ready(function () {
         dataType: 'json',
     })
     .done(function (response) {
+        //add each item's in the response's date to the availible set
         const events = response.items;
         events.forEach((item)=>{
             const date = item.start.dateTime.split('T')[0];
             availableSet.add(date);                
         });
+        //set date picker/ visibile calendar accordingly
         $("#dateDiv").datepicker({
             altField: '#dateInput',
             minDate: '1',
             maxDate: '+60',
+            //check dates before putting them on the date picker
             beforeShowDay: checkDate,
+
+            //when date is picked, show the available times for that date
             onSelect: function(dateText) {
-                // console.log(dateText);
                 showDate(dateText);
             }
         });
 
+        //display instructions
         $('#dateInstructions').text('Pick an appointment date to get started');
+
+        //if there is an active date, click on it to show the available times
         $('.ui-state-active').click();
         
     })
     .fail(function (response) {
         const message = 'Unable to get appointment dates at this time. Please try again later.';
         $('#consultationMessage').text(message);
-        console.log(message);
         console.log(response.responseJSON);
     })
     .always(function(){
         console.log('Request to load available dates is complete');
     });
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting){
-            entry.target.classList.add("show1");
-          } 
-        //   else{
-        //     entry.target.classList.remove("show1");
-        //   }
-        });
-
-    });
-    
-    const hiddenElements = document.querySelectorAll(".hidden1");
-    hiddenElements.forEach((el) => observer.observe(el));
-
-    const hidden2Elements = document.querySelectorAll(".hidden2");
-    hidden2Elements.forEach((el) => observer.observe(el));
-
-
-    // document.addEventListener("touchstart", function(){}, true);
+    //create new Leaflet object and add in open street map, intitialize location and zoom
     const map = L.map('map', {scrollWheelZoom: false}).setView([42.424993, -83.326150], 10);
     L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
         maxZoom: 13,
         attribution: '<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
+    //disable drag on touch screens 
     if(window.ontouchstart !== undefined){
         map.dragging.disable();
     }
@@ -350,38 +365,49 @@ $(document).ready(function () {
         ["sgh", 42.41862, -83.1822]
     ];
 
+    // class to generate icons
     const LocationIcon = L.Icon.extend({
         options: {
-            iconUrl: 'media/baseicon.png',
+            iconUrl: 'media/baseicon.png', //default image
             iconSize: [30, 30]
         }
     });
 
-    //create object to hold references to marker ids within the for loop below
+    //markers is a list of all marker objects
     let markers = [];
+
+    //create new icons
     const baseicon = new LocationIcon();
     const userlocation = new LocationIcon({iconUrl: 'media/currLoc.png', iconSize: [10, 10]});
+    
     let group;
     let bounds;
-
     
+    //for each location in list
     for (let i = 0; i < locations.length; i++) {
-        let id = [locations[i][0]];
+        // add new marker with the location and the base icon and save it in markers
         markers[i] = new L.marker([locations[i][1], locations[i][2]], {icon: baseicon})
         .addTo(map);
+
+        //add the marker to the map
         markers[i].addTo(map);
-        markers[i]._icon.id = id;
+
+        //set the id of the marker
+        markers[i]._icon.id = [locations[i][0]];
     }
 
-    //make spectrum the active color
+    //make the spectrum marker and spectrum text the active color to start
     $('#spectrum').addClass('activecolor');
+    $('#tspectrum').addClass('active');
 
+    //bind the recentered map view to the #recenter button
     $('#recenter').bind('keydown click', function() {
         map.setView([42.424993, -83.326150], 10);
     });
 
+    //ADD AJAX OR ASYNC FUNCTION HERER
+    //bind geolocation and rebounding map to the #showmylocation button
     $('#showmylocation').bind('keydown click', function() {
-        // $(this).prop('disabled', 'disabled');
         $('#locationrelated').replaceWith("<div id='#locationrelated' class='d-flex'><p id='viewmylocation'><i class='fa-solid fa-location-arrow'></i>&ensp;View My Location</p></div");
         
         $('#viewmylocation').bind('keydown click', function() {
@@ -429,95 +455,132 @@ $(document).ready(function () {
         });
     });
 
+    //when an afilliate is clicked
     $('.affiliate').bind('keydown click', function(e) {
+        //remove active class from all other afilliates
         $('.affiliate').removeClass('active');
+
+        //add it to this afilliate
         $(this).addClass('active')
 
+        //do the same for the marker
         $('.leaflet-marker-icon').removeClass('activecolor')
         const iconid = $(this).attr('id').slice(1);
         $('#' + iconid).addClass('activecolor')
     });
     
-    let currCondition;
-    
     const conditions = ['laproscopic surgery', 'hernia surgery', 'appendix surgery', 'gallbladder surgery', 'dad jokes']
+    
+    //start animation by waiting 1 second and then adding exit class to shown condition
     $('#condition').text(conditions[0]);
     setTimeout(()=>{
         $('#condition').addClass('exit');
     }, 1000)
 
+    let currCondition;
     let nextIndex = 1;
 
+    //then create an interval that changes the current condition every 2 seconds
     const conditionTimerID = setInterval(function(){
         currCondition = conditions[nextIndex];
 
+        //change the text, make it enter
         $('#condition').text(currCondition);
         $('#condition').removeClass('exit');
         $('#condition').addClass('enter');
+
+        //wait 1 second and then make it leave
         setTimeout(()=>{
             $('#condition').removeClass('enter');
             $('#condition').addClass('exit');
         }, 1000)
-        
+
         nextIndex += 1;
 
+        //if at end of the list, restart
         if ((nextIndex) === conditions.length){
             nextIndex = 0;
         }
 
     }, 2000);
 
+    //open the procedures section when see all services is clicked
     $('#seeallservices').bind('keydown click', ()=>{
-        setTimeout($('#procedures').click());
+        $('#procedures').click();
     })
 
+    //if document is scrolled to more than the nav height, add scrolled class to make it opaque
     $(document).scroll(function () {
         var $nav = $("nav");
         $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
     });
 
+    //bind phone number validation to each key up in phone input
     $('#phone').bind('keyup',function(){
         $phoneNumber = $('#phone');
         $phoneNumber.val(phoneFormat($phoneNumber.val()));
     });
 
+    //toggle the x class everytime the navbar is clicked
     $("button.navbar-toggler").bind('keydown click', function(){
         $(".bar").toggleClass("x");
     });
 
+    //when messsage submit button is clicked
     $('#messagebutton').bind('keydown click', function(event) {
-        event.preventDefault();
+        
+        event.preventDefault(); //dont let the form post
+        
         let noErrors = true;
+
         const concerns = ['name', 'email', 'phone', 'message'];
 
+        //for each concern
         concerns.forEach(concern => {
+
+            //check if the value for that concern exists
             if (!$('#' + concern).val()){
+                //otherwise add alert text to the document
                 $('#' + concern + 'alert').text('Invalid ' + concern);
+
+                //flag that there was an error
                 noErrors = false;
                 return;
 
+            //if the concern is email or phone
             } else if(concern === 'email' || concern === 'phone' ){
+
+                //validate the entries
                 const val = $('#' + concern).val()
                 const stringFunction = 'validate' + concern;
                 const valid = window[stringFunction](val.trim());
+                
+                //if it fails, flag the error and add alert text
                 if(!valid){
                     noErrors = false;
                     return $('#' + concern + 'alert').text('Invalid ' + concern);
+                
+                    //other wise remove the alert text
                 } else{
                     $('#' + concern + 'alert').text('');
                 }
-
+            //otherwise remove the alert text
             } else{
                 $('#' + concern + 'alert').text('');
             }
         })
         
+        //if we get to this line and there are no errors, the form is valid
         if(noErrors){
+            //get all valuess from inputs
+            //(there has to be a better way to do this)
             const name = $('#name').val();
             const email = $('#email').val();
             const phone = $('#phone').val();
             const subject = $('#subject').val();
             const message = $('#message').val();
+
+            //post data to Google sheets
             $.ajax({
                 url: "https://docs.google.com/forms/d/15TWC53msSHMOCyAPqtfW0nbZfSVd2c3IkHhzg3iQp3A/formResponse",
                 crossDomain: true,
@@ -537,28 +600,29 @@ $(document).ready(function () {
                     }
                 }
             })
+            //empty the contact form after to prevent resubmits
             .always(function(){
                 $('#contactUs').empty();
             });
         }     
     });     
 
-    $('#toggleMap').bind('keydown click', function(){
+    // $('#toggleMap').bind('keydown click', function(){
         
-        $('#map').toggleClass('hidden');
-        $('#mapcontrols').toggleClass('hidden');
+    //     $('#map').toggleClass('hidden');
+    //     $('#mapcontrols').toggleClass('hidden');
 
-        if($('#map').hasClass('hidden')){
-            setTimeout(function(){
-                $('#map').toggleClass('none');
-                $('#mapcontrols').toggleClass('none');
-                $('#affiliates').toggleClass('expand');
-            }, 1000);
+    //     if($('#map').hasClass('hidden')){
+    //         setTimeout(function(){
+    //             $('#map').toggleClass('none');
+    //             $('#mapcontrols').toggleClass('none');
+    //             $('#affiliates').toggleClass('expand');
+    //         }, 1000);
 
-        }else{
-            $('#affiliates').toggleClass('expand');
-            $('#map').toggleClass('none');
-            $('#mapcontrols').toggleClass('none');
-        }  
-    });
+    //     }else{
+    //         $('#affiliates').toggleClass('expand');
+    //         $('#map').toggleClass('none');
+    //         $('#mapcontrols').toggleClass('none');
+    //     }  
+    // });
 })
