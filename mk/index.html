@@ -107,7 +107,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="my-4 mb-lg-2 mt-lg-0 text-center">
-                        <p class="mx-3 mx-sm-5 display-5 colored-text hidden1">Meet Dr. Khare</p>
+                        <p class="mx-3 mx-sm-5 display-5 hidden1">Meet Dr. Khare</p>
                         <p class="mx-3 mx-sm-5 mb-2 colored-text3 display-10 hidden1">Founder and General Surgeon at Spectrum Surgical LLC.</p>
                     </div>
                     <p class="mx-3 my-1 hidden1">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
@@ -128,7 +128,7 @@
             </div>
             </div>
         </section>
-    
+        <hr>
         <section class="fullscreen px-3 pb-5 pb-lg-0">
             <div class="m-auto">
                 <div class="m-3 text-center px-md-5">
@@ -272,7 +272,7 @@
                 </div>
                 <div class="col-lg-6 d-flex">
                     <div class="m-auto pt-4 pt-lg-0">
-                        <div id="scheduleResult" class="w-100"></div>
+                        <div id="scheduleForm" class="w-100"></div>
                         <p id="showChosenDate" class="display-8"></p>
                         <p id="dateInstructions" class="py-2"></p>
                         <div id="availableTimeContainer"></div>
@@ -560,155 +560,87 @@
               </div>
               <!-- End of .container -->
         </section>
-        <div>
-            <p>Google Calendar API Quickstart</p>
-        
-            <!--Add buttons to initiate auth sequence and sign out-->
-            <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
-            <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
-        
-            <pre id="content" style="white-space: pre-wrap;"></pre>
-        
-            <script type="text/javascript">
-              /* exported gapiLoaded */
-              /* exported gisLoaded */
-              /* exported handleAuthClick */
-              /* exported handleSignoutClick */
-        
-              // TODO(developer): Set to client ID and API key from the Developer Console
-              const CLIENT_ID = '213119461904-mtirtofk9mhas4dp7fuvg44trsd5277q.apps.googleusercontent.com';
-              const API_KEY = 'AIzaSyDZnV4jMQ0MVDBDCMvT3JMYEUgAKbwfIGI';
-        
-              // Discovery doc URL for APIs used by the quickstart
-              const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
-        
-              // Authorization scopes required by the API; multiple scopes can be
-              // included, separated by spaces.
-              const SCOPES = 'https://www.googleapis.com/auth/calendar';
-        
-              let tokenClient;
-              let gapiInited = false;
-              let gisInited = false;
-        
-              document.getElementById('authorize_button').style.visibility = 'hidden';
-              document.getElementById('signout_button').style.visibility = 'hidden';
-        
-              /**
-               * Callback after api.js is loaded.
-               */
-              function gapiLoaded() {
-                gapi.load('client', initializeGapiClient);
+        <script>
+             myKey = 'AIzaSyDZnV4jMQ0MVDBDCMvT3JMYEUgAKbwfIGI';
+            myClientId = '213119461904-mtirtofk9mhas4dp7fuvg44trsd5277q.apps.googleusercontent.com';
+            myScopes = 'https://www.googleapis.com/auth/calendar'
+
+            var YOUR_CLIENT_ID = '213119461904-mtirtofk9mhas4dp7fuvg44trsd5277q.apps.googleusercontent.com';
+            var YOUR_REDIRECT_URI = 'anshitakhare.com/mk';
+            var fragmentString = location.hash.substring(1);
+          
+            // Parse query string to see if page request is coming from OAuth 2.0 server.
+            var params = {};
+            var regex = /([^&=]+)=([^&]*)/g, m;
+            while (m = regex.exec(fragmentString)) {
+              params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+            }
+            if (Object.keys(params).length > 0) {
+              localStorage.setItem('oauth2-test-params', JSON.stringify(params) );
+              if (params['state'] && params['state'] == 'try_sample_request') {
+                trySampleRequest();
               }
-        
-              /**
-               * Callback after the API client is loaded. Loads the
-               * discovery doc to initialize the API.
-               */
-              async function initializeGapiClient() {
-                await gapi.client.init({
-                  apiKey: API_KEY,
-                  discoveryDocs: [DISCOVERY_DOC],
-                });
-                gapiInited = true;
-                maybeEnableButtons();
-              }
-        
-              /**
-               * Callback after Google Identity Services are loaded.
-               */
-              function gisLoaded() {
-                tokenClient = google.accounts.oauth2.initTokenClient({
-                  client_id: CLIENT_ID,
-                  scope: SCOPES,
-                  callback: '', // defined later
-                });
-                gisInited = true;
-                maybeEnableButtons();
-              }
-        
-              /**
-               * Enables user interaction after all libraries are loaded.
-               */
-              function maybeEnableButtons() {
-                if (gapiInited && gisInited) {
-                  document.getElementById('authorize_button').style.visibility = 'visible';
-                }
-              }
-        
-              /**
-               *  Sign in the user upon button click.
-               */
-              function handleAuthClick() {
-                tokenClient.callback = async (resp) => {
-                  if (resp.error !== undefined) {
-                    throw (resp);
+            }
+          
+            // If there's an access token, try an API request.
+            // Otherwise, start OAuth 2.0 flow.
+            function trySampleRequest() {
+              var params = JSON.parse(localStorage.getItem('oauth2-test-params'));
+              if (params && params['access_token']) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET',
+                    'https://www.googleapis.com/drive/v3/about?fields=user&' +
+                    'access_token=' + params['access_token']);
+                xhr.onreadystatechange = function (e) {
+                  if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.response);
+                  } else if (xhr.readyState === 4 && xhr.status === 401) {
+                    // Token invalid, so prompt for user permission.
+                    oauth2SignIn();
                   }
-                  document.getElementById('signout_button').style.visibility = 'visible';
-                  document.getElementById('authorize_button').innerText = 'Refresh';
-                  await listUpcomingEvents();
                 };
-        
-                if (gapi.client.getToken() === null) {
-                  // Prompt the user to select a Google Account and ask for consent to share their data
-                  // when establishing a new session.
-                  tokenClient.requestAccessToken({prompt: 'consent'});
-                } else {
-                  // Skip display of account chooser and consent dialog for an existing session.
-                  tokenClient.requestAccessToken({prompt: ''});
-                }
+                xhr.send(null);
+              } else {
+                oauth2SignIn();
               }
-        
-              /**
-               *  Sign out the user upon button click.
-               */
-              function handleSignoutClick() {
-                const token = gapi.client.getToken();
-                if (token !== null) {
-                  google.accounts.oauth2.revoke(token.access_token);
-                  gapi.client.setToken('');
-                  document.getElementById('content').innerText = '';
-                  document.getElementById('authorize_button').innerText = 'Authorize';
-                  document.getElementById('signout_button').style.visibility = 'hidden';
-                }
+            }
+          
+            /*
+             * Create form to request access token from Google's OAuth 2.0 server.
+             */
+            function oauth2SignIn() {
+              // Google's OAuth 2.0 endpoint for requesting an access token
+              var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
+          
+              // Create element to open OAuth 2.0 endpoint in new window.
+              var form = document.createElement('form');
+              form.setAttribute('method', 'GET'); // Send as a GET request.
+              form.setAttribute('action', oauth2Endpoint);
+          
+              // Parameters to pass to OAuth 2.0 endpoint.
+              var params = {'client_id': YOUR_CLIENT_ID,
+                            'redirect_uri': YOUR_REDIRECT_URI,
+                            'scope': myScopes,
+                            'state': 'try_sample_request',
+                            'include_granted_scopes': 'true',
+                            'response_type': 'token'};
+          
+              // Add form parameters as hidden input values.
+              for (var p in params) {
+                var input = document.createElement('input');
+                input.setAttribute('type', 'hidden');
+                input.setAttribute('name', p);
+                input.setAttribute('value', params[p]);
+                form.appendChild(input);
               }
-        
-              /**
-               * Print the summary and start datetime/date of the next ten events in
-               * the authorized user's calendar. If no events are found an
-               * appropriate message is printed.
-               */
-              async function listUpcomingEvents() {
-                let response;
-                try {
-                  const request = {
-                    'calendarId': '4d29e68cb3c08e2da18abda34b96dee2eef449e63a97ea8e8461506f3432d25d@group.calendar.google.com',
-                    'timeMin': (new Date()).toISOString(),
-                    'showDeleted': false,
-                    'singleEvents': true,
-                    'maxResults': 10,
-                    'orderBy': 'startTime',
-                  };
-                  response = await gapi.client.calendar.events.list(request);
-                } catch (err) {
-                  document.getElementById('content').innerText = err.message;
-                  return;
-                }
-        
-                const events = response.result.items;
-                if (!events || events.length == 0) {
-                  document.getElementById('content').innerText = 'No events found.';
-                  return;
-                }
-                // Flatten to string to display
-                const output = events.reduce(
-                    (str, event) => `${str}${event.summary} (${event.start.dateTime || event.start.date})\n`,
-                    'Events:\n');
-                document.getElementById('content').innerText = output;
-              }
-            </script>
-            <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
-            <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
-        </div>
+          
+              // Add form to page and submit it to open the OAuth 2.0 endpoint.
+              document.body.appendChild(form);
+              form.submit();
+            }
+          </script>
+          
+          <button onclick="trySampleRequest();">Try sample request</button>
     </main>
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
@@ -719,22 +651,7 @@
     <!-- jQuery UI JS -->
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <!-- Google API JS -->
-    <!-- <script async defer src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
-    <script>
-        myKey = 'AIzaSyDZnV4jMQ0MVDBDCMvT3JMYEUgAKbwfIGI';
-        myClientId = '213119461904-mtirtofk9mhas4dp7fuvg44trsd5277q.apps.googleusercontent.com';
-        myScopes = 'https://www.googleapis.com/auth/calendar'
-        function handleClientLoad() {
-            gapi.client.setApiKey(myKey);
-            google.accounts.oauth2.initTokenClient({client_id: myClientId, 
-                scope: myScopes, 
-                response_type: 'token',
-                immediate: false}, handleAuthResult);
-        }
-        function handleAuthResult(authResult) {
-        console.log(authResult)
-        }
-    </script> -->
+    <script async defer src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
     <!-- Custom JS -->
      <script defer src="app.js"></script> 
 </body>

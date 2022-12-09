@@ -1,4 +1,4 @@
-let selectedDateTime;
+// let selectedDateTime;
 let selectedID;
 let formattedDate; 
 let formattedTime;
@@ -6,15 +6,21 @@ let postemail;
 let postname;
 let postphone;
 
+/*function that validates email entries by regular expressoin
+returns: boolean valid emai*/
 function validateemail(email){
     let regex = /^\S+@\S+\.\S+$/; // allows string@string.string
     return regex.test(email); 
 }
-
+/* function that validates phone number if total length is over 16 digits
+returns: boolean  */
 function validatephone(number){
     return (number.length === 16);
 }
 
+/* function that formats and removes invalid 
+Input: phone input changed by user
+Output: phone input modified and formatted by function*/
 function phoneFormat(input){
     //remove formatting from input
     input = input.replace(/\D/g,'');
@@ -46,23 +52,25 @@ function phoneFormat(input){
     return input;  
 }
 
+/* Map with  key value pairs for month numbers and names*/
 const month = {
-    '01' : 'Jan',
-    '02' : 'Feb',
-    '03' : 'Mar',
-    '04' : 'April',
-    '05' : 'May',
-    '06' : 'June',
-    '07' : 'July',
-    '08' : 'Aug',
-    '09' : 'Sept',
-    '10' : 'Oct',
-    '11' : 'Nov',
-    '12' : 'Dec',
+    '01' : 'Jan','02' : 'Feb','03' : 'Mar','04' : 'April', '05' : 'May','06' : 'June','07' : 'July', '08' : 'Aug', '09' : 'Sept', '10' : 'Oct','11' : 'Nov','12' : 'Dec',
 }
 
-function formatTime(stringTime){
-    const dt = new Date(stringTime);
+/* Function to format dateTime string into readable date
+Input Ex: 2022-12-09T019:30:00-05:00
+Output Ex: Dec 09, 2022*/
+function getDateFromatted(stringDateTime){
+    const selectedDate = stringDateTime.split('T')[0];
+    const tokens = selectedDate.split('-');
+    return month[tokens[1]] + " " + tokens[2] + " " + tokens[0];
+}
+
+/* Function to format dateTime string into a 12 hr clock time
+Input Ex: 2022-12-09T019:30:00-05:00
+Output Ex: '7:30 pm'*/
+function getTimeFormatted(stringDateTime){
+    const dt = new Date(stringDateTime);
     let hours = dt.getHours();
     const ampm = hours >= 12 ? 'pm' : 'am';
     hours = (hours % 12) || 12;
@@ -70,27 +78,31 @@ function formatTime(stringTime){
     if (minutes === 0){
         minutes = "00";
     }
-
     return hours + ":" + minutes + ampm;
 }
-
-function appendTime(id, startvalue, endvalue){
-    const selectedDate = startvalue.split('T')[0];
-    const tokens = selectedDate.split('-');
-    // console.log(tokens[1]);
-    formattedDate = month[tokens[1]] + " " + tokens[2] + " " + tokens[0];
-   
+/* Function that changes the date of div #showChosenDate with a formatted version of the one inputted*/
+function appendDate(startDateTime){
+    formattedDate = getDateFromatted(startDateTime);
     $('#showChosenDate').text('Selected Date: ' + formattedDate);
-    startvalue = formatTime(startvalue);
-    endvalue = formatTime(endvalue)
+}
+
+/* Function that appends to #availableTimeContainer with a div that has the text with the start - end time of the appointment 
+and makes the id of the div the event id retrieved from Google Cal*/
+function appendTime(id, startDateTime, endDateTime){
+    startvalue = getTimeFormatted(startDateTime);
+    endvalue = getTimeFormatted(endDateTime)
     $('#availableTimeContainer').append(`<div class="tbtn" id="${id}">${startvalue} - ${endvalue}</div>`);
 }
 
+/* Function that is intended to handle when a calendar date is clicked on.  
+It takes the attached date string (MM/DD/YYYY) and queries Google Cal for all available dates after 24 hours of date 
+and handles the response*/
 function showDate(dateText){
     const targetDate = new Date(dateText);
-    //24 hrs from target date
-    const targetDateEnd = new Date(targetDate.getTime() + (24 * 60 * 60 * 1000));
-    // availableTimes = [];
+    const targetDateEnd = new Date(targetDate.getTime() + (24 * 60 * 60 * 1000)); //24 hrs from target date
+    
+    //for debugging
+    availableTimes = [];
     $.ajax({
         type: 'GET',
         url: encodeURI('https://www.googleapis.com/calendar/v3/calendars/' + calendarid + '/events?key=' + mykey),
@@ -104,20 +116,20 @@ function showDate(dateText){
         dataType: 'json',
     })
     .done(function (response) {
-        $('#scheduleResult').empty();
-        // $('#consultationMessage').text('');     
+        $('#scheduleForm').empty(); //remove schedule form if it is visible
+       
         const events = response.items;
         $('#availableTimeContainer').empty();
         events.forEach((item)=>{
-            const date = item;
-            const startTime = item.start.dateTime;
-            const endTime = item.end.dateTime;
+            const startDateTime = item.start.dateTime;
+            const endDateTime = item.end.dateTime;
             const id = item.id;
-            appendTime(id, startTime, endTime);
-            // availableTimes.push(date);                
+            appendDate(startDateTime);
+            appendTime(id, startDateTime, endDateTime);
+            availableTimes.push(item);                
         });
 
-        // console.log(availableTimes);
+        console.log(availableTimes);
         $('#dateInstructions').text('Choose an apppintment time. Appointments are subject to change.');
         
         //dynamicallly bind function to the click of each timing button after they have all been created
@@ -133,6 +145,8 @@ function showDate(dateText){
         console.log('Request to load available times is complete');
     });
 }
+/* Call back function for when when a div that contians the time component of scheduling is clicked
+Stores the id of the div that is clicked on and shows form to finialize appointment*/
 function finalizeAppointment(){
     selectedID = $(this).attr('id');
     formattedTime = $(this).text();
@@ -141,7 +155,7 @@ function finalizeAppointment(){
     $('#showChosenDate').text('');
     $('#dateInstructions').text('');
     $('#availableTimeContainer').empty();
-    $('#scheduleResult').html(`
+    $('#scheduleForm').html(`
         <p class="display-9">You're Almost Done!</p>
         <div class="d-flex">
             <p><i class="fa-regular fa-calendar"></i> ${formattedDate}</p><p><i class="fa-regular fa-clock"></i> ${formattedTime}</p>
@@ -164,6 +178,8 @@ function finalizeAppointment(){
     $('#consulationbutton').bind('keydown click', validateConsulationForm);
 }
 
+/* Callback function that validates the consultation form when #consultationbutton is clicked on
+If there are no errors it calls postForm()*/
 function validateConsulationForm(){
     event.preventDefault();
     let noErrors = true;
@@ -191,28 +207,31 @@ function validateConsulationForm(){
     })
     
     if(noErrors){
-        $('#scheduler').empty();
         postphone = $('#sphone').val();
         postname = $('#sname').val();
         postemail = $('#semail').val();
+        $('#scheduler').empty();
         postEvent();   
     }   
 }
 
+/* Function that patches an update to the selected date by using its ID
+It changes the summary of the event so that it will no longer be picked up by the query for "Available" and appends the attendees. 
+It changes the visbility of the event for privacy*/
+//IMPORTANT NOTE: This web app is under review  by google and not yet public. The auth token expires shortly after I 
+//Outside of that there may be a missing required credential error until google approves.
 function postEvent(){
     console.log(selectedID);
+    console.log(postphone);
     $.ajax({
-        type: 'GET',
-        url: encodeURI('https://www.googleapis.com/calendar/v3/calendars/' + calendarid + '/events?key=' + mykey),
-        // client_id: '213119461904-mtirtofk9mhas4dp7fuvg44trsd5277q.apps.googleusercontent.com',
+        type: 'PATCH',
+        url: encodeURI('https://www.googleapis.com/calendar/v3/calendars/' + calendarid + '/events/' + selectedID),
         data: {
-            'q': 'Booked',
-            "attendees": [
-                {
+            'summary': 'Reservation request by ' + postphone,
+            "attendees": [{
                     "name": postname,
                     "email": postemail,
-                }
-            ],
+                }],
             'visibility': 'private',
         },
         dataType: 'json',
@@ -220,15 +239,16 @@ function postEvent(){
     .done(function () {
         $('#consultationMessage').text('Appointment request received. We will reach out to you by email to confirm your appointment shortly.')
         $('#scheduler').empty();
-        console.log('Updated calendar event to private, appended user data')
+        console.log('Updated calendar event ' + selectedID + ' to private and patched user data')
     })
     .fail(function (response) {
-        console.log('FAILURE TO PATCH')
-        $('#consultationMessage').text('Unable to reserve appointment at this time. Please try again later.')
+        $('#consultationMessage').text('Unable to reserve appointment at this time. Please try again later or try sending us a message below.')
         console.log(response.responseJSON);
     })
     .always(function(){
-        console.log('Request to update calendar is complete');
+        console.log('Request to patch calendar is complete');
+        selectedID = postphone = postemail = postname = undefined; //clear variables
+        console.log(postphone);
     });
 }
 
@@ -257,7 +277,7 @@ $(document).ready(function () {
             'singleEvents': true,
             'timeMin': tomorrow.toISOString(),
             'timeMax': future.toISOString(),
-            'q': 'Available',
+            'summary': 'Available',
         },
         dataType: 'json',
     })
@@ -273,7 +293,7 @@ $(document).ready(function () {
             maxDate: '+60',
             beforeShowDay: checkDate,
             onSelect: function(dateText) {
-                // $('#dateInput').val(dateText);
+                // console.log(dateText);
                 showDate(dateText);
             }
         });
@@ -449,7 +469,6 @@ $(document).ready(function () {
 
     $('#seeallservices').bind('keydown click', ()=>{
         setTimeout($('#procedures').click());
-        
     })
 
     $(document).scroll(function () {
@@ -468,7 +487,6 @@ $(document).ready(function () {
 
     $('#messagebutton').bind('keydown click', function(event) {
         event.preventDefault();
-
         let noErrors = true;
         const concerns = ['name', 'email', 'phone', 'message'];
 
@@ -500,7 +518,6 @@ $(document).ready(function () {
             const phone = $('#phone').val();
             const subject = $('#subject').val();
             const message = $('#message').val();
-
             $.ajax({
                 url: "https://docs.google.com/forms/d/15TWC53msSHMOCyAPqtfW0nbZfSVd2c3IkHhzg3iQp3A/formResponse",
                 crossDomain: true,
@@ -523,12 +540,8 @@ $(document).ready(function () {
             .always(function(){
                 $('#contactUs').empty();
             });
-
-            
-            
         }     
-    });
-       
+    });     
 
     $('#toggleMap').bind('keydown click', function(){
         
