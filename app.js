@@ -91,7 +91,7 @@ $(document).ready(function () {
 
     //credit for flip slide showfilter to https://codepen.io/niklanus/pen/OXVwgW
     const cardAmount = 4;
-    const flipSpeed = 2000;
+    const flipSpeed = 5000;
     
     (function preload(imageArray) {
         $(imageArray).each(function(){
