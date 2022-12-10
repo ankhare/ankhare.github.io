@@ -156,7 +156,7 @@ $(document).ready(function () {
             $('.tbtn').bind('keydown click', finalizeAppointment);
         })
         .fail(function (response) {
-            const message = 'Unable to get appointment dates at this time. Please try again later.';
+            const message = 'Unable to get appointment dates at this time. Please try again later or send us a message to request an appointment below.';
             $('#consultationMessage').text(message);
             console.log(message);
             console.log(response.responseJSON);
