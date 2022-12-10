@@ -10,6 +10,10 @@ $(document).ready(function () {
         $(".bar").toggleClass("x");
     });
 
+    $('a.nav-link').click(()=>{
+        $('button.navbar-toggler').click();
+    })
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting){

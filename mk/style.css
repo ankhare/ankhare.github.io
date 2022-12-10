@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500;700&family=Playfair+Display:wght@500&family=Lato:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500;700&family=Playfair+Display:wght@600&family=Lato:wght@300;400;500;700&display=swap");
 
 /* document wide formatting */
 :root {
@@ -7,11 +7,11 @@
     --scroller: #ccc;
     --transgray: #142c4326;
     --lightgray: #f5f7f8;
-    --darkhighlight: #16496b;
-    --highlight:#156390;
-    --light: #f3fafe;
-    --lightaccent: #c1eaff;
-    --darkaccent: #4194be;
+    --darkhighlight: #143a48;
+    --highlight:#377c89;
+    --light: #f3fefd;
+    --lightaccent: #c0e0e6;
+    --darkaccent: #41a5be;
 }
 
 body{
@@ -58,6 +58,51 @@ footer{
 footer a:hover, #contact a:hover{
     color: var(--lightaccent);
 }
+
+.loading{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 1000;
+}
+
+#calendarLoading{
+    display: flex;
+}
+.spinner {
+    margin: auto;
+    height: 32px;
+    width: 32px;
+    -webkit-animation: rotation .6s infinite linear;
+    -moz-animation: rotation .6s infinite linear;
+    -o-animation: rotation .6s infinite linear;
+    animation: rotation .6s infinite linear;
+    border-left:6px solid var(--lightaccent);
+    border-right:6px solid var(--lightaccent);
+    border-bottom:6px solid var(--lightaccent);
+    border-top:6px solid var(--highlight);
+    border-radius:100%;
+ }
+ 
+ @-webkit-keyframes rotation {
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(359deg);}
+ }
+ @-moz-keyframes rotation {
+    from {-moz-transform: rotate(0deg);}
+    to {-moz-transform: rotate(359deg);}
+ }
+ @-o-keyframes rotation {
+    from {-o-transform: rotate(0deg);}
+    to {-o-transform: rotate(359deg);}
+ }
+ @keyframes rotation {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(359deg);}
+ }
 
 .affiliate a:hover{
     color: var(--highlight);   
@@ -257,7 +302,7 @@ a.nav-link{
     font-size: calc(1rem + .5vw);
     text-transform: uppercase;
     font-weight: 700;
-    color: var(--darkhighlight);
+    color: var(--highlight);
 }
 
 #quicklinks{
@@ -279,30 +324,28 @@ a.nav-link{
 
 #landingside{
     background-color: var(--light);
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23aacfd8' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c0e0e6' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
 /* button styling */
 .nbtn{
     border-radius: 5px;
-    border: 1px solid var(--lightaccent);
-    transition: background-color 0.25s ease;
+    border: 2px solid var(--lightaccent);
+    transition: background-color .25s, border-color .25s;
     text-align: center;
     max-width: fit-content;
     background-color: var(--lightaccent);
 }
 
 .nbtn:hover{
-    border: 1px solid var(--highlight);
+    border: 2px solid var(--highlight);
 }
 
 .lbtn{
+    padding: calc(.25rem + .5vw) calc(1rem + 1vw);
     text-transform: uppercase;
     transition: background-color .25s ease;
-}
-
-.lbtn{
-    background-color: var(--darkhighlight);
+    background-color: var(--highlight);
     color: white;
 }
 
@@ -538,7 +581,7 @@ input:checked + .slider:before {
 }
   
 #affiliates::-webkit-scrollbar-thumb, .flex-container2::-webkit-scrollbar-thumb{
-    background-color: var(--darkhighlight);
+    background-color: var(--highlight);
     border-radius: 5px;
 }
 
@@ -556,13 +599,12 @@ input:checked + .slider:before {
 }
 
 .affiliate.active{
-    background-color: var(--highlight);
-    color: white;
+    background-color: var(--lightaccent);
 }
 
-.affiliate.active a:hover{
+/* .affiliate.active a:hover{
     color: var(--lightaccent);
-}
+} */
 
 .expand{
     width: 100%;
@@ -571,9 +613,10 @@ input:checked + .slider:before {
 }
 
 #map{
+    z-index: 1;
     height: 400px;
     border-radius: 5px;
-    transition: visibility 0s 1s, opacity 1s ease-out;
+    /* transition: visibility 0s 1s, opacity 1s ease-out; */
 }
 
 #mapcontrols{
@@ -614,16 +657,20 @@ img.activecolor {
     --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23325e48'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
     --bs-accordion-active-color: var(--lightaccent);
     --bs-accordion-active-bg: var(--darkhighlight);
-    --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23325e48'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
+    --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23c0e0e6'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
     
 }
 .accordion-button:not(.collapsed){
     box-shadow: none;
 }
 
+.accordion-flush .accordion-item .accordion-button, .accordion-flush .accordion-item .accordion-button.collapsed{
+    border-radius: 5px;
+}
+
 .accordion-button{
     /* font-family: 'lato', sans-serif; */
-    font-weight: 700;
+    font-weight: 500;
     color: var(--black);
 }
 
@@ -720,6 +767,10 @@ img.activecolor {
 @media screen and (max-width: 320px){
     .spacer{
         display: block; 
+    }
+    
+    body{
+        position: absolute;
     }
 }
 

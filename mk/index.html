@@ -37,16 +37,16 @@
             <div class="collapse navbar-collapse justify-content-end" id="navText">
                 <ul class="navbar-nav mx-4">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="#about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#!" class="nav-link"><p>Affiliations</p></a>
+                    <a href="#affiliations" class="nav-link"><p>Affiliations</p></a>
                 </li>
                 <li class="nav-item">
-                    <a href="#contact!" class="nav-link"><p>Contact</p></a>
+                    <a href="#contact" class="nav-link"><p>Contact</p></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">FAQ</a>
+                    <a class="nav-link" href="#faq">FAQ</a>
                 </li>
                 <li class="nav-item">
                     <div class="nbtn px-2">
@@ -80,13 +80,12 @@
                                 <a href="#about"><p>Meet Dr. Khare&nbsp;➞</p></a>
                             </div>
                             <div class="btn lbtn my-1 hidden1">
-                                <a href="#book"><p>Book Your Appointment&nbsp;➞</p></a>
+                                <a href="#affiliations"><p>See Affiliated Locations&nbsp;➞</p></a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div id="landingside" class="col-md-4 lightbg p-0">
-                    <p></p>
                 </div>
             </div>
         </section>
@@ -129,12 +128,12 @@
             </div>
         </section>
         <hr>
-        <section class="fullscreen px-3 pb-5 pb-lg-0">
+        <section id="affiliations" class="fullscreen px-3 pb-5 pb-lg-0">
             <div class="m-auto">
                 <div class="m-3 text-center px-md-5">
-                    <p class="display-8 colored-text3 mb-2 hidden1">Where can I find Dr. Khare?</p>
-                    <p class="display-5 hidden1">Affiliated Hospitals and Offices</p>
-                    <p class="pt-2 px-lg-5 mx-lg-5 hidden1">Spectrum Surgical has privileges at a variety of hospitals in South East Michigan. You can book a consultation by contacting the hospitals listed below directly or by <a class="colored-text" href="#contact">contacting us</a></p>
+                    <p class="display-8 colored-text3 hidden1">Where can I find Dr. Khare?</p>
+                    <p class="my-3 display-5 hidden1">Affiliated Hospitals and Offices</p>
+                    <p class="px-lg-5 mx-lg-5 hidden1">Spectrum Surgical has privileges at a variety of hospitals in South East Michigan. You can book a consultation by contacting the hospitals listed below directly or by <a class="colored-text" href="#contact">contacting us</a></p>
                     <hr>
                 </div>
                 <!-- <div class="row text-muted mx-2 mx-md-3 px-md-5 mb-3 small-1 hidden1">
@@ -253,55 +252,76 @@
                             </div>
                         </div>
                     </div>
-                    <div id="map" class="col-lg-6 mb-3 my-lg-0"></div> 
+                    <div id="map" class="col-lg-6 mb-3 my-lg-0">
+                    </div> 
                 </div>
                 <p id="locationalert"></p>
             </div>
         </section>
-        <section id="book" class="py-5 px-3 text-center darkbg">
-            <div class="p-3 p-lg-4">
-                <p class="display-8 colored-text2">Ready to Take the Next Step?</p>
-                <p class="display-5 py-3">Schedule Your Consulation</p>
-                <p class="small-1 px-4">Please ensure that we accept your insurance before scheduling an appointment. You can find a list of accepted insurance plans in the FAQ below.</p>
+        <section id="book" class="fullscreen py-5 px-3 text-center darkbg">
+            <div id="bookingPosting" class="loading m-auto">
+                <div class="spinner"></div>
             </div>
-            <div id="consultationMessage" class="colored-text2 display-8"></div>
-            <div id="scheduler" class="row mx-auto my-2 my-sm-4 p-0 w-100">
-                <div class="col-md-6">
-                    <input hidden id="dateInput" type="text" name="attributes[date]" value="" required autofocus/>
-                    <div id="dateDiv"></div>
+            <div id="finalConsultationMessage" class="m-auto colored-text2 display-8 text-center"></div>
+            <div id="bookingWindow"class="m-auto">
+                <div class="p-3 p-lg-4">
+                    <p class="display-9 colored-text2 hidden1">Ready to Take the Next Step?</p>
+                    <p class="pt-2 pb-4 display-5 hidden1">Schedule Your Consulation</p>
+                    <p class="small-1 px-4 hidden1">Please ensure that we accept your insurance before scheduling an appointment. You can find a list of accepted insurance plans in the FAQ below.</p>
                 </div>
-                <div class="col-md-6 d-flex">
-                    <div class="m-auto pt-4 pt-md-0">
-                        <div id="scheduleForm" class="w-100"></div>
-                        <p id="showChosenDate" class="display-8"></p>
-                        <p id="dateInstructions" class="py-2"></p>
-                        <div id="availableTimeContainer"></div>
+                <div id="consultationMessage" class="colored-text2 display-8"></div>
+                <div id="scheduler" class="row mx-auto my-2 my-sm-4 p-0 w-100 hidden1">
+                    <div id="calendarLoading" class="col-12 loading">
+                        <div class="spinner"></div>
+                    </div>
+                    <div class="col-lg-6 px-md-5">
+                        <input hidden id="dateInput" type="text" name="attributes[date]" value="" required autofocus/>
+                        <div id="dateDiv"></div>
+                    </div>
+                    <div class="col-lg-6 d-flex px-md-5">
+                        <div class="text-center w-100 pt-4 pt-lg-0">
+                            <!-- "pick a date" goes here, if dates are available" -->
+                            <p id="dateInstructions"></p>
+                            <div id="timesLoading" class="loading">
+                                <div class="spinner"></div>
+                            </div>
+                            <!-- displays date user has picker -->
+                            <p id="showChosenDate" class="py-2 display-8"></p>
+                            <!-- displays times for the date has picker -->
+                            <div id="availableTimeContainer">
+                            </div>
+                            <!-- shows form to finalize appointment -->
+                            <div id="scheduleForm" class="w-100"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
         <section id="contact" class="fullscreen accentbg px-3 py-5 px-md-5">
-            <div class="row mx-auto">
+            <div id="messageSending" class="m-auto loading">
+                <div class="spinner"></div>
+            </div>
+            <p id="contactMessage" class="text-center display-8 m-auto"></p>
+            <div id="contactUs" class="row mx-auto">
                 <div class="col-md-5 d-flex p-0">
                     <div class="mx-2 mx-lg-5 my-auto p-2 text-center">
                         <div>
                             <p class="display-5 colored-text mb-3 hidden1">Have a question?</p>
-                            <p class="hidden1">Reach out to us right now and someone from my team will get back to you within 2 business days.</p>
+                            <p class="hidden1">Reach out to us right now and someone from my team will get back to you within two business days.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-7 m-auto p-0">
-                    <p id="contactMessage" class="text-center display-8 m-auto"></p>
-                    <div id="contactUs" class="container-fluid m-auto hidden2">
-                        <div class="display-6 my-2 mx-auto text-center">Contact Us</div>
+                    <div class="container-fluid m-auto hidden2">
+                        <div class="display-7 mt-2 mb-4 mx-auto text-center">Contact Us</div>
                         <form action="/" method="post" id="contactForm" name="contactForm">
                             <p id="namealert" class="text-danger"></p>
-                            <input id="name" name="name" placeholder="Name*" type="input" required class="w-100">
+                            <input id="name" name="entry.1776554539" placeholder="Name*" type="input" required class="w-100">
                             <p id="emailalert" class="text-danger"></p>
-                            <input id="email" name="email" placeholder="Email*" type="input" required class="w-100">
+                            <input id="email" name="entry.1791065834" placeholder="Email*" type="input" required class="w-100">
                             <p id="phonealert" class="text-danger"></p>
-                            <input id="phone" name="phone number" placeholder="Phone Number*" type="input" required class="w-100">
-                            <select id="subject" name="subject" placeholder="Subject" required class="w-100">
+                            <input id="phone" name="entry.1605266732" placeholder="Phone Number*" type="input" required class="w-100">
+                            <select id="subject" name="entry.1409983036" placeholder="Subject" required class="w-100">
                                 <option value="I would like to schedule a consultation">I would like to schedule a consultation</option>
                                 <option value="I would like to refer a patient">I would like to refer a patient</option>
                                 <option value="I have a question, please reach out to me by phone">I have a question, please reach out to me by phone</option>
@@ -310,7 +330,7 @@
                             </select>
                             <!-- <input id="concern" name="concern" placeholder="Concern" type="input" required class="w-100 my-2 px-2"> -->
                             <p id="messagealert" class="text-danger"></p>
-                            <textarea id="message" name="message" placeholder="Message*" required class="w-100"></textarea>
+                            <textarea id="message" name="entry.681565945" placeholder="Message*" required class="w-100"></textarea>
                             <button id="messagebutton" class="w-100">Send Message</button>
                         </form> 
                         <div class="text-center">
@@ -326,7 +346,7 @@
                 <p class="display-5 text-md-center hidden1"><span class="display-2 quote">&ldquo;</span>A surgeon who treats you like family.<span class="display-2 quote">&rdquo;</span></p>
             </div>
             <h1 class="m-1 display-7 colored-text text-md-center hidden1">What Previous Patients Have Said</h1>
-            <div class="my-1 flex-container2 hidden1">
+            <div class="my-1 flex-container2 hidden2">
                 <div class="item max-four-col">
                     <div class="my-auto mx-3">
                         <p class="review-text">&ldquo;Lorem Ipsum is simply dummy text of the printing and typesetting industry.&rdquo;</p>
@@ -354,7 +374,7 @@
             </div>
         </section>
         <section id="faq" class="lightbg py-5">
-            <h1 class="display-7 mx-3 px-3 pb-2 hidden1">Frequently Asked Questions</h1>
+            <h1 class="display-5 mx-3 px-3 pb-2 hidden1">Frequently Asked Questions</h1>
             <div class="accordion accordion-flush px-3"id="questions">
                 <div class="accordion-item hidden1">
                   <h2 class="accordion-header" id="flush-headingOne">
@@ -409,7 +429,7 @@
             </div>
             <div class="row mx-2 mx-md-5 p-0">
                 <div class="col-12 col-lg-4 my-2">
-                    <a href="#contact" class="m-auto">
+                    <a href="#book" class="m-auto">
                         <div class="cbtn hidden1">
                             <p>Book Your Appointment</p>
                         </div>
@@ -431,136 +451,94 @@
                 </div>
             </div>
         </section>
-        <section class="darkbg py-3">
-            <!-- <div class="d-flex p-5">
-                <p class="display-5 text-center">
-                    Reach out to Dr. Khare and his team today
+    </main>       
+
+    <!-- All links that dont redirect to anything yet are awaiting a pdf link to be attached to them -->
+    <footer class="darkbg py-3 text-center text-xl-start">
+        <section class="">
+        <div class="container mt-5">
+            <div class="row mt-3">
+            <div class="col-xl-3 mx-auto mb-md-0 my-3">
+                <p class=" caps">Contact</p>
+                <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 100%; height: 2px"/>
+                <!-- <p><i class="fas fa-home mr-3"></i>&emsp; 3106 S Wayne Rd <br>
+                    &emsp;&emsp;Wayne, MI 48184</p>
+                <br> -->
+                <p><a href="mailto: mkhareofficestaff@gmail.com?subject=👋%20Hey%20Dr.%20Khare,%20I%20Saw%20Your%20Website%20and%20Wanted%20to%20Reach%20Out!">
+                    <i class="fas fa-envelope mr-3"></i>&ensp; mkhareofficestaff@gmail.com</a>
+                </p>
+                <p><a href="tel:734-366-2300"><i class="fas fa-phone mr-3"></i> &ensp; (734) 366-2300</a></p>
+                <p><a href="tel:734-722-4815"><i class="fas fa-print mr-3"></i>&ensp; (734) 722-4815</a></p>
+            </div>
+            <div class="col-md-3 mx-auto my-3">
+                <p class="caps"> Office Hours</p>
+                <hr
+                class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 100%; height: 2px"
+                />
+                <p>
+                    Mon–Fri: 8AM–5PM
+                </p>
+                <p>
+                    Sat–Sun: Closed
+                </p>
+                </div>
+            <div class="col-md-3 mx-auto my-3">
+                <p class="caps">Site Map</p>
+                <hr
+                class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 100%; height: 2px"
+                />
+                <p>
+                    <a href="#about" class="">About</a>
+                </p>
+                <p>
+                    <a href="#contact" class="">Contact</a>
+                </p>
+                <p>
+                    <a href="#!" class="">Forms</a>
+                    </p>
+                    <p>
+                    <a href="#faq" class="">FAQ</a>
+                    </p>
+                <p>
+                    <a href="#!" class="">HIPA NPP</a>
+                </p>
+                <p>
+                    <a href="#!" class="">Notice of Non-Discrimination</a>
+                </p>
+                </div>
+            <div class="col-md-3  mx-auto my-3">
+                <!-- Links -->
+                <p class=" caps">Helpful Links</p>
+                <hr
+                    class="mb-4 mt-0 d-inline-block mx-auto"
+                    style="width: 100%; height: 2px"
+                    />
+                <p>
+                <a href="#!" class="">Surgery Prep</a>
+                </p>
+                <p>
+                <a href="#!" class="">Post-Op Instructions</a>
+                </p>
+                <p>
+                <a href="#!" class="">Patient Rights</a>
                 </p>
             </div>
-            <div class="d-flex mx-5 px-m">
-                <div class="d-flex w-100">
-                    <div class="btn dbtn mx-2">
-                        <a href="#!"><p>Book Online&nbsp;➞</p></a>
-                    </div>
-                    <div class="btn dbtn mx-2">
-                        <a href="tel:734-366-2300"><p>Call the Office&nbsp;➞</p></a>
-                        
-                    </div>
-                </div>
-            </div> -->
-            <div>
-                <!-- Footer -->
-                <footer class="text-center text-lg-start">
-
-                  <!-- Section: Links  -->
-                  <section class="">
-                    <div class="container mt-5">
-                      <!-- Grid row -->
-                      <div class="row mt-3">
-                        <!-- Grid column -->
-                        <div class="col-lg-3 mx-auto mb-md-0 my-3">
-                          <!-- Links -->
-                          <p class=" caps">Contact</p>
-                          <hr
-                          class="mb-4 mt-0 d-inline-block mx-auto"
-                          style="width: 100%; height: 2px"
-                          />
-                          
-                          <!-- <p><i class="fas fa-home mr-3"></i>&emsp; 3106 S Wayne Rd <br>
-                            &emsp;&emsp;Wayne, MI 48184</Fp>
-                          <p> -->
-                            <a href="mailto: mkhareofficestaff@gmail.com?subject=👋%20Hey%20Dr.%20Khare,%20I%20Saw%20Your%20Website%20and%20Wanted%20to%20Reach%20Out!">
-                                <i class="fas fa-envelope mr-3"></i>&ensp; mkhareofficestaff@gmail.com
-                            </a>
-                          
-                          <p><a href="tel:734-366-2300"><i class="fas fa-phone mr-3"></i> &ensp; (734) 366-2300</a></p>
-                          <p><a href="tel:734-722-4815"><i class="fas fa-print mr-3"></i>&ensp; (734) 722-4815</a></p>
-                        </div>
-                        <!-- Grid column -->
-
-                        <!-- Grid column -->
-                        <div class="col-md-3 mx-auto my-3">
-                            <!-- Links -->
-                            <p class="caps"> Office Hours</p>
-                            <hr
-                            class="mb-4 mt-0 d-inline-block mx-auto"
-                            style="width: 100%; height: 2px"
-                            />
-                            <p>
-                                Mon–Fri: 8AM–5PM
-                            </p>
-                            <p>
-                                Sat–Sun: Closed
-                            </p>
-                          </div>
-                          <!-- Grid column -->
-
-                        <!-- Grid column -->
-                        <div class="col-md-3 mx-auto my-3">
-                            <!-- Links -->
-                            <p class="caps">Site Map</p>
-                            <hr
-                            class="mb-4 mt-0 d-inline-block mx-auto"
-                            style="width: 100%; height: 2px"
-                            />
-                            <p>
-                              <a href="#!" class="">About</a>
-                            </p>
-                            <p>
-                              <a href="#!" class="">Contact</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="">Forms</a>
-                              </p>
-                              <p>
-                                <a href="#!" class="">FAQ</a>
-                              </p>
-                            <p>
-                              <a href="#!" class="">HIPA NPP</a>
-                            </p>
-                            <p>
-                              <a href="#!" class="">Notice of Non-Discrimination</a>
-                            </p>
-                          </div>
-                          <!-- Grid column -->
-
-                          <!-- Grid column -->
-                        <div class="col-md-3  mx-auto my-3">
-                          <!-- Links -->
-                          <p class=" caps">Helpful Links</p>
-                          <hr
-                              class="mb-4 mt-0 d-inline-block mx-auto"
-                              style="width: 100%; height: 2px"
-                              />
-                          <p>
-                            <a href="#!" class="">Surgery Prep</a>
-                          </p>
-                          <p>
-                            <a href="#!" class="">Post-Op Instructions</a>
-                          </p>
-                          <p>
-                            <a href="#!" class="">Patient Rights</a>
-                          </p>
-                        </div>
-                        <!-- Grid column -->
-              
-                      </div>
-                      <!-- Grid row -->
-                    </div>
-                  </section>
-                  <!-- Section: Links  -->
-              
-                  <!-- Copyright -->
-                  <div class="text-center colored-text2 p-3">
-                    © 2022 Copyright: Manish Khare, MD
-                  </div>
-                  <!-- Copyright -->
-                </footer>
-                <!-- Footer -->
-              </div>
-              <!-- End of .container -->
+            <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </div>
         </section>
-    </main>
+        <!-- Section: Links  -->
+    
+    
+        <div class="text-center colored-text2 p-3">
+        © 2022 Copyright: Manish Khare, MD
+        </div>
+
+    </footer>
+
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <!-- Bootstrap JS -->
@@ -570,26 +548,8 @@
     <!-- jQuery UI JS -->
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <!-- Google API JS -->
-    <script async defer src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
-    <script>
-        myKey = 'AIzaSyDZnV4jMQ0MVDBDCMvT3JMYEUgAKbwfIGI';
-        myClientId = '213119461904-mtirtofk9mhas4dp7fuvg44trsd5277q.apps.googleusercontent.com';
-        myScopes = 'https://www.googleapis.com/auth/calendar'
-        var GoogleAuth; // Google Auth object.
-        function initClient() {
-            gapi.client.init({
-                'apiKey': myKey,
-                'clientId': myClientId,
-                'scope': myScopes,
-                'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest']
-            }).then(function () {
-                GoogleAuth = gapi.auth2.getAuthInstance();
-
-            // Listen for sign-in state changes.
-            GoogleAuth.isSignedIn.listen(updateSigninStatus);});
-        }
-    </script>
+    <!-- <script async defer src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script> -->
     <!-- Custom JS -->
-     <script defer src="app.js"></script> 
+    <script defer src="main.js"></script> 
 </body>
 </html>
