@@ -307,7 +307,7 @@ i.nav-link{
   position: relative;
   padding-bottom: 71.5%;
   /* transition: 1s linear; */
-  transition: 1s cubic-bezier(0.1, 0.9, 0.4, 1.1);
+  transition: .5s cubic-bezier(0.1, 0.5, 0.4, 1.1);
   transform-style: preserve-3d;
 }
 
