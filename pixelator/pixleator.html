@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- boostrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
      <!-- fontawesome icons -->
      <script src="https://kit.fontawesome.com/22375b6341.js" crossorigin="anonymous"></script>
     <title>Document</title>
@@ -11,12 +13,13 @@
         @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
         
         :root {
-        --gray: #ebebeb;
+        --gray: #d2d2d2;
         --transgray: #03030330;
         --dark: #5d5d5d;
         --sidecolor: #303339;
         --blue: #00d4ff;
         --purple: #6961e6;
+        --black: #15161b;
         }
 
         body{
@@ -28,7 +31,7 @@
         
         .header{
             width: 100vw;
-            height: 3vh;
+            /* height: 3vh; */
             text-align: center;
             font-size: calc(1rem + .8vmin);
             text-transform: uppercase;
@@ -43,7 +46,7 @@
             display: flex;
             align-self: center;
             justify-content:space-between;
-            background-color: #13151a;
+            background-color: var(--black);
         }
 
         #left-side{
@@ -69,7 +72,7 @@
             padding: 1rem;
             height: 97vh;
             background-color: var(--sidecolor);
-            width: 15vmin;
+            width: 20vmin;
             display: flex;
         }
 
@@ -103,7 +106,7 @@
             padding: calc(.5rem + .5vmin);
             margin: 0 0 1vmin 0;
             font-size: calc(1rem + 1vmin);
-            width: 100%;
+            width: 10vmin;
             
         }
         
@@ -126,13 +129,17 @@
             border-color: white;
         }
 
-        #brushes button:hover{
+        #brushes button:hover:enabled{
             color: var(--blue);
         }
 
         #brushes button.active{
             border-color: var(--blue);
             color: var(--blue);
+        }
+
+        button:disabled, button[disabled]{
+            color: var(--dark) !important;
         }
 
         #grid-container{
@@ -145,7 +152,6 @@
         }
 
         #grid {
-            background-color: white;
             margin: auto;
             width: 80vmin;
             height: 80vmin;
@@ -155,20 +161,29 @@
             justify-content: center;
         }
 
+        .visiblebackground{
+            background: repeating-conic-gradient(#d1d1d1 0% 25%, #fbfafa 0% 50%) 50% / calc(160vmin/30) calc(160vmin/30);
+        }
+        
+
         .pixel{
             /* set the according to grid size later using js */
             flex-basis: calc(80vmin/30);
             flex-shrink: 0;
             height: calc(80vmin/30);
             box-sizing:border-box;
-            border: .1vmin solid var(--transgray);
+            border: .1vmin solid #d1d1d1;
+        }
+
+        .pixel-border{
+            border: .1vmin solid var(--black);
         }
         
         input[type=color], div[class^=tg]{
             min-height: 3vmin;
             min-width: 3vmin;
             border: 2px solid var(--dark);
-            /* border-radius: 5px; */
+            border-radius: 5px;
             margin: .5vmin;
         }
 
@@ -183,22 +198,22 @@
         }
 
         div[class^=tg].activecolor, div[class^=tg]:active{
-            border: 2px solid var(--blue);
+            border: 2px solid white;
         }
 
-        .tg-c{background-color:#00ffff;}
-        .tg-bl{background-color:#333333;}
-        .tg-b{background-color:#0000ff;}
-        .tg-y{background-color:#ffff00;}
-        .tg-r{background-color:#ff0000;}
-        .tg-l{background-color:#00ff00;}
-        .tg-m{background-color:#ff00ff;}
-        .tg-mr{background-color:#800000;}
-        .tg-o{background-color:#808000;}
-        .tg-g{background-color:#008000;}
-        .tg-p{background-color:#800080;}
-        .tg-t{background-color:#008080;}
-        .tg-n{background-color:#000080;}
+        .tg-c{background-color:#C0392B;}
+        .tg-bl{background-color:#C0392B;}
+        .tg-b{background-color:#E74C3C;}
+        .tg-y{background-color:#D35400;}
+        .tg-r{background-color:#D68910;}
+        .tg-l{background-color:#F4D03F;}
+        .tg-m{background-color:#8bc759;}
+        .tg-mr{background-color:#2ECC71;}
+        .tg-o{background-color:#48C9B0;}
+        .tg-g{background-color:#3498DB;}
+        .tg-p{background-color:#015b97;}
+        .tg-t{background-color:#800080;}
+        .tg-n{background-color:#4A235A;}
         /* .tg-bl{background-color:#000000;} */
 
         #save{
@@ -214,11 +229,21 @@
     <div class="flex-container">
     <div id="right-side">
         <div id="brushes">
+            <!-- Default dropend button -->
+            <div class="btn-group dropend">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-gear"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li id="background"> Background </li>
+                    <li> Grid</li>
+                </ul>
+            </div>
             <button id="pencil" class="active"><i class="fa-solid fa-pencil"></i></button>
             <button id="fill"><i class="fa-solid fa-fill-drip"></i></button>
             <button id="erase"><i class="fa-solid fa-eraser"></i></button>
             <button id="shape"><i class="fa-solid fa-draw-polygon"></i></i></button>
-            <button id="blank"><i class="fa-regular fa-file"></i></button>
+            <button id="blank"><i class="fa-regular fa-trash-can"></i></button>
             <button id="undo" disabled><i class="fa-solid fa-rotate-left"></i></button>
         </div>
         <div id="colors">
@@ -239,14 +264,12 @@
         </div>
     </div>
     <div id="grid-container">
-        <div id="grid"></div>
+        <div id="grid" class="visiblebackground"></div>
     </div>
     <div id="left-side">
         <p>PREVIEW</p>
         <div id="sample"></div>
         <div id="tools">
-            <!-- <button id="undo" disabled><i class="fa-solid fa-rotate-left"></i> Undo</button> -->
-            <!-- <button id="blank"><i class="fa-regular fa-file"></i> Blank</button> -->
             <button id="save"><i class="fa-solid fa-download"></i> Save</button>  
             <button id="share"><i class="fa-solid fa-arrow-up-from-bracket"></i> Share</button>
             <button id="add"><i class="fa-solid fa-plus"></i> Add Frame</button>
@@ -255,20 +278,21 @@
     </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script>
         'use strict';
 
         $(document).ready(function () {
             let grid = [];
             const grid_count = 30;
-            let brush_color = '#00ffff';
+            let brush_color = '#C0392B';
             let grid_stack = [];
             let stack_max = 10;
             let blankGrid = [];
             let first_run = true;
 
             class Pixel{
-                constructor(color='#ffffff0000', active=false, id=null){
+                constructor(color='transparent', active=false, id=null){
                     this.active = active;
                     this.color = color;
                     this.id = id;
@@ -279,7 +303,7 @@
                     this.active = true;
                 }
 
-                create(id, color="#ffffff0000"){
+                create(id, color='transparent'){
                     this.id = id;
                     this.color = color;
                     $('#grid').append(`<div id="${id}"class="pixel"></div>`);
@@ -361,10 +385,32 @@
                 }
             }
             
+            let pencilBrush = true;
+            let eraseBrush;
             const drag = function($e) {
+                if(pencilBrush){
+                    pencil($e);
+                }
+
+                if(eraseBrush){
+                    erase($e);
+                }
+
+            }
+
+            const pencil = function($e){
                 const id = $e.attr('id');
                 const placement = id.split('_');
                 grid[placement[0]][placement[1]].setState(brush_color, true);
+                // console.log( grid[placement[0]][placement[1]]);
+            }
+
+
+            const erase = function($e){
+                const erase_color = 'transparent'
+                const id = $e.attr('id');
+                const placement = id.split('_');
+                grid[placement[0]][placement[1]].setState(erase_color, false);
                 // console.log( grid[placement[0]][placement[1]]);
             }
 
@@ -426,12 +472,25 @@
                 swapGrid(blankGrid);
             });
 
-            // //make pixel inactive
-            // $('#erase').click(function(){
-            //     console.log('erase')
-            //     brush_color = '#ffffff0000';
-            // });
+            
+            $('#pencil').click(function(){
+                $('#brushes').children().removeClass('active');
+                $(this).addClass('active');
+                pencilBrush = true;
+                eraseBrush = false;
+            });
 
+            $('#erase').click(function(){
+                $('#brushes').children().removeClass('active');
+                $(this).addClass('active');
+                pencilBrush = false;
+                eraseBrush = true;
+            });
+
+            $('#background').click(function(){
+                $('#grid').toggleClass('visiblebackground');
+            });
+            
         });
         
     </script>
