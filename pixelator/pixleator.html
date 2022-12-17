@@ -39,7 +39,7 @@
             padding: 1vw 0;
             letter-spacing: 8px;
             background: rgb(105,97,230);
-            background: linear-gradient(90deg, rgba(105,97,230,1) 0%, rgba(0,212,255,1) 100%);
+            background: linear-gradient(90deg, var(--purple) 0%,rgb(116, 192, 239) 100%);
         }
 
         .flex-container{
@@ -77,7 +77,7 @@
         }
 
         #colors{
-            /* margin: auto; */
+            margin: 0 1vmin 0 0;
             display: flex;
             align-items: center;
             justify-self: space-between;
@@ -93,7 +93,7 @@
         }
 
         #brushes{
-            margin: 0 1.5vw 0 0;
+            margin: 0 1vw 0 0;
             flex-direction: column;
             align-items: center;
             justify-items: stretch;
@@ -175,8 +175,8 @@
             border: .1vmin solid #d1d1d1;
         }
 
-        .pixel-border{
-            border: .1vmin solid var(--black);
+        .no-border{
+            border: none;
         }
         
         input[type=color], div[class^=tg]{
@@ -211,14 +211,42 @@
         .tg-mr{background-color:#2ECC71;}
         .tg-o{background-color:#48C9B0;}
         .tg-g{background-color:#3498DB;}
-        .tg-p{background-color:#015b97;}
-        .tg-t{background-color:#800080;}
-        .tg-n{background-color:#4A235A;}
+        .tg-p{background-color:#0161a1;}
+        .tg-t{background-color:#a058bc;}
+        .tg-n{background-color:#6a0087;}
+        .tg-nn{background-color:#38071f;}
+        .tg-w{background-color:#ffffff;}
+        .tg-bg{background-color:#f4cda1;}
+        .tg-tg{background-color:#ca9f5e;}
+        .tg-dg{background-color:#4f340d;}
+        .tg-bl{background-color:#000000;}
+
         /* .tg-bl{background-color:#000000;} */
 
         #save{
             background: rgb(105,97,230);
-            background: linear-gradient(90deg, rgba(105,97,230,1) 0%, rgba(0,212,255,1) 100%);
+            background: linear-gradient(90deg, rgba(105,97,230,1) 0%, rgb(116, 192, 239) 100%);
+        }
+
+        #toggleBackground, #toggleGrid{
+            cursor: pointer;
+        }
+
+        .disabled{
+            color: var(--gray);
+        }
+
+        .dropdown-menu{
+            --bs-dropdown-border-width: 0px;
+            --bs-dropdown-border-radius: 0px;
+        }
+
+        ul.dropdown-menu.show{
+            transform: translate3d(80.5px, 0px, 0px) !important;
+        }
+
+        .dropdown-toggle::after {
+            display: none;
         }
     </style>
 </head>
@@ -230,13 +258,14 @@
     <div id="right-side">
         <div id="brushes">
             <!-- Default dropend button -->
-            <div class="btn-group dropend">
-                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="btn-group">
+                <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa-solid fa-gear"></i>
                 </button>
                 <ul class="dropdown-menu">
-                    <li id="background"> Background </li>
-                    <li> Grid</li>
+                    <li id="toggleBackground">&ensp;&ensp;Background <i class="fa-solid fa-check"></i></li>
+                    <hr>
+                    <li id="toggleGrid">&ensp;&ensp;Grid <i class="fa-solid fa-check"></i></li>
                 </ul>
             </div>
             <button id="pencil" class="active"><i class="fa-solid fa-pencil"></i></button>
@@ -259,6 +288,12 @@
             <div class="tg-p"></div>
             <div class="tg-t"></div>
             <div class="tg-n"></div>
+            <div class="tg-nn"></div>
+            <div class="tg-bl"></div>
+            <div class="tg-dg"></div>
+            <div class="tg-tg"></div>
+            <div class="tg-bg"></div>
+            <div class="tg-w"></div>            
             <!-- <div class="tg-bl"></div> -->
             <input type="color" name="" id="color">
         </div>
@@ -487,9 +522,15 @@
                 eraseBrush = true;
             });
 
-            $('#background').click(function(){
+            $('#toggleBackground').click(function(){
                 $('#grid').toggleClass('visiblebackground');
+                $(this).toggleClass('disabled')
             });
+
+            $('#toggleGrid').click(function(){
+                $('.pixel').toggleClass('no-border');
+                $(this).toggleClass('disabled');
+            })
             
         });
         
