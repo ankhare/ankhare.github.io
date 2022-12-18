@@ -88,7 +88,7 @@ p{
 }
 
 #colors{
-    margin: 0 1vmin 0 0;
+    margin: 1vmin;
     display: flex;
     align-items: center;
     justify-self: space-between;
@@ -103,7 +103,7 @@ p{
 }
 
 #brushes{
-    margin: 0 1vw 0 0;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-items: stretch;
@@ -116,9 +116,8 @@ p{
     background-color: var(--sidecolor);
     height: calc(2rem + 4vmin);
     width: calc(2rem + 4vmin);
-    margin: 0 0 1vmin;
+    margin: 0 1vmin 1vmin;
     font-size: calc(1rem + .5vmin);
-    width: 10vmin;
     
 }
 
@@ -264,4 +263,53 @@ ul.dropdown-menu.show{
 
 .dropdown-toggle::after {
     display: none;
+}
+
+@media screen and (max-width: 890px){
+    #right-side, #left-side{
+        width: 100%;
+        overflow: visible;
+        flex-wrap: wrap;
+        height: min-content;
+    }
+
+    #right-side{
+        padding-bottom: .5rem;
+    }
+    .flex-container{
+        flex-wrap: wrap;
+    }
+
+    /* .grid{
+        margin: 0 auto;
+    } */
+    #grid-container{
+        padding: 1rem 0;
+        height: min-content
+    }
+
+    #colors{
+        overflow-x: scroll;
+    }
+    input[type=color], div[class^=tg]{
+        min-height: 6vmin;
+        min-width: 6vmin;
+        border-radius: 5px;
+    }   
+
+    #brushes, #colors{
+        height: min-content;
+        flex-direction: row; 
+    }
+
+    #brushes{
+        margin: auto;
+    }
+
+    #frameContainer{
+        width: 100%;
+        align-items: center;
+        flex-direction: row;
+    }
+
 }
