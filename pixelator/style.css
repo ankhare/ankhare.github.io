@@ -115,10 +115,10 @@ p{
     /* border: none; */
     color: white;
     background-color: var(--sidecolor);
-    height: calc(2rem + 4vmin);
-    width: calc(2rem + 4vmin);
+    height: calc(.8rem + 8vmin);
+    width: calc(.8rem + 8vmin);
     margin: 0 1vmin 1vmin;
-    font-size: calc(1rem + .5vmin); 
+    font-size: calc(.8rem + .8vmin); 
 }
 
 #brushes button > i{
@@ -253,7 +253,7 @@ div[class^=tg].activecolor, div[class^=tg]:active{
 
 /* ERROR: OVERFLOW SCROLL ON MOBILE */
 .dropdown-menu{
-    /* --bs-dropdown-zindex: 100; */
+    /* --bs-dropdown-zindex: 999; */
     --bs-dropdown-bg: var(--sidecolor);
     --bs-dropdown-color: white;
     --bs-dropdown-border-color: var(--dark);
@@ -286,9 +286,6 @@ ul.dropdown-menu.show{
         flex-wrap: wrap;
     }
 
-    /* .grid{
-        margin: 0 auto;
-    } */
     #grid-container{
         padding: 1rem 0;
         height: min-content
@@ -306,12 +303,13 @@ ul.dropdown-menu.show{
         margin-right: auto;
         flex-direction: row; 
         overflow-x: scroll;
-        overflow-y: visible !important;
     }
-
-    #colors{
-        height: min-content;
-    }
+/* 
+    #brushes{
+        height: calc(1rem + 10vmin);
+        overflow-y:visible;
+        z-index: 100;
+    } */
 
     /* #frameContainer{
         width: 100%;
