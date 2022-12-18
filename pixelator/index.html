@@ -224,18 +224,18 @@
 
             let isDragging = false;
             let mouseDown = false;
-            $('.pixel').mousedown(function(){
+            $('.pixel').bind('mousedown touchstart', function(){
                 isDragging = false;
                 mouseDown = true;
             })
-            .mousemove(function(e) {
+            .bind('mousemove touchmove', function(e) {
                 isDragging = true;
 
                 if (isDragging && mouseDown) {
                     drag($(this));
                 }
             })
-            .mouseup(function(e) {
+            .bind('mouseup touchstop', function(e) {
                 addToStack(grid);
                 var wasDragging = isDragging;
 
