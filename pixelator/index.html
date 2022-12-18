@@ -212,11 +212,11 @@
                 // console.log( grid[placement[0]][placement[1]]);
             }
 
+            //ADD DISABLING COLOR SELECTION WHEN IN ERASER
             const erase = function($e){
-                const erase_color = 'transparent'
                 const id = $e.attr('id');
                 const placement = id.split('_');
-                grid[placement[0]][placement[1]].setState(erase_color, false);
+                grid[placement[0]][placement[1]].setState('transparent', false);
                 // console.log( grid[placement[0]][placement[1]]);
             }
 
