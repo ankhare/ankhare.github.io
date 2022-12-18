@@ -130,13 +130,9 @@
                 // console.log( grid[placement[0]][placement[1]]);
             }
 
-
-            // $('#grid').on('touchstart', function() {
-            //     $(this).focus();
-            // });
-
             let isDragging = false;
             let mouseDown = false;
+            let touchCounter = 0;
             $('.pixel').bind('mousedown', function(e){
                 e.preventDefault();
                 isDragging = false;
@@ -154,6 +150,11 @@
                 const y = e.originalEvent.touches[0].pageY;
                 const el = $(document.elementFromPoint(x, y));
                 drag(el);
+                touchCounter = touchCounter + 1;
+                if(touchCounter === 10){
+                    addToStack(grid);
+                    touchCounter = 0;
+                }
             })
             .bind('mouseup', function(e) {
                 e.preventDefault();
@@ -169,25 +170,14 @@
                 }
             });
 
-            // $('.pixel').bind('touchmove', function(e) {
-            //     e.preventDefault();
-            //     drag($(this));
-            //     console.log($(this).attr('id'));
-            //     // addToStack(grid);
-            //     console.log('touchmove');
-
-            // });
-
             $('#color').blur(function(event){
                 brush_color = event.target.value;
             })
 
             $('#undo').click(()=>{
-
                 grid_stack.pop();
                 const last_grid = grid_stack[grid_stack.length-1];
                 swapGrid(last_grid);
-                
 
                 if (grid_stack.length < 2){
                     $('#undo').prop('disabled', true);
