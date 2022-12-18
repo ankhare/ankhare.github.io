@@ -280,7 +280,7 @@ ul.dropdown-menu.show{
     }
 
     #right-side{
-        padding-bottom: .5rem;
+        padding-bottom: 0px;
     }
     .flex-container{
         flex-wrap: wrap;
@@ -300,6 +300,7 @@ ul.dropdown-menu.show{
     }   
 
     #brushes, #colors{
+        padding-bottom: .5rem;
         height: min-content;
         margin-left: auto;
         margin-right: auto;
@@ -308,10 +309,20 @@ ul.dropdown-menu.show{
         overflow-y: visible !important;
     }
 
-    #frameContainer{
+    #colors{
+        height: min-content;
+    }
+
+    /* #frameContainer{
         width: 100%;
         align-items: center;
         flex-direction: row;
+    } */
+
+    #add, #frameContainer, #sample, #ptext, #ctext{
+        visibility: hidden;
     }
+
+
 
 }
