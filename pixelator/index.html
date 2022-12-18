@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!-- boostrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
      <!-- fontawesome icons -->
      <script src="https://kit.fontawesome.com/22375b6341.js" crossorigin="anonymous"></script>
      <!-- custom css -->
      <link rel="stylesheet" href="./style.css">
-    <title>pixelator</title>
+    <title>pixelator.</title>
 </head>
 <body>
     <div class="header">
-        pixelator
+        pixelator.
     </div>
     <div class="flex-container">
     <div id="right-side">
@@ -73,243 +73,23 @@
         <div id="grid" class="visiblebackground"></div>
     </div>
     <div id="left-side">
-        <p>PREVIEW</p>
-        <div id="sample"></div>
-        <div id="tools">
-            
+        <div class="tools w-100">
             <button id="save"><i class="fa-regular fa-floppy-disk"></i> Save as .pixel</button>  
             <button id="download"><i class="fa-solid fa-download"></i> Download</button>  
             <button id="share"><i class="fa-solid fa-arrow-up-from-bracket"></i> Share</button>
             <button id="add"><i class="fa-solid fa-plus"></i> Add Frame</button>
         </div>
+        <p>PREVIEW</p>
+        <div id="sample"></div>
         <p>FRAMES</p>
-    </div>
+        <div id="frameContainer">
+            <div class="frame"></div>
+            <div class="frame"></div>
+            <div class="frame"></div>  
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script>
-        'use strict';
-        $(document).ready(function () {
-            // document.addEventListener("touchstart", function(){}, true);
-            let grid = [];
-            const grid_count = 30;
-            let brush_color = '#C0392B';
-            let grid_stack = [];
-            let stack_max = 10;
-            let blankGrid = [];
-            let first_run = true;
-
-            class Pixel{
-                constructor(color='transparent', active=false, id=null){
-                    this.active = active;
-                    this.color = color;
-                    this.id = id;
-                }
-
-                setColor(color){
-                    this.color = color;
-                    this.active = true;
-                }
-
-                create(id, color='transparent'){
-                    this.id = id;
-                    this.color = color;
-                    $('#grid').append(`<div id="${id}"class="pixel"></div>`);
-                    $('#' + id).css('background-color', color);
-                }
-
-                setState(color, active){
-                    this.active = active;
-                    this.color = color;
-                    $('#' + this.id).css('background-color', color);
-                }
-
-                getColor(){
-                    return this.color;
-                }
-                
-                getActive(){
-                    return this.active;
-                }
-            }
-
-            const cloneGrid = function(grid_in){
-                let newGrid = [];
-                for (let i=0; i<grid_in.length; i++){
-                    newGrid [i] = [];
-                    for (let j=0; j<grid_in.length; j++){
-                        const new_pixel = new Pixel(grid_in[i][j].getColor(), grid_in[i][j].getActive(), i + "_" + j);
-                        newGrid[i][j] = new_pixel;
-                    }
-                }
-
-                if(first_run){
-                    blankGrid = newGrid;
-                    first_run = false;
-                }
-                return newGrid;
-
-            }
-
-            const addToStack = function(grid){
-                const clonedGrid = cloneGrid(grid);
-        
-                if (grid_stack.length < stack_max){
-                    grid_stack.push(clonedGrid);
-                    
-                    
-                }else{
-                    grid_stack.shift();
-                    grid_stack.push(clonedGrid);
-                }
-
-                console.log(grid_stack.length);
-                // console.log(grid_stack);
-
-                if (grid_stack.length > 1){
-                    $('#undo').prop('disabled', false);
-                }
-            }
-
-            const createGrid = function(count){
-                for (let i=0; i<count; i++){
-                    grid [i] = [];
-                    for (let j=0; j<count; j++){
-                        const new_pixel = new Pixel();
-                        new_pixel.create(i + "_" + j);
-                        grid[i][j] = new_pixel;
-                    }
-                }
-                addToStack(grid);
-            }
-
-            createGrid(grid_count);
-
-            const swapGrid = function(grid_in){
-                for (let i=0; i<grid.length; i++){
-                    for (let j=0; j<grid.length; j++){
-                        grid[i][j].setState(grid_in[i][j].getColor(), grid_in[i][j].getActive() );
-                    }
-                }
-            }
-            
-            let pencilBrush = true;
-            let eraseBrush;
-            const drag = function($e) {
-                if(pencilBrush){
-                    pencil($e);
-                }
-
-                if(eraseBrush){
-                    erase($e);
-                }
-            }
-
-            const pencil = function($e){
-                const id = $e.attr('id');
-                const placement = id.split('_');
-                grid[placement[0]][placement[1]].setState(brush_color, true);
-                // console.log( grid[placement[0]][placement[1]]);
-            }
-
-            //ADD DISABLING COLOR SELECTION WHEN IN ERASER
-            const erase = function($e){
-                const id = $e.attr('id');
-                const placement = id.split('_');
-                grid[placement[0]][placement[1]].setState('transparent', false);
-                // console.log( grid[placement[0]][placement[1]]);
-            }
-
-
-            $('#grid').on('touchstart', function() {
-                $(this).focus();
-            });
-
-            let isDragging = false;
-            let mouseDown = false;
-            $('.pixel').bind('mousedown touchstart', function(){
-                isDragging = false;
-                mouseDown = true;
-            })
-            .bind('mousemove touchmove', function(e) {
-                isDragging = true;
-
-                if (isDragging && mouseDown) {
-                    drag($(this));
-                }
-            })
-            .bind('mouseup touchstop', function(e) {
-                addToStack(grid);
-                var wasDragging = isDragging;
-
-                isDragging = false;
-                mouseDown = false;
-
-                if (!wasDragging ) {
-                    drag($(this));
-                }
-            });
-
-            $('#color').blur(function(event){
-                brush_color = event.target.value;
-            })
-
-            $('#undo').click(()=>{
-                console.log('undo click');
-                console.log(grid_stack.length);
-                grid_stack.pop();
-                const last_grid = grid_stack[grid_stack.length-1];
-                swapGrid(last_grid);
-                
-                console.log(grid_stack.length);
-
-                if (grid_stack.length < 2){
-                    $('#undo').prop('disabled', true);
-                    // $('#undoalert').text('Cannot undo!')
-                    // setTimeout(function(){
-                    //     $('#undoalert').text('');
-                    // }, 3000)
-                }
-            });
-
-            $('[class^=tg]').click(function(){
-                $('[class^=tg]').removeClass('activecolor');
-                $(this).addClass('activecolor');
-                const target_color = $(this).css('background-color');
-                brush_color = target_color;
-            });
-
-            $('#blank').click(function(){
-                swapGrid(blankGrid);
-            });
-
-            
-            $('#pencil').click(function(){
-                $('#brushes').children().removeClass('active');
-                $(this).addClass('active');
-                pencilBrush = true;
-                eraseBrush = false;
-            });
-
-            $('#erase').click(function(){
-                $('#brushes').children().removeClass('active');
-                $(this).addClass('active');
-                pencilBrush = false;
-                eraseBrush = true;
-            });
-
-            $('#toggleBackground').click(function(){
-                $('#grid').toggleClass('visiblebackground');
-                $(this).toggleClass('disabled')
-            });
-
-            $('#toggleGrid').click(function(){
-                $('.pixel').toggleClass('no-border');
-                $(this).toggleClass('disabled');
-            })
-            
-        });
-        
-    </script>
+    <script src="./app.js"></script>
 </body>
 </html>

@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@800&family=Varela+Round&display=swap');
 
 :root {
---gray: #d2d2d2;
+--gray: #817f7f;
 --transgray: #03030330;
---dark: #5d5d5d;
+--dark: #43464e;
 --sidecolor: #303339;
 --blue: rgb(2, 117, 255);
 --purple: #6961e6;
@@ -14,8 +14,6 @@ body{
     margin: 0;
     font-family: 'Varela Round', Helvetica, sans-serif;
     box-sizing:border-box;
-    font-size: calc(.4rem + .8vmin);
-    touch-action: none;
 }
 
 .header{
@@ -25,14 +23,16 @@ body{
     text-align: center;
     /* text-transform: uppercase; */
     /* letter-spacing: 3px; */
-    font-size: calc(1rem + 1.2vmin);
+    font-size: calc(1rem + 1.5vmin);
     padding: .8vmin 0;
     background: rgb(105,97,230);
     background: linear-gradient(135deg, rgb(159, 90, 255) 0% , rgb(132, 123, 248) 25%, rgb(5, 138, 255) 75%,  rgb(0, 166, 255) 100%);
 }
 
 p{
+    font-size: calc(.4rem + .8vmin);
     letter-spacing: .75px;
+    margin-bottom: 1vmin;
 }
 
 .flex-container{
@@ -55,10 +55,28 @@ p{
 }
 
 #sample{
-    margin: 2vmin;
-    height: 24vmin;
-    width: 24vmin;
-    border: 2px solid var(--gray);
+    margin: 0 2vmin 2vmin;
+    height: 24.5vmin;
+    width: 24.5vmin;
+    border: 2px solid var(--dark);
+}
+
+#frameContainer{
+    padding: 1vmin 0;
+    display: flex;
+    flex-direction: column;
+    width: 24.5vmin;
+    height: 30vmin;
+    border: 2px solid var(--dark);
+    overflow-y: scroll;
+}
+
+.frame{
+    margin: 1vmin auto;
+    flex-shrink: 0;
+    width: 20vmin;
+    height: 20vmin;
+    border: 2px solid var(--dark);
 }
 
 #right-side{
@@ -77,8 +95,8 @@ p{
     flex-direction: column;
 }
 
-#tools{
-    margin: 2vmin 0;
+.tools{
+    margin-bottom: 2vmin;
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
@@ -93,16 +111,18 @@ p{
 
 #brushes button{
     border: 2px solid var(--dark);
+    /* border: none; */
     color: white;
     background-color: var(--sidecolor);
-    padding: calc(.5rem + .5vmin);
-    margin: 0 0 1vmin 0;
-    font-size: calc(1rem + 1vmin);
+    height: calc(2rem + 4vmin);
+    width: calc(2rem + 4vmin);
+    margin: 0 0 1vmin;
+    font-size: calc(1rem + .5vmin);
     width: 10vmin;
     
 }
 
-#tools button{
+.tools button{
     border: 2px solid var(--dark);
     color: white;
     background-color: var(--sidecolor);
@@ -117,17 +137,18 @@ p{
     text-transform: uppercase;
 }
 
-#tools button:hover:enabled{
-    border-color: white;
+.tools button:hover:enabled{
+    background-color: var(--transgray);
 }
 
 #brushes button:hover:enabled{
-    color: var(--blue);
+    background-color: var(--transgray);
 }
 
-#brushes button.active{
+#brushes button.active, #brushes button:active{
     border-color: var(--blue);
     color: var(--blue);
+    background-color: var(--transgray) !important;
 }
 
 button:disabled, button[disabled]{
@@ -151,10 +172,11 @@ button:disabled, button[disabled]{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    touch-action: none;
 }
 
 .visiblebackground{
-    background: repeating-conic-gradient(#d1d1d1 0% 25%, #fbfafa 0% 50%) 50% / calc(160vmin/30) calc(160vmin/30);
+    background: repeating-conic-gradient(#e4e4e4 0% 25%, #fbfafa 0% 50%) 50% / calc(160vmin/30) calc(160vmin/30);
 }
 
 
@@ -164,7 +186,7 @@ button:disabled, button[disabled]{
     flex-shrink: 0;
     height: calc(80vmin/30);
     box-sizing:border-box;
-    border: .1vmin solid #565656;
+    border: .1vmin solid #8f8f8f;
 }
 
 .no-border{
@@ -175,8 +197,8 @@ input[type=color], div[class^=tg]{
     min-height: 3vmin;
     min-width: 3vmin;
     border: 2px solid var(--dark);
-    border-radius: 5px;
-    margin: .5vmin;
+    /* border-radius: 5px; */
+    margin: 0 .5vmin 1vmin;
 }
 
 input[type=color]{
@@ -214,7 +236,6 @@ div[class^=tg].activecolor, div[class^=tg]:active{
 .tg-gy{background-color:#2f2e2e;}
 
 
-
 /* button#save{
     background: linear-gradient(90deg, rgb(85, 72, 255) 0%, rgb(0, 145, 255) 100%);
 } */
@@ -224,8 +245,7 @@ div[class^=tg].activecolor, div[class^=tg]:active{
 }
 
 .disabled{
-    color: var(--dark);
-    touch-action: none;
+    color: var(--gray);
 }
 
 .dropdown-menu{
@@ -234,6 +254,8 @@ div[class^=tg].activecolor, div[class^=tg]:active{
     --bs-dropdown-border-color: var(--dark);
     --bs-dropdown-border-width: 2px;
     --bs-dropdown-border-radius: 0px;
+    font-size: calc(.5rem + .5vmin);
+    text-transform: uppercase;
 }
 
 ul.dropdown-menu.show{
