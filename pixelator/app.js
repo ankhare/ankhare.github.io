@@ -162,7 +162,6 @@
                 mouseDown = false;
 
                 if (!wasDragging ) {
-                    console.log('mouseup')
                     drag($(this));
                 }
             });
