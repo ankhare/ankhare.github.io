@@ -267,7 +267,7 @@ ul.dropdown-menu.show{
     display: none;
 }
 
-@media screen and (max-width: 890px){
+@media screen and (max-width: 1010px){
     #right-side, #left-side{
         width: 100%;
         overflow: visible;
@@ -303,6 +303,9 @@ ul.dropdown-menu.show{
     }
 
     #brushes{
+        display: flex;
+        align-items: center;
+        justify-self: space-between;
         margin: auto;
     }
 
