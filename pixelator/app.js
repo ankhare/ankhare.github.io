@@ -132,7 +132,6 @@
 
             let isDragging = false;
             let mouseDown = false;
-            let touchCounter = 0;
             $('.pixel').bind('mousedown', function(e){
                 e.preventDefault();
                 isDragging = false;
