@@ -10,7 +10,7 @@
      <script src="https://kit.fontawesome.com/22375b6341.js" crossorigin="anonymous"></script>
     <title>Document</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+       @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@700&family=Varela+Round&display=swap');
 
         :root {
         --gray: #d2d2d2;
@@ -24,22 +24,24 @@
 
         body{
             margin: 0;
-            font-family: Helvetica, sans-serif;
+            font-family: 'Varela Round', Helvetica, sans-serif;
             box-sizing:border-box;
             font-size: calc(.4rem + .8vmin);
         }
         
         .header{
-            width: 100vw;
-            /* height: 3vh; */
+            width: 100%;
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 700;
             text-align: center;
             font-size: calc(1rem + .8vmin);
-            text-transform: uppercase;
-            font-weight: 700;
             padding: 1vw 0;
-            letter-spacing: 8px;
             background: rgb(105,97,230);
             background: linear-gradient(90deg, var(--purple) 0%,rgb(116, 192, 239) 100%);
+        }
+
+        p{
+            letter-spacing: .75px;
         }
 
         .flex-container{
@@ -171,7 +173,7 @@
             flex-shrink: 0;
             height: calc(80vmin/30);
             box-sizing:border-box;
-            border: .1vmin solid #d1d1d1;
+            border: .1vmin solid #565656;
         }
 
         .no-border{
@@ -201,7 +203,6 @@
         }
 
         .tg-c{background-color:#C0392B;}
-        .tg-bl{background-color:#C0392B;}
         .tg-b{background-color:#E74C3C;}
         .tg-y{background-color:#D35400;}
         .tg-r{background-color:#D68910;}
@@ -219,6 +220,7 @@
         .tg-tg{background-color:#ca9f5e;}
         .tg-dg{background-color:#4f340d;}
         .tg-bl{background-color:#000000;}
+        .tg-gy{background-color:#2f2e2e;}
 
         /* .tg-bl{background-color:#000000;} */
 
@@ -232,10 +234,12 @@
         }
 
         .disabled{
-            color: var(--gray);
+            color: var(--dark);
         }
 
         .dropdown-menu{
+            --bs-dropdown-bg: var(--sidecolor);
+            --bs-dropdown-color: white;
             --bs-dropdown-border-width: 0px;
             --bs-dropdown-border-radius: 0px;
         }
@@ -289,10 +293,13 @@
             <div class="tg-n"></div>
             <div class="tg-nn"></div>
             <div class="tg-bl"></div>
-            <div class="tg-dg"></div>
-            <div class="tg-tg"></div>
+            <div class="tg-gy"></div>
+            <div class="tg-w"></div>
             <div class="tg-bg"></div>
-            <div class="tg-w"></div>            
+            <div class="tg-tg"></div>
+            <div class="tg-dg"></div>
+            
+                       
             <!-- <div class="tg-bl"></div> -->
             <input type="color" name="" id="color">
         </div>
@@ -304,7 +311,9 @@
         <p>PREVIEW</p>
         <div id="sample"></div>
         <div id="tools">
-            <button id="save"><i class="fa-solid fa-download"></i> Save</button>  
+            
+            <button id="save"><i class="fa-regular fa-floppy-disk"></i> Save as .pixel</button>  
+            <button id="download"><i class="fa-solid fa-download"></i> Download</button>  
             <button id="share"><i class="fa-solid fa-arrow-up-from-bracket"></i> Share</button>
             <button id="add"><i class="fa-solid fa-plus"></i> Add Frame</button>
         </div>
