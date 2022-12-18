@@ -162,15 +162,15 @@ button:disabled, button[disabled]{
     display: flex;
     align-items: center;
     justify-content:space-between;
-    height: 95vh;
+    height: 93vh;
     width: 100%;
     margin: 0%;
 }
 
 #grid {
     margin: auto;
-    width: 80vmin;
-    height: 80vmin;
+    width: 90vmin;
+    height: 90vmin;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -179,15 +179,15 @@ button:disabled, button[disabled]{
 }
 
 .visiblebackground{
-    background: repeating-conic-gradient(#e4e4e4 0% 25%, #fbfafa 0% 50%) 50% / calc(160vmin/30) calc(160vmin/30);
+    background: repeating-conic-gradient(#e4e4e4 0% 25%, #fbfafa 0% 50%) 50% / calc(180vmin/30) calc(180vmin/30);
 }
 
 
 .pixel{
     /* set the according to grid size later using js */
-    flex-basis: calc(80vmin/30);
+    flex-basis: calc(90vmin/30);
     flex-shrink: 0;
-    height: calc(80vmin/30);
+    height: calc(90vmin/30);
     box-sizing:border-box;
     border: .1vmin solid #8f8f8f;
 }
