@@ -253,7 +253,6 @@ div[class^=tg].activecolor, div[class^=tg]:active{
 
 /* ERROR: OVERFLOW SCROLL ON MOBILE */
 .dropdown-menu{
-    /* --bs-dropdown-zindex: 999; */
     --bs-dropdown-bg: var(--sidecolor);
     --bs-dropdown-color: white;
     --bs-dropdown-border-color: var(--dark);
@@ -280,8 +279,10 @@ ul.dropdown-menu.show{
     }
 
     #right-side{
+        flex-wrap: wrap-reverse;
         padding-bottom: 0px;
     }
+
     .flex-container{
         flex-wrap: wrap;
     }
@@ -304,18 +305,12 @@ ul.dropdown-menu.show{
         flex-direction: row; 
         overflow-x: scroll;
     }
-/* 
-    #brushes{
-        height: calc(1rem + 10vmin);
-        overflow-y:visible;
-        z-index: 100;
-    } */
 
-    /* #frameContainer{
-        width: 100%;
-        align-items: center;
-        flex-direction: row;
-    } */
+    #brushes button{
+        height: calc(.5rem + 8vmin);
+        width: calc(.5rem + 8vmin);
+        font-size: 4vmin;
+    }
 
     #add, #frameContainer, #sample, #ptext, #ctext{
         visibility: hidden;
