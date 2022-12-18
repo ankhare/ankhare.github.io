@@ -91,6 +91,7 @@
         'use strict';
 
         $(document).ready(function () {
+            // document.addEventListener("touchstart", function(){}, true);
             let grid = [];
             const grid_count = 30;
             let brush_color = '#C0392B';
@@ -221,6 +222,11 @@
                 grid[placement[0]][placement[1]].setState(erase_color, false);
                 // console.log( grid[placement[0]][placement[1]]);
             }
+
+            
+            $('#grid').on('touchstart', function() {
+                $(this).focus();
+            });
 
             let isDragging = false;
             let mouseDown = false;
