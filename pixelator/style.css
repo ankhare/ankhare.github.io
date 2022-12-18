@@ -247,7 +247,9 @@ div[class^=tg].activecolor, div[class^=tg]:active{
     color: var(--gray);
 }
 
+/* ERROR: OVERFLOW SCROLL ON MOBILE */
 .dropdown-menu{
+    /* --bs-dropdown-zindex: 100; */
     --bs-dropdown-bg: var(--sidecolor);
     --bs-dropdown-color: white;
     --bs-dropdown-border-color: var(--dark);
@@ -287,10 +289,6 @@ ul.dropdown-menu.show{
         padding: 1rem 0;
         height: min-content
     }
-
-    #colors{
-        overflow-x: scroll;
-    }
     input[type=color], div[class^=tg]{
         min-height: 6vmin;
         min-width: 6vmin;
@@ -300,6 +298,8 @@ ul.dropdown-menu.show{
     #brushes, #colors{
         height: min-content;
         flex-direction: row; 
+        overflow-x: scroll;
+        overflow-y: visible !important;
     }
 
     #brushes{
