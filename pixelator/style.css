@@ -110,6 +110,7 @@ p{
 }
 
 #brushes button{
+    display: flex;
     border: 2px solid var(--dark);
     /* border: none; */
     color: white;
@@ -117,8 +118,11 @@ p{
     height: calc(2rem + 4vmin);
     width: calc(2rem + 4vmin);
     margin: 0 1vmin 1vmin;
-    font-size: calc(1rem + .5vmin);
-    
+    font-size: calc(1rem + .5vmin); 
+}
+
+#brushes button > i{
+    margin: auto;
 }
 
 .tools button{
@@ -297,16 +301,11 @@ ul.dropdown-menu.show{
 
     #brushes, #colors{
         height: min-content;
+        margin-left: auto;
+        margin-right: auto;
         flex-direction: row; 
         overflow-x: scroll;
         overflow-y: visible !important;
-    }
-
-    #brushes{
-        display: flex;
-        align-items: center;
-        justify-self: space-between;
-        margin: auto;
     }
 
     #frameContainer{

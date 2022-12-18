@@ -150,11 +150,9 @@
                 const y = e.originalEvent.touches[0].pageY;
                 const el = $(document.elementFromPoint(x, y));
                 drag(el);
-                touchCounter = touchCounter + 1;
-                if(touchCounter === 10){
-                    addToStack(grid);
-                    touchCounter = 0;
-                }
+            })
+            .bind('touchend', function(){
+                addToStack(grid);
             })
             .bind('mouseup', function(e) {
                 e.preventDefault();
