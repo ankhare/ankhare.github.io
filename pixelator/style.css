@@ -5,7 +5,7 @@
         --transgray: #03030330;
         --dark: #5d5d5d;
         --sidecolor: #303339;
-        --blue: rgb(116, 192, 239);
+        --blue: rgb(2, 117, 255);
         --purple: #6961e6;
         --black: #15161b;
         }
@@ -15,6 +15,7 @@
             font-family: 'Varela Round', Helvetica, sans-serif;
             box-sizing:border-box;
             font-size: calc(.4rem + .8vmin);
+            touch-action: none;
         }
         
         .header{
@@ -25,7 +26,7 @@
             font-size: calc(1rem + .8vmin);
             padding: 1vw 0;
             background: rgb(105,97,230);
-            background: linear-gradient(90deg, var(--purple) 0%,rgb(116, 192, 239) 100%);
+            background: linear-gradient(135deg, rgb(139, 212, 252) 0% , rgb(5, 138, 255) 25%, rgb(132, 123, 248) 75%,  rgb(159, 90, 255) 100%);
         }
 
         p{
@@ -212,9 +213,9 @@
 
         /* .tg-bl{background-color:#000000;} */
 
-        #save{
-            background: rgb(105,97,230);
-            background: linear-gradient(90deg, rgba(105,97,230,1) 0%, rgb(116, 192, 239) 100%);
+        button#save{
+            background: var(--blue);
+            /* background: linear-gradient(90deg, rgb(85, 72, 255) 0%, rgb(0, 145, 255) 100%); */
         }
 
         #toggleBackground, #toggleGrid{
