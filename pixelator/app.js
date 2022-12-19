@@ -1,6 +1,5 @@
 'use strict';
         $(document).ready(function () {
-            // document.addEventListener("touchstart", function(){}, true);
             let grid = [];
             const grid_count = 30;
             let brush_color = '#C0392B';
@@ -217,7 +216,6 @@
                 addToStack(blankGrid);
                 swapGrid(blankGrid);
             });
-
             
             $('#pencil').click(function(){
                 $('#brushes').children().removeClass('active');
@@ -244,5 +242,4 @@
                 $(this).toggleClass('disabled');
                 $('#gridCheck').toggleClass('hidden');
             })
-            
         });
