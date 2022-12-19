@@ -195,6 +195,10 @@ button:disabled, div[disabled]{
     border: .1vmin solid #8f8f8f;
 }
 
+#colorpicker{
+    height: 1px;
+    width: 1px;
+}
 #picker-display, div[class^=tg]{
     cursor: pointer;
     height: 4vmin;
@@ -205,6 +209,12 @@ button:disabled, div[disabled]{
 
 div[class^=tg]:hover{
     border: 2px solid var(--gray);
+}
+
+div[class^=tg].disabled, #picker-display.disabled{
+    filter: grayscale(50%);
+    pointer-events: none;
+
 }
 
 #picker-display.activecolor , #picker-display:active, div[class^=tg].activecolor, div[class^=tg]:active{
@@ -231,25 +241,25 @@ div[class^=tg]:hover{
         rgba(255, 0, 0, 1) 100%
     );;
 }
-.tg-c{background-color:#C0392B;}
-.tg-b{background-color:#E74C3C;}
-.tg-y{background-color:#D35400;}
-.tg-r{background-color:#D68910;}
-.tg-l{background-color:#F4D03F;}
-.tg-m{background-color:#8bc759;}
-.tg-mr{background-color:#2ECC71;}
-.tg-o{background-color:#48C9B0;}
-.tg-g{background-color:#3ca8f0;}
-.tg-p{background-color:#266cef;}
-.tg-t{background-color:#7480dd;}
-.tg-n{background-color:#42329f;}
-.tg-nn{background-color:#1c0f3c;}
-.tg-w{background-color:#ffffff;}
-.tg-bg{background-color:#f4cda1;}
-.tg-tg{background-color:#ca9f5e;}
-.tg-dg{background-color:#4f340d;}
-.tg-bl{background-color:#000000;}
-.tg-gy{background-color:#686868;}
+.tg-c{background-color:rgb(191, 58, 43);}
+.tg-b{background-color:rgb(231, 76, 60);}
+.tg-y{background-color:rgb(211, 84, 0);}
+.tg-r{background-color:rgb(214, 137, 16);}
+.tg-l{background-color:rgb(244, 208, 63);}
+.tg-m{background-color:rgb(139, 199, 89);}
+.tg-mr{background-color:rgb(46, 204, 113);}
+.tg-o{background-color:rgb(72, 201, 176);}
+.tg-g{background-color:rgb(60, 168, 240);}
+.tg-p{background-color:rgb(38, 108, 239);}
+.tg-t{background-color:rgb(116, 128, 221);}
+.tg-n{background-color:rgb(66, 50, 159);}
+.tg-nn{background-color:rgb(28, 15, 60);}
+.tg-w{background-color:rgb(255, 255, 255);}
+.tg-bg{background-color:rgb(244, 205, 161);}
+.tg-tg{background-color:rgb(202, 159, 94);}
+.tg-dg{background-color:rgb(79, 52, 13);}
+.tg-bl{background-color:rgb(0, 0, 0);}
+.tg-gy{background-color:rgb(104, 104, 104);}
 
 
 /* button#save{
