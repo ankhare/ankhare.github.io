@@ -148,7 +148,7 @@ p{
     background-color: var(--transgray);
 }
 
-#brushes button.active, #brushes button:active{
+#brushes button.active, #brushes button:active:enabled{
     border-color: var(--blue);
     color: var(--blue);
     background-color: var(--transgray) !important;

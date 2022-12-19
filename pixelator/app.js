@@ -5,6 +5,7 @@
             const grid_count = 30;
             let brush_color = '#C0392B';
             let grid_stack = [];
+            let redo_stack = [];
             let stack_max = 10;
             let blankGrid = [];
             let first_run = true;
@@ -106,6 +107,10 @@
             let pencilBrush = true;
             let eraseBrush;
             const drag = function($e) {
+                //clear redo stack and disable
+                redo_stack = [];
+                $('#redo').prop('disabled', true);
+
                 if(pencilBrush){
                     pencil($e);
                 }
@@ -177,14 +182,28 @@
             })
 
             $('#undo').click(()=>{
-                grid_stack.pop();
-                const last_grid = grid_stack[grid_stack.length-1];
-                swapGrid(last_grid);
+                const latest = grid_stack.pop();
+                redo_stack.push(latest);
+                
+                const target = grid_stack[grid_stack.length-1];
+                swapGrid(target);
 
                 if (grid_stack.length < 2){
                     $('#undo').prop('disabled', true);
                 }
+
+                $('#redo').prop('disabled', false);
             });
+
+            $('#redo').click(function(){
+                const target = redo_stack.pop();
+
+                addToStack(target);
+                swapGrid(target);
+                if(redo_stack.length < 1){
+                    $('#redo').prop('disabled', true);
+                }
+            })
 
             $('[class^=tg]').click(function(){
                 $('#picker-display').removeClass('activecolor');
