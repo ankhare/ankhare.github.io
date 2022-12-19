@@ -214,6 +214,7 @@
             });
 
             $('#blank').click(function(){
+                addToStack(blankGrid);
                 swapGrid(blankGrid);
             });
 
