@@ -154,7 +154,7 @@ p{
     background-color: var(--transgray) !important;
 }
 
-button:disabled, button[disabled]{
+button:disabled, div[disabled]{
     color: var(--dark) !important;
 }
 
@@ -196,7 +196,8 @@ button:disabled, button[disabled]{
     border: none;
 }
 
-#picker-display, button[class^=tg]{
+#picker-display, div[class^=tg]{
+    cursor: pointer;
     min-height: 3vmin;
     min-width: 3vmin;
     border: 2px solid var(--dark);
@@ -210,11 +211,11 @@ button:disabled, button[disabled]{
     padding: 0;
 } */
 
-#picker-display, button[class^=tg]:hover{
+#picker-display, div[class^=tg]:hover{
     border: 2px solid var(--gray);
 }
 
-#picker-display.activecolor , #picker-display:active, button[class^=tg].activecolor, button[class^=tg]:active{
+#picker-display.activecolor , #picker-display:active, div[class^=tg].activecolor, div[class^=tg]:active{
     border: 2px solid white;
 }
 
@@ -324,7 +325,7 @@ ul.dropdown-menu.show{
         height: min-content
     }
 
-    #picker-display, button[class^=tg]{
+    #picker-display, div[class^=tg]{
         min-height: 6vmin;
         min-width: 6vmin;
         border-radius: 5px;
