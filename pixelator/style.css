@@ -212,7 +212,7 @@ div[class^=tg]:hover{
 }
 
 div[class^=tg].disabled, #picker-display.disabled{
-    filter: grayscale(50%);
+    filter: grayscale(80%);
     pointer-events: none;
 
 }

@@ -136,23 +136,31 @@ $(document).ready(function () {
         const y =  parseInt(placement[1]);
 
         fillCounter = 0;
+
         recursiveFill(x, y, grid[placement[0]][placement[1]].getColor());
+        console.log(fillCounter);
         
     }
 
     const recursiveFill = function(x, y, initial_color){
         fillCounter++;
+        
+        //same color
+        if(initial_color === brush_color){
+            return;
+        }
         //prevent looping/overflow: dont recurse more than each pixel in grid and its 4 adjacent neighbors
         if(fillCounter > ((grid_count-1) * (grid_count-1) * 4)){
-            console.log(fillCounter);
             return;
         }
 
+        //touch a different color
         if(grid[x][y].getColor() != initial_color){
             return;
         }
 
         grid[x][y].setColor(brush_color);
+        
 
         if(x != grid.length-1){
             recursiveFill(x+1, y, initial_color);
