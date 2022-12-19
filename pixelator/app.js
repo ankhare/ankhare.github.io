@@ -68,7 +68,7 @@ $(document).ready(function () {
             grid_stack.push(clonedGrid);
         }
 
-        console.log(grid_stack.length);
+        console.log('stack: ' + grid_stack.length);
 
         if (grid_stack.length > 1){
             $('#undo').prop('disabled', false);
@@ -119,7 +119,6 @@ $(document).ready(function () {
         const id = $e.attr('id');
         const placement = id.split('_');
         grid[placement[0]][placement[1]].setColor(brush_color);
-        // console.log( grid[placement[0]][placement[1]]);
     }
 
     const erase = function($e){
@@ -144,7 +143,7 @@ $(document).ready(function () {
 
     const recursiveFill = function(x, y, initial_color){
         fillCounter++;
-        
+
         //same color
         if(initial_color === brush_color){
             return;
