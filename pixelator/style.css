@@ -199,23 +199,15 @@ button:disabled, div[disabled]{
     cursor: pointer;
     min-height: 3vmin;
     min-width: 3vmin;
-    border: 1px solid var(--dark);
-    /* border-radius: 5px; */
     margin: 0 .5vmin 1vmin;
 }
 
-/* input[type=color]{
-    height: 4vmin;
-    width: 4vmin;
-    padding: 0;
-} */
-
-#picker-display, div[class^=tg]:hover{
-    border-color:  var(--gray);
+div[class^=tg]:hover{
+    border: 2px solid var(--gray);
 }
 
 #picker-display.activecolor , #picker-display:active, div[class^=tg].activecolor, div[class^=tg]:active{
-    border-color: white;
+    border: 2px solid white;
 }
 
 #picker-display{
