@@ -203,7 +203,7 @@ $(document).ready(function () {
     });
 
     $('#picker-display').click(function(){
-        $('#colorpicker').click();
+        // $('#colorpicker').click();
         $('[class^=tg]').removeClass('activecolor');
         $(this).addClass('activecolor');
     });
