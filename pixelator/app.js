@@ -187,6 +187,7 @@
             });
 
             $('[class^=tg]').click(function(){
+                $('#picker-display').removeClass('activecolor');
                 $('[class^=tg]').removeClass('activecolor');
                 $(this).addClass('activecolor');
                 const target_color = $(this).css('background-color');
