@@ -326,9 +326,10 @@ ul.dropdown-menu.show{
     }
 
     #picker-display, div[class^=tg]{
-        min-height: 6vmin;
-        min-width: 6vmin;
-        border-radius: 5px;
+        min-height: 8vmin;
+        min-width: 8vmin;
+        border-radius: 8px;
+        margin: 0 1vmin 1vmin;
     }   
 
     #brushes, #colors{
@@ -345,6 +346,7 @@ ul.dropdown-menu.show{
         height: 9vmin;
         width: 9vmin;
         font-size: 4vmin;
+        border-radius: 8px;
     }
 
     #brushes button > i{
