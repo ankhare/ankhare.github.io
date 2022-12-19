@@ -220,7 +220,7 @@
             });
 
             $('#toggleGrid').click(function(){
-                $('.pixel').toggleClass('no-border');
+                $('.pixel').toggleClass('pixel-border');
                 $(this).toggleClass('disabled');
                 $('#gridCheck').toggleClass('hidden');
             })

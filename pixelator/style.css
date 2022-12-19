@@ -189,18 +189,17 @@ button:disabled, div[disabled]{
     flex-shrink: 0;
     height: calc(90vmin/30);
     box-sizing:border-box;
-    border: .1vmin solid #8f8f8f;
 }
 
-.no-border{
-    border: none;
+.pixel-border{
+    border: .1vmin solid #8f8f8f;
 }
 
 #picker-display, div[class^=tg]{
     cursor: pointer;
     min-height: 3vmin;
     min-width: 3vmin;
-    border: 2px solid var(--dark);
+    border: 1px solid var(--dark);
     /* border-radius: 5px; */
     margin: 0 .5vmin 1vmin;
 }
@@ -212,11 +211,11 @@ button:disabled, div[disabled]{
 } */
 
 #picker-display, div[class^=tg]:hover{
-    border: 2px solid var(--gray);
+    border-color:  var(--gray);
 }
 
 #picker-display.activecolor , #picker-display:active, div[class^=tg].activecolor, div[class^=tg]:active{
-    border: 2px solid white;
+    border-color: white;
 }
 
 #picker-display{
@@ -301,6 +300,11 @@ ul.dropdown-menu.show{
     display: none;
 }
 
+#lite{
+    color: white;
+    display: none;
+}
+
 @media screen and (max-width: 1010px){
     body{
         background-color: var(--sidecolor);
@@ -328,7 +332,7 @@ ul.dropdown-menu.show{
     #picker-display, div[class^=tg]{
         min-height: 8vmin;
         min-width: 8vmin;
-        border-radius: 8px;
+        border-radius: 5px;
         margin: 0 1vmin 1vmin;
     }   
 
@@ -346,7 +350,6 @@ ul.dropdown-menu.show{
         height: 9vmin;
         width: 9vmin;
         font-size: 4vmin;
-        border-radius: 8px;
     }
 
     #brushes button > i{
@@ -357,6 +360,9 @@ ul.dropdown-menu.show{
         display: none;
     }
 
+    #lite{
+        display: inline;
+    }
 
 
 }
