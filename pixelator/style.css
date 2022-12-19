@@ -300,11 +300,6 @@ ul.dropdown-menu.show{
     display: none;
 }
 
-#lite{
-    color: white;
-    display: none;
-}
-
 @media screen and (max-width: 1010px){
     body{
         background-color: var(--sidecolor);
@@ -359,10 +354,4 @@ ul.dropdown-menu.show{
     #add, #frameContainer, #sample, #ptext, #ctext{
         display: none;
     }
-
-    #lite{
-        display: inline;
-    }
-
-
 }
