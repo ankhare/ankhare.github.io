@@ -178,7 +178,7 @@ button:disabled, button[disabled]{
     touch-action: none;
 }
 
-.visiblebackground{
+.visible-background{
     background: repeating-conic-gradient(#e4e4e4 0% 25%, #fbfafa 0% 50%) 50% / calc(180vmin/30) calc(180vmin/30);
 }
 
@@ -282,6 +282,14 @@ button:disabled, button[disabled]{
 .dropdown-menu > li{
     padding: 1rem;
     border-bottom: 1px solid var(--dark);
+}
+
+.dropdown-menu > li > p{
+    margin-bottom: 0px;
+}
+
+.hidden{
+    visibility: hidden;
 }
 
 ul.dropdown-menu.show{

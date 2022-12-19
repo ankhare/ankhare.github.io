@@ -24,8 +24,14 @@
                     <i class="fa-solid fa-gear"></i>
                 </button>
                 <ul class="dropdown-menu">
-                    <li id="toggleBackground">Background <i class="fa-solid fa-check"></i></li>
-                    <li id="toggleGrid">Grid <i class="fa-solid fa-check"></i></li>
+                    <li id="toggleBackground" class="d-flex w-100 justify-content-between">
+                        <p>Background</p>
+                        <p id="backgroundCheck"><i class="fa-solid fa-check"></i></p>
+                    </li>
+                    <li id="toggleGrid" class="d-flex w-100 justify-content-between">
+                        <p>Grid</p>
+                        <p id="gridCheck"><i class="fa-solid fa-check"></i></p>
+                    </li>
                     <li id="gridSize">
                         <label for="points">Pixel Density:</label> 
                         <output id="output">30</output>
@@ -65,7 +71,7 @@
         </div>
     </div>
     <div id="grid-container">
-        <div id="grid" class="visiblebackground"></div>
+        <div id="grid" class="visible-background"></div>
     </div>
     <div id="left-side">
         <div class="tools w-100">

@@ -213,13 +213,15 @@
             });
 
             $('#toggleBackground').click(function(){
-                $('#grid').toggleClass('visiblebackground');
-                $(this).toggleClass('disabled')
+                $('#grid').toggleClass('visible-background');
+                $(this).toggleClass('disabled');
+                $('#backgroundCheck').toggleClass('hidden');
             });
 
             $('#toggleGrid').click(function(){
                 $('.pixel').toggleClass('no-border');
                 $(this).toggleClass('disabled');
+                $('#gridCheck').toggleClass('hidden');
             })
             
         });
