@@ -18,10 +18,10 @@ body{
 
 .header{
     width: 100%;
-    color: var(--black);
+    /* color: var(--black); */
     font-family: 'Unbounded', sans-serif;
     text-align: center;
-    /* text-transform: uppercase; */
+    text-transform: uppercase;
     /* letter-spacing: 3px; */
     font-size: calc(1rem + 1.5vmin);
     padding: .8vmin 0;
@@ -47,7 +47,6 @@ p{
     padding: 1rem;
     background-color: var(--sidecolor);
     height: 95vh;
-    min-width: 28vmin;
     width: 20%;
     display: flex;
     align-items: center;
@@ -80,15 +79,16 @@ p{
 }
 
 #right-side{
-    padding: 1rem;
+    padding: 1rem 1vw;
     height: 95vh;
     background-color: var(--sidecolor);
-    width: 20vmin;
+    width: fit-content;
     display: flex;
 }
 
 #colors{
     margin: 1vmin;
+    padding-left: 2vmin;
     display: flex;
     align-items: center;
     justify-self: space-between;
@@ -117,7 +117,7 @@ p{
     background-color: var(--sidecolor);
     height: calc(.8rem + 8vmin);
     width: calc(.8rem + 8vmin);
-    margin: 0 1vmin 1vmin;
+    margin: 0  0 1vmin 1vmin;
     font-size: calc(.8rem + .8vmin); 
 }
 
@@ -197,9 +197,10 @@ button:disabled, div[disabled]{
 
 #picker-display, div[class^=tg]{
     cursor: pointer;
-    min-height: 3vmin;
-    min-width: 3vmin;
+    height: 4vmin;
+    min-width: 4vmin;
     margin: 0 .5vmin 1vmin;
+    border-radius: 5px;
 }
 
 div[class^=tg]:hover{
@@ -211,7 +212,7 @@ div[class^=tg]:hover{
 }
 
 .tg-w.activecolor, .tg-w:active{
-    border: 2px solid rgb(190, 190, 190) !important;
+    border: 2px solid var(--blue) !important;
 }
 
 #picker-display{
@@ -296,7 +297,7 @@ ul.dropdown-menu.show{
     display: none;
 }
 
-@media screen and (max-width: 1010px){
+@media screen and (max-width: 1000px){
     body{
         background-color: var(--sidecolor);
     }
@@ -308,6 +309,7 @@ ul.dropdown-menu.show{
     }
 
     #right-side{
+        padding-right: 2vmin;
         padding-bottom: 0px;
     }
 
@@ -323,7 +325,6 @@ ul.dropdown-menu.show{
     #picker-display, div[class^=tg]{
         min-height: 8vmin;
         min-width: 8vmin;
-        border-radius: 5px;
         margin: 0 1vmin 1vmin;
     }   
 
@@ -334,6 +335,10 @@ ul.dropdown-menu.show{
         margin-right: auto;
         flex-direction: row; 
         overflow-x: scroll;
+    }
+
+    #colors{
+        padding-left: 0px;
     }
 
     #brushes button{
