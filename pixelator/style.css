@@ -196,7 +196,7 @@ button:disabled, button[disabled]{
     border: none;
 }
 
-input[type=color], div[class^=tg]{
+#picker-display, button[class^=tg]{
     min-height: 3vmin;
     min-width: 3vmin;
     border: 2px solid var(--dark);
@@ -204,20 +204,36 @@ input[type=color], div[class^=tg]{
     margin: 0 .5vmin 1vmin;
 }
 
-input[type=color]{
+/* input[type=color]{
     height: 4vmin;
     width: 4vmin;
     padding: 0;
-}
+} */
 
-div[class^=tg]:hover{
+#picker-display, button[class^=tg]:hover{
     border: 2px solid var(--gray);
 }
 
-div[class^=tg].activecolor, div[class^=tg]:active{
+#picker-display.activecolor , #picker-display:active, button[class^=tg].activecolor, button[class^=tg]:active{
     border: 2px solid white;
 }
 
+#picker-display{
+    background: linear-gradient(
+        135deg,
+        rgba(255, 0, 0, 1) 0%,
+        rgba(255, 154, 0, 1) 10%,
+        rgba(208, 222, 33, 1) 20%,
+        rgba(79, 220, 74, 1) 30%,
+        rgba(63, 218, 216, 1) 40%,
+        rgba(47, 201, 226, 1) 50%,
+        rgba(28, 127, 238, 1) 60%,
+        rgba(95, 21, 242, 1) 70%,
+        rgba(186, 12, 248, 1) 80%,
+        rgba(251, 7, 217, 1) 90%,
+        rgba(255, 0, 0, 1) 100%
+    );;
+}
 .tg-c{background-color:#C0392B;}
 .tg-b{background-color:#E74C3C;}
 .tg-y{background-color:#D35400;}
@@ -253,6 +269,7 @@ div[class^=tg].activecolor, div[class^=tg]:active{
 
 /* ERROR: OVERFLOW SCROLL ON MOBILE */
 .dropdown-menu{
+    --bs-dropdown-padding-y: 0px;
     --bs-dropdown-bg: var(--sidecolor);
     --bs-dropdown-color: white;
     --bs-dropdown-border-color: var(--dark);
@@ -260,6 +277,11 @@ div[class^=tg].activecolor, div[class^=tg]:active{
     --bs-dropdown-border-radius: 0px;
     font-size: calc(.5rem + .5vmin);
     text-transform: uppercase;
+}
+
+.dropdown-menu > li{
+    padding: 1rem;
+    border-bottom: 1px solid var(--dark);
 }
 
 ul.dropdown-menu.show{
@@ -271,6 +293,9 @@ ul.dropdown-menu.show{
 }
 
 @media screen and (max-width: 1010px){
+    body{
+        background-color: var(--sidecolor);
+    }
     #right-side, #left-side{
         width: 100%;
         overflow: visible;
@@ -279,7 +304,6 @@ ul.dropdown-menu.show{
     }
 
     #right-side{
-        flex-wrap: wrap-reverse;
         padding-bottom: 0px;
     }
 
@@ -291,7 +315,8 @@ ul.dropdown-menu.show{
         padding: 1rem 0;
         height: min-content
     }
-    input[type=color], div[class^=tg]{
+
+    #picker-display, button[class^=tg]{
         min-height: 6vmin;
         min-width: 6vmin;
         border-radius: 5px;
@@ -307,13 +332,18 @@ ul.dropdown-menu.show{
     }
 
     #brushes button{
-        height: calc(.5rem + 8vmin);
-        width: calc(.5rem + 8vmin);
+        padding: 0px;
+        height: 9vmin;
+        width: 9vmin;
         font-size: 4vmin;
     }
 
+    #brushes button > i{
+        width: 100%;
+    }
+
     #add, #frameContainer, #sample, #ptext, #ctext{
-        visibility: hidden;
+        display: none;
     }
 
 

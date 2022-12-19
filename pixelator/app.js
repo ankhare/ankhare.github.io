@@ -166,7 +166,13 @@
                 }
             });
 
-            $('#color').blur(function(event){
+            $('#picker-display').click(function(){
+                $('#colorpicker').click();
+                $('[class^=tg]').removeClass('activecolor');
+                $(this).addClass('activecolor');
+            });
+
+            $('#colorpicker').change(function(event){
                 brush_color = event.target.value;
             })
 

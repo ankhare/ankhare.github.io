@@ -24,49 +24,44 @@
                     <i class="fa-solid fa-gear"></i>
                 </button>
                 <ul class="dropdown-menu">
-                    <li id="toggleBackground">&ensp;&ensp;Background <i class="fa-solid fa-check"></i></li>
-                    <hr>
-                    <li id="toggleGrid">&ensp;&ensp;Grid <i class="fa-solid fa-check"></i></li>
-                    <hr>
-                    <li id="gridSize">&ensp;&ensp;<label for="points">Pixel Density:</label> <output id="output">30</output>
-                        <div>
-                            &ensp;&ensp;<input type="range" value="30" min="10" max="50" step="10" oninput="document.getElementById('output').value = this.value">
-                            
-                        </div>
+                    <li id="toggleBackground">Background <i class="fa-solid fa-check"></i></li>
+                    <li id="toggleGrid">Grid <i class="fa-solid fa-check"></i></li>
+                    <li id="gridSize">
+                        <label for="points">Pixel Density:</label> 
+                        <output id="output">30</output>
+                        <input type="range" value="30" min="10" max="50" step="10" oninput="document.getElementById('output').value = this.value">
                     </li>
                 </ul>
             </div>
             <button id="pencil" class="active"><i class="fa-solid fa-pencil"></i></button>
             <button id="fill"><i class="fa-solid fa-fill-drip"></i></button>
             <button id="erase"><i class="fa-solid fa-eraser"></i></button>
-            <button id="shape"><i class="fa-solid fa-draw-polygon"></i></i></button>
+            <button id="shape"><i class="fa-solid fa-draw-polygon"></i></button>
             <button id="blank"><i class="fa-regular fa-trash-can"></i></button>
             <button id="undo" disabled><i class="fa-solid fa-rotate-left"></i></button>
         </div>
         <div id="colors">
-            <div class="tg-c activecolor"></div>
-            <div class="tg-b"></div>
-            <div class="tg-y"></div>
-            <div class="tg-r"></div>
-            <div class="tg-l"></div>
-            <div class="tg-m"></div>
-            <div class="tg-mr"></div>
-            <div class="tg-o"></div>
-            <div class="tg-g"></div>
-            <div class="tg-p"></div>
-            <div class="tg-t"></div>
-            <div class="tg-n"></div>
-            <div class="tg-nn"></div>
-            <div class="tg-bl"></div>
-            <div class="tg-gy"></div>
-            <div class="tg-w"></div>
-            <div class="tg-bg"></div>
-            <div class="tg-tg"></div>
-            <div class="tg-dg"></div>
-            
-                       
-            <!-- <div class="tg-bl"></div> -->
-            <input type="color" name="" id="color">
+            <button id="picker-display"></button>
+            <input style="display: none;" type="color" name="colorpicker" id="colorpicker">
+            <button class="tg-c activecolor"></button>
+            <button class="tg-b"></button>
+            <button class="tg-y"></button>
+            <button class="tg-r"></button>
+            <button class="tg-l"></button>
+            <button class="tg-m"></button>
+            <button class="tg-mr"></button>
+            <button class="tg-o"></button>
+            <button class="tg-g"></button>
+            <button class="tg-p"></button>
+            <button class="tg-t"></button>
+            <button class="tg-n"></button>
+            <button class="tg-nn"></button>
+            <button class="tg-bl"></button>
+            <button class="tg-gy"></button>
+            <button class="tg-w"></button>
+            <button class="tg-bg"></button>
+            <button class="tg-tg"></button>
+            <button class="tg-dg"></button>
         </div>
     </div>
     <div id="grid-container">
