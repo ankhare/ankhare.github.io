@@ -45,7 +45,7 @@ div[class^=tg], button{
 .menu{
     display: flex;
     width: 100%;
-    background-color: #3a3a59;
+    background-color: #392c9a;
     color: rgb(206, 202, 214);
     justify-content: space-between;
     /* border-bottom: 1px solid #38364a; */
@@ -424,6 +424,7 @@ ul.dropdown-menu.show{
     }
 
     .header{
+        background-color: #392c9a;
         text-align: center;
         width: 100%;
     }
