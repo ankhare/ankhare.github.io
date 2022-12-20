@@ -10,7 +10,6 @@ $(document).ready(function () {
     let first_run = true;
     let isDragging = false;
     let mouseDown = false;
-    
     let pencilBrush = true;
     let eraseBrush;
     let fillBucket;

@@ -4,7 +4,7 @@
 --gray: #817f7f;
 --transgray: #03030330;
 --dark: #43464e;
---sidecolor: #313746;
+--sidecolor: #313346;
 --sideaccent: #132451;
 --target: #725ef9;
 --accent: #3e45da;
@@ -19,24 +19,54 @@ body{
     min-width: 100%;
 }
 
-.header{
-    width: 100%;
-    color: #03030359;
-    /* color: white; */
-    text-align: left;
-    text-transform: uppercase;
-    letter-spacing: 8px;
-    font-size: calc(1rem + 1vmin);
-    padding: 2vmin 1rem 1vmin;
-    background-image: linear-gradient(90deg, #5F72BE 0%, #705ef9 50%, #4540a6 100%);
-    border-bottom: 4px solid var(--transgray);
-}
-
-
 p{
     font-size: calc(.4rem + .8vmin);
     letter-spacing: .75px;
     margin-bottom: 1vmin;
+}
+
+div[class^=tg], button{
+    transition: color .5s, background-color .5s, border-color .5s;
+}
+
+.header{
+    width: 100%;
+    /* color: #03030359; */
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    font-size: calc(1rem + 1vmin);
+    padding: 2vmin;
+    background-image: linear-gradient(-135deg, #252539 0%, #353552 100%);
+    /* background-color: #4f487b; */
+    /* border-bottom: 1px solid #38364a; */
+}
+
+.menu{
+    display: flex;
+    width: 100%;
+    background-color: #3a3a59;
+    color: rgb(206, 202, 214);
+    justify-content: space-between;
+    /* border-bottom: 1px solid #38364a; */
+}
+
+.menu-inner{
+    display: flex;
+    width: 20%;
+    min-width: fit-content;
+    justify-content: space-between;
+}
+
+.menu-inner > div{
+    margin: 0 3vmin;
+    font-size: calc(.5rem + 1vmin);
+    padding: 1vmin 0;
+}
+
+.menu-inner > div > i{
+    font-size: calc(.5rem + .5vmin);
 }
 
 .flex-container{
@@ -50,7 +80,7 @@ p{
 
 #left-side{
     color:white;
-    padding: 1rem;
+    padding: .5rem 1rem;
     /* background-color: var(--sidecolor); */
     background: 403146;
     background: linear-gradient(0deg, #191822 0%, #313346 100%);
@@ -65,7 +95,7 @@ p{
     margin: 0 2vmin 2vmin;
     height: 24.5vmin;
     width: 24.5vmin;
-    border: 2px solid var(--dark);
+    border: 1px solid var(--dark);
 }
 
 #frameContainer{
@@ -74,7 +104,7 @@ p{
     flex-direction: column;
     width: 24.5vmin;
     height: 30vmin;
-    border: 2px solid var(--dark);
+    border: 1px solid var(--dark);
     overflow-y: scroll;
 }
 
@@ -83,11 +113,11 @@ p{
     flex-shrink: 0;
     width: 20vmin;
     height: 20vmin;
-    border: 2px solid var(--dark);
+    border: 1px solid var(--dark);
 }
 
 #right-side{
-    padding: 1rem 1vw;
+    padding: 1rem;
     height: 95vh;
     /* background-color: var(--sidecolor); */
     background: 403146;
@@ -97,8 +127,9 @@ p{
 }
 
 #colors{
-    margin: 1vmin;
+    margin: 0 1vmin;
     padding-left: 2vmin;
+    max-height: 85vh;
     display: flex;
     align-items: center;
     justify-self: space-between;
@@ -121,7 +152,7 @@ p{
 
 #brushes button{
     display: flex;
-    border: 2px solid var(--dark);
+    border: 1px solid var(--dark);
     border-radius: 5px;
     color: white;
     background-color: var(--transgray);
@@ -136,7 +167,7 @@ p{
 }
 
 .tools button{
-    border: 2px solid var(--dark);
+    border: 1px solid var(--dark);
     color: white;
     background-color: var(--transgray);
     padding: calc(.4rem + .4vmin);
@@ -218,7 +249,7 @@ button:disabled, div[disabled]{
 }
 
 div[class^=tg]:hover{
-    border: 2px solid var(--target);
+    border: 1px solid var(--target);
 }
 
 div[class^=tg].disabled, #picker-display.disabled{
@@ -228,11 +259,11 @@ div[class^=tg].disabled, #picker-display.disabled{
 }
 
 #picker-display.activecolor , #picker-display:active, div[class^=tg].activecolor, div[class^=tg]:active{
-    border: 2px solid white;
+    border: 1px solid white;
 }
 
 .tg-w.activecolor, .tg-w:active{
-    border: 2px solid var(--target) !important;
+    border: 1px solid var(--target) !important;
 }
 
 #picker-display{
@@ -315,15 +346,15 @@ ul.dropdown-menu.show{
 @media screen and (max-width: 890px){
     body{
         position: relative;
-        background-color: var(--sidecolor);
+        background-color: #313346;
     }
     #right-side, #left-side{
         width: 100%;
         overflow: visible;
         flex-wrap: wrap;
         height: min-content;
-        background-image: none;
-        background-color: #313746;
+        /* background-image: none;
+        background-color: #313746; */
     }
 
     #right-side{
@@ -356,6 +387,7 @@ ul.dropdown-menu.show{
     }
 
     #colors{
+        margin: 1vmin;
         padding-left: 0px;
     }
 
@@ -382,4 +414,16 @@ ul.dropdown-menu.show{
     #add, #frameContainer, #sample, #ptext, #ctext{
         display: none;
     }
+
+    #left-side, .header, .menu{
+        background-image: none;
+        background-color: #313346;
+    }
+    .header, .menu{
+        border-bottom: 1px solid var(--transgray);
+    }
+
+    /* .menu-inner > div{
+        color: var(--target);
+    } */
 }
