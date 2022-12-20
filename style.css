@@ -38,7 +38,7 @@ h6{
 }
 
 hr{
-    color: var(--dark-1);
+    color: var(--dark);
 }
 
 select{
@@ -219,14 +219,23 @@ a{
     text-decoration: none;
     color: inherit;
 }
+
 a:hover{
     color: var(--dark);
     
 }
+.nav-link{
+    font-size: calc(.7rem + .2vw);
+}
+
+.nav-item{
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
 
 a.nav-link{
     font-family: 'Oxygen Mono', monospace;
-    color: var(--dark);
+    color: var(--darkgray);
     transition: color .5s ease;
 }
 
@@ -661,19 +670,39 @@ i.nav-link{
 @media (prefers-reduced-motion: no-preference){
     .hidden1{
         transform: translate(0, 50%);
+        opacity: 0;
         transform-origin: bottom;
-        transition: transform .5s;
+        transition: transform .5s, opacity .5s;
     }
 
     .hidden2{
+        opacity: 0;
         transform: translate(-25%, 0);
         transform-origin: bottom;
         transition: transform 1s;
     }
 
     .show1{
+        opacity: 100;
         transform: translate(0);
     }
+
+    .hidden1:nth-of-type(2){
+        transition: transform 1s, opacity 1s;
+    }
+
+    .hidden1:nth-of-type(3){
+        transition: transform 1.5s, opacity 1.5s;
+    }
+
+    .hidden1:nth-of-type(4){
+        transition: transform 2s, opacity 2s;
+    }
+
+    .hidden1:nth-of-type(5){
+        transition: transform 2.5s, opacity 2.5s;
+    }
+
 }
 
 

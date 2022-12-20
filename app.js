@@ -153,4 +153,5 @@ $(document).ready(function () {
     setInterval(cycle, speed * elements);
     })(cardAmount, flipSpeed);
 
+    $('#featured').click();
  })

@@ -19,9 +19,9 @@
     <title>Anshita!</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg fixed-top p-0">
+  <nav class="navbar navbar-expand-lg fixed-top pb-0">
     <div class="container-fluid">
-      <a id="logo" class="navbar-brand mx-4" href="#"><span class="gradient">AK</span></a>
+      <a id="logo" class="navbar-brand mx-4 hidden1" href="#"><span class="gradient">AK</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navText" aria-controls="navText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler custom-toggler">
           <span class="bar"></span>
@@ -31,13 +31,13 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navText">
         <ul class="navbar-nav mx-4">
-          <li class="nav-item">
+          <li class="nav-item hidden1">
             <a class="nav-link" aria-current="page" href="#about"><span class="accent">01.</span> About</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item hidden1">
             <a class="nav-link" href="#projects"><span class="accent">02.</span> Projects</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item hidden1">
             <a class="nav-link" href="#contact"><span class="accent">03.</span> Contact</a>
           </li>
           <!-- <li class="nav-item black">
@@ -45,7 +45,7 @@
               <i class="colored fa-regular fa-envelope"></i>
             </a>
           </li> -->
-          <li class="nav-item mx-auto my-1">
+          <li class="nav-item mx-auto my-1 hidden1">
             <a class="nav-link gborder nbtn black p-1" href="Anshita-Khare-Software-Engineer.pdf">
               &nbsp;<i class="my-auto colored fa-regular fa-file"></i>&nbsp;Resume&nbsp;
             </a>
@@ -60,14 +60,14 @@
     <div class="row m-auto p-0 p-md-3">
       <div class="col-md-6 my-auto px-5 px-md-0">
         <div class="m-auto">
-          <p class="display-8 accent">Hello, my name is&ensp;</p>
+          <p class="display-8 accent hidden1">Hello, my name is&ensp;</p>
           <p class="display-3 my-2 hidden1">Anshita Khare.</p>
           <p class="display-3 squished hidden1"><span class="gradient">I'm an artist, student, and software engineer.</span></p>
           <p class="display-7 mt-3 mb-5 mb-md-0 text-gray hidden1">I'm a computer science student at Boston University who loves to create things and solve problems. Get to know me and my work below.</p>
         </div>
       </div>
       <div class="col-md-6 px-5 my-md-4">
-        <div class="cards">
+        <div class="cards hidden1">
           <div class="cards__container">
             <div class="cards__front card-1 gcborder"></div>
             <div class="cards__back card-2 gcborder"></div>
@@ -159,18 +159,18 @@
           <option value="language">Language</option>
         </select>
       </div>
-      <div>Viewing <span id="results">6</span> Projects</div>
+      <div>Viewing <span id="results"></span> Projects</div>
     </div>
     <hr class="mx-4 hidden1">
     <div class="d-flex hidden1">
       <div id="language" class="option mx-auto px-4">
-        <div class="btn cbtn active" id="javascript"><p>JavaScript</p></div>
+        <div class="btn cbtn" id="javascript"><p>JavaScript</p></div>
         <div class="btn cbtn" id="python"><p>Python</p></div>
         <div class="btn cbtn" id="java"><p>Java</p></div>
         <div class="btn cbtn" id="viewall1"><p>View All</p></div>
       </div>
       <div id="category" class="option mx-auto px-4 show">
-        <div class="btn cbtn active" id="featured"><p>Featured</p></div>
+        <div class="btn cbtn" id="featured"><p>Featured</p></div>
         <div class="btn cbtn" id="games"><p>Games</p></div>
         <div class="btn cbtn" id="webdevelopment"><p>Web Development</p></div>
         <div class="btn cbtn" id="machinelearning"><p>Machine Learning</p></div>
