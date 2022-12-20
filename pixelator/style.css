@@ -307,7 +307,7 @@ ul.dropdown-menu.show{
     display: none;
 }
 
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1200px){
     body{
         background-color: var(--sidecolor);
     }
