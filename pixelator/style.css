@@ -8,10 +8,11 @@
 --sideaccent: #132451;
 --target: #725ef9;
 --accent: #3e45da;
---black: #1e1f21;
+--black: #1e1e21;
 }
 
 body{
+    position: absolute;
     margin: 0;
     font-family: 'Varela Round', Helvetica, sans-serif;
     box-sizing: border-box;
@@ -19,13 +20,13 @@ body{
 
 .header{
     width: 100%;
-    color: white;
+    color: var(--black);
     font-family: 'Unbounded', sans-serif;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 8px;
     font-size: calc(1rem + 1.5vmin);
-    padding: 1vmin 0;
+    padding: 1vh 0;
     background-image: linear-gradient(90deg, #5F72BE 0%, #705ef9 50%, #4540a6 100%);
     border-bottom: 2px solid var(--target);
 }
@@ -41,9 +42,8 @@ p{
     display: flex;
     align-self: center;
     justify-content:space-between;
-    /* background-color: var(--black); */
     background: rgb(0,0,0);
-    background: linear-gradient(0deg, #000000 0%, #181b22 40%, #2c2f36 100%);
+    background: linear-gradient(0deg, #000000 0%, #191822 40%, #2c2c36 100%);
 }    
     
 
@@ -52,7 +52,7 @@ p{
     padding: 1rem;
     /* background-color: var(--sidecolor); */
     background: 403146;
-    background: linear-gradient(0deg, #181b22 0%, #313746 100%);
+    background: linear-gradient(0deg, #191822 0%, #313346 100%);
     height: 95vh;
     width: 20%;
     display: flex;
@@ -90,7 +90,7 @@ p{
     height: 95vh;
     /* background-color: var(--sidecolor); */
     background: 403146;
-    background: linear-gradient(0deg, #181b22 0%, #313746 100%);
+    background: linear-gradient(0deg, #191822 0%, #313346 100%);
     width: fit-content;
     display: flex;
 }
@@ -313,6 +313,7 @@ ul.dropdown-menu.show{
 
 @media screen and (max-width: 1200px){
     body{
+        position: relative;
         background-color: var(--sidecolor);
     }
     #right-side, #left-side{
