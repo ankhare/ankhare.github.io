@@ -30,15 +30,14 @@ div[class^=tg], button{
 }
 
 .header{
-    width: 100%;
-    /* color: #03030359; */
-    color: white;
-    text-align: center;
+    width: 60%;
+    /*color: white;*/
+    text-align: left;
     text-transform: uppercase;
     letter-spacing: 8px;
     font-size: calc(1rem + 1vmin);
-    padding: 2vmin;
-    background-image: linear-gradient(-135deg, #252539 0%, #353552 100%);
+    padding: 1vmin;
+   /* background-image: linear-gradient(-135deg, #252539 0%, #353552 100%); */
     /* background-color: #4f487b; */
     /* border-bottom: 1px solid #38364a; */
 }
@@ -61,7 +60,7 @@ div[class^=tg], button{
 }
 
 .menu-inner > div{
-    margin: 0 3vmin;
+    margin: auto 3vmin;
     font-size: calc(.5rem + 1vmin);
 }
 
@@ -424,6 +423,14 @@ ul.dropdown-menu.show{
         justify-content: center;
     }
 
+    .header{
+        text-align: center;
+        width: 100%;
+    }
+
+    .menu{
+        flex-wrap: wrap-reverse;
+    }
     .menu-inner{
         width: 80%;
     }
