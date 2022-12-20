@@ -137,25 +137,24 @@ p{
 .tools button{
     border: 2px solid var(--dark);
     color: white;
-    background-color: var(--sidecolor);
+    background-color: var(--transgray);
     padding: calc(.4rem + .4vmin);
     margin: .5vmin 0;
     font-weight: 600;
     border-radius: 5px;
     font-size: calc(.4rem + .8vmin);
     width: 100%;
-
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
-.tools button:hover:enabled{
-    background-color: var(--target);
-
+.tools button.active, .tools button:active:enabled{
+    color: var(--target);
 }
 
-#brushes button:hover:enabled{
+.tools button:hover:enabled , #brushes button:hover:enabled{
     background-color: var(--sideaccent);
+    border-color: var(--target);
 }
 
 #brushes button.active, #brushes button:active:enabled{
@@ -239,37 +238,32 @@ div[class^=tg].disabled, #picker-display.disabled{
     background: linear-gradient(
         135deg,
         rgba(255, 0, 0, 1) 0%,
-        /* rgba(255, 154, 0, 1) 10%, */
         rgba(208, 222, 33, 1) 20%,
-        /* rgba(79, 220, 74, 1) 30%, */
         rgba(63, 218, 216, 1) 40%,
-        /* rgba(47, 201, 226, 1) 50%, */
         rgba(28, 127, 238, 1) 60%,
-        /* rgba(95, 21, 242, 1) 70%, */
         rgba(186, 12, 248, 1) 80%,
-        /* rgba(251, 7, 217, 1) 90%, */
         rgba(255, 0, 0, 1) 100%
     );;
 }
-.tg-c{background-color:rgb(191, 58, 43);}
-.tg-b{background-color:rgb(231, 76, 60);}
-.tg-y{background-color:rgb(211, 84, 0);}
-.tg-r{background-color:rgb(214, 137, 16);}
-.tg-l{background-color:rgb(244, 208, 63);}
-.tg-m{background-color:rgb(139, 199, 89);}
-.tg-mr{background-color:rgb(46, 204, 113);}
-.tg-o{background-color:rgb(72, 201, 176);}
-.tg-g{background-color:rgb(60, 168, 240);}
-.tg-p{background-color:rgb(38, 108, 239);}
-.tg-t{background-color:rgb(116, 128, 221);}
-.tg-n{background-color:rgb(66, 50, 159);}
-.tg-nn{background-color:rgb(28, 15, 60);}
-.tg-w{background-color:rgb(255, 255, 255);}
-.tg-bg{background-color:rgb(244, 205, 161);}
-.tg-tg{background-color:rgb(202, 159, 94);}
-.tg-dg{background-color:rgb(79, 52, 13);}
-.tg-bl{background-color:rgb(0, 0, 0);}
-.tg-gy{background-color:rgb(104, 104, 104);}
+.tg-c{background-color:#bf3a2b;}
+.tg-b{background-color:#e74c3c;}
+.tg-y{background-color:#d35400;}
+.tg-r{background-color:#d68910;}
+.tg-l{background-color:#f4d03f;}
+.tg-m{background-color:#8bc759;}
+.tg-mr{background-color:#2ecc71;}
+.tg-o{background-color:#48c9b0;}
+.tg-g{background-color:#3ca8f0;}
+.tg-p{background-color:#266cef;}
+.tg-t{background-color:#7480dd;}
+.tg-n{background-color:#42329f;}
+.tg-nn{background-color:#1c0f3c;}
+.tg-w{background-color:#ffffff;}
+.tg-bg{background-color:#f4cda1;}
+.tg-tg{background-color:#ca9f5e;}
+.tg-dg{background-color:#4f340d;}
+.tg-bl{background-color:#000000;}
+.tg-gy{background-color:#686868;}
 
 
 /* button#save{
@@ -382,7 +376,6 @@ ul.dropdown-menu.show{
     #brushes button > i{
         width: 100%;
     }
-
 
     #add, #frameContainer, #sample, #ptext, #ctext{
         display: none;
