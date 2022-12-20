@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@800&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
 :root {
 --gray: #817f7f;
@@ -21,15 +21,15 @@ body{
 
 .header{
     width: 100%;
-    color: #4540a6;
-    font-family: 'Unbounded', sans-serif;
-    text-align: center;
+    color: #03030359;
+    /* color: white; */
+    text-align: left;
     text-transform: uppercase;
-    letter-spacing: 5px;
-    font-size: calc(1rem + 1.5vmin);
-    padding: 1vh 0;
+    letter-spacing: 8px;
+    font-size: calc(1rem + 1vmin);
+    padding: 2vmin 1rem 1vmin;
     background-image: linear-gradient(90deg, #5F72BE 0%, #705ef9 50%, #4540a6 100%);
-    border-bottom: 2px solid #4540a6;
+    border-bottom: 4px solid var(--transgray);
 }
 
 
