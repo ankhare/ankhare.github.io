@@ -176,28 +176,28 @@ $(document).ready(function () {
         
     };
 
-    $('.pixel').bind('mousedown', function(e){
+    $('.pixel').on('mousedown', function(e){
         e.preventDefault();
         isDragging = false;
         mouseDown = true;
     })
-    .bind('mousemove', function(e) {
+    .on('mousemove', function(e) {
         isDragging = true;
 
         if (isDragging && mouseDown) {
             drag($(this));
         }
     })
-    .bind('touchmove touchstart', function(e){
+    .on('touchmove touchstart', function(e){
         const x = e.originalEvent.touches[0].pageX;
         const y = e.originalEvent.touches[0].pageY;
         const el = $(document.elementFromPoint(x, y));
         drag(el);
     })
-    .bind('touchend mouseup', function(){
+    .on('touchend mouseup', function(){
         addToStack(grid);
     })
-    .bind('mouseup', function(e) {
+    .on('mouseup', function(e) {
         var wasDragging = isDragging;
 
         isDragging = false;
@@ -209,17 +209,17 @@ $(document).ready(function () {
         }
     });
 
-    $('#picker-display').click(function(){
-        // $('#colorpicker').click();
+    $('#picker-display').on('click', function(){
+        $('#colorpicker').trigger('click');
         $('[class^=tg]').removeClass('activecolor');
         $(this).addClass('activecolor');
     });
 
-    $('#colorpicker').change(function(event){
+    $('#colorpicker').on('change', function(event){
         brush_color = event.target.value;
     })
 
-    $('#undo').click(()=>{
+    $('#undo').on('click', ()=>{
         const latest = grid_stack.pop();
         redo_stack.push(latest);
         
@@ -234,7 +234,7 @@ $(document).ready(function () {
         $('#redo').prop('disabled', false);
     });
 
-    $('#redo').click(function(){
+    $('#redo').on('click', function(){
         const target = redo_stack.pop();
 
         addToStack(target);
@@ -244,7 +244,7 @@ $(document).ready(function () {
         }
     })
 
-    $('[class^=tg]').click(function(){
+    $('[class^=tg]').on('click',function(){
         $('#picker-display').removeClass('activecolor');
         $('[class^=tg]').removeClass('activecolor');
         $(this).addClass('activecolor');
@@ -253,14 +253,14 @@ $(document).ready(function () {
     });
 
     //start off with this color initially picked
-    $('.tg-c').click();
+    $('.tg-c').trigger('click');
 
-    $('#blank').click(function(){
+    $('#blank').on('click',function(){
         addToStack(blankGrid);
         swapGrid(blankGrid);
     });
     
-    $('#pencil').click(function(){
+    $('#pencil').on('click',function(){
         $('#brushes').children().removeClass('active');
         $(this).addClass('active');
         $('#picker-display, [class^=tg]').removeClass('disabled');
@@ -269,7 +269,7 @@ $(document).ready(function () {
         fillBucket = false;
     });
 
-    $('#erase').click(function(){
+    $('#erase').on('click',function(){
         $('#brushes').children().removeClass('active');
         $(this).addClass('active');
         $('#picker-display, [class^=tg]').addClass('disabled');
@@ -278,7 +278,7 @@ $(document).ready(function () {
         fillBucket = false;
     });
 
-    $('#fill').click(function(){
+    $('#fill').on('click',function(){
         $('#brushes').children().removeClass('active');
         $(this).addClass('active');
         $('#picker-display, [class^=tg]').removeClass('disabled');
@@ -287,15 +287,15 @@ $(document).ready(function () {
         pencilBrush = false;
     });
 
-    $('#toggleBackground').click(function(){
+    $('#toggleBackground').on('click',function(){
         $('#grid').toggleClass('visible-background');
         $(this).toggleClass('disabled');
         $('#backgroundCheck').toggleClass('hidden');
     });
 
-    $('#toggleGrid').click(function(){
+    $('#toggleGrid').on('click',function(){
         $('.pixel').toggleClass('pixel-border');
         $(this).toggleClass('disabled');
         $('#gridCheck').toggleClass('hidden');
-    })
+    });
 });
