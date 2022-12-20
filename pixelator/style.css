@@ -16,15 +16,16 @@ body{
     margin: 0;
     font-family: 'Varela Round', Helvetica, sans-serif;
     box-sizing: border-box;
+    min-width: 100%;
 }
 
 .header{
     width: 100%;
-    color: var(--black);
+    color: white;
     font-family: 'Unbounded', sans-serif;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 8px;
+    letter-spacing: 5px;
     font-size: calc(1rem + 1.5vmin);
     padding: 1vh 0;
     background-image: linear-gradient(90deg, #5F72BE 0%, #705ef9 50%, #4540a6 100%);
@@ -311,7 +312,7 @@ ul.dropdown-menu.show{
     display: none;
 }
 
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 890px){
     body{
         position: relative;
         background-color: var(--sidecolor);
@@ -367,7 +368,7 @@ ul.dropdown-menu.show{
         padding: 0px;
         height: 9vmin;
         width: 9vmin;
-        font-size: 3vmin;
+        font-size: 3vw;
         margin: auto;
     }
 
