@@ -13,26 +13,40 @@
     <title>pixelator.</title>
 </head>
 <body>
+    <div id="main">
     <div class="menu">
         <div class="menu-inner">
-            <!-- <div><i class="fa-regular fa-file"></i> File</div>
-            <div><i class="fa-solid fa-gear"></i> Settings</div>
-            <div><i class="fa-solid fa-circle-info"></i> Help</div> -->
-            <div> File </div>
-            <div> Edit </div>
-            <div> View </div>
-            <div> Help </div>
+            <button class="active"> Create </button>
+            <button> Frames </button>
+            <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Settings</button>
+            <ul class="dropdown-menu">
+                <li id="toggleBackground" class="d-flex w-100 justify-content-between">
+                    <p>Background</p>
+                    <p id="backgroundCheck"><i class="fa-solid fa-check"></i></p>
+                </li>
+                <li id="toggleGrid" class="disabled d-flex w-100 justify-content-between">
+                    <p>Grid</p>
+                    <p id="gridCheck" class="hidden"><i class="fa-solid fa-check"></i></p>
+                </li>
+                <li id="gridSize">
+                    <label for="points">Pixel Density:&nbsp;</label> 
+                    <input type="number" value="30" min="10" max="50" step="10">
+                </li>
+            </ul>
+            <button> Export </button>
+            <button> Help </button>
         </div>
         <div class="header">
-            pixelator
+           pixelator
         </div>
     </div>
     <div class="flex-container">
-    <div id="right-side">
+    <div></div>
+    <div id="left-side">
         <div id="brushes">
             <!-- <div class="btn-group">
                 <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-gear"></i>
+                    Settings
                 </button>
                 <ul class="dropdown-menu">
                     <li id="toggleBackground" class="d-flex w-100 justify-content-between">
@@ -50,7 +64,7 @@
                     </li>
                 </ul>
             </div> -->
-            <button id="pencil" class="active"><i class="fa-solid fa-pencil"></i></button>
+            <button id="pencil" class="active"><i class="fa-solid fa-paintbrush"></i></button>
             <button id="fill"><i class="fa-solid fa-fill-drip"></i></button>
             <button id="erase"><i class="fa-solid fa-eraser"></i></button>
             <button id="shape"><i class="fa-solid fa-draw-polygon"></i></button>
@@ -85,21 +99,22 @@
     <div id="grid-container">
         <div id="grid" class="visible-background"></div>
     </div>
-    <div id="left-side">
+    <div id="right-side">
         <div class="tools w-100">
             <button id="save"><i class="fa-regular fa-floppy-disk"></i> Save as .pixel</button>  
             <button id="download"><i class="fa-solid fa-download"></i> Download</button>  
             <button id="share"><i class="fa-solid fa-arrow-up-from-bracket"></i> Share</button>
             <button id="add"><i class="fa-solid fa-plus"></i> Add Frame</button>
         </div>
-        <p id="ptext">PREVIEW</p>
+        <!-- <p id="ptext">PREVIEW</p>
         <div id="sample"></div>
         <p id="ctext">FRAMES</p>
         <div id="frameContainer">
             <div class="frame"></div>
             <div class="frame"></div>
             <div class="frame"></div>  
-        </div>
+        </div> -->
+    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
