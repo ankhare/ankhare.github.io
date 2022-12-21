@@ -521,7 +521,8 @@ ul.dropdown-menu.show{
     }
 
     .header{
-        background-image: linear-gradient(90deg, rgb(187, 0, 255) 0%, rgb(0, 60, 255) 100%);
+        background-image: none;
+        background-color: var(--accent);
         text-align: center;
         width: 100%;
         border-bottom: 1px solid var(--dark);
