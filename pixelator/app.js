@@ -286,6 +286,18 @@ $(document).ready(function () {
         pencilBrush = false;
     });
 
+
+    $('[id^=menu-]').on('click', function(){
+        $('[id^=menu-]').removeClass('active')
+        $(this).addClass('active');
+        $('[id^=side-]').removeClass('show');
+        const target = $(this).attr('id').split('-')[1];
+        $('#side-' + target).addClass('show');
+    });
+
+    $('#menu-create').trigger('click');
+
+
     $('#toggleBackground').on('click',function(){
         $('#grid').toggleClass('visible-background');
         $(this).toggleClass('disabled');

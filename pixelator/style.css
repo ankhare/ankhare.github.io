@@ -6,7 +6,7 @@
 --dark: #43464e;
 --sidecolor: #313346;
 --sideaccent: #132451;
---target: #94cdf6;
+--target: #f900c7;
 --accent: #712bfc;
 --black: #1e1e21;
 }
@@ -27,14 +27,17 @@ p{
     margin-bottom: 1vmin;
 }
 
-div[class^=tg], button{
+div[class^=tg] button{
     transition: color .5s, background-color .5s, border-color .5s;
 }
 
 input{
-    background-color: inherit;
+    background-color: var(--transgray);
+    border-radius: 5px;
     color: inherit;
     border: none;
+    margin: 0px;
+    padding-left: 20px;
 }
 
 #main{
@@ -59,7 +62,7 @@ input{
     display: flex;
     width: 100%;
     height: 5%;
-    background-image: linear-gradient(90deg, rgb(123, 0, 255) 0%, rgb(0, 145, 255) 100%);
+    background-image: linear-gradient(90deg, rgb(187, 0, 255) 0%, rgb(0, 145, 255) 100%);
     justify-content: space-between;
     /* border-bottom: 1px solid #38364a; */
 }
@@ -86,11 +89,6 @@ input{
     font-size: calc(.5rem + .5vmin);
 }
 
-.menu-inner > button.active{
-    color: white;
-    border-bottom: 2px solid white;
-}
-
 .flex-container{
     width: 100vw;
     height: 95%;
@@ -101,14 +99,48 @@ input{
     background: linear-gradient(0deg, #000000 0%, #191822 40%, #2c2f36 100%);
 }    
     
-
-#left-side{
-    padding-top: 2vw;
-    /* background-color: var(--sidecolor); */
+div[id ^= side-]{
+    display: none;
+    width: 25%;
+    padding: 2vw 0;
+    background-color: var(--sidecolor);
     background-image: linear-gradient(0deg, #191822 0%, #313346 100%);
-    width: 20vw;
+}
+
+div[id ^= side-].show{
     display: flex;
+}
+
+#side-create{
     justify-content: space-around;
+}
+
+#side-frames{
+    justify-content: space-around;
+    align-items: center;
+}
+
+#side-settings{
+    flex-direction: column;
+    color: white;
+}
+
+#side-export{
+    padding-right: 2vw;
+    padding-left: 2vw;
+}
+
+#side-settings > div{
+    display: flex;
+    padding: 1vw 2vw;
+    border-bottom: 1px solid var(--transgray);
+    font-size: calc(.4rem + .8vmin);
+    width: 100%;
+    justify-content: space-between;
+}
+
+#side-settings > div:last-of-type{
+    border-bottom: none;
 }
 
 #right-side{
@@ -116,33 +148,31 @@ input{
     padding: 2vw;
     /* background-color: var(--sidecolor); */
     background-image: linear-gradient(0deg, #191822 0%, #313346 100%);
-    width: 20%;
     display: flex;
     flex-direction: column;
 }
 
 #sample{
     margin: 0 2vmin 2vmin;
-    height: 24.5vmin;
-    width: 24.5vmin;
+    height: 15vmax;
+    width: 15vmax;
     border: 1px solid var(--dark);
 }
 
 #frameContainer{
-    padding: 1vmin 0;
     display: flex;
     flex-direction: column;
-    width: 24.5vmin;
-    height: 30vmin;
-    border: 1px solid var(--dark);
+    width: 100%;
+    min-height: 100%;
+    /* border: 1px solid var(--dark); */
     overflow-y: scroll;
 }
 
 .frame{
     margin: 1vmin auto;
     flex-shrink: 0;
-    width: 20vmin;
-    height: 20vmin;
+    width: 12vmax;
+    height: 12vmax;
     border: 1px solid var(--dark);
 }
 
@@ -156,6 +186,7 @@ input{
 }
 
 .tools{
+    width: 100%;
     margin-bottom: 2vmin;
     display: flex;
     flex-wrap: wrap;
@@ -198,7 +229,7 @@ input{
     font-size: calc(.4rem + .8vmin);
     width: 100%;
     letter-spacing: 1px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 }
 
 .tools button.active, .tools button:active:enabled{
@@ -218,6 +249,10 @@ input{
 
 button:disabled, div[disabled]{
     color: var(--dark) !important;
+}
+
+div.disabled{
+    color: var(--dark);
 }
 
 #grid-container{
@@ -294,7 +329,7 @@ div[class^=tg].disabled, #picker-display.disabled{
         rgba(28, 127, 238, 1) 60%,
         rgba(186, 12, 248, 1) 80%,
         rgba(255, 0, 0, 1) 100%
-    );;
+    );
 }
 .tg-c{background-color:#bf3a2b;}
 .tg-b{background-color:#e74c3c;}
@@ -358,7 +393,7 @@ ul.dropdown-menu.show{
     display: none;
 }
 
-@media screen and (max-height: 640px){
+@media screen and (max-height: 420px){
     body{
         position: absolute;
     }
@@ -366,8 +401,12 @@ ul.dropdown-menu.show{
     #main{
         height: max-content;
     }
-
-
+}
+@media screen and (min-width: 781px){
+    .menu-inner > button.active{
+        color: white;
+        border-bottom: 2px solid var(--target);
+    }
 }
 @media screen and (max-width: 780px){
     body{
@@ -388,17 +427,16 @@ ul.dropdown-menu.show{
         height: calc(90vmin/30);
     }
     
-    #right-side, #left-side{
+    #right-side, div[id ^= side-]{
         width: 100%;
         overflow: visible;
         flex-wrap: wrap;
         height: min-content;
-        /* background-image: none;
-        background-color: #313746; */
+        background-image: none;
+        background-color: var(--sidecolor);
     }
 
     #right-side{
-        background-image: linear-gradient(180deg, #191822 0%, #313346 100%);
         padding-right: 2vmin;
         padding-bottom: 0px;
     }
@@ -453,10 +491,18 @@ ul.dropdown-menu.show{
         width: 100%;
     }
 
-    #add, #frameContainer, #sample, #ptext, #ctext{
-        display: none;
+    #side-frames{
+        padding-right: 2vw;
+        padding-left: 2vw;
     }
-    
+
+    #frameContainer{
+        flex-direction: row;
+    }
+
+    .frame{
+        margin: auto 1vmin;
+    }
 
     .header, .menu{
         justify-content: center;
@@ -464,13 +510,13 @@ ul.dropdown-menu.show{
 
     .menu{
         background-image: none;
-        background-color: var(--sidecolor);
+        background-color: #242235;
         flex-wrap: wrap-reverse;
         height: min-content;
     }
 
     .header{
-        background-image: linear-gradient(68.8deg, rgb(121, 192, 255) 0%, rgb(162, 33, 255) 100%);
+        background-image: linear-gradient(90deg, rgb(123, 0, 255) 0%, rgb(0, 145, 255) 100%);
         text-align: center;
         width: 100%;
         border-bottom: 1px solid var(--dark);
@@ -484,15 +530,17 @@ ul.dropdown-menu.show{
     }
 
     .menu-inner > button{
-        color: white;
         border: 2px solid var(--dark);
         border-bottom: none;
         border-bottom-left-radius: 0px !important;
         border-bottom-right-radius: 0px !important;
         border-radius: 5px;
-        padding: 1vw 3vw;
-        background-color: var(--transgray);
+        margin: 0 2vw;
+        width: 100%;
+        padding: 1vmin;
+        background-color: #27283b;
         letter-spacing: .75px;
+        justify-content: space-around;
     }
 
     .menu-inner > button.active{
@@ -501,9 +549,7 @@ ul.dropdown-menu.show{
         border-bottom: 2px solid var(--sidecolor)!important;
         z-index: 200;
         margin-bottom: -2px;
-        color: var(--target);
+        color: white;
     }
-    
-
     
 }

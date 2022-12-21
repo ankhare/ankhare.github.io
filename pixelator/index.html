@@ -16,54 +16,41 @@
     <div id="main">
     <div class="menu">
         <div class="menu-inner">
-            <button class="active"> Create </button>
-            <button> Frames </button>
-            <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Settings</button>
-            <ul class="dropdown-menu">
-                <li id="toggleBackground" class="d-flex w-100 justify-content-between">
-                    <p>Background</p>
-                    <p id="backgroundCheck"><i class="fa-solid fa-check"></i></p>
-                </li>
-                <li id="toggleGrid" class="disabled d-flex w-100 justify-content-between">
-                    <p>Grid</p>
-                    <p id="gridCheck" class="hidden"><i class="fa-solid fa-check"></i></p>
-                </li>
-                <li id="gridSize">
-                    <label for="points">Pixel Density:&nbsp;</label> 
-                    <input type="number" value="30" min="10" max="50" step="10">
-                </li>
-            </ul>
-            <button> Export </button>
-            <button> Help </button>
+            <button id="menu-create"class="active"> Create </button>
+            <button id="menu-frames"> Frames </button>
+            <button id="menu-settings">Settings</button>
+            <button id="menu-export"> Export </button>
+            <button id="menu-help"> Help </button>
         </div>
         <div class="header">
            pixelator
         </div>
     </div>
-    <div class="flex-container">
-    <div></div>
-    <div id="left-side">
-        <div id="brushes">
-            <!-- <div class="btn-group">
-                <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+     <!-- <div class="btn-group">
+            <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     Settings
-                </button>
-                <ul class="dropdown-menu">
-                    <li id="toggleBackground" class="d-flex w-100 justify-content-between">
+            </button>
+            <ul class="dropdown-menu">
+                <div id="toggleBackground" class="d-flex w-100 justify-content-between">
                         <p>Background</p>
                         <p id="backgroundCheck"><i class="fa-solid fa-check"></i></p>
-                    </li>
-                    <li id="toggleGrid" class="disabled d-flex w-100 justify-content-between">
+                </div>
+                <div id="toggleGrid" class="disabled d-flex w-100 justify-content-between">
                         <p>Grid</p>
                         <p id="gridCheck" class="hidden"><i class="fa-solid fa-check"></i></p>
-                    </li>
-                    <li id="gridSize">
+                </div>
+                <div id="gridSize">
                         <label for="points">Pixel Density:</label> 
                         <output id="output">30</output>
                         <input type="range" value="30" min="10" max="50" step="10" oninput="document.getElementById('output').value = this.value">
-                    </li>
-                </ul>
-            </div> -->
+                </div>
+            </ul>
+        </div> -->
+
+    <div class="flex-container">
+
+    <div id="side-create">
+        <div id="brushes">
             <button id="pencil" class="active"><i class="fa-solid fa-paintbrush"></i></button>
             <button id="fill"><i class="fa-solid fa-fill-drip"></i></button>
             <button id="erase"><i class="fa-solid fa-eraser"></i></button>
@@ -87,7 +74,6 @@
             <div class="tg-p"></div>
             <div class="tg-t"></div>
             <div class="tg-n"></div>
-            <!-- <div class="tg-nn"></div> -->
             <div class="tg-bl"></div>
             <div class="tg-gy"></div>
             <div class="tg-w"></div>
@@ -96,24 +82,47 @@
             <div class="tg-dg"></div>
         </div>
     </div>
+    <!-- /ERROR: DOESNT SCROLL -->
+    <div id="side-frames">
+        <div id="frameContainer">
+            <div class="frame"></div>
+            <div class="frame"></div>
+            <div class="frame"></div>
+        </div>
+    </div>
+    <div id="side-settings">
+        <div id="gridSize">
+            <label for="points">Grid Size:&nbsp;</label> 
+            <input type="number" value="30" min="10" max="50" step="10">
+        </div>
+        <div id="toggleBackground">
+            <p>Background</p>
+            <p id="backgroundCheck"><i class="fa-solid fa-check px-4"></i></p>
+        </div>
+        <div id="toggleGrid" class="disabled">
+            <p>Grid</p>
+            <p id="gridCheck" class="hidden"><i class="fa-solid fa-check px-4"></i></p>
+        </div>
+    </div>
+
+    <div id="side-export">
+        <div class="tools">
+            <button id="save"><i class="fa-regular fa-floppy-disk"></i> Save as .pixel</button>  
+            <button id="download"><i class="fa-solid fa-download"></i> Download as .png</button>
+            <button id="download"><i class="fa-solid fa-download"></i> Download as .gif</button>
+            <button id="share"><i class="fa-solid fa-arrow-up-from-bracket"></i> Share</button>
+        </div>
+    </div>
     <div id="grid-container">
         <div id="grid" class="visible-background"></div>
     </div>
     <div id="right-side">
-        <div class="tools w-100">
-            <button id="save"><i class="fa-regular fa-floppy-disk"></i> Save as .pixel</button>  
-            <button id="download"><i class="fa-solid fa-download"></i> Download</button>  
-            <button id="share"><i class="fa-solid fa-arrow-up-from-bracket"></i> Share</button>
-            <button id="add"><i class="fa-solid fa-plus"></i> Add Frame</button>
-        </div>
-        <!-- <p id="ptext">PREVIEW</p>
+        <p id="ptext" class="w-100 text-center">PREVIEW</p>
         <div id="sample"></div>
-        <p id="ctext">FRAMES</p>
-        <div id="frameContainer">
-            <div class="frame"></div>
-            <div class="frame"></div>
-            <div class="frame"></div>  
-        </div> -->
+        <div class="tools">
+            <button id="add"><i class="fa-solid fa-plus"></i> Add Frame</button>
+            <button id="download"><i class="fa-solid fa-download"></i> Download</button>  
+        </div>
     </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
