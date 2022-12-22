@@ -105,6 +105,7 @@ div[id ^= side-]{
     padding: 2vw 0;
     background-color: var(--sidecolor);
     background-image: linear-gradient(0deg, #191822 0%, #313346 100%);
+    z-index: 2;
 }
 
 div[id ^= side-].show{
@@ -139,8 +140,16 @@ div[id ^= side-].show{
     justify-content: space-between;
 }
 
+#side-settings > div{
+    cursor: pointer;
+}
+
 #side-settings > div:last-of-type{
     border-bottom: none;
+}
+
+#side-settings > div > p > i{
+    padding: 0 1rem;
 }
 
 #right-side{
@@ -252,7 +261,7 @@ button:disabled, div[disabled]{
 }
 
 div.disabled{
-    color: var(--dark);
+    color: var(--gray);
 }
 
 #grid-container{
@@ -355,10 +364,6 @@ div[class^=tg].disabled, #picker-display.disabled{
 /* button#save{
     background: linear-gradient(90deg, rgb(85, 72, 255) 0%, rgb(0, 145, 255) 100%);
 } */
-
-#toggleBackground, #toggleGrid{
-    cursor: pointer;
-}
 
 /* ERROR: OVERFLOW SCROLL ON MOBILE */
 .dropdown-menu{

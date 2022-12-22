@@ -11,8 +11,9 @@ $(document).ready(function () {
     let isDragging = false;
     let mouseDown = false;
     let pencilBrush = true;
-    let eraseBrush;
     let fillBucket;
+    let shapeBrush;
+    let eraseBrush;
 
     class Pixel{
         constructor(color='transparent', id=null){
@@ -101,16 +102,22 @@ $(document).ready(function () {
         redo_stack = [];
         $('#redo').prop('disabled', true);
 
-        if(pencilBrush){
-            pencil($e);
-        }
+        switch(true){
+            case pencilBrush:{
+                pencil($e);
+                break;
+            }case fillBucket:{
+                fill($e);
+                break
+            }case eraseBrush:{
+                erase($e);
+                break;
+            }
+            case shapeBrush:{
+                shape($e);
+                break;
+            }
 
-        if(eraseBrush){
-            erase($e);
-        }
-
-        if(fillBucket){
-            fill($e);
         }
     }
 
@@ -118,12 +125,6 @@ $(document).ready(function () {
         const id = $e.attr('id');
         const placement = id.split('_');
         grid[placement[0]][placement[1]].setColor(brush_color);
-    }
-
-    const erase = function($e){
-        const id = $e.attr('id');
-        const placement = id.split('_');
-        grid[placement[0]][placement[1]].setColor('transparent');
     }
 
     let fillCounter;
@@ -171,9 +172,94 @@ $(document).ready(function () {
         }
         if(y != 0){
             recursiveFill(x, y-1, initial_color);
-        }
-        
+        }  
     };
+
+    let shapeStart;
+    let shapeStop;
+    const shape = function($e){
+        if (!shapeStart){
+            let id = $e.attr('id');
+            const placement = id.split('_');
+            grid[placement[0]][placement[1]].setColor(brush_color);
+            shapeStart = id;
+            console.log(shapeStart, shapeStop);
+            return;
+        }
+
+        
+        let sid = $e.attr('id');
+        console.log(shapeStart, sid);
+        internalShape(shapeStart, sid);
+            
+        //reinitialize for next run
+        shapeStart = sid;
+        shapeStop = null;
+    }
+
+    const internalShape = function(start, stop){
+        const startPlacement = start.split('_');
+        const startX =  parseInt(startPlacement[1]);
+        const startY =  parseInt(startPlacement[0]);
+        
+        const stopPlacement = stop.split('_');
+        const stopX =  parseInt(stopPlacement[1]);
+        const stopY =  parseInt(stopPlacement[0]);
+
+        let greaterX;
+        let lesserX;
+        let greaterY;
+        let lesserY;
+        
+        console.log(startPlacement, stopPlacement);
+        
+        //same row
+        if(startY == stopY){
+            if(startX - stopX > 0){
+                greaterX = startX;;
+                lesserX = stopX;
+                lesserY = stopY;
+            } else{
+                greaterX = stopX;
+                lesserX = startX;
+                lesserY = startY;
+            }
+            let curr = lesserX;
+            for(let i=0; i < (greaterX-lesserX + 1); i ++){
+                grid[lesserY][curr].setColor(brush_color);
+                curr = curr + 1;
+            }
+            return;
+        }
+
+        //same col
+        if(startX == stopX){
+            if(startY - stopY > 0){
+                greaterY = startY;;
+                lesserY = stopY;
+                lesserX = stopX;
+            } else{
+                greaterY = stopY;
+                lesserY = startY;
+                lesserX = startX;
+            }
+            let curr = lesserY;
+            for(let i=0; i < (greaterY-lesserY + 1); i ++){
+                grid[curr][lesserX].setColor(brush_color);
+                curr = curr + 1;
+            }
+            return;
+        }
+
+
+    }
+
+    const erase = function($e){
+        const id = $e.attr('id');
+        const placement = id.split('_');
+        grid[placement[0]][placement[1]].setColor('transparent');
+    }
+
 
     $('.pixel').on('mousedown', function(e){
         e.preventDefault();
@@ -264,8 +350,19 @@ $(document).ready(function () {
         $(this).addClass('active');
         $('#picker-display, [class^=tg]').removeClass('disabled');
         pencilBrush = true;
-        eraseBrush = false;
         fillBucket = false;
+        shapeBrush = false;
+        eraseBrush = false;
+    });
+
+    $('#fill').on('click',function(){
+        $('#brushes').children().removeClass('active');
+        $(this).addClass('active');
+        $('#picker-display, [class^=tg]').removeClass('disabled');
+        fillBucket = true;
+        pencilBrush = false;
+        shapeBrush = false;
+        eraseBrush = false;
     });
 
     $('#erase').on('click',function(){
@@ -275,15 +372,18 @@ $(document).ready(function () {
         eraseBrush = true;
         pencilBrush = false;
         fillBucket = false;
+        shapeBrush = false;
     });
 
-    $('#fill').on('click',function(){
+    $('#shape').on('click',function(){
         $('#brushes').children().removeClass('active');
         $(this).addClass('active');
         $('#picker-display, [class^=tg]').removeClass('disabled');
-        fillBucket = true;
-        eraseBrush = false;
+        shapeBrush = true;
         pencilBrush = false;
+        fillBucket = false;
+        eraseBrush = false;
+        
     });
 
 
@@ -294,8 +394,6 @@ $(document).ready(function () {
         const target = $(this).attr('id').split('-')[1];
         $('#side-' + target).addClass('show');
     });
-
-    $('#menu-create').trigger('click');
 
 
     $('#toggleBackground').on('click',function(){

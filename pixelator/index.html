@@ -18,9 +18,9 @@
         <div class="menu-inner">
             <button id="menu-create"class="active"> Create </button>
             <button id="menu-frames"> Frames </button>
-            <button id="menu-settings">Settings</button>
-            <button id="menu-export"> Export </button>
-            <button id="menu-help"> Help </button>
+            <button id="menu-settings">Settings & Export</button>
+            <!-- <button id="menu-export"> Export </button>
+            <button id="menu-help"> Help </button> -->
         </div>
         <div class="header">
            pixelator
@@ -48,13 +48,12 @@
         </div> -->
 
     <div class="flex-container">
-
-    <div id="side-create">
+    <div id="side-create" class="show">
         <div id="brushes">
             <button id="pencil" class="active"><i class="fa-solid fa-paintbrush"></i></button>
             <button id="fill"><i class="fa-solid fa-fill-drip"></i></button>
-            <button id="erase"><i class="fa-solid fa-eraser"></i></button>
             <button id="shape"><i class="fa-solid fa-draw-polygon"></i></button>
+            <button id="erase"><i class="fa-solid fa-eraser"></i></button>
             <button id="blank"><i class="fa-regular fa-trash-can"></i></button>
             <button id="undo" disabled><i class="fa-solid fa-rotate-left"></i></button>
             <button id="redo" disabled><i class="fa-solid fa-rotate-right"></i></button>
@@ -96,22 +95,30 @@
             <input type="number" value="30" min="10" max="50" step="10">
         </div>
         <div id="toggleBackground">
-            <p>Background</p>
-            <p id="backgroundCheck"><i class="fa-solid fa-check px-4"></i></p>
+            <p>Show Background</p>
+            <p id="backgroundCheck"><i class="fa-solid fa-check"></i></p>
         </div>
         <div id="toggleGrid" class="disabled">
-            <p>Grid</p>
-            <p id="gridCheck" class="hidden"><i class="fa-solid fa-check px-4"></i></p>
+            <p>Show Grid</p>
+            <p id="gridCheck" class="hidden"><i class="fa-solid fa-check"></i></p>
         </div>
-    </div>
+        <div id="save">
+            <p>Save as .pixel</p>
+            <p><i class="fa-regular fa-floppy-disk"></i></p>
+        </div>
+        <div id="pngdown">
+            <p> Download as .png </p>
+            <p><i class="fa-solid fa-download"></i></p>
+        </div>
+        <div id="gifdown">
+            <p> Download as .gif</p>
+            <p><i class="fa-solid fa-download"></i></p>
+        </div>
+        <div id="share">
+            <p>Share</p>
+            <p><i class="fa-solid fa-arrow-up-from-bracket"></i></p>
+        </div>
 
-    <div id="side-export">
-        <div class="tools">
-            <button id="save"><i class="fa-regular fa-floppy-disk"></i> Save as .pixel</button>  
-            <button id="download"><i class="fa-solid fa-download"></i> Download as .png</button>
-            <button id="download"><i class="fa-solid fa-download"></i> Download as .gif</button>
-            <button id="share"><i class="fa-solid fa-arrow-up-from-bracket"></i> Share</button>
-        </div>
     </div>
     <div id="grid-container">
         <div id="grid" class="visible-background"></div>
