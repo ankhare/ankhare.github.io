@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <!-- boostrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
      <!-- fontawesome icons -->
      <script src="https://kit.fontawesome.com/22375b6341.js" crossorigin="anonymous"></script>
      <!-- custom css -->
@@ -26,26 +24,6 @@
            pixelator
         </div>
     </div>
-     <!-- <div class="btn-group">
-            <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Settings
-            </button>
-            <ul class="dropdown-menu">
-                <div id="toggleBackground" class="d-flex w-100 justify-content-between">
-                        <p>Background</p>
-                        <p id="backgroundCheck"><i class="fa-solid fa-check"></i></p>
-                </div>
-                <div id="toggleGrid" class="disabled d-flex w-100 justify-content-between">
-                        <p>Grid</p>
-                        <p id="gridCheck" class="hidden"><i class="fa-solid fa-check"></i></p>
-                </div>
-                <div id="gridSize">
-                        <label for="points">Pixel Density:</label> 
-                        <output id="output">30</output>
-                        <input type="range" value="30" min="10" max="50" step="10" oninput="document.getElementById('output').value = this.value">
-                </div>
-            </ul>
-        </div> -->
 
     <div class="flex-container">
     <div id="side-create" class="show">
@@ -54,6 +32,12 @@
             <button id="fill"><i class="fa-solid fa-fill-drip"></i></button>
             <button id="shape"><i class="fa-solid fa-draw-polygon"></i></button>
             <button id="erase"><i class="fa-solid fa-eraser"></i></button>
+            <button id="ysim">
+                <img src="media/yax.png" alt="y-axis symmetry image">
+            </button>
+            <button id="xsim">
+                <img src="media/yax.png" alt="x-axis symmetry image">
+            </button>
             <button id="blank"><i class="fa-regular fa-trash-can"></i></button>
             <button id="undo" disabled><i class="fa-solid fa-rotate-left"></i></button>
             <button id="redo" disabled><i class="fa-solid fa-rotate-right"></i></button>
@@ -92,7 +76,14 @@
     <div id="side-settings">
         <div id="gridSize">
             <label for="points">Grid Size:&nbsp;</label> 
-            <input type="number" value="30" min="10" max="50" step="10">
+            <select id="gridInput">
+                <option value="10">10x10</option>
+                <option value="20">20x20</option>
+                <option value="30" selected>30x30</option>
+                <option value="40">40x40</option>
+                <option value="50">50x50</option>
+            </select>
+
         </div>
         <div id="toggleBackground">
             <p>Show Background</p>
@@ -133,7 +124,6 @@
     </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script defer src="./app.js"></script>
+    <script defer src="scripts/main.js"></script>
 </body>
 </html>
