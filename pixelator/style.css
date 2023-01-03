@@ -6,8 +6,10 @@
 --dark: #43464e;
 --sidecolor: #313346;
 --sideaccent: #132451;
---target: #f900c7;
---accent: #7300ff;
+--target: #5553ff;
+--accent: #5553ff;
+/* --target: #f900c7;
+--accent: #7300ff; */
 --black: #1e1e21;
 --gridcount: 30;
 }
@@ -81,7 +83,7 @@ button{
     display: flex;
     width: 100%;
     height: 5%;
-    background-image: linear-gradient(90deg, #5805bc 50%, #730fff 80%, #970fff 100%);
+    background-image: linear-gradient(90deg, rgb(48, 39, 108) 50%, #5553ff 100%);
     justify-content: space-between;
     /* border-bottom: 1px solid #38364a; */
 }
