@@ -435,7 +435,7 @@ i.nav-link{
     font-weight: 600;
     letter-spacing: 1px;
     text-align: center;
-    background-color: rgba(255, 255, 0, 0.835);
+    background-color: #ffff00d5;
     color: black;
     text-transform: uppercase;
 }

@@ -32,8 +32,6 @@ $(document).ready(function () {
     const hidden2Elements = document.querySelectorAll(".hidden2");
     hidden2Elements.forEach((el) => observer.observe(el));
 
-
-
     const tags = ['featured', 'games', 'web development', 'machine learning', 'generative art', 'javascript', 'python','java'];
 
     tags.forEach((tag) => {
@@ -89,7 +87,7 @@ $(document).ready(function () {
         $('#results').text(number)
     });
 
-    //credit for flip slide showfilter to https://codepen.io/niklanus/pen/OXVwgW
+    //credit for flip slide card base to https://codepen.io/niklanus/pen/OXVwgW
     const cardAmount = 4;
     const flipSpeed = 5000;
     
@@ -153,5 +151,5 @@ $(document).ready(function () {
     setInterval(cycle, speed * elements);
     })(cardAmount, flipSpeed);
 
-    $('#featured').click();
+    $('#featured').trigger('click');
  })

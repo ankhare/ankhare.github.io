@@ -22,7 +22,6 @@
             var myConfetti = confetti.create(myCanvas, { resize: true });
 
             //generate random color
-            // https://stackoverflow.com/questions/47616381/how-to-exclude-all-shades-of-gray-while-generating-random-hex-color-code
             function randomColor() {
                 // Threshold can be between 0 and 127: the higher it is, the more colors are considered to be too grey-like.
                 const threshold = 50;
@@ -100,8 +99,13 @@
             let guess = [];
             let result = ['','','','','',''];
 
+            //right spot
             let green = [];
+            
+            //in the code but wrong spot
             let yellow = [];
+
+            //not in the code
             let gray = [];
 
             let currow = 0; // attempt number
@@ -218,13 +222,13 @@
                         $('#color').css('color', 'white');
                         confetti();
                         if (currow == 0){
-                            $('#alert').html('You solved the Hexdle on your first try!');
+                            $('#alert').html('Woah! You solved the Hexdle on your first try!');
                         } else{
                             $('#alert').html(`You solved the Hexdle in ${currow + 1} tries!`);
                         }
                         game = false;
 
-                    //if lost
+                    //if player loses the game
                     } else if ((currow + 1) === allowedtries){
                         $('#alert').append(`The color was #${targetcolor}. Better luck next time!`)
                         game = false;
