@@ -1,4 +1,9 @@
 'use strict';
+$(window).on('load', function(){
+    $('#content').removeClass('hide');
+    $('#loader').hide();
+});
+
 $(document).ready(function () {
     $('body').on('touchstart', function() {});
     
