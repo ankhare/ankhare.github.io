@@ -425,6 +425,20 @@ i.nav-link{
     border-radius: 5px;
 }
 
+.construction{
+    position: absolute;
+    margin-top: 15%;
+    margin-left: -30%;
+    width: 100%;
+    transform: rotate(-45deg);
+    font-size: calc(.9rem + .1vw);
+    font-weight: 600;
+    text-align: center;
+    background-color: rgba(255, 255, 0, 0.835);
+    color: black;
+    text-transform: uppercase;
+}
+
 /* Style the buttons */
 .btn {
     transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
@@ -506,9 +520,9 @@ i.nav-link{
     margin: 0.5%;
 }
 
-/* .card, .card > *{
-    border-radius: 0%;
-} */
+.card{
+    overflow: hidden;
+}
 
 .card-img-top{
     object-fit: cover;
