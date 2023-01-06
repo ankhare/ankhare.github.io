@@ -97,10 +97,10 @@ $(document).ready(function () {
         $(imageArray).each(function(){
             $('<img/>')[0].src = this;
         });
-    })(['media/cc.gif',
-    'media/jumprex.gif',
+    })(['media/pixelator.gif',
+    'media/cc.gif',
     'media/hexdle.gif',
-    'media/pixelator.jpg']);
+    'media/jumprex.gif']);
 
     (function bfCards(elements, speed) {
     var cards = $('.cards');
