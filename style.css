@@ -431,8 +431,9 @@ i.nav-link{
     margin-left: -30%;
     width: 100%;
     transform: rotate(-45deg);
-    font-size: calc(.9rem + .1vw);
+    font-size: calc(.8rem + .1vw);
     font-weight: 600;
+    letter-spacing: 1px;
     text-align: center;
     background-color: rgba(255, 255, 0, 0.835);
     color: black;
@@ -461,7 +462,7 @@ i.nav-link{
     font-weight: 300;
     letter-spacing: .5px;
     cursor:pointer;
-    color: var(--darkgray);
+    color: white;
     border: 1px solid var(--darkgray);
 }
 
