@@ -100,7 +100,7 @@ $(document).ready(function () {
     })(['media/cc.gif',
     'media/jumprex.gif',
     'media/hexdle.gif',
-    'media/pyker.jpg']);
+    'media/pixelator.jpg']);
 
     (function bfCards(elements, speed) {
     var cards = $('.cards');
