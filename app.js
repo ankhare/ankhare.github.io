@@ -100,10 +100,10 @@ $(document).ready(function () {
         $(imageArray).each(function(){
             $('<img/>')[0].src = this;
         });
-    })(['media/pixelator.gif',
-    'media/cc.gif',
+    })(['media/pixelator.webp',
+    'media/cc.webp',
     'media/hexdle.gif',
-    'media/jumprex.gif']);
+    'media/jumprex.webp']);
 
     (function bfCards(elements, speed) {
     var cards = $('.cards');

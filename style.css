@@ -376,11 +376,11 @@ i.nav-link{
 }
 
 .card-1 {
-  background-image: url(media/pixelator.gif);
+  background-image: url(media/pixelator.webp);
 }
 
 .card-2 {
-  background-image: url(media/cc.gif);
+  background-image: url(media/cc.webp);
 }
 
 .card-3 {
@@ -388,7 +388,7 @@ i.nav-link{
 }
 
 .card-4 {
-  background-image: url(media/jumprex.gif);
+  background-image: url(media/jumprex.webp);
 }
 
 .filter {
