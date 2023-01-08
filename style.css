@@ -29,8 +29,9 @@
 
 #loader > * {
     margin: auto;
+    font-family: sans-serif;
     font-size: calc(3rem + 2vw);
-    font-weight: 600;
+    font-weight: 400;
 }
 
 body{
