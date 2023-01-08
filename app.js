@@ -100,8 +100,8 @@ $(document).ready(function () {
         $(imageArray).each(function(){
             $('<img/>')[0].src = this;
         });
-    })(['media/cc.gif',
-    'media/pixelator.gif',
+    })(['media/pixelator.gif',
+    'media/cc.gif',
     'media/hexdle.gif',
     'media/jumprex.gif']);
 
