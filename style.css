@@ -366,6 +366,7 @@ i.nav-link{
   z-index: 2;
   transform: rotateX(0deg);
 }
+
 .cards__back {
   transform: rotateX(180deg);
 }
