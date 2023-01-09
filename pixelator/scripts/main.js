@@ -97,10 +97,11 @@ $(document).ready(function () {
             }
         }
 
-        if(first_run){
+        if(first_run == true){
             blankGrid = newGrid;
             first_run = false;
         }
+
         return newGrid;
     }
 
@@ -183,47 +184,63 @@ $(document).ready(function () {
     }
 
     const fill = function($e){
+        // get the id of the element clicked on, id will be in the format 'II-JJ'
         const id = $e.attr('id');
+
         const placement = id.split('_');
         const initialI =  parseInt(placement[0]);
         const initialJ =  parseInt(placement[1]);
-        const queue = [];
         const initial_color = grid[initialI][initialJ].getColor();
         
-        //same color
+        //brush color: the color that the user wants to fill with
+        //initial color: the color of the div before it was clicked on with the fill brush
+
+        //if brush color and inital color at the same then dont do anythinf
         if(initial_color === brush_color){
             return;
         }
 
+        const queue = [];
         queue.push([initialI,initialJ]);
 
-        //if the color of the target is not already the brush color
+        //if the color of the target is not already the brush color, proceed
         if(initial_color != brush_color){
             while ( queue.length != 0) {
+                //remove the item at the front of the queue
                 const curr = queue.shift();
+
+                //get the i and j "coordinates" of the item
                 const i = curr[0];
                 const j = curr[1];
                 
-                if(grid[curr[0]][curr[1]].getColor() == initial_color){
-                    grid[curr[0]][curr[1]].setColor(brush_color);
+                // if the item's color is the same as the color that we started with
+                if(grid[i][j].getColor() == initial_color){
+                    //change its color to the brush color
+                    grid[i][j].setColor(brush_color);
                     
+                    //if not out of the + bounds for i
                     if(i != grid.length-1){
                         queue.push([i+1, j]);
                     }
-    
+
+                    //if not out of the  - bounds for i
                     if(i != 0){
                         queue.push([i-1, j]);
                     }
     
+                    //if not out of the + bounds for j
                     if(j != grid.length-1){
                         queue.push([i, j+1]);
                     }
     
+                    //if not out of the  - bounds for j
                     if(j != 0){
                         queue.push([i, j-1]);
                     } 
                 }
             }
+            
+            // add the newly filled grid to the undo stack
             addToStack(grid);
         }
     }
@@ -616,23 +633,23 @@ $(document).ready(function () {
 
     });
 
-    //EDIT: STACK WEIRDNESS when undoing to first point in changed grid!!
     $('#gridInput').on('change', function(e){
         const newCount = e.target.value;
-        //change to option to say yes or no
+        let proceed = true;
 
-        console.log(first_run);
+        if (!window.confirm('Changing the grid size will restart your project. Are you sure you want to continue?')){
+            proceed = false;
+        }
 
-        // EDIT: only do when there is stuff on grid
-        // if(gird ){
-            window.alert('Changing the grid size will restart your project. Are you sure you want to continue?');
-        // }
-
-        grid_stack = redo_stack = [];
-        $(':root').css('--gridcount', `${newCount}`);
-        grid_count = newCount;
-        createGrid(newCount);
-        first_run = true;
-        $('#pencil').trigger('click');
+        if(proceed){
+            grid_stack = redo_stack = [];
+            $(':root').css('--gridcount', `${newCount}`);
+            grid_count = newCount;
+            first_run = true;
+            createGrid(newCount);
+            $('#pencil').trigger('click');
+        }else{
+            e.target.value = grid_count;
+        }
     });
 });

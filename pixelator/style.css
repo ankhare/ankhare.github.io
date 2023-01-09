@@ -22,6 +22,8 @@ body{
     font-family: 'Varela Round', Helvetica, sans-serif;
     box-sizing: border-box;
     min-width: 100%;
+    background-color: var(--sidecolor);
+    overflow-x: hidden;
 }
 
 p{
@@ -58,6 +60,16 @@ select{
 
 button{
     font-family: 'Varela Round', Helvetica, sans-serif;
+}
+
+#colors::-webkit-scrollbar, #brushes::-webkit-scrollbar, #frameContainer::-webkit-scrollbar{
+    border: 1px solid var(--dark);
+    background-color: transparent;
+}
+
+#colors::-webkit-scrollbar-thumb, #brushes::-webkit-scrollbar-thumb, #frameContainer::-webkit-scrollbar-thumb {
+    border: 1px solid var(--dark);
+    background: #12121286;  
 }
 
 #main{
@@ -213,7 +225,8 @@ button#xsim > img{
     width: 100%;
     max-height: 100%;
     /* border: 1px solid var(--dark); */
-    overflow-x: scroll;
+    overflow-y: auto;
+    overflow-x: auto;
 }
 
 .frame{
@@ -493,7 +506,7 @@ div[class^=tg].disabled, #picker-display.disabled{
         margin-left: auto;
         margin-right: auto;
         flex-direction: row; 
-        overflow-x: scroll;
+        overflow-x: auto;
     }
 
     #colors{
