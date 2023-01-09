@@ -76,7 +76,7 @@ $(document).ready(function () {
         })
         .on('mouseup', function(e) {
             var wasDragging = isDragging;
-    
+
             isDragging = false;
             mouseDown = false;
     
@@ -187,20 +187,20 @@ $(document).ready(function () {
         const placement = id.split('_');
         const initialI =  parseInt(placement[0]);
         const initialJ =  parseInt(placement[1]);
-        const my_stack = [];
+        const queue = [];
         const initial_color = grid[initialI][initialJ].getColor();
-
+        
         //same color
         if(initial_color === brush_color){
             return;
         }
 
-        my_stack.push([initialI,initialJ]);
+        queue.push([initialI,initialJ]);
 
         //if the color of the target is not already the brush color
         if(initial_color != brush_color){
-            while ( my_stack.length != 0) {
-                const curr = my_stack.shift();
+            while ( queue.length != 0) {
+                const curr = queue.shift();
                 const i = curr[0];
                 const j = curr[1];
                 
@@ -208,19 +208,19 @@ $(document).ready(function () {
                     grid[curr[0]][curr[1]].setColor(brush_color);
                     
                     if(i != grid.length-1){
-                        my_stack.push([i+1, j]);
+                        queue.push([i+1, j]);
                     }
     
                     if(i != 0){
-                        my_stack.push([i-1, j]);
+                        queue.push([i-1, j]);
                     }
     
                     if(j != grid.length-1){
-                        my_stack.push([i, j+1]);
+                        queue.push([i, j+1]);
                     }
     
                     if(j != 0){
-                        my_stack.push([i, j-1]);
+                        queue.push([i, j-1]);
                     } 
                 }
             }
@@ -228,47 +228,47 @@ $(document).ready(function () {
         }
     }
 
-    const fill1 = function($e){
-        const id = $e.attr('id');
-        const placement = id.split('_');
-        const i =  parseInt(placement[0]);
-        const j =  parseInt(placement[1]);
+    // const fill1 = function($e){
+    //     const id = $e.attr('id');
+    //     const placement = id.split('_');
+    //     const i =  parseInt(placement[0]);
+    //     const j =  parseInt(placement[1]);
 
-        //NOTE: make this global if you want to call this function
-        fillCounter = 0;
+    //     //NOTE: make this global if you want to call this function
+    //     fillCounter = 0;
 
-        recursiveFill(i, j, grid[i][j].getColor());
-        addToStack(grid);
-    }
+    //     recursiveFill(i, j, grid[i][j].getColor());
+    //     addToStack(grid);
+    // }
 
-    const recursiveFill = function(i, j, initial_color){
-        fillCounter++;
-        //same color
-        if(initial_color === brush_color){
-            return;
-        }
-        //prevent looping/overflow: dont recurse more than each pixel in grid and its 4 adjacent neighbors
-        if(fillCounter > ((grid_count-1) * (grid_count-1) * 4)){
-            return;
-        }
-        //touch a different color
-        if(grid[i][j].getColor() != initial_color){
-            return;
-        }
-        grid[i][j].setColor(brush_color);
-        if(x != grid.length-1){
-            recursiveFill(i+1, j, initial_color);
-        }
-        if(x != 0){
-            recursiveFill(i-1, j, initial_color);
-        }
-        if(y != grid.length-1){
-            recursiveFill(i, j+1, initial_color);
-        }
-        if(y != 0){
-            recursiveFill(i, j-1, initial_color);
-        }  
-    };
+    // const recursiveFill = function(i, j, initial_color){
+    //     fillCounter++;
+    //     //same color
+    //     if(initial_color === brush_color){
+    //         return;
+    //     }
+    //     //prevent looping/overflow: dont recurse more than each pixel in grid and its 4 adjacent neighbors
+    //     if(fillCounter > ((grid_count-1) * (grid_count-1) * 4)){
+    //         return;
+    //     }
+    //     //touch a different color
+    //     if(grid[i][j].getColor() != initial_color){
+    //         return;
+    //     }
+    //     grid[i][j].setColor(brush_color);
+    //     if(x != grid.length-1){
+    //         recursiveFill(i+1, j, initial_color);
+    //     }
+    //     if(x != 0){
+    //         recursiveFill(i-1, j, initial_color);
+    //     }
+    //     if(y != grid.length-1){
+    //         recursiveFill(i, j+1, initial_color);
+    //     }
+    //     if(y != 0){
+    //         recursiveFill(i, j-1, initial_color);
+    //     }  
+    // };
 
     const notShape = function(){
         shapeBrush = false;
@@ -294,7 +294,7 @@ $(document).ready(function () {
             return;
         }
 
-        //ERROR: random blinking pixel that persists even when it fill is gone
+        //TODO: random blinking pixel that persists even when it fill is gone
 
         let sid = $e.attr('id');
         if(sid == shapeStart){
