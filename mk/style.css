@@ -777,21 +777,18 @@ img.activecolor {
 /* only animate if reduced motion is off */
 @media (prefers-reduced-motion: no-preference){
     .hidden1{
-        transform: translate(0, 100%);
+        transform: translate(0, 50%);
         transform-origin: center;
-        opacity: 0;
-        transition: transform .5s, opacity .5s;
+        transition: transform .5s
     }
 
     .hidden2{
         transform: translate(-25%, 0);
         transform-origin: bottom;
-        opacity: 0;
-        transition: transform .5s, opacity .5s;
+        transition: transform .5s
     }
 
     .show1{
-        opacity: 1;
         transform: translate(0);
     }
 }
