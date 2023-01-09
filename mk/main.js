@@ -380,9 +380,6 @@ $(document).ready(function () {
             } else if(concern === 'email' || concern === 'phone' ){
 
                 //validate the entries
-                const val = $('#' + concern).val()
-                
-                let valid = false;
                 if (concern === 'email'){
                     valid = validateEmail(val.trim());
                 }else{
