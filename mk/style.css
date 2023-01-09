@@ -779,16 +779,19 @@ img.activecolor {
     .hidden1{
         transform: translate(0, 100%);
         transform-origin: center;
-        transition: transform .5s;
+        opacity: 0;
+        transition: transform .5s, opacity .5s;
     }
 
     .hidden2{
         transform: translate(-25%, 0);
         transform-origin: bottom;
-        transition: transform 1s;
+        opacity: 0;
+        transition: transform .5s, opacity .5s;
     }
 
     .show1{
+        opacity: 1;
         transform: translate(0);
     }
 }
