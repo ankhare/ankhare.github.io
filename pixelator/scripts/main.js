@@ -311,7 +311,6 @@ $(document).ready(function () {
             return;
         }
 
-        //TODO: random blinking pixel that persists even when it fill is gone
 
         let sid = $e.attr('id');
         if(sid == shapeStart){
