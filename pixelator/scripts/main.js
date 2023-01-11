@@ -27,6 +27,10 @@ $(document).ready(function () {
     
     let pointCount = 0;
 
+    let animateList = [];
+    let animation = false;
+    let animateID;
+
     class Pixel{
         constructor(color='transparent', id=null){
             this.color = color;
@@ -426,7 +430,6 @@ $(document).ready(function () {
 
             return true
         }
-
         return false;
     }
 
@@ -450,8 +453,30 @@ $(document).ready(function () {
         swapGrid(target);
     }
 
+    const animatePreview = function(){
+        if (animation){
+            clearInterval(animateID);
+        }
+
+        if(animateList.length > 1){
+            animation = true;
+            let currIndex = 0
+            
+            animateID = setInterval(() => {
+                const item = animateList[currIndex];
+                $('#sampleimg').css('background-image', `url(${item})`);
+                currIndex += 1;
+                if (currIndex === animateList.length){
+                    currIndex = 0;
+                }
+            }, 1000);
+        } else{
+            $('#sampleimg').css('background-image', `url(${animateList[0]})`);
+        }
+    }
+
     const createGrid = function(count){
-        console.log('created ' +  grid_count + ' grid');
+        // console.log('created ' +  grid_count + ' grid');
         $(':root').css('--gridcount', `${count}`);
         $('#grid').empty();
         grid = [];
@@ -481,13 +506,10 @@ $(document).ready(function () {
 
     $('#undo').on('click', ()=>{
         internalUndo();
-        
-
         if (grid_stack.length < 2){
             $('#undo').prop('disabled', true);
         }
-
-        console.log(grid_stack.length)
+        // console.log(grid_stack.length)
         $('#redo').prop('disabled', false);
     });
 
@@ -586,7 +608,6 @@ $(document).ready(function () {
         yBrush = false;
     });
 
-
     $('[id^=menu-]').on('click', function(){
         $('[id^=menu-]').removeClass('active')
         $(this).addClass('active');
@@ -609,29 +630,57 @@ $(document).ready(function () {
         $('#gridCheck').toggleClass('hidden');
     });
 
-    $('#pngdown').on('click', () => {
-        // EDIT use htmlcsstoimage api
-        const parent = document.getElementById('sample');
-        const node = document.getElementById('grid')
-        const canvas = document.createElement('canvas');
-        canvas.width = node.scrollWidth;
-        canvas.height = node.scrollHeight;
+    $('#pngdown, #download').on('click', () => {
+        let bg = false
 
-        domtoimage.toPng(node).then(function(pngDataUrl){
+        if ($('#grid').hasClass('visible-background')){
+            $('#grid').removeClass('visible-background');
+            bg = true;
+        }
+
+        domtoimage.toBlob(document.getElementById('grid'))
+        .then(function (blob) {
+            window.saveAs(blob, 'pixealtor-creation.png');
+
+            if(bg){
+                $('#grid').addClass('visible-background');
+            } 
+        });
+    });
+
+    let firstAdd = true;
+    $('#add').on('click', ()=>{
+        if (firstAdd){
+            $('#frameContainer').empty();
+            firstAdd = false;
+        }
+
+        let bg = false
+
+        if ($('#grid').hasClass('visible-background')){
+            $('#grid').removeClass('visible-background');
+            bg = true;
+        }
+
+        var node = document.getElementById('grid');
+        domtoimage.toPng(node)
+        .then(function (dataUrl) {
             var img = new Image();
-            img.onload = function(){
-                const context = canvas.getContext('2d');
-
-                context.translate(canvas.width, 0);
-                context.scale(-1, 1);
-                context.drawImage(img, 0, 0)
-                parent.appendChild(canvas);
+            img.src = dataUrl;
+            if(bg){
+                $('#grid').addClass('visible-background');
             }
-            img.src = pngDataUrl;
+            img.classList.add('frame');
+            $('#frameContainer').append(img);
+            animateList.push(dataUrl);
+            animatePreview();
+        })
+        .catch(function (error) {
+            console.error('oops, something went wrong!', error);
         });
 
     });
-
+            
     $('#gridInput').on('change', function(e){
         const newCount = e.target.value;
         let proceed = true;

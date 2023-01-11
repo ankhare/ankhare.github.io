@@ -65,16 +65,11 @@
             <div class="tg-dg"></div>
         </div>
     </div>
-    <!-- /ERROR: DOESNT SCROLL -->
     <div id="side-frames">
         <div id="frameContainer">
-            <div class="frame"></div>
-            <div class="frame"></div>
-            <div class="frame"></div>
-            <div class="frame"></div>
-            <div class="frame"></div>
-            <div class="frame"></div>
-
+            <p>
+                click add frames to see frames and preview
+            </p>
         </div>
     </div>
     <div id="side-settings">
@@ -121,7 +116,11 @@
     </div>
     <div id="right-side">
         <p id="ptext" class="w-100 text-center">PREVIEW</p>
-        <div id="sample"></div>
+        <div id="sample">
+            <div id="sampleimg">
+                <!-- <p>preview will appear here when frames are added</p> -->
+            </div>
+        </div>
         <div class="tools">
             <button id="add"><i class="fa-solid fa-plus"></i> Add Frame</button>
             <button id="download"><i class="fa-solid fa-download"></i> Download</button>  
@@ -129,6 +128,8 @@
     </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
-    <script defer src="scripts/main.js"></script>
+    <script src="scripts/dom-to-image.js"></script>
+    <script src="scripts/FileSaver.js"></script>
+    <script src="scripts/main.js"></script>
 </body>
 </html>
