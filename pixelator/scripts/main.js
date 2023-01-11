@@ -27,9 +27,13 @@ $(document).ready(function () {
     
     let pointCount = 0;
 
+    let firstAdd = true;
     let animateList = [];
-    let animation = false;
+    let animation;
     let animateID;
+    let newFrame;
+
+    let currentSide = 'create';
 
     class Pixel{
         constructor(color='transparent', id=null){
@@ -453,7 +457,13 @@ $(document).ready(function () {
         swapGrid(target);
     }
 
+    let firstAnimation = true;
     const animatePreview = function(){
+        if (firstAnimation){
+            $('#sampleImg').empty();
+            firstAnimation = false;
+        }
+
         if (animation){
             clearInterval(animateID);
         }
@@ -464,14 +474,14 @@ $(document).ready(function () {
             
             animateID = setInterval(() => {
                 const item = animateList[currIndex];
-                $('#sampleimg').css('background-image', `url(${item})`);
+                $('#sampleImg').css('background-image', `url(${item})`);
                 currIndex += 1;
                 if (currIndex === animateList.length){
                     currIndex = 0;
                 }
             }, 1000);
         } else{
-            $('#sampleimg').css('background-image', `url(${animateList[0]})`);
+            $('#sampleImg').css('background-image', `url(${animateList[0]})`);
         }
     }
 
@@ -615,6 +625,11 @@ $(document).ready(function () {
         
         const target = $(this).attr('id').split('-')[1];
         $('#side-' + target).addClass('show');
+
+        if (newFrame && (target == 'frames')){
+            $('#menu-frames').text('Frames ')
+        }
+        currentSide = target;
     });
 
 
@@ -648,7 +663,6 @@ $(document).ready(function () {
         });
     });
 
-    let firstAdd = true;
     $('#add').on('click', ()=>{
         if (firstAdd){
             $('#frameContainer').empty();
@@ -656,10 +670,14 @@ $(document).ready(function () {
         }
 
         let bg = false
-
         if ($('#grid').hasClass('visible-background')){
             $('#grid').removeClass('visible-background');
             bg = true;
+        }
+
+        if(currentSide != 'frames'){
+            $('#menu-frames').text('Frames ✨')
+            newFrame = true;
         }
 
         var node = document.getElementById('grid');
@@ -678,22 +696,34 @@ $(document).ready(function () {
         .catch(function (error) {
             console.error('oops, something went wrong!', error);
         });
-
     });
-            
+
+    $('#share').on('click', function(){
+        $('#sharetext').text('Copied to Clipboard!');
+        navigator.clipboard.writeText('Check out this cool pixel drawing website: https://anshitakhare.com/pixelator');
+        setTimeout(function(){
+            $('#sharetext').text('Share Website');
+        }, 2000)
+
+    })
     $('#gridInput').on('change', function(e){
         const newCount = e.target.value;
         let proceed = true;
 
-        if (!window.confirm('Changing the grid size will restart your project. Are you sure you want to continue?')){
+        if (!window.confirm('Changing the grid size will restart your project and delete all frames. Are you sure you want to continue?')){
             proceed = false;
         }
 
         if(proceed){
-            grid_stack = redo_stack = [];
             $(':root').css('--gridcount', `${newCount}`);
+            first_run = firstAdd = true;
+            animation = animateID = newFrame = false;
+            clearInterval(animateID);
+            animateList = grid_stack = redo_stack = [];
+            $('#frameContainer').empty();
+            $('#frameContainer').append("<p>When you add frames they will appear here</p>")
+            $('#sampleImg').append("<p>Add frames to preview your animation here</p>")
             grid_count = newCount;
-            first_run = true;
             createGrid(newCount);
             $('#pencil').trigger('click');
         }else{

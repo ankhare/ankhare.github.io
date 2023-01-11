@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
      <!-- fontawesome icons -->
      <script src="https://kit.fontawesome.com/22375b6341.js" crossorigin="anonymous"></script>
+    
+     <!-- google fonts preconnect -->
+     <link rel="preconnect" href="https://fonts.googleapis.com"> 
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     
      <!-- custom css -->
      <link rel="stylesheet" href="./style.css">
     <title>pixelator.</title>
@@ -16,7 +21,7 @@
         <div class="menu-inner">
             <button id="menu-create"class="active"> Create </button>
             <button id="menu-frames"> Frames </button>
-            <button id="menu-settings">Settings & Export</button>
+            <button id="menu-settings"> Settings & Export </button>
             <!-- <button id="menu-export"> Export </button>
             <button id="menu-help"> Help </button> -->
         </div>
@@ -33,10 +38,10 @@
             <button id="shape" name="shape" ><i class="fa-solid fa-draw-polygon"></i></button>
             <button id="erase" name="erase" ><i class="fa-solid fa-eraser"></i></button>
             <button id="ysim" name="y-axis symmetry" >
-                <img src="media/yax.png" alt="y-axis symmetry image">
+                <img src="media/sym.webp" alt="y-axis symmetry image">
             </button>
             <button id="xsim" name="pencil" >
-                <img src="media/yax.png" alt="x-axis symmetry image">
+                <img src="media/sym.webp" alt="x-axis symmetry image">
             </button>
             <button id="blank" name="blank" ><i class="fa-regular fa-trash-can"></i></button>
             <button id="undo" name="undo" disabled><i class="fa-solid fa-rotate-left"></i></button>
@@ -68,7 +73,7 @@
     <div id="side-frames">
         <div id="frameContainer">
             <p>
-                click add frames to see frames and preview
+                When you add frames they will appear here
             </p>
         </div>
     </div>
@@ -91,7 +96,7 @@
             <p id="backgroundCheck"><i class="fa-solid fa-check"></i></p>
         </div>
         <div id="toggleGrid" class="disabled">
-            <p>Show Grid</p>
+            <p>Add Grid</p>
             <p id="gridCheck" class="hidden"><i class="fa-solid fa-check"></i></p>
         </div>
         <div id="save">
@@ -107,23 +112,23 @@
             <p><i class="fa-solid fa-download"></i></p>
         </div>
         <div id="share">
-            <p>Share</p>
-            <p><i class="fa-solid fa-arrow-up-from-bracket"></i></p>
+            <p id="sharetext">Share Website</p>
+            <p><i class="fa-solid fa-share-nodes"></i></p>
         </div>
     </div>
     <div id="grid-container">
         <div id="grid" class="visible-background"></div>
     </div>
     <div id="right-side">
-        <p id="ptext" class="w-100 text-center">PREVIEW</p>
+        <p id="ptext" class="w-100 text-center">Preview</p>
         <div id="sample">
-            <div id="sampleimg">
-                <!-- <p>preview will appear here when frames are added</p> -->
+            <div id="sampleImg">
+                <p>Add frames to preview your animation here</p>
             </div>
         </div>
         <div class="tools">
             <button id="add"><i class="fa-solid fa-plus"></i> Add Frame</button>
-            <button id="download"><i class="fa-solid fa-download"></i> Download</button>  
+            <button id="download"><i class="fa-solid fa-download"></i> Download Image</button>  
         </div>
     </div>
     </div>

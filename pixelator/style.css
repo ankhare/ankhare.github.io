@@ -96,7 +96,7 @@ button{
     display: flex;
     width: 100%;
     height: 5%;
-    background-image: linear-gradient(90deg, #353e7d 50%, var(--target) 100%);
+    background-image: linear-gradient(90deg, #6a00ff 50%, var(--target) 100%);
     justify-content: space-between;
     /* border-bottom: 1px solid #38364a; */
 }
@@ -217,7 +217,7 @@ button#xsim > img{
     margin: 0 auto 2vmin;
     height: 15vmax;
     width: 15vmax;
-    border: 1px solid var(--dark);
+    /* border: 1px solid var(--dark); */
 }
 
 #sample > div{
@@ -227,6 +227,7 @@ button#xsim > img{
     background-repeat: no-repeat;
     background-attachment:local;
     background-position: center;
+    color: var(--gray);
 }
 
 
@@ -238,6 +239,7 @@ button#xsim > img{
     /* border: 1px solid var(--dark); */
     overflow-y: auto;
     overflow-x: auto;
+    color: var(--gray);
 }
 
 .frame{
@@ -310,7 +312,7 @@ button#xsim > img{
 
 .tools button:hover:enabled , #brushes button:hover:enabled{
     background-color: var(--sideaccent);
-    /* border-color: var(--accent); */
+    border-color: var(--target);
 }
 
 #brushes button.active, #brushes button:active:enabled{
@@ -438,9 +440,12 @@ div[class^=tg].disabled, #picker-display.disabled{
 .tg-gy{background-color:#686868;}
 
 
-/* button#download{
-    background: linear-gradient(90deg, var(--target) 0%, #8390f4 100%);
-} */
+button#download{
+    background: linear-gradient(90deg, #304fff 0%, #6a00ff 100%);
+}
+button#download:active{
+    color: white;
+}
 
 @media screen and (max-height: 420px){
     body{
@@ -492,6 +497,11 @@ div[class^=tg].disabled, #picker-display.disabled{
         flex-direction:column-reverse;
         padding-right: 2vmin;
         padding-bottom: 0px;
+    }
+
+    #side-settings > div{
+        padding-right: 1vw;
+        padding-left: 2vw;
     }
 
     .flex-container{
@@ -552,12 +562,17 @@ div[class^=tg].disabled, #picker-display.disabled{
     }
 
     #side-frames{
+        min-height: calc(12vmax + 2vmin);
         padding-right: 2vw;
         padding-left: 2vw;
     }
 
     #frameContainer{
         flex-direction: row;
+    }
+
+    #frameContainer > p{
+        margin: auto;
     }
 
     .frame{
