@@ -119,7 +119,7 @@ $(document).ready(function () {
             grid_stack.push(clonedGrid);
         }
 
-        console.log('stack: ' + grid_stack.length);
+        // console.log('stack: ' + grid_stack.length);
 
         if (grid_stack.length > 0){
             $('#undo').prop('disabled', false);
@@ -445,7 +445,7 @@ $(document).ready(function () {
     }
 
     const internalUndo = function(){
-        console.log('internal undo');
+        // console.log('internal undo');
         const latest = grid_stack.pop();
         redo_stack.push(latest);
         

@@ -28,19 +28,19 @@
     <div class="flex-container">
     <div id="side-create" class="show">
         <div id="brushes">
-            <button id="pencil" class="active"><i class="fa-solid fa-paintbrush"></i></button>
-            <button id="fill"><i class="fa-solid fa-fill-drip"></i></button>
-            <button id="shape"><i class="fa-solid fa-draw-polygon"></i></button>
-            <button id="erase"><i class="fa-solid fa-eraser"></i></button>
-            <button id="ysim">
+            <button id="pencil" name="pencil" class="active"><i class="fa-solid fa-paintbrush"></i></button>
+            <button id="fill" name="fill" ><i class="fa-solid fa-fill-drip"></i></button>
+            <button id="shape" name="shape" ><i class="fa-solid fa-draw-polygon"></i></button>
+            <button id="erase" name="erase" ><i class="fa-solid fa-eraser"></i></button>
+            <button id="ysim" name="y-axis symmetry" >
                 <img src="media/yax.png" alt="y-axis symmetry image">
             </button>
-            <button id="xsim">
+            <button id="xsim" name="pencil" >
                 <img src="media/yax.png" alt="x-axis symmetry image">
             </button>
-            <button id="blank"><i class="fa-regular fa-trash-can"></i></button>
-            <button id="undo" disabled><i class="fa-solid fa-rotate-left"></i></button>
-            <button id="redo" disabled><i class="fa-solid fa-rotate-right"></i></button>
+            <button id="blank" name="blank" ><i class="fa-regular fa-trash-can"></i></button>
+            <button id="undo" name="undo" disabled><i class="fa-solid fa-rotate-left"></i></button>
+            <button id="redo" name="redo" disabled><i class="fa-solid fa-rotate-right"></i></button>
         </div>
         <div id="colors">
             <input type="color" name="colorpicker" id="colorpicker">
@@ -127,7 +127,7 @@
         </div>
     </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+    <script src="scripts/jquery-3.6.2.min.js"></script>
     <script src="scripts/dom-to-image.js"></script>
     <script src="scripts/FileSaver.js"></script>
     <script src="scripts/main.js"></script>
