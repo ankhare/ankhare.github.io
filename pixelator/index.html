@@ -16,6 +16,9 @@
     <title>pixelator.</title>
 </head>
 <body>
+    <div id="loadingscreen">
+        <div id="spinner"></div>
+    </div>
     <div id="main">
     <div class="menu">
         <div class="menu-inner">
@@ -34,16 +37,16 @@
     <div id="side-create" class="show">
         <div id="brushes">
             <button id="pencil" name="pencil" class="active"><i class="fa-solid fa-paintbrush"></i></button>
-            <button id="fill" name="fill" ><i class="fa-solid fa-fill-drip"></i></button>
-            <button id="shape" name="shape" ><i class="fa-solid fa-draw-polygon"></i></button>
-            <button id="erase" name="erase" ><i class="fa-solid fa-eraser"></i></button>
+            <button id="fill" name="fill"><i class="fa-solid fa-fill-drip"></i></button>
+            <button id="shape" name="shape"><i class="fa-solid fa-draw-polygon"></i></button>
+            <button id="erase" name="erase"><i class="fa-solid fa-eraser"></i></button>
             <button id="ysim" name="y-axis symmetry" >
                 <img src="media/sym.webp" alt="y-axis symmetry image">
             </button>
-            <button id="xsim" name="pencil" >
+            <button id="xsim" name="pencil">
                 <img src="media/sym.webp" alt="x-axis symmetry image">
             </button>
-            <button id="blank" name="blank" ><i class="fa-regular fa-trash-can"></i></button>
+            <button id="blank" name="blank"><i class="fa-regular fa-trash-can"></i></button>
             <button id="undo" name="undo" disabled><i class="fa-solid fa-rotate-left"></i></button>
             <button id="redo" name="redo" disabled><i class="fa-solid fa-rotate-right"></i></button>
         </div>
@@ -72,10 +75,9 @@
     </div>
     <div id="side-frames">
         <div id="frameContainer">
-            <p>
-                When you add frames they will appear here
-            </p>
+            <p>When you add frames they will appear here</p>
         </div>
+        <button id="edit"><i class="fa-regular fa-trash-can"></i> Delete Frames</button>
     </div>
     <div id="side-settings">
         <div id="gridSize">
@@ -103,6 +105,10 @@
             <p>Save as .pixel</p>
             <p><i class="fa-regular fa-floppy-disk"></i></p>
         </div>
+        <div id="open">
+            <p>Open .pixel</p>
+            <p><i class="fa-regular fa-floppy-disk"></i></p>
+        </div>
         <div id="pngdown">
             <p> Download as .png </p>
             <p><i class="fa-solid fa-download"></i></p>
@@ -120,10 +126,12 @@
         <div id="grid" class="visible-background"></div>
     </div>
     <div id="right-side">
-        <p id="ptext" class="w-100 text-center">Preview</p>
-        <div id="sample">
-            <div id="sampleImg">
-                <p>Add frames to preview your animation here</p>
+        <div>
+            <p id="ptext" class="w-100 text-center">Preview</p>
+            <div id="sample">
+                <div id="sampleImg">
+                    <p>Add frames to preview your animation here</p>
+                </div>
             </div>
         </div>
         <div class="tools">

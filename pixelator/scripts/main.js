@@ -1,6 +1,4 @@
 'use strict';
-// import domtoimage from 'dom-to-image';
-
 $(document).ready(function () {
     let grid = [];
     let grid_count = 30;
@@ -11,6 +9,8 @@ $(document).ready(function () {
     let blankGrid = [];
     
     let first_run = true;
+    let firstAdd = true;
+    let firstAnimation = true;
     let isDragging ;
     let mouseDown;
 
@@ -27,13 +27,14 @@ $(document).ready(function () {
     
     let pointCount = 0;
 
-    let firstAdd = true;
-    let animateList = [];
+    let animateMap = new Map();
     let animation;
     let animateID;
     let newFrame;
 
+    let editToggle = false;
     let currentSide = 'create';
+    let currentBrush = 'pencil';
 
     class Pixel{
         constructor(color='transparent', id=null){
@@ -144,6 +145,14 @@ $(document).ready(function () {
         $('#redo').prop('disabled', true);
 
         switch(true){
+            case(yBrush):{
+                ySym($e);
+                break;
+            }
+            case(xBrush):{
+                xSym($e);
+                break;
+            }
             case pencilBrush:{
                 pencil($e);
                 break;
@@ -156,14 +165,6 @@ $(document).ready(function () {
             }
             case shapeBrush:{
                 shape($e);
-                break;
-            }
-            case(yBrush):{
-                ySym($e);
-                break;
-            }
-            case(xBrush):{
-                xSym($e);
                 break;
             }
         }
@@ -457,7 +458,42 @@ $(document).ready(function () {
         swapGrid(target);
     }
 
-    let firstAnimation = true;
+    const noFrames = function(){
+        clearInterval(animateID);
+        firstAdd = firstAnimation = true;
+        animation = newFrame = false;
+        $('#frameContainer').html("<p>When you add frames they will appear here</p>");
+        $('#sampleImg').css('background-image','none');
+        $('#sampleImg').html("<p>Add frames to preview your animation here</p>")
+        $('#edit').removeClass('show');
+    }
+
+    const allowEdit = function(){
+        $('#edit').css('color', 'red');
+        $('[id^=f-]').addClass('shake');
+        $('[id^=f-]').on('click', function(){
+            const frameid = $(this).attr('id')
+            $(this).remove();
+            animateMap.delete(frameid);
+            animatePreview();
+            if (animateMap.size === 0){
+               noFrames();
+            }
+        });
+    }
+
+    const removeEdit = function(){
+        $('#edit').css('color', 'inherit');
+        $('[id^=f-]').removeClass('shake');
+        //TODO: modern unbind listeners
+        $('[id^=f-]').unbind('click');
+    }
+
+    const bindPlayListener = function(){
+        $('#playAnimation').on('click', function(){
+            animatePreview();
+        })
+    }
     const animatePreview = function(){
         if (firstAnimation){
             $('#sampleImg').empty();
@@ -468,12 +504,23 @@ $(document).ready(function () {
             clearInterval(animateID);
         }
 
-        if(animateList.length > 1){
+        const animateList = Array.from(animateMap.keys());
+        if(animateMap.size > 1){
+            $('#sampleImg').html('<i id="pauseAnimation" class="fa-solid fa-pause"></i>');
+           
+            $('#pauseAnimation').on('click', function(){
+                clearInterval(animateID);
+                $('#sampleImg').html('<i id="playAnimation" class="fa-solid fa-play"></i>');
+                bindPlayListener();
+            })
+
             animation = true;
             let currIndex = 0
+
             
             animateID = setInterval(() => {
-                const item = animateList[currIndex];
+                const key = animateList[currIndex];
+                const item = animateMap.get(key);
                 $('#sampleImg').css('background-image', `url(${item})`);
                 currIndex += 1;
                 if (currIndex === animateList.length){
@@ -481,7 +528,7 @@ $(document).ready(function () {
                 }
             }, 1000);
         } else{
-            $('#sampleImg').css('background-image', `url(${animateList[0]})`);
+            $('#sampleImg').css('background-image', `url(${animateMap.get(animateList[0])})`);
         }
     }
 
@@ -549,7 +596,9 @@ $(document).ready(function () {
     });
     
     $('#pencil').on('click',function(){
-        $('#brushes').children().removeClass('active');
+        $('#' + currentBrush).removeClass('active');
+        currentBrush = $(this).attr('id');
+
         $(this).addClass('active');
         pencilBrush = true;
         fillBucket = false;
@@ -560,7 +609,8 @@ $(document).ready(function () {
     });
 
     $('#fill').on('click',function(){
-        $('#brushes').children().removeClass('active');
+        $('#' + currentBrush).removeClass('active');
+        currentBrush = $(this).attr('id');
         $(this).addClass('active');
         fillBucket = true;
         pencilBrush = false;
@@ -572,7 +622,8 @@ $(document).ready(function () {
 
 
     $('#shape').on('click',function(){
-        $('#brushes').children().removeClass('active');
+        $('#' + currentBrush).removeClass('active');
+        currentBrush = $(this).attr('id');
         $(this).addClass('active');
         $('#picker-display, [class^=tg]').removeClass('disabled');
         shapeBrush = true;
@@ -584,7 +635,8 @@ $(document).ready(function () {
     });
 
     $('#erase').on('click',function(){
-        $('#brushes').children().removeClass('active');
+        $('#' + currentBrush).removeClass('active');
+        currentBrush = $(this).attr('id');
         $(this).addClass('active');
         $('#picker-display, [class^=tg]').addClass('disabled');
         eraseBrush = true;
@@ -597,7 +649,8 @@ $(document).ready(function () {
     });
 
     $('#ysim').on('click',function(){
-        $('#brushes').children().removeClass('active');
+        $('#' + currentBrush).removeClass('active');
+        currentBrush = $(this).attr('id');
         $(this).addClass('active');
         yBrush = true;
         pencilBrush = false;
@@ -608,7 +661,8 @@ $(document).ready(function () {
     });
 
     $('#xsim').on('click',function(){
-        $('#brushes').children().removeClass('active');
+        $('#' + currentBrush).removeClass('active');
+        currentBrush = $(this).attr('id');
         $(this).addClass('active');
         xBrush = true;
         pencilBrush = false;
@@ -619,6 +673,8 @@ $(document).ready(function () {
     });
 
     $('[id^=menu-]').on('click', function(){
+        removeEdit();
+        editToggle = false;
         $('[id^=menu-]').removeClass('active')
         $(this).addClass('active');
         $('[id^=side-]').removeClass('show');
@@ -629,6 +685,7 @@ $(document).ready(function () {
         if (newFrame && (target == 'frames')){
             $('#menu-frames').text('Frames ')
         }
+
         currentSide = target;
     });
 
@@ -652,50 +709,79 @@ $(document).ready(function () {
             $('#grid').removeClass('visible-background');
             bg = true;
         }
-
+        $('#loadingscreen').addClass('show');
         domtoimage.toBlob(document.getElementById('grid'))
         .then(function (blob) {
             window.saveAs(blob, 'pixealtor-creation.png');
-
-            if(bg){
-                $('#grid').addClass('visible-background');
-            } 
-        });
-    });
-
-    $('#add').on('click', ()=>{
-        if (firstAdd){
-            $('#frameContainer').empty();
-            firstAdd = false;
-        }
-
-        let bg = false
-        if ($('#grid').hasClass('visible-background')){
-            $('#grid').removeClass('visible-background');
-            bg = true;
-        }
-
-        if(currentSide != 'frames'){
-            $('#menu-frames').text('Frames ✨')
-            newFrame = true;
-        }
-
-        var node = document.getElementById('grid');
-        domtoimage.toPng(node)
-        .then(function (dataUrl) {
-            var img = new Image();
-            img.src = dataUrl;
             if(bg){
                 $('#grid').addClass('visible-background');
             }
-            img.classList.add('frame');
-            $('#frameContainer').append(img);
-            animateList.push(dataUrl);
-            animatePreview();
-        })
-        .catch(function (error) {
-            console.error('oops, something went wrong!', error);
+            $('#loadingscreen').removeClass('show');
         });
+    });
+    
+    $('#edit').on('click', function(){
+        if(editToggle){
+            removeEdit();
+            editToggle = false;
+        }else{
+            allowEdit();
+            editToggle = true;
+        }
+    });
+
+    $('#add').on('click', (event)=>{
+        //TODO: add size reached indication
+        if (animateMap.size <= 10){
+            if (firstAdd){
+                $('#frameContainer').empty();
+                $('#edit').addClass('show');
+                firstAdd = false;
+            }
+    
+            let bg = false
+            if ($('#grid').hasClass('visible-background')){
+                $('#grid').removeClass('visible-background');
+                bg = true;
+            }
+
+            if(animateMap.size === 10){
+                $('#add').prop('disabled', true);
+            }
+
+            if ($('#add').prop('disabled') == true && animateMap.size <= 9){
+                $('#add').prop('disabled', false);
+            }
+    
+            if(currentSide != 'frames'){
+                $('#menu-frames').text('Frames ✨')
+                newFrame = true;
+            }
+    
+            $('#loadingscreen').addClass('show');
+            var node = document.getElementById('grid');
+            domtoimage.toPng(node)
+            .then(function (dataUrl) {
+                var img = new Image();
+                img.src = dataUrl;
+                if(bg){
+                    $('#grid').addClass('visible-background');
+                }
+                
+                const frameid = `f-${event.timeStamp}`
+                img.classList.add('frame');
+                img.setAttribute('id', frameid);
+                // console.log(frameid);
+                $('#frameContainer').append(img);
+                animateMap.set(`f-${event.timeStamp}`, dataUrl);
+                animatePreview();
+                $('#loadingscreen').removeClass('show');
+                // console.log(animateMap);
+            })
+            .catch(function (error) {
+                console.error('oops, something went wrong!', error);
+            });
+        }   
     });
 
     $('#share').on('click', function(){
@@ -703,26 +789,23 @@ $(document).ready(function () {
         navigator.clipboard.writeText('Check out this cool pixel drawing website: https://anshitakhare.com/pixelator');
         setTimeout(function(){
             $('#sharetext').text('Share Website');
-        }, 2000)
+        }, 1000)
 
     })
     $('#gridInput').on('change', function(e){
         const newCount = e.target.value;
-        let proceed = true;
+        let proceed = false;
 
-        if (!window.confirm('Changing the grid size will restart your project and delete all frames. Are you sure you want to continue?')){
-            proceed = false;
+        if (window.confirm('Changing the grid size will restart your project and delete all frames. Are you sure you want to continue?')){
+            proceed = true;
         }
 
         if(proceed){
             $(':root').css('--gridcount', `${newCount}`);
-            first_run = firstAdd = true;
-            animation = animateID = newFrame = false;
-            clearInterval(animateID);
-            animateList = grid_stack = redo_stack = [];
-            $('#frameContainer').empty();
-            $('#frameContainer').append("<p>When you add frames they will appear here</p>")
-            $('#sampleImg').append("<p>Add frames to preview your animation here</p>")
+            first_run = true;
+            grid_stack = redo_stack = [];
+            animateMap = new Map();
+            noFrames();
             grid_count = newCount;
             createGrid(newCount);
             $('#pencil').trigger('click');
