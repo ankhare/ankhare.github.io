@@ -100,7 +100,7 @@ $(document).ready(function () {
         $(imageArray).each(function(){
             $('<img/>')[0].src = this;
         });
-    })(['media/pixelator.webp',
+    })(['media/mario.webp',
     'media/cc.webp',
     'media/hexdle.gif',
     'media/jumprex.webp']);
