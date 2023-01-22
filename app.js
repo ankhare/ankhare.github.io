@@ -28,7 +28,6 @@ $(document).ready(function () {
         //     entry.target.classList.remove("show1");
         //   }
         });
-
     });
     
     const hiddenElements = document.querySelectorAll(".hidden1");
@@ -60,15 +59,14 @@ $(document).ready(function () {
         $('.btn').removeClass('active');
         $('.filter').removeClass('showfilter');
 
+        let curr = 'featured'
         if(resp === 'language'){
-            $('#javascript').addClass('active');
-            $('.javascript').addClass('showfilter'); 
-            number = $('.javascript').length;
-        } else if(resp == 'category'){
-            $('#featured').addClass('active');
-            $('.featured').addClass('showfilter'); 
-            number = $('.featured').length;
+            curr = 'javascript'
         }
+
+        $(`#${curr}`).addClass('active');
+        $(`.${curr}`).addClass('showfilter'); 
+        number = $(`.${curr}`).length;
 
         $('#results').text(number);
     });

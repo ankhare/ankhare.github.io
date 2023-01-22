@@ -254,48 +254,6 @@ $(document).ready(function () {
         }
     }
 
-    // const fill1 = function($e){
-    //     const id = $e.attr('id');
-    //     const placement = id.split('_');
-    //     const i =  parseInt(placement[0]);
-    //     const j =  parseInt(placement[1]);
-
-    //     //NOTE: make this global if you want to call this function
-    //     fillCounter = 0;
-
-    //     recursiveFill(i, j, grid[i][j].getColor());
-    //     addToStack(grid);
-    // }
-
-    // const recursiveFill = function(i, j, initial_color){
-    //     fillCounter++;
-    //     //same color
-    //     if(initial_color === brush_color){
-    //         return;
-    //     }
-    //     //prevent looping/overflow: dont recurse more than each pixel in grid and its 4 adjacent neighbors
-    //     if(fillCounter > ((grid_count-1) * (grid_count-1) * 4)){
-    //         return;
-    //     }
-    //     //touch a different color
-    //     if(grid[i][j].getColor() != initial_color){
-    //         return;
-    //     }
-    //     grid[i][j].setColor(brush_color);
-    //     if(x != grid.length-1){
-    //         recursiveFill(i+1, j, initial_color);
-    //     }
-    //     if(x != 0){
-    //         recursiveFill(i-1, j, initial_color);
-    //     }
-    //     if(y != grid.length-1){
-    //         recursiveFill(i, j+1, initial_color);
-    //     }
-    //     if(y != 0){
-    //         recursiveFill(i, j-1, initial_color);
-    //     }  
-    // };
-
     const notShape = function(){
         shapeBrush = false;
         if($blinkingPix){
@@ -738,7 +696,6 @@ $(document).ready(function () {
                 $('#edit').addClass('show');
                 firstAdd = false;
             }
-    
             let bg = false
             if ($('#grid').hasClass('visible-background')){
                 $('#grid').removeClass('visible-background');
