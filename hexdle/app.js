@@ -206,14 +206,13 @@ $(document).ready(function () {
         //after results are displayed
         setTimeout(() => {
             //change the color of keyboard
-            //change to more effecient method, this one overwrites itself 
-            gray.forEach((word, i) => {
+            gray.forEach((i) => {
                 $('#b' + gray[i]).addClass('gray')
             })
-            yellow.forEach((word, i) => {
+            yellow.forEach((i) => {
                 $('#b' + yellow[i]).addClass('yellow')
             })
-            green.forEach((word, i) => {
+            green.forEach((i) => {
                 $('#b' + green[i]).addClass('green')
             })
 
