@@ -205,13 +205,13 @@ $(document).ready(function () {
         //after results are displayed
         setTimeout(() => {
             //change the color of keyboard
-            gray.forEach((i) => {
+            gray.forEach((word, i) => {
                 $('#b' + gray[i]).addClass('gray')
             })
-            yellow.forEach((i) => {
+            yellow.forEach((word, i) => {
                 $('#b' + yellow[i]).addClass('yellow')
             })
-            green.forEach((i) => {
+            green.forEach((word, i) => {
                 $('#b' + green[i]).addClass('green')
             })
 
