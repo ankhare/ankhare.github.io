@@ -1,7 +1,6 @@
 'use strict';
 $(document).ready(function () {
     document.addEventListener("touchstart", function(){}, true);
-
     //enable bootstrap popover
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
     var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
@@ -19,7 +18,7 @@ $(document).ready(function () {
     });
 
     //initialize canvas conffetti 
-    var myConfetti = confetti.create(myCanvas, { resize: true });
+    confetti.create(myCanvas, { resize: true });
 
     //generate random color
     function randomColor() {

@@ -11,6 +11,10 @@
         text-align: center;
     }
 
+    #title{
+        text-transform: uppercase;
+        letter-spacing: 1rem;
+    }
     .nozoom{
         touch-action:none;
     }
