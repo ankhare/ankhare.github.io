@@ -486,6 +486,9 @@ $(document).ready(function () {
                 }
             }, 1000);
         } else{
+            console.log(animateMap);
+            console.log("");
+            console.log(animateList);
             $('#sampleImg').css('background-image', `url(${animateMap.get(animateList[0])})`);
         }
     }
@@ -771,3 +774,7 @@ $(document).ready(function () {
         }
     });
 });
+
+//TODO: drag to move frame order
+//gif download
+//serilaize and download/reupload grid object
