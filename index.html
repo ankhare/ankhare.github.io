@@ -469,6 +469,43 @@
   
   <!-- Custom JS -->
   <script defer src="app.js"></script>
+
+  $id = "youtube-".$item["id"];
+  $index = "videos";
+  $federated = "true";
+  $resource_uri = "https://www.youtube.com/watch?v=$item".["id"]["videoId"];
+  $date_when = str_replace("-", "", explode("T", "2021-11-04T17:42:59Z")[0]);
+  $title = $item["snippet"]["title"];
+  $teaser = $item["snippet"]["description"];
+  $text = $item["snippet"]["description"];
+  $doc_beginning = $item["snippet"]["description"];
+  $features = "video";
+  $group_name = "video";
+  $resource_group_name = "youtube";
+
+  $id = $index = $federated = $resource_uri = $date_when = $title = $teaser = $ text = $doc_beginning = "temp";
+
+  $features = "video";
+  $group_name = "video";
+  $resource_group_name = "youtube";
+  
+  <add>
+    <doc>
+      <field name="id">$id</field>
+      <field name="index">$index</field>
+      <field name="federated">$federated</field>
+      <field name="resource_uri">$resource_uri</field>
+      <field name="date_when">$date_when</field>
+      <field name="ref_image_url">$ref_image_url</field>
+      <field name="title">$title</field>
+      <field name="teaser">$teaser</field>
+      <field name="text">$text</field>
+      <field name="doc_beginning">$doc_beginning</field>
+      <field name="features">$features</field>
+      <field name="group_name">$group_name</field>
+      <field name="resource_group_name">$resource_group_name</field>
+    </doc>
+  </add>
   
   
 </body>

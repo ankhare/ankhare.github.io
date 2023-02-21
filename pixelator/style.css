@@ -244,7 +244,7 @@ button#xsim > img{
     color:white;
     padding: 2vw;
     /* background-color: var(--sidecolor); */
-    background-image: linear-gradient(0deg, #191822 0%, #313346 100%);
+    background-image: linear-gradient(0deg, #272b3a 0%, #313346 100%);
     display: flex;
     flex-direction: column;
 }
