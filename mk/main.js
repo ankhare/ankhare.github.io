@@ -534,9 +534,6 @@ $(document).ready(function () {
         $('.affiliate').removeClass('active');
         $('#t' + id).addClass('active');
 
-        //get the id of the clicked icon
-        const id = e.target.id;
-
         //scroll to cooresponding text element
         document.getElementById('t' + id).scrollIntoView({
             behavior: "smooth",
