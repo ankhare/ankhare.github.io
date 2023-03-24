@@ -520,7 +520,7 @@ button#download:active{
     color: white;
 }
 
-@media screen and (max-height: 420px){
+@media screen and (max-height: 824px){
     body{
         position: absolute;
     }
