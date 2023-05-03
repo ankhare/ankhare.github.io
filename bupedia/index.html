@@ -7,89 +7,259 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <title>BuPedia</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+        :root {
+            --white: rgb(252, 251, 253);
+        }
         body{
             font-family: sans-serif;
+            color: var(--white);
+            background-color: black;
+            font-family: 'Lato', sans-serif;
         }
-        .landing{
-            height: 100vh;
+        input{
+            border: none;
+            border-radius: 15px;
+            min-width: 50vw;
+            padding: 0 1rem;
+            font-size: 1.2rem;
+        }
+
+        em{
+            color:#cd66f2;
+            font-style: normal;
+        }
+        button{
+            margin-left: 1rem;
+            border: none;
+            border-radius: 15px;
+            background-color: #cd66f2;
+            color: var(--white);
+            padding: 0 1rem;
+            font-size: 1.2rem;
+        }
+        .scroll{
+            scroll-snap-type: mandatory;
+            scroll-snap-points-y: repeat(100vh);
+            scroll-snap-type: y mandatory;
+        }
+        .snap{
+            scroll-snap-align: start;
+        }
+        span, .navbar-dark .navbar-nav .nav-link{
+            color: #cd66f2;
+        }
+        .full-screen{
+            min-height: 100vh;
+            height: max-content;
             width: 100vw;
             display: flex;
             align-items: center;
             justify-content: space-around;
-            text-align: center;
+            padding: 1rem;
         }
 
-        .landing h1{
+        .full-screen h1{
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+
+        .huge{
+            font-size: calc(3rem + 12vw);
+            line-height: 80%;
+            font-weight: 300;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .landing{
+            background-image: url("starry.gif");
+            object-fit: cover;
+        }
+
+        h1{
+            font-family: 'Playfair Display', serif;
+            font-size: calc(2rem + 5vw);
+            color: #ce56fa3c;
+        }
+        h2{
+            font-family: 'Playfair Display', serif;            
+        }
+        h3{
+            font-weight: 700;
+        }
+        h1.underneath{
+            z-index: -1;
+            transform: translate(8%,-60%);
+            position: absolute;
+        }
+        .text-muted1{
+            color: rgb(97, 84, 94);
+            font-weight: 300;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">Hotel Booking Project</a>
+    <nav class="navbar navbar-dark position-fixed w-100">
+        <h2><a class="navbar-brand" href="#"><span>BU</span>pedia</a></h2>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="#objective">Objective</a></li>
-                <li class="nav-item"><a class="nav-link" href="#milestones">Milestones</a></li>
-                <li class="nav-item"><a class="nav-link" href="#requirements">Requirements</a></li>
-                <li class="nav-item"><a class="nav-link" href="#assumptions">Assumptions</a></li>
-                <li class="nav-item"><a class="nav-link" href="#limits">Limits & Exclusions</a></li>
-                <li class="nav-item"><a class="nav-link" href="#wbs">WBS</a></li>
-                <li class="nav-item"><a cla
-                    ss="nav-link" href="#milestone-list">Milestone List</a></li>
+                <li class="nav-item ml-auto"><a class="nav-link" href="#objective">Objective</a></li>
+                <li class="nav-item ml-auto"><a class="nav-link" href="#scope">Scope</a></li>
+                <li class="nav-item ml-auto"><a class="nav-link" href="#milestones">Milestones</a></li>
+                <li class="nav-item ml-auto"><a class="nav-link" href="#requirements">Requirements</a></li>
+                <li class="nav-item ml-auto"><a class="nav-link" href="#assumptionsAndLimits">Assumptions & Limits</a></li>
+                <li class="nav-item ml-auto"><a class="nav-link" href="#wbs">WBS</a></li>
             </ul>
         </div>
     </nav>
-    <div class="landing"">
-        <div>
-            <div >LOGO</div>
-            <h1> Coming Soon!</h1>
-        </div>
+    <div class="scroll">
+        <section class="full-screen landing snap">
+            <div class="w-xs-100 d-flex flex-column">
+                <h2><span>BU</span>pedia</h2>
+                <h4 class="p-0 m-0">Discover hotel booking deals that are out of this world! </h4>
+                <p class="huge gradient">Coming <br>Soon.</p>
+                <div class="mx-auto mt-4">
+                    <h4 class="mb-2 p-0">Sign Up to Stay Up to Date</h4>
+                    <input placeholder="Email" type="text">
+                    <button>Sign Up</button>
+                </div>
+            </div>
+        </section>
+        
+        <section id="objective" class="full-screen snap">
+            <div class="position-relative">
+                <h1 class="underneath">Objective</h1>
+                <h3 class="px-5">What are we trying to do?</h3>
+                <p class="px-5">
+                    Our main objective is to develop a hotel booking website that provides customers with a user-friendly platform to easily search, compare, and book hotel rooms across various locations.
+                    <br/><br/>
+                    In effort to tap into the growing trend of experiential travel, where customers are looking for unique and exciting travel experiences that go beyond just a place to sleep that are still affordable. 
+                    By offering a user-friendly platform that highlights "deals that are out of this world," we are looking to attract customers who are looking for something different and exciting in their travels.
+                </p>
+            </div>
+        </section>
+
+        <section id="scope" class="full-screen snap">
+            <div class="position-relative">
+                <h1 class="underneath">Scope</h1>
+                <h3 class="px-5">Deliverables</h3>
+                <ul>
+                    <li>Conduct market research and generate a report that details information about the hotel industry and the competitive landscape of existing hotel booking websites.</li>
+                    <li>Identify key features and functionalities that users look for in a hotel booking website and determine how they can be incorporated into the new website.</li>
+                    <li>Develop a comprehensive plan for the website's design, outlining the layout, color scheme, and overall aesthetic of the website.</li>
+                    <li>Create a detailed development plan that includes the programming languages, software, and technology stack to be used for building the website.</li>
+                    <li>Test and launch the website, ensuring that it is user-friendly, secure, and fully functional.</li>
+                    <li>Provide ongoing maintenance and support for the website to ensure that it remains up-to-date, secure, and optimized for user experience.</li>
+                  </ul>
+            </div>
+        </section>
+        <section id="milestones" class="full-screen snap">
+            <div class="block d-md-flex align-center">
+                <h1> Milestones</h1>
+                <ul>
+                    <li>Market Research Completed: January 15th, 2023</li>
+                    <li>Website Design Plan Developed: February 15th, 2023</li>
+                    <li>Development Plan Finalized: March 15th, 2023</li>
+                    <li>Website Development and Testing Completed: May 15th, 2023</li>
+                    <li>Website Launched: June 1st, 2023</li>
+                    <li>Ongoing Maintenance and Support Provided: Starting June 1st, 2023</li>
+                </ul>
+            </div>
+        </section>
+    
+        <section id="requirements" class="full-screen snap">
+            <div class="position-relative">
+                <h1 class="underneath">Requirements</h1>
+                <h3 class="px-5">What will our website do?</h3>
+                <p class="px-5">
+                    Our main objective is to develop a hotel booking website that provides customers with a user-friendly platform to easily search, compare, and book hotel rooms across various locations.
+                    <br/><br/>
+                    In effort to tap into the growing trend of experiential travel, where customers are looking for unique and exciting travel experiences that go beyond just a place to sleep that are still affordable. 
+                    By offering a user-friendly platform that highlights "deals that are out of this world," we are looking to attract customers who are looking for something different and exciting in their travels.
+                </p>
+            </div>
+        </section>
+    
+        <!-- <section id="assumptionsAndLimits" class="full-screen snap">
+            <div class="container">
+                <div class="row">
+                  <div class="col-sm">
+                    <h3 class="px-5">Assumptions</h3>
+                    <ul>
+                        <li>Responsive website design compatible with various devices (desktop, mobile, and tablet) and screen sizes.</li>
+                        <li>Secure user authentication and registration system.</li>
+                        <li>Integration of a reliable payment gateway for secure online transactions.</li>
+                        <li>Implementation of a robust search and filtering system for easy navigation and hotel discovery.</li>
+                        <li>Integration of an interactive map displaying hotel locations and nearby attractions.</li>
+                        <li>API integration with popular review platforms to display real-time guest reviews and ratings.</li>
+                        <li>Integration of a live chat and customer support system for seamless communication with guests.</li>
+                        <li>Implementation of a content management system (CMS) for easy updating and maintenance of hotel information, images, and promotions.</li>
+                        <li>Advanced analytics and reporting tools to monitor website performance, user behavior, and booking trends.</li>
+                      </ul>
+                  </div>
+                  <div class="col-sm">
+                    <h3 class="px-5">Limits and Exclusions</h3>
+                        <ul>
+                            <li>Website content creation, such as articles or blog posts, is not included in the website development scope.</li>
+                            <li>Ongoing website maintenance and updates beyond the initial development phase will require a separate agreement.</li>
+                            <li>The website development team is not responsible for any legal or regulatory compliance issues related to the hotel business.</li>
+                            <li>Any third-party costs, such as API subscription fees or payment gateway charges, are not included in the website development budget and are the responsibility of the client.</li>
+                            <li>The website development team is not responsible for the performance of third-party services or any issues arising from their use.</li>
+                        </ul>
+                  </div>
+                </div>
+              </div>
+        </section> -->
+
+        <section id="assumptionsAndLimits" class="full-screen snap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <h3 class="px-5">Assumptions</h3>
+                        <ul>
+                            <li><em>Responsive website design</em> compatible with various devices (desktop, mobile, and tablet) and screen sizes.</li>
+                            <li><em>Secure user authentication</em> and registration system.</li>
+                            <li><em>Integration</em> of a reliable payment gateway for secure online transactions.</li>
+                            <li><em>Robust search and filtering system</em> for easy navigation and hotel discovery.</li>
+                            <li><em>Interactive map</em> displaying hotel locations and nearby attractions.</li>
+                            <li><em>Real-time guest reviews and ratings</em> from popular review platforms through API integration.</li>
+                            <li><em>Live chat</em> and customer support system for seamless communication with guests.</li>
+                            <li><em>Content management system (CMS)</em> for easy updating and maintenance of hotel information, images, and promotions.</li>
+                            <li><em>Advanced analytics and reporting tools</em> to monitor website performance, user behavior, and booking trends.</li>
+                        </ul>
+                    </div>
+                    <div class="col-sm">
+                        <h3 class="px-5">Limits and Exclusions</h3>
+                        <ul>
+                            <li><em>Website content creation</em>, such as articles or blog posts, is not included in the website development scope.</li>
+                            <li><em>Ongoing website maintenance and updates</em> beyond the initial development phase will require a separate agreement.</li>
+                            <li>The website development team is <em>not responsible for any legal or regulatory compliance issues</em> related to the hotel business.</li>
+                            <li><em>Third-party costs,</em> such as API subscription fees or payment gateway charges, are not included in the website development budget and are the responsibility of the client.</li>
+                            <li>The website development team is <em>not responsible for the performance of third-party services</em> or any issues arising from their use.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section id="wbs" class="full-screen snap">
+            <div class="position-relative">
+                <h1 class="underneath">WBS</h1>
+                <h3 class="px-5">Work Breakdown Schedule</h3>
+                <p class="px-5">
+                    <img src="wbs.png" class="w-100 mt-5" alt="">
+                </p>
+            </div>
+        </section>
+
     </div>
-    <div class="container mt-5">
-        <section id="objective landing">
-            <h1>Objective</h1>
-            <p>
-                Develop a hotel booking website that provides customers with a user-friendly platform to easily search, compare, and book hotel rooms across various locations. 
-            </p>
-        </section>
 
-        <section id="milestones">
-            <h1>Milestones</h1>
-            <ul>
-                <li>Market Research Completed: January 15th, 2023</li>
-                <li>Website Design Plan Developed: February 15th, 2023</li>
-                <li>Development Plan Finalized: March 15th, 2023</li>
-                <li>Website Development and Testing Completed: May 15th, 2023</li>
-                <li>Website Launched: June 1st, 2023</li>
-                <li>Ongoing Maintenance and Support Provided: Starting June 1st, 2023</li>
-            </ul>
-        </section>
-
-        <section id="requirements">
-            <!-- Technical Requirements Details Here -->
-        </section>
-
-        <section id="assumptions">
-            <!-- Assumptions Details Here -->
-        </section>
-
-        <section id="limits">
-            <!-- Limits & Exclusions Details Here -->
-        </section>
-
-        <section id="wbs">
-            <!-- WBS Details Here -->
-        </section>
-    </div>
-
-    <footer class="footer mt-auto py-3 bg-light">
+    <footer class="footer mt-auto py-3">
         <div class="container">
-            <span class="text-muted">© 2023 Hotel Booking Project</span>
+            <p class="text-muted text-center">© 2023 BUpedia</p>
         </div>
     </footer>
 
